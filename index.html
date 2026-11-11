@@ -159,6 +159,59 @@ footer .g{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}footer h3{fo
 }
 @media(max-width:480px){#sum u{display:none}.mi{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* ===== section gabungan 3D: alasan + cara pesan + ketentuan ===== */
+.s3{position:relative;background:var(--ink);color:var(--bg);border-radius:44px}
+.s3 .k{color:var(--blush)}
+.s3 h2{font-size:clamp(26px,3.6vw,48px)}.s3 h2 em{color:var(--blush);font-style:normal}
+.s3 .sub{color:#f5ebddd9;margin-top:14px;max-width:30rem;font-size:15px}
+.s3 .pane{max-width:1240px;margin:auto;padding:clamp(64px,8vw,110px) clamp(18px,4vw,48px)}
+.s3 .chap+.chap{margin-top:56px}
+.s3 .its{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:28px}
+.s3 .ic{border-radius:28px;padding:24px;display:flex;flex-direction:column;gap:14px;font-size:15px;line-height:1.5;height:100%}
+.s3 .ic h3{font-size:clamp(18px,1.8vw,22px);line-height:1.15;margin-bottom:6px}
+.s3 .big{font:700 clamp(30px,4vw,52px) var(--fd);letter-spacing:-.05em;line-height:1;display:block}
+.s3 .big small{display:block;font:400 14px/1.4 Inter;letter-spacing:0;margin-top:6px}
+.s3 [data-v="0"] .ic{background:var(--blush);color:var(--ink)}
+.s3 [data-v="1"] .ic{background:var(--rt);color:var(--bg)}
+.s3 [data-v="2"] .ic{background:var(--bg);color:var(--ink)}
+.s3 [data-v="3"] .ic{background:#fff;color:var(--ink)}
+.s3 [data-ch="1"] .ic{background:var(--bg);color:var(--ink);flex-direction:row;align-items:flex-start;gap:16px}
+.s3 .no{width:44px;height:44px;flex:none;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:600 18px var(--fd)}
+.s3 [data-ch="2"] .ic{background:#f5ebdd14;border:1px solid #f5ebdd33;color:var(--bg)}
+.s3 [data-ch="2"] .ic h3{color:var(--blush)}
+.s3 .tabs,.s3 .skip3{display:none}
+/* mode 3D aktif */
+.s3.on3d .track{height:calc(100svh + 14*42svh)}
+.s3.on3d .anc{position:absolute;left:0;width:1px;height:1px;top:calc((100% - 100svh) * var(--k) / 14 + 2px);pointer-events:none}
+.s3.on3d .stick{position:sticky;top:0;height:100svh;overflow:hidden}
+.s3.on3d canvas{display:block;position:absolute;inset:0;width:100%;height:100%}
+.s3.on3d .stick::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--ink) 0%,rgba(92,26,43,.88) 30%,rgba(92,26,43,0) 56%)}
+.s3.on3d .pane{position:absolute;z-index:2;left:6vw;top:50%;transform:translateY(-50%);width:min(34rem,46vw);max-width:none;margin:0;padding:0;display:flex;flex-direction:column;gap:20px}
+.s3.on3d .tabs{display:flex;gap:10px;align-items:flex-end}
+.s3 .tabs button{flex:1;background:none;border:0;text-align:left;cursor:pointer;font:600 11px Inter;letter-spacing:.04em;color:#f5ebdd99;padding:6px 0}
+.s3 .tabs button::after{content:"";display:block;height:2px;margin-top:6px;border-radius:2px;background:linear-gradient(90deg,var(--blush) var(--f,0%),#f5ebdd2b var(--f,0%))}
+.s3 .tabs button[aria-current=true]{color:var(--bg)}
+.s3 .cnt{font:600 12px Inter;color:var(--blush);align-self:center;white-space:nowrap}
+.s3.on3d .deck{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+.s3.on3d .chap,.s3.on3d .its{display:contents}
+.s3.on3d .chap+.chap{margin-top:0}
+.s3.on3d .chh{grid-row:1;grid-column:1}
+.s3.on3d .it{grid-row:2;grid-column:1}
+.s3.on3d .chh,.s3.on3d .it{opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .4s,transform .55s var(--ease),visibility 0s .4s}
+.s3.on3d .is-a{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.s3.on3d .skip3{display:block;position:absolute;z-index:3;right:6vw;bottom:28px;font:700 12px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--blush)}
+@media(max-width:760px){
+.s3{border-radius:32px}
+.s3.on3d canvas{height:42%}
+.s3.on3d .stick::before{display:none}
+.s3.on3d .pane{left:18px;right:18px;width:auto;top:auto;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:none;gap:14px}
+.s3 .sub{display:none}
+.s3.on3d .ic{padding:18px;font-size:14px;gap:10px}
+.s3.on3d .big{font-size:30px}
+.s3.on3d .skip3{right:18px;bottom:auto;top:calc(42svh - 30px)}
+}
+@media(max-height:760px){.s3 .sub{display:none}.s3 .k{margin-bottom:10px}}
 </style>
 </head>
 <body>
@@ -226,46 +279,47 @@ footer .g{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}footer h3{fo
   </div>
 </section>
 
-<section class="s pin" aria-labelledby="h-pin">
-  <div class="w">
-    <p class="k">Alasan memilih Menej Ets</p>
-    <h2 id="h-pin">Mitra digital yang <em>transparan sejak awal.</em></h2>
-    <div class="hp">
-      <div class="cd"><div><b class="big">Rp8.000</b><small>mulai dari, per caption</small></div><div><h3>Harga dan lingkup transparan</h3>Setiap layanan memiliki harga dan batas pekerjaan yang tertulis jelas di menu.</div></div>
-      <div class="cd"><div><b class="big">1 kontak</b></div><div><h3>Satu mitra, beragam kebutuhan</h3>Konten, iklan, website, dan otomasi dikelola melalui satu kontak.</div></div>
-      <div class="cd"><div><b class="big">AI + tim</b></div><div><h3>AI untuk produksi, tim untuk arah</h3>AI mempercepat produksi, sementara arahan dan keputusan strategis tetap dari tim kami.</div></div>
-      <div class="cd"><div class="ch"><span>Satuan</span><span>Sekali bayar</span><span>Paket bulanan</span></div><div><h3>Bayar sesuai kebutuhan</h3>Pesan satuan, sekali bayar, atau paket bulanan. Paket tidak wajib.</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="s" id="cara" aria-labelledby="h-cara">
-  <div class="w cr2">
-    <div>
-      <p class="k">Cara pesan</p>
-      <h2 id="h-cara">Dari nota <em>sampai hasil.</em></h2>
-      <p class="sub">Proses pemesanan yang sederhana dan transparan, dari penyusunan nota hingga hasil akhir.</p>
-    </div>
-    <ol class="stp">
-      <li><div><b>Susun nota</b><p>Pilih layanan di menu, total dihitung otomatis.</p></div></li>
-      <li><div><b>Kirim ke WhatsApp</b><p>Isi nota otomatis terbawa ke dalam chat.</p></div></li>
-      <li><div><b>Sepakati lingkup dan harga</b><p>Estimasi waktu kami sampaikan sebelum Anda menyetujui.</p></div></li>
-      <li><div><b>Kami kerjakan, Anda terima</b><p>Revisi mengikuti ketentuan layanan.</p></div></li>
-    </ol>
-  </div>
-</section>
-
-<section class="s" id="ketentuan" aria-labelledby="h-kt">
-  <div class="w">
-    <p class="k">Ketentuan layanan</p>
-    <h2 id="h-kt">Lingkup dan biaya, <em>tertulis di awal.</em></h2>
-    <div class="kt">
-      <div><h3>Harga akhir</h3><p>Harga di menu berlaku per item atau per bulan sesuai keterangan. Harga akhir dikonfirmasi melalui chat sebelum Anda menyetujui.</p></div>
-      <div><h3>Revisi</h3><p>Dihitung per putaran: kumpulkan seluruh catatan dan kirim sekaligus. Starter 1, Growth 2, Business Pro 3 putaran per bulan.</p></div>
-      <div><h3>Budget iklan</h3><p>Dibayarkan langsung ke Meta atau Google. Biaya kami mencakup penyiapan dan pengelolaan iklan.</p></div>
-      <div><h3>Website, domain, dan hosting</h3><p>Harga website merupakan harga awal dan lingkupnya dikonfirmasi terlebih dahulu. Domain, hosting, dan plugin berbayar ditanggung terpisah, kecuali disepakati lain.</p></div>
-      <div><h3>Otomasi AI</h3><p>Dikerjakan di akun Claude Pro Anda sehingga akun aktif wajib dimiliki. Langganan dan biaya API pihak ketiga ditanggung terpisah.</p></div>
-      <div><h3>Hasil iklan dan penjualan</h3><p>Kami tidak menjamin penjualan maupun hasil iklan. Layanan dikerjakan sesuai menu dan paket yang disepakati.</p></div>
+<section class="s3" id="alasan" aria-label="Alasan memilih Menej Ets, cara pesan, dan ketentuan layanan">
+  <div class="track">
+    <span class="anc" id="cara" style="--k:4"></span>
+    <span class="anc" id="ketentuan" style="--k:8"></span>
+    <div class="stick">
+      <canvas id="c3" aria-hidden="true"></canvas>
+      <div class="pane">
+        <div class="tabs" role="group" aria-label="Bagian"><button type="button" aria-current="true">Alasan</button><button type="button">Cara pesan</button><button type="button">Ketentuan</button><span class="cnt" aria-hidden="true">1 / 4</span></div>
+        <div class="deck">
+          <div class="chap" data-ch="0">
+            <header class="chh" data-ch="0"><p class="k">Alasan memilih Menej Ets</p><h2>Mitra digital yang <em>transparan sejak awal.</em></h2></header>
+            <div class="its">
+              <article class="it" data-ch="0" data-v="0"><div class="ic"><b class="big">Rp8.000<small>mulai dari, per caption</small></b><div><h3>Harga dan lingkup transparan</h3>Setiap layanan memiliki harga dan batas pekerjaan yang tertulis jelas di menu.</div></div></article>
+              <article class="it" data-ch="0" data-v="1"><div class="ic"><b class="big">1 kontak</b><div><h3>Satu mitra, beragam kebutuhan</h3>Konten, iklan, website, dan otomasi dikelola melalui satu kontak.</div></div></article>
+              <article class="it" data-ch="0" data-v="2"><div class="ic"><b class="big">AI + tim</b><div><h3>AI untuk produksi, tim untuk arah</h3>AI mempercepat produksi, sementara arahan dan keputusan strategis tetap dari tim kami.</div></div></article>
+              <article class="it" data-ch="0" data-v="3"><div class="ic"><div class="ch"><span>Satuan</span><span>Sekali bayar</span><span>Paket bulanan</span></div><div><h3>Bayar sesuai kebutuhan</h3>Pesan satuan, sekali bayar, atau paket bulanan. Paket tidak wajib.</div></div></article>
+            </div>
+          </div>
+          <div class="chap" data-ch="1">
+            <header class="chh" data-ch="1"><p class="k">Cara pesan</p><h2>Dari nota <em>sampai hasil.</em></h2><p class="sub">Proses pemesanan yang sederhana dan transparan, dari penyusunan nota hingga hasil akhir.</p></header>
+            <div class="its">
+              <article class="it" data-ch="1"><div class="ic"><span class="no">1</span><div><h3>Susun nota</h3>Pilih layanan di menu, total dihitung otomatis.</div></div></article>
+              <article class="it" data-ch="1"><div class="ic"><span class="no">2</span><div><h3>Kirim ke WhatsApp</h3>Isi nota otomatis terbawa ke dalam chat.</div></div></article>
+              <article class="it" data-ch="1"><div class="ic"><span class="no">3</span><div><h3>Sepakati lingkup dan harga</h3>Estimasi waktu kami sampaikan sebelum Anda menyetujui.</div></div></article>
+              <article class="it" data-ch="1"><div class="ic"><span class="no">4</span><div><h3>Kami kerjakan, Anda terima</h3>Revisi mengikuti ketentuan layanan.</div></div></article>
+            </div>
+          </div>
+          <div class="chap" data-ch="2">
+            <header class="chh" data-ch="2"><p class="k">Ketentuan layanan</p><h2>Lingkup dan biaya, <em>tertulis di awal.</em></h2></header>
+            <div class="its">
+              <article class="it" data-ch="2"><div class="ic"><div><h3>Harga akhir</h3>Harga di menu berlaku per item atau per bulan sesuai keterangan. Harga akhir dikonfirmasi melalui chat sebelum Anda menyetujui.</div></div></article>
+              <article class="it" data-ch="2"><div class="ic"><div><h3>Revisi</h3>Dihitung per putaran: kumpulkan seluruh catatan dan kirim sekaligus. Starter 1, Growth 2, Business Pro 3 putaran per bulan.</div></div></article>
+              <article class="it" data-ch="2"><div class="ic"><div><h3>Budget iklan</h3>Dibayarkan langsung ke Meta atau Google. Biaya kami mencakup penyiapan dan pengelolaan iklan.</div></div></article>
+              <article class="it" data-ch="2"><div class="ic"><div><h3>Website, domain, dan hosting</h3>Harga website merupakan harga awal dan lingkupnya dikonfirmasi terlebih dahulu. Domain, hosting, dan plugin berbayar ditanggung terpisah, kecuali disepakati lain.</div></div></article>
+              <article class="it" data-ch="2"><div class="ic"><div><h3>Otomasi AI</h3>Dikerjakan di akun Claude Pro Anda sehingga akun aktif wajib dimiliki. Langganan dan biaya API pihak ketiga ditanggung terpisah.</div></div></article>
+              <article class="it" data-ch="2"><div class="ic"><div><h3>Hasil iklan dan penjualan</h3>Kami tidak menjamin penjualan maupun hasil iklan. Layanan dikerjakan sesuai menu dan paket yang disepakati.</div></div></article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="skip3" href="#faq">Lewati ↓</a>
     </div>
   </div>
 </section>
@@ -589,6 +643,120 @@ function boot(){
 boot();
 </script>
 
+<script type="module">
+import * as THREE from 'three';
+(()=>{
+const sec=document.getElementById('alasan');if(!sec)return;
+const track=sec.querySelector('.track'),stick=sec.querySelector('.stick'),cv=sec.querySelector('#c3');
+const items=[...sec.querySelectorAll('.it')],heads=[...sec.querySelectorAll('.chh')],tabs=[...sec.querySelectorAll('.tabs button')],cnt=sec.querySelector('.cnt');
+const CH=items.map(e=>+e.dataset.ch),N=items.length;
+const FIRST=[0,1,2].map(c=>CH.indexOf(c)),COUNT=[0,1,2].map(c=>CH.filter(x=>x===c).length);
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let R;try{R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true,powerPreference:'low-power'})}catch(e){return}
+sec.classList.add('on3d');
+R.setPixelRatio(Math.min(devicePixelRatio||1,2));R.setClearColor(0x000000,0);
+const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(38,1,.1,100);
+scene.add(new THREE.HemisphereLight(0xfff1e6,0x5C1A2B,1.2));
+const dl=new THREE.DirectionalLight(0xffffff,2.4);dl.position.set(4,6,7);scene.add(dl);
+const rl=new THREE.PointLight(0xE3B7A8,18,30);rl.position.set(-4,-2,5);scene.add(rl);
+const C={ink:0x5C1A2B,rose:0x9A3A4E,acc:0xB04A5F,blush:0xE3B7A8,cream:0xF5EBDD,white:0xFFFFFF};
+const mat=c=>new THREE.MeshStandardMaterial({color:c,roughness:.5,metalness:.05,emissive:c,emissiveIntensity:0});
+const basic=c=>new THREE.MeshBasicMaterial({color:c});
+function rbox(w,h,d,r,m){const s=new THREE.Shape(),x=-w/2,y=-h/2;
+ s.moveTo(x+r,y);s.lineTo(x+w-r,y);s.quadraticCurveTo(x+w,y,x+w,y+r);s.lineTo(x+w,y+h-r);s.quadraticCurveTo(x+w,y+h,x+w-r,y+h);s.lineTo(x+r,y+h);s.quadraticCurveTo(x,y+h,x,y+h-r);s.lineTo(x,y+r);s.quadraticCurveTo(x,y,x+r,y);
+ const g=new THREE.ExtrudeGeometry(s,{depth:d,bevelEnabled:true,bevelThickness:.04,bevelSize:.04,bevelSegments:3,curveSegments:6});g.translate(0,0,-d/2);return new THREE.Mesh(g,m)}
+const sph=(r,c)=>new THREE.Mesh(new THREE.SphereGeometry(r,24,16),mat(c));
+
+/* ---- partikel latar ---- */
+{const n=170,p=new Float32Array(n*3);for(let i=0;i<n;i++){p[i*3]=-8+Math.random()*50;p[i*3+1]=-5+Math.random()*10;p[i*3+2]=-9+Math.random()*8}
+ const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(p,3));
+ scene.add(new THREE.Points(g,new THREE.PointsMaterial({color:C.blush,size:.06,transparent:true,opacity:.5})))}
+
+/* ---- bab 1: alasan (4 ubin + ikon) ---- */
+const g0=new THREE.Group();scene.add(g0);
+const spin=[];
+const tiles=[[-1.5,1.05,C.blush],[1.5,1.05,C.rose],[-1.5,-1.05,C.cream],[1.5,-1.05,C.white]].map(([x,y,c])=>{
+ const t=new THREE.Group(),m=mat(c);t.position.set(x,y,0);t.add(rbox(2.7,1.9,.5,.28,m));t.userData.m=m;g0.add(t);return t});
+{const coin=new THREE.Group();const d=new THREE.Mesh(new THREE.CylinderGeometry(.5,.5,.14,40),mat(C.ink));d.rotation.x=Math.PI/2;coin.add(d);
+ const r=new THREE.Mesh(new THREE.TorusGeometry(.32,.045,12,40),mat(C.blush));r.position.z=.09;coin.add(r);coin.position.z=.5;tiles[0].add(coin);spin.push(o=>{coin.rotation.y+=o*1.3})}
+{const hub=new THREE.Group(),orb=new THREE.Group();hub.add(sph(.26,C.cream));
+ for(let i=0;i<3;i++){const a=i*Math.PI*2/3,s=sph(.13,C.blush);s.position.set(Math.cos(a)*.62,Math.sin(a)*.62,0);orb.add(s)}
+ orb.add(new THREE.Mesh(new THREE.TorusGeometry(.62,.012,8,60),basic(C.blush)));hub.add(orb);hub.position.z=.45;tiles[1].add(hub);spin.push(o=>{orb.rotation.z+=o*.8})}
+{const ai=new THREE.Mesh(new THREE.IcosahedronGeometry(.42,0),mat(C.rose));ai.position.set(-.5,0,.5);tiles[2].add(ai);
+ [.2,.5,.8].forEach(x=>{const s=sph(.13,C.ink);s.position.set(x,0,.45);tiles[2].add(s)});spin.push(o=>{ai.rotation.x+=o*.5;ai.rotation.y+=o*.8})}
+{[[.5,C.rose],[.9,C.acc],[1.3,C.ink]].forEach(([h,c],i)=>{const b=rbox(.26,h,.2,.1,mat(c));b.position.set((i-1)*.42,-.65+h/2,.4);tiles[3].add(b)})}
+
+/* ---- bab 2: cara pesan (tangga 4 langkah + bola) ---- */
+const g1=new THREE.Group();g1.position.x=16;g1.rotation.y=-.42;scene.add(g1);
+const numCv=[];
+function numTex(n){const c=document.createElement('canvas');c.width=c.height=128;const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;
+ const draw=()=>{const x=c.getContext('2d');x.clearRect(0,0,128,128);x.fillStyle='#5C1A2B';x.beginPath();x.arc(64,64,60,0,7);x.fill();x.fillStyle='#F5EBDD';x.font='600 66px Poppins,Inter,sans-serif';x.textAlign='center';x.textBaseline='middle';x.fillText(n,64,70);t.needsUpdate=true};
+ draw();numCv.push(draw);return t}
+const stepCols=[C.blush,C.acc,C.rose,C.cream];
+const steps=[0,1,2,3].map(i=>{const h=.8+i*.7,x=(i-1.5)*1.55,top=-1.7+h,m=mat(stepCols[i]),s=new THREE.Group();
+ const b=rbox(1.35,h,1.2,.14,m);b.position.set(x,-1.7+h/2,0);s.add(b);
+ const pl=new THREE.Mesh(new THREE.PlaneGeometry(.62,.62),new THREE.MeshBasicMaterial({map:numTex(i+1),transparent:true}));pl.position.set(x,top-.5,.66);s.add(pl);
+ g1.add(s);return {s,m,top,x}});
+const ball=sph(.3,C.white);ball.material.emissiveIntensity=.25;g1.add(ball);ball.position.set(steps[0].x,steps[0].top+.32,0);
+{const f=new THREE.Group(),pole=new THREE.Mesh(new THREE.CylinderGeometry(.03,.03,.9,8),mat(C.cream));pole.position.y=.45;f.add(pole);
+ const fl=new THREE.Mesh(new THREE.ConeGeometry(.2,.45,3),mat(C.blush));fl.rotation.z=-Math.PI/2;fl.position.set(.22,.72,0);f.add(fl);f.position.set(steps[3].x+.45,steps[3].top,0);g1.add(f)}
+
+/* ---- bab 3: ketentuan (cincin 6 dokumen) ---- */
+const g2=new THREE.Group();g2.position.x=32;scene.add(g2);const ring=new THREE.Group();g2.add(ring);
+const slabs=[0,1,2,3,4,5].map(i=>{const a=i/6*Math.PI*2,s=new THREE.Group(),m=mat(i%2?C.blush:C.cream);
+ s.add(rbox(1.5,2.1,.1,.16,m));s.userData.m=m;
+ const bd=new THREE.Mesh(new THREE.CircleGeometry(.17,24),basic([C.acc,C.rose,C.ink][i%3]));bd.position.set(-.45,.72,.1);s.add(bd);
+ [[.95,.25],[.9,0],[.95,-.25],[.6,-.5]].forEach(([w,y])=>{const l=new THREE.Mesh(new THREE.PlaneGeometry(w,.09),basic(C.rose));l.position.set(0,y,.1);s.add(l)});
+ s.position.set(Math.sin(a)*2.6,0,Math.cos(a)*2.6);s.rotation.y=a;ring.add(s);return s});
+
+/* ---- kamera, ukuran, scroll ---- */
+const FOC=[{x:0,y:0,w:6.4,h:5},{x:16,y:-.1,w:7.4,h:5},{x:32,y:0,w:6.4,h:4.8}];
+let idx=0,ch=0,cx=0,cy=0,dist=9,distFor=[9,9,9],snap=true,running=false;
+const clock=new THREE.Clock(),clamp=(v,a,b)=>Math.min(b,Math.max(a,v)),damp=(a,b,k)=>a+(b-a)*k;
+function resize(){const w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;R.setSize(w,h,false);cam.aspect=w/h;
+ const wide=innerWidth>760;if(wide)cam.setViewOffset(w,h,-w*.2,0,w,h);else cam.clearViewOffset();cam.updateProjectionMatrix();
+ const ae=wide?cam.aspect*.52:cam.aspect,tn=Math.tan(19*Math.PI/180);
+ distFor=FOC.map(f=>Math.max(f.w/(2*tn*ae),f.h/(2*tn))*1.1);snap=true;}
+new ResizeObserver(resize).observe(stick);addEventListener('resize',resize);
+document.fonts&&document.fonts.ready.then(()=>numCv.forEach(f=>f()));
+
+function setActive(i){idx=i;ch=CH[i];
+ items.forEach((e,n)=>e.classList.toggle('is-a',n===i));
+ heads.forEach(h=>h.classList.toggle('is-a',+h.dataset.ch===ch));
+ tabs.forEach((b,c)=>b.setAttribute('aria-current',c===ch));
+ cnt.textContent=(i-FIRST[ch]+1)+' / '+COUNT[ch]}
+function upd(){const r=track.getBoundingClientRect(),span=Math.max(1,track.offsetHeight-stick.offsetHeight),f=clamp(-r.top/span,0,1)*N,i=Math.min(N-1,Math.floor(f));
+ if(i!==idx)setActive(i);
+ tabs.forEach((b,c)=>b.style.setProperty('--f',clamp((f-FIRST[c])/COUNT[c],0,1)*100+'%'))}
+let tk=false;addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(()=>{tk=false;upd()})}},{passive:true});
+tabs.forEach((b,c)=>b.addEventListener('click',()=>{const span=track.offsetHeight-stick.offsetHeight;
+ scrollTo({top:scrollY+track.getBoundingClientRect().top+FIRST[c]/N*span+2,behavior:RM?'auto':'smooth'})}));
+
+/* ---- loop ---- */
+const wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
+function frame(){if(!running)return;requestAnimationFrame(frame);
+ const dt=Math.min(clock.getDelta(),.05),t=clock.elapsedTime,k=RM||snap?1:1-Math.exp(-dt*6),kc=RM||snap?1:1-Math.exp(-dt*3.2);
+ const o=RM?0:dt,F=FOC[ch];
+ cx=damp(cx,F.x,kc);cy=damp(cy,F.y,kc);dist=damp(dist,distFor[ch],kc);
+ cam.position.set(cx,cy+.5,dist);cam.lookAt(cx,cy,0);
+ if(!RM){g0.position.y=Math.sin(t*.7)*.08;g0.rotation.y=Math.sin(t*.35)*.1;g1.rotation.y=-.42+Math.sin(t*.3)*.05;g2.position.y=Math.sin(t*.6)*.06}
+ spin.forEach(f=>f(o));
+ tiles.forEach((tl,i)=>{const a=ch===0&&i===idx,m=tl.userData.m,s=ch===0?(a?1.14:.92):1;
+  tl.scale.setScalar(damp(tl.scale.x,s,k));tl.position.z=damp(tl.position.z,a?.9:0,k);m.emissiveIntensity=damp(m.emissiveIntensity,a?.3:0,k)});
+ const j=ch===1?idx-FIRST[1]:0;
+ steps.forEach((s,i)=>{s.m.emissiveIntensity=damp(s.m.emissiveIntensity,ch===1?(i===j?.55:i<j?.2:0):0,k);s.s.position.z=damp(s.s.position.z,ch===1&&i===j?.25:0,k)});
+ {const T=steps[j],dx=Math.abs(T.x-ball.position.x);ball.position.x=damp(ball.position.x,T.x,k);
+  ball.position.y=damp(ball.position.y,T.top+.32+Math.min(dx*.3,1.1),k)+(RM?0:Math.abs(Math.sin(t*3))*.004*(dx<.05?6:0))}
+ const q=ch===2?idx-FIRST[2]:0;
+ ring.rotation.y+=wrap(-(q/6)*Math.PI*2-ring.rotation.y)*k;
+ slabs.forEach((s,i)=>{const a=ch===2&&i===q,m=s.userData.m;s.scale.setScalar(damp(s.scale.x,a?1.18:1,k));m.emissiveIntensity=damp(m.emissiveIntensity,a?.3:0,k)});
+ snap=false;R.render(scene,cam)}
+function start(){if(running)return;running=true;clock.getDelta();frame()}
+new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&!document.hidden)start();else running=false})},{rootMargin:'100px'}).observe(stick);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)running=false});
+resize();setActive(0);upd();
+})();
+</script>
 <script>
 /* ---------- Menu harga, nota, dan pesan WhatsApp ---------- */
 (()=>{
