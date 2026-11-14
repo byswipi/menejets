@@ -117,6 +117,43 @@ section.s{padding:clamp(64px,8vw,110px) 0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .bk-3d.bump{animation:bump .35s ease-out}.bk-3d.bump.rb{animation-name:bumpr}
 @keyframes bump{0%,100%{translate:0}40%{translate:-10px}}@keyframes bumpr{0%,100%{translate:0}40%{translate:10px}}
+.hg-head .btn{margin-top:26px}.hg-head .btn[hidden]{display:none}
+.hg.open{padding-top:clamp(84px,11vh,104px);padding-bottom:28px}.hg.open .sub{display:none}.hg.open .hg-head{margin-bottom:14px}.hg.open h2{font-size:clamp(22px,2.6vw,32px)}.hg.open .k{margin-bottom:8px}
+.bk-3d{--bh:clamp(400px,calc(100svh - 340px),640px)}.bk-body{height:var(--bh)}
+#pn{position:relative;display:flex;flex-direction:column;flex:1;min-height:0}.bk-r{display:flex;flex-direction:column;min-height:0}.bk-l{min-height:0;overflow:hidden}
+.bk-it{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}.bk-it.pkl{margin-top:0;align-content:start;gap:12px}
+.bk-it .mi{padding:12px 0;gap:4px 18px}.bk-it .mi p{font-size:13px}.bk-it .pk{padding:14px 16px;border-radius:18px;gap:6px}.bk-it .pk li{margin-bottom:2px}.bk-it .pk ul{columns:1;font-size:13px;line-height:1.4}.bk-it .pk p{font-size:13px}
+.bk-h{margin-bottom:6px}
+.bk-cat .cn{font:600 11px Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--rt);margin-top:10px}
+.bk-cat .no{font-size:clamp(56px,min(9vw,13vh),128px)}.bk-cat .nt{margin-top:20px}
+.bk-hint{margin-top:18px}.bk-dots{margin-top:10px;flex-wrap:wrap}.book{margin-top:0}.nota{margin-top:36px}
+
+/* kartu menu 3D (coverflow) */
+.hg{overflow-x:clip}
+.cf{--ch:clamp(400px,calc(100svh - 340px),600px);--cw:min(410px,80vw);position:relative;perspective:1700px;perspective-origin:50% 38%;touch-action:pan-y;outline:none;margin-top:4px}
+.cf-stage{position:relative;height:var(--ch);transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .45s var(--ease)}
+.cf-card{position:absolute;left:50%;top:0;width:var(--cw);height:var(--ch);margin-left:calc(var(--cw)/-2);display:flex;flex-direction:column;background:linear-gradient(180deg,#fffaf2,#f5ead9);border-radius:22px;box-shadow:1px 1px 0 #e7d6c0,2px 2px 0 #dfcdb5,3px 3px 0 #d8c4aa,4px 4px 0 #d0bba0,0 34px 44px -30px #34101a99;will-change:transform;-webkit-user-select:none;user-select:none;cursor:grab}
+.cf-card::after{content:"";position:absolute;inset:0;border-radius:inherit;background:#2a0c16;opacity:var(--dim,0);pointer-events:none;z-index:6}
+.cf-card:not(.front)::before{content:"";position:absolute;inset:0;z-index:7;cursor:pointer}
+.cf:focus-visible .cf-card.front{outline:2px solid var(--rt);outline-offset:6px}
+.cf-h{position:relative;background:var(--ac);color:#fbf1e6;border-radius:22px 22px 0 0;padding:24px 22px 14px;display:flex;align-items:baseline;gap:12px}
+.cf-h::before{content:"";position:absolute;top:9px;left:50%;width:38px;height:7px;border-radius:99px;background:#0000004d;transform:translateX(-50%);box-shadow:inset 0 1px 2px #0006}
+.cf-h .no{font:800 34px var(--fd);letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1.5px #fbf1e6aa;line-height:1}
+.cf-h h3{font:800 clamp(22px,2.4vw,28px) var(--fd);letter-spacing:-.04em;flex:1;line-height:1.05}
+.cf-h .pg{font:600 11px Inter;letter-spacing:.12em;text-transform:uppercase;opacity:.8;white-space:nowrap}
+.cf-tag{padding:10px 22px 0;font-size:13.5px;color:var(--muted)}
+.cf-it{flex:1;min-height:0;overflow:hidden;padding:2px 22px 0}a.add{display:inline-block;text-decoration:none}.cf-it.pkl{margin-top:0;align-content:start;gap:12px;padding-top:10px}
+.cf-it .mi{padding:11px 0;gap:4px 16px}.cf-it .mi p{font-size:13px}
+.cf-it .pk{padding:14px 16px;border-radius:18px;gap:6px}.cf-it .pk li{margin-bottom:2px}.cf-it .pk ul{columns:1;font-size:13px;line-height:1.4}.cf-it .pk p{font-size:13px}
+.cf-f{margin:6px 22px 0;padding:10px 0 14px;border-top:1.5px dashed #5c1a2b33;font-size:12px;color:var(--muted);line-height:1.45}.cf-f b{color:var(--ink)}
+.cf-floor{width:min(560px,82vw);height:26px;margin:20px auto 0;background:radial-gradient(closest-side,#34101a40,transparent)}
+.cf-stage.bump{animation:bump .35s ease-out}.cf-stage.bump.rb{animation-name:bumpr}
+/* nota ala struk */
+.hg .nota{border-radius:6px 6px 0 0;border:0;padding:26px 28px 34px;max-width:420px;box-shadow:0 18px 30px -22px #5c1a2b88;font-variant-numeric:tabular-nums}
+.hg .nota::after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:10px;background:linear-gradient(135deg,var(--paper) 5px,transparent 0) 0 0/14px 10px,linear-gradient(225deg,var(--paper) 5px,transparent 0) 0 0/14px 10px;filter:drop-shadow(0 6px 4px #5c1a2b22)}
+.nota h3{text-align:center;letter-spacing:-.02em}.nota .sb{text-align:center;padding-bottom:12px;border-bottom:1.5px dashed #5c1a2b44}
+.nota.prt{animation:prt .7s cubic-bezier(.2,.7,.2,1)}@keyframes prt{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 -14px 0)}}
+@media(max-width:860px){.cf{--cw:min(330px,84vw);--ch:clamp(420px,calc(100svh - 300px),620px)}.cf-h{padding:22px 18px 12px}.cf-tag,.cf-it{padding-left:18px;padding-right:18px}.cf-f{margin:4px 18px 0}.cf-it .mi{padding:9px 0}.cf-it .mi .u{font-size:10px}.cf-it .mi p{font-size:12.5px}.cf-it .add{padding:7px 14px;font-size:13px}.cf-tag{display:none}}
 @media(prefers-reduced-motion:reduce){.leaf.go-f,.leaf.go-b{animation:none;display:none}.bk-3d{transition:none}}
 .nt{border:1.5px dashed #5c1a2b77;border-radius:16px;padding:12px 16px;font-size:14px;color:var(--muted)}.nt b{color:var(--ink)}
 .mi{padding:18px 0;border-bottom:1px solid #5c1a2b33;display:grid;grid-template-columns:1fr auto;gap:6px 24px;align-items:end}
@@ -188,7 +225,12 @@ footer .g{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}footer h3{fo
 .hg{border-radius:0}.pk ul{columns:1}
 .bk-3d{--rx:2deg;padding:9px}.bk-body{grid-template-columns:1fr}.bk-body::before{display:none}
 .bk-l{border-radius:10px 10px 0 0;background:#fbf6ee}.bk-r{border-radius:0 0 10px 10px;background:#f6ecdd;border-top:2px dashed #5c1a2b33}
-.bk-ft{display:none}.bk-cat .no{font-size:64px}
+.bk-ft{display:none}
+.bk-3d{--pp:18px;--bh:clamp(420px,calc(100svh - 300px),620px)}.bk-body{grid-template-rows:150px minmax(0,1fr)}
+.bk-l{padding:14px 18px}.bk-cat{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;align-items:baseline;text-align:left;gap:2px 12px}
+.bk-cat .no{font-size:30px}.bk-cat .ct{font-size:24px;margin:0}.bk-cat .orn,.bk-cat .tg2{display:none}.bk-cat .cn{margin:0 0 0 auto}
+.bk-cat .nt{flex-basis:100%;margin:6px 0 0;max-width:none;font-size:12px;padding:7px 12px;border-radius:12px}
+.bk-it .mi{padding:9px 0}.bk-it .mi .u{font-size:10px}.bk-it .mi p{font-size:12.5px}.bk-it .add{padding:7px 14px;font-size:13px}
 .lf,.lb{border-radius:0 0 10px 10px}.lb{padding:0;background:#efe2cf}.lf{background:#f6ecdd}
 .pg,.fq,footer .g,.cr2,.kt{grid-template-columns:1fr}.pk.b{translate:none}
 .hp{grid-template-columns:1fr}.cd,.cd:nth-child(1),.cd:nth-child(4){grid-column:auto;min-height:0;padding:22px}
@@ -241,29 +283,22 @@ footer .g{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}footer h3{fo
   </noscript>
 </section>
 
-<section class="s hg" id="harga" aria-labelledby="h-harga">
+<section class="s hg open" id="harga" aria-labelledby="h-harga">
   <div class="w">
     <div class="hg-head">
       <p class="k">Layanan dan harga</p>
       <h2 id="h-harga">Layanan satuan dan <em>paket bulanan.</em></h2>
-      <p class="sub">Geser halaman untuk memilih kategori, tambahkan layanan ke nota, lalu lanjutkan ke WhatsApp. Harga akhir dikonfirmasi lewat chat sebelum Anda menyetujui.</p>
     </div>
-    <div class="book" id="book" tabindex="0" role="group" aria-roledescription="buku menu" aria-label="Buku menu layanan. Gunakan tombol panah kiri dan kanan untuk berpindah kategori.">
-      <div class="bk-3d">
-        <div class="bk-cover" aria-hidden="true"></div>
-        <div class="bk-body">
-          <div class="bk-l" id="bl"></div>
-          <div class="bk-r">
-            <div id="pn"></div>
-            <div class="leaf" id="leaf" aria-hidden="true"><div class="lf"></div><div class="lb"></div></div>
-          </div>
-        </div>
+    <div id="bkwrap">
+      <div class="cf" id="cf" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Kartu menu layanan. Gunakan tombol panah kiri dan kanan untuk berpindah kartu.">
+        <div class="cf-stage" id="cfs"></div>
+        <div class="cf-floor" aria-hidden="true"></div>
       </div>
+      <div class="bk-hint" aria-hidden="true"><span class="arr l">‹</span><span class="tx">Geser kartu untuk berpindah kategori</span><span class="arr r">›</span></div>
+      <div class="bk-dots" id="bkdots" aria-hidden="true"></div>
+      <p class="sr" id="bkst" aria-live="polite"></p>
+      <div class="nota" id="nota" aria-live="polite"></div>
     </div>
-    <div class="bk-hint" aria-hidden="true"><span class="arr l">‹</span><span class="tx">Geser ke kiri atau kanan untuk berpindah kategori</span><span class="arr r">›</span></div>
-    <div class="bk-dots" id="bkdots" aria-hidden="true"></div>
-    <p class="sr" id="bkst" aria-live="polite"></p>
-    <div class="nota" id="nota" aria-live="polite"></div>
   </div>
 </section>
 
@@ -298,7 +333,7 @@ footer .g{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}footer h3{fo
     <div><p class="k">FAQ</p><h2 id="h-faq">Pertanyaan seputar <em>layanan dan harga</em></h2></div>
     <div>
       <details><summary>Bisa pesan satu layanan saja?</summary><p>Bisa. Seluruh layanan tersedia secara satuan, sedangkan paket bulanan bersifat opsional.</p></details>
-      <details><summary>Bagaimana cara memesan?</summary><p>Pilih layanan di buku menu, tekan Tambah ke Pesanan, dan total dihitung otomatis. Nota lalu terisi di chat WhatsApp. Anda juga dapat langsung memilih paket atau berkonsultasi lebih dulu.</p></details>
+      <details><summary>Bagaimana cara memesan?</summary><p>Pilih layanan di kartu menu, tekan Tambah ke Pesanan, dan total dihitung otomatis. Nota lalu terisi di chat WhatsApp. Anda juga dapat langsung memilih paket atau berkonsultasi lebih dulu.</p></details>
       <details><summary>Apakah konten dibuat oleh AI?</summary><p>AI membantu mempercepat produksi. Arahan kreatif, seleksi hasil, dan keputusan strategis tetap dipegang tim kami.</p></details>
       <details><summary>Apa bedanya Reels 15–30 dan 30–60 detik?</summary><p>Perbedaannya hanya durasi. Reels 15–30 detik Rp35.000, Reels 30–60 detik Rp60.000 per video.</p></details>
       <details><summary>Apakah budget iklan sudah termasuk?</summary><p>Belum. Budget iklan dibayarkan langsung ke Meta atau Google. Biaya kami mencakup penyiapan dan pengelolaan iklan.</p></details>
@@ -732,7 +767,7 @@ const S=[
 ["Website","Landing Page Framer",499000,"w","harga awal, sekali bayar","1 halaman modern dengan animasi yang halus"],
 ["Website","Toko Online WooCommerce",699000,"w","harga awal, sekali bayar","Katalog, keranjang, checkout, maks. 5 produk awal"],
 ["Otomasi AI","Setup Otomasi Konten AI",499000,"o","sekali bayar","Alur kerja AI disiapkan di akun Claude Pro Anda. Wajib memiliki Claude Pro aktif."]];
-const NOTE={"Konten AI":"Diproduksi dengan bantuan AI. Harga per item.","Kelola Instagram":"Hanya pengelolaan akun. Pembuatan konten dipesan terpisah.","Iklan Digital":"Budget iklan dibayarkan langsung ke Meta atau Google. Tidak ada jaminan hasil.","Website":"Harga awal; lingkup dikonfirmasi terlebih dahulu. Domain dan hosting dibayar terpisah.","Otomasi AI":"Biaya API dan langganan pihak ketiga dibayar terpisah. Wajib memiliki akun Claude Pro aktif.","Paket Bulanan":"Sudah termasuk kalender konten dan revisi sesuai paket. Budget iklan, Google Ads, dan website tidak termasuk."};
+const NOTE={"Konten AI":"Dibuat dengan bantuan AI. Harga per item.","Kelola Instagram":"Hanya pengelolaan akun. Konten dipesan terpisah.","Iklan Digital":"Budget iklan dibayar langsung ke Meta atau Google. Tanpa jaminan hasil.","Website":"Harga awal. Domain dan hosting dibayar terpisah.","Otomasi AI":"Wajib akun Claude Pro aktif. Biaya pihak ketiga terpisah.","Paket Bulanan":"Termasuk kalender konten dan revisi. Budget iklan, Google Ads, dan website tidak termasuk."};
 const cats=Object.keys(NOTE),cart={},HI='Halo Menej Ets, saya ingin konsultasi layanan digital.';let tab=cats[0];
 
 const row=i=>{const s=S[i],q=cart[i],e=esc(s[1]);
@@ -744,25 +779,43 @@ const PK=[
 {n:'Growth',b:1,tag:'Paling seimbang',pr:'Rp629.000',sv:'Hemat Rp98.000 dibanding membeli komponen yang setara secara satuan',p:'Akun terkelola, 16 postingan per bulan.',f:['8 Reels 15–30 detik dan 8 desain gambar','16 caption','Kalender konten bulanan','Unggah dan penjadwalan posting','Riset hashtag dan penataan profil','Evaluasi konten 1× per bulan','2× revisi per bulan'],x:['Tidak termasuk balasan komentar, DM, dan iklan']},
 {n:'Business Pro',pr:'Rp1.049.000',svn:'Pengelolaan Instagram penuh tidak dijual satuan, sehingga penghematan tidak dihitung.',p:'Pengelolaan menyeluruh, 24 postingan per bulan.',f:['12 Reels 15–30 detik dan 12 desain gambar','24 caption','Strategi dan kalender konten','Pengelolaan Instagram penuh, termasuk komentar dan DM','Pengelolaan iklan Meta','Laporan performa bulanan','3× revisi per bulan'],x:['Tidak termasuk budget iklan, Google Ads, dan website']}];
 const pkHtml=k=>`<article class="pk${k.b?' b':''}">${k.tag?`<span class="tg">${k.tag}</span>`:''}<div class="hd2"><h3>${k.n}</h3><div class="pr">${k.pr} <small>/ bulan</small></div></div><div class="sv${k.svn?' n':''}">${k.sv||k.svn}</div><p>${k.p}</p><ul>${k.f.map(x=>`<li>${x}</li>`).join('')}${k.x.map(x=>`<li class="x">${x}</li>`).join('')}</ul><a class="btn" href="${wa(`Halo Menej Ets, saya tertarik dengan paket ${k.n} ${k.pr}/bulan.\n\nMohon informasi detail pengerjaan dan cara memulai.`)}" target="_blank" rel="noopener">Pilih ${k.n} <i aria-hidden="true">→</i></a></article>`;
-const TAG={'Konten AI':'Konten siap tayang untuk akun bisnis Anda','Kelola Instagram':'Akun terkelola rapi dengan jadwal yang konsisten','Iklan Digital':'Iklan Meta dan Google yang dikelola profesional','Website':'Dari landing page sederhana hingga dunia 3D','Otomasi AI':'Alur kerja AI di akun Claude Pro Anda','Paket Bulanan':'Konten rutin dalam satu paket bulanan'};
-const leftHtml=t=>`<div class="bk-cat"><span class="no" aria-hidden="true">${String(cats.indexOf(t)+1).padStart(2,'0')}</span><h3 class="ct">${t}</h3><i class="orn" aria-hidden="true"></i><p class="tg2">${TAG[t]}</p><p class="nt"><b>Catatan:</b> ${NOTE[t]}</p></div><p class="bk-ft" aria-hidden="true">Menej Ets · Buku Menu</p>`;
-const rightHtml=t=>`<div class="bk-h"><b>${t}</b><span>Halaman ${cats.indexOf(t)+1} / ${cats.length}</span></div>`+(t==PAKET?`<div class="pkl">${PK.map(pkHtml).join('')}</div>`:S.map((s,i)=>s[0]==t?row(i):'').join(''));
-const mob=()=>matchMedia('(max-width:860px)').matches,rmo=()=>matchMedia('(prefers-reduced-motion:reduce)').matches;
-function marks(){$('#bkdots').innerHTML=cats.map(c=>`<i class="${c==tab?'on':''}"></i>`).join('');$('#bkst').textContent=`Halaman ${cats.indexOf(tab)+1} dari ${cats.length}: ${tab}`}
-let fin=null;
-function endFlip(){const lf=$('#leaf');if(!lf)return;lf.classList.remove('go-f','go-b');if(fin){const f=fin;fin=null;f()}}
-function setTab(c){
-if(c===tab)return;endFlip();
-const lf=$('#leaf'),fwd=cats.indexOf(c)>cats.indexOf(tab),oldL=$('#bl').innerHTML,oldR=$('#pn').innerHTML;
-tab=c;const nL=leftHtml(c),nR=rightHtml(c);marks();
-if(!lf||rmo()){$('#bl').innerHTML=nL;$('#pn').innerHTML=nR;return}
-const fr=lf.children[0],bk=lf.children[1];
-if(mob()){fr.innerHTML=oldR;bk.innerHTML='';$('#bl').innerHTML=nL;$('#pn').innerHTML=nR;void lf.offsetWidth;lf.classList.add('go-f')}
-else if(fwd){fr.innerHTML=oldR;bk.innerHTML=nL;$('#pn').innerHTML=nR;fin=()=>{$('#bl').innerHTML=nL};void lf.offsetWidth;lf.classList.add('go-f')}
-else{fr.innerHTML=nR;bk.innerHTML=oldL;$('#bl').innerHTML=nL;fin=()=>{$('#pn').innerHTML=nR};void lf.offsetWidth;lf.classList.add('go-b')}
-lf.onanimationend=e=>{if(e.target===lf)endFlip()}}
-function step(d){const i=cats.indexOf(tab)+d;if(i<0||i>=cats.length){const b3=$('#book .bk-3d');b3.classList.remove('bump','rb');void b3.offsetWidth;b3.classList.add('bump');if(d>0)b3.classList.add('rb');return}setTab(cats[i])}
-function renderMenu(){$('#bl').innerHTML=leftHtml(tab);$('#pn').innerHTML=rightHtml(tab);marks()}
+const TAG={'Konten AI':'Konten siap tayang untuk akun bisnis Anda','Kelola Instagram':'Akun terkelola rapi, jadwal konsisten','Iklan Digital':'Iklan Meta dan Google yang dikelola profesional','Website':'Dari landing page sederhana hingga dunia 3D','Otomasi AI':'Alur kerja AI di akun Claude Pro Anda','Paket Bulanan':'Konten rutin dalam satu paket bulanan'};
+const ACC=['#5C1A2B','#7d2639','#9A3A4E','#B04A5F','#6e2234','#3a1220'];
+let PAGES=[],isOpen=false,pos=0,tgt=0,raf=0,sup=0,fi=-1;
+const rmo=()=>matchMedia('(prefers-reduced-motion:reduce)').matches,clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const pkRow=k=>{const e=esc(k.n),sv=k.sv?' · hemat '+k.sv.match(/Rp[\d.]+/)[0]:'',tg=k.tag?' · '+k.tag.toLowerCase():'';
+return `<div class="mi"><div class="l"><h3>${e}</h3><i></i><em>${k.pr}</em></div><div class="u">per bulan${sv}${tg}</div><p>${k.p} ${k.f.join('; ')}. ${k.x.join('; ')}.</p><div><a class="add" href="${wa(`Halo Menej Ets, saya tertarik dengan paket ${k.n} ${k.pr}/bulan.\n\nMohon informasi detail pengerjaan dan cara memulai.`)}" target="_blank" rel="noopener" aria-label="Pilih paket ${e} via WhatsApp">Pilih ${e}</a></div></div>`};
+const unitHtml=u=>u.pk!=null?pkRow(PK[u.pk]):row(u.i);
+const cardHtml=(p,n)=>`<article class="cf-card" data-n="${n}" style="--ac:${ACC[cats.indexOf(p.cat)]}"><header class="cf-h"><span class="no" aria-hidden="true">${String(cats.indexOf(p.cat)+1).padStart(2,'0')}</span><h3>${p.cat}</h3><span class="pg">${n+1} / ${PAGES.length||'·'}</span></header><p class="cf-tag">${p.part>1?`Lanjutan · bagian ${p.part} dari ${p.parts}`:TAG[p.cat]}</p><div class="cf-it">${p.units.map(unitHtml).join('')}</div><p class="cf-f"><b>Catatan:</b> ${NOTE[p.cat]}</p></article>`;
+function paginate(){
+const st=$('#cfs');st.innerHTML=cardHtml({cat:cats[0],units:[],part:1,parts:1},0);
+const card=st.firstElementChild,it=$('.cf-it',card),avail=it.clientHeight,m=document.createElement('div');
+m.style.cssText=`position:absolute;visibility:hidden;left:${it.offsetLeft}px;width:${it.clientWidth}px;top:0;height:auto;overflow:visible;flex:none;pointer-events:none`;card.appendChild(m);
+const out=[];
+cats.forEach(c=>{const us=c==PAKET?PK.map((k,i)=>({pk:i})):S.map((s,i)=>s[0]==c?{i}:null).filter(Boolean);
+m.className='cf-it';m.innerHTML='';let g=[],first=out.length;
+us.forEach(u=>{m.insertAdjacentHTML('beforeend',unitHtml(u));if(g.length&&m.scrollHeight>avail){out.push({cat:c,units:g});g=[];m.innerHTML=unitHtml(u)}g.push(u)});
+out.push({cat:c,units:g});const n=out.length-first;for(let k=first;k<out.length;k++){out[k].part=k-first+1;out[k].parts=n}});
+m.remove();PAGES=out;st.innerHTML=PAGES.map(cardHtml).join('')}
+function syncTab(){const cs=document.querySelectorAll('.cf-card');cs.forEach((c,i)=>c.querySelectorAll('button').forEach(b=>b.tabIndex=i==fi?0:-1))}
+function layout(){const cs=document.querySelectorAll('.cf-card');if(!cs.length)return;const cw=cs[0].offsetWidth;let f=-1,best=9;
+cs.forEach((c,i)=>{const d=i-pos,ad=Math.abs(d),sg=Math.sign(d);
+const x=sg*(Math.min(ad,1)*cw*.76+Math.max(ad-1,0)*cw*.2),ry=-clamp(d,-1,1)*48,z=-Math.min(ad,1)*110-Math.max(Math.min(ad,3)-1,0)*70;
+c.style.transform=`translate3d(${x.toFixed(1)}px,0,${z.toFixed(1)}px) rotateY(${ry.toFixed(1)}deg) scale(${(1-Math.min(ad,2)*.05).toFixed(3)})`;
+c.style.opacity=ad>3.4?0:ad>2?(1-(ad-2)/1.4).toFixed(2):1;c.style.visibility=ad>3.4?'hidden':'visible';c.style.zIndex=100-Math.round(ad*10);c.style.setProperty('--dim',(Math.min(ad,1)*.36).toFixed(2));
+const fr=ad<.5;c.classList.toggle('front',fr);if(ad<best){best=ad;f=i}});
+if(f!==fi){fi=f;syncTab()}}
+function marks(){const p=PAGES[tgt];if(!p)return;$('#bkdots').innerHTML=PAGES.map((_,i)=>`<i class="${i==tgt?'on':''}"></i>`).join('');$('#bkst').textContent=`Halaman ${tgt+1} dari ${PAGES.length}: ${p.cat}`}
+function animate(){cancelAnimationFrame(raf);const tick=()=>{const d=tgt-pos;if(Math.abs(d)<.003||rmo()){pos=tgt;layout();return}pos+=d*.13;layout();raf=requestAnimationFrame(tick)};tick()}
+function go(i){if(!isOpen)return;const n=clamp(i,0,PAGES.length-1);if(n===i){tgt=n;marks();animate()}else{const st=$('#cfs');st.classList.remove('bump','rb');void st.offsetWidth;st.classList.add('bump');if(i>n)st.classList.add('rb')}}
+const step=d=>go(tgt+d);
+function init(){
+if(isOpen)return;isOpen=true;paginate();tgt=0;tab=PAGES[0].cat;pos=0;fi=-1;layout();marks();rk=innerWidth+'x'+Math.round(innerHeight/40);
+if(!rmo()&&'IntersectionObserver' in window){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();pos=tgt-2.6;layout();animate()}},{threshold:.35});io.observe($('#cf'))}}
+function setTab(c){if(!isOpen)init();const i=PAGES.findIndex(p=>p.cat==c);if(i>=0)go(i)}
+function repag(){const p=PAGES[tgt],key=p.cat+JSON.stringify(p.units[0]);paginate();let n=PAGES.findIndex(x=>x.cat+JSON.stringify(x.units[0])==key);if(n<0)n=PAGES.findIndex(x=>x.cat==p.cat);tgt=pos=Math.max(0,n);fi=-1;layout();marks()}
+function renderMenu(){if(!isOpen)return;document.querySelectorAll('.cf-it').forEach((el,n)=>{el.innerHTML=PAGES[n].units.map(unitHtml).join('')});syncTab()}
+let rz,rk='';addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(!isOpen)return;const k=innerWidth+'x'+Math.round(innerHeight/40);if(k===rk)return;rk=k;repag()},250)});
 function calc(){let one=0,mo=0,web=0,ads=0,ai=0,n=0;const L=[];Object.keys(cart).forEach(i=>{const s=S[i],q=cart[i],sub=s[2]*q;s[3]=='m'?mo+=sub:one+=sub;n+=q;if(s[0]=='Website')web=1;if(s[0]=='Iklan Digital')ads=1;if(s[0]=='Otomasi AI')ai=1;L.push(`- ${s[1]} (${s[4]}): ${q} × ${R(s[2])} = ${R(sub)}`)});return{one,mo,web,ads,ai,n,L}}
 function msg(){const c=calc();if(!c.n)return HI;
 const notes=[c.web&&'(Website: harga awal, lingkup dikonfirmasi terlebih dahulu. Domain dan hosting dibayar terpisah)',c.ads&&'(Budget iklan dibayarkan langsung ke Meta atau Google, tidak termasuk biaya pengelolaan)',c.ai&&'(Otomasi AI: wajib memiliki akun Claude Pro aktif, langganan dibayar sendiri)','(Biaya pihak ketiga tidak termasuk. Harga final dikonfirmasi melalui chat)'].filter(Boolean).join('\n');
@@ -772,23 +825,25 @@ const tot=[c.one?R(c.one):'',c.mo?R(c.mo)+'/bln':''].filter(Boolean).join(' + ')
 $('#sum').innerHTML=c.n?`<b>${c.n} item</b><span>${tot}</span><u>Lihat nota</u>`:`<span>Belum ada pesanan</span><u>Pilih layanan</u>`;
 $('#bwa').textContent=c.n?'Lanjut ke WhatsApp':'Hubungi via WhatsApp';$('#bwa').href=url;
 $('#nota').innerHTML=`<h3>Nota Pesanan</h3><p class="sb">Menej Ets · estimasi, bukan tagihan</p>`+(c.n?k.map(i=>{const s=S[i];return `<div class="li"><div><b>${esc(s[1])}</b><small>${R(s[2])} × ${cart[i]} · ${s[4]}</small></div><b>${R(s[2]*cart[i])}</b></div>`}).join('')+`<div class="tt">${c.one?`<div><span>Sekali bayar</span><span>${R(c.one)}</span></div>`:''}${c.mo?`<div><span>Per bulan</span><span>${R(c.mo)}</span></div>`:''}</div><p class="nb">Harga website merupakan harga awal. Budget iklan, domain, hosting, dan biaya pihak ketiga tidak termasuk. Harga akhir disepakati melalui chat.</p><a class="btn" href="${url}" target="_blank" rel="noopener">Lanjut ke WhatsApp <i aria-hidden="true">→</i></a>`:`<p class="empty">Belum ada layanan yang dipilih. Tekan Tambah ke Pesanan di atas untuk menyusun nota.</p>`)}
-function render(){renderMenu();renderNota()}
+function render(){renderNota()}
+let lastN=0;const _rn=renderNota;renderNota=function(){_rn();const n=Object.keys(cart).length;if(n&&n!==lastN&&!rmo()){const e=$('#nota');e.classList.remove('prt');void e.offsetWidth;e.classList.add('prt')}lastN=n};
 document.addEventListener('click',e=>{const t=e.target;
 const dt=t.closest('a[data-tab]');if(dt)setTab(dt.dataset.tab);
-const d=t.closest('#pn button[data-i]');if(d){const i=+d.dataset.i,dd=+d.dataset.d;cart[i]=Math.max(0,(cart[i]||0)+dd);if(!cart[i])delete cart[i];renderMenu();renderNota();
-const f=$(`#pn button[data-i="${i}"][data-d="${dd}"]`)||$(`#pn button[data-i="${i}"]`);f&&f.focus();return}
+const d=t.closest('.cf-card button[data-i]');if(d){const i=+d.dataset.i,dd=+d.dataset.d;cart[i]=Math.max(0,(cart[i]||0)+dd);if(!cart[i])delete cart[i];renderMenu();renderNota();
+const f=$(`.cf-card.front button[data-i="${i}"][data-d="${dd}"]`)||$(`.cf-card.front button[data-i="${i}"]`);f&&f.focus();return}
 if(t.closest('#sum')){document.getElementById(Object.keys(cart).length?'nota':'harga').scrollIntoView({behavior:'smooth',block:Object.keys(cart).length?'center':'start'})}});
-(()=>{const bk=$('#book'),body=$('.bk-body',bk);let sx=0,sy=0,dr=false,sup=0,wl=0;
-body.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;sx=e.clientX;sy=e.clientY;dr=true});
-addEventListener('pointerup',e=>{if(!dr)return;dr=false;const dx=e.clientX-sx,dy=e.clientY-sy;if(Math.abs(dx)>48&&Math.abs(dx)>Math.abs(dy)*1.4){sup=Date.now();step(dx<0?1:-1)}});
-addEventListener('pointercancel',()=>dr=false);
-body.addEventListener('click',e=>{if(Date.now()-sup<350){e.preventDefault();e.stopPropagation()}},true);
-const b3=bk.firstElementChild;
-if('IntersectionObserver' in window&&!rmo()){bk.classList.add('pre');const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){bk.classList.remove('pre');io.disconnect()}},{threshold:.2});io.observe(bk)}
-if(matchMedia('(hover:hover) and (min-width:861px)').matches)bk.addEventListener('pointermove',e=>{const r=bk.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;b3.style.setProperty('--ry',(x*5).toFixed(2)+'deg');b3.style.setProperty('--rx',(4-y*3).toFixed(2)+'deg')});
-bk.addEventListener('pointerleave',()=>{b3.style.removeProperty('--ry');b3.style.removeProperty('--rx')});
-bk.addEventListener('keydown',e=>{if(e.target!==bk)return;if(e.key=='ArrowRight'){e.preventDefault();step(1)}if(e.key=='ArrowLeft'){e.preventDefault();step(-1)}});
-bk.addEventListener('wheel',e=>{if(Math.abs(e.deltaX)<=Math.abs(e.deltaY)||Math.abs(e.deltaX)<30)return;e.preventDefault();if(Date.now()-wl<800)return;wl=Date.now();step(e.deltaX>0?1:-1)},{passive:false})})();
+(()=>{const cf=$('#cf');let x0=0,p0=0,dr=false,mv=false,vel=0,lx=0,lt=0,wl=0;
+const cw=()=>(document.querySelector('.cf-card')||{offsetWidth:360}).offsetWidth*.9;
+cf.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;dr=true;mv=false;x0=lx=e.clientX;p0=pos;lt=performance.now();vel=0;cancelAnimationFrame(raf)});
+addEventListener('pointermove',e=>{if(!dr)return;const dx=e.clientX-x0;if(!mv&&Math.abs(dx)>7)mv=true;if(!mv)return;pos=clamp(p0-dx/cw(),-.35,PAGES.length-.65);layout();const t=performance.now();vel=.7*vel+.3*((lx-e.clientX)/cw())/Math.max(1,t-lt)*16;lx=e.clientX;lt=t});
+const end=()=>{if(!dr)return;dr=false;if(mv){sup=Date.now();tgt=clamp(Math.round(pos+vel*4),0,PAGES.length-1);marks();animate()}};
+addEventListener('pointerup',end);addEventListener('pointercancel',end);
+cf.addEventListener('click',e=>{if(Date.now()-sup<350){e.preventDefault();e.stopPropagation();return}const c=e.target.closest('.cf-card');if(c&&!c.classList.contains('front')){e.preventDefault();e.stopPropagation();go(+c.dataset.n)}},true);
+cf.addEventListener('keydown',e=>{if(e.key=='ArrowRight'){e.preventDefault();step(1)}if(e.key=='ArrowLeft'){e.preventDefault();step(-1)}});
+cf.addEventListener('wheel',e=>{if(Math.abs(e.deltaX)<=Math.abs(e.deltaY)||Math.abs(e.deltaX)<30)return;e.preventDefault();if(Date.now()-wl<650)return;wl=Date.now();step(e.deltaX>0?1:-1)},{passive:false});
+})();
+let fontsDone=false;const boot=()=>{init();if(!fontsDone&&document.fonts&&document.fonts.status!=='loaded')document.fonts.ready.then(()=>{fontsDone=true;repag()})};
+(document.fonts?Promise.race([document.fonts.ready,new Promise(r=>setTimeout(r,1500))]):Promise.resolve()).then(boot);
 render();
 /* bar WhatsApp muncul setelah perjalanan 3D */
 const j=$('#journey'),j2=$('#cara'),bar=$('#bar');
