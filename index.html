@@ -41,32 +41,34 @@ a{color:inherit;text-decoration:none}ul,ol{list-style:none;padding:0}button{font
 .nav .btn{padding:4px 4px 4px 18px;font-size:13px}.nav .btn i{width:30px;height:30px}
 
 /* journey */
-#journey{height:600vh;position:relative}
+.jr{position:relative;--vr:245,235,221;--rl:#5c1a2b1f;--an:var(--rt)}#journey{height:600vh}#cara{height:380vh}
+.jr.dark{--bg:#5C1A2B;--ink:#F5EBDD;--accent:#E3B7A8;--muted:#e8c5b9;--vr:92,26,43;--rl:#f5ebdd33;--an:#E3B7A8;background:var(--bg);color:var(--ink)}
 .stage{position:sticky;top:0;height:100vh;overflow:hidden}
 canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-.veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,var(--bg) 0%,rgba(245,235,221,.86) 28%,rgba(245,235,221,0) 58%)}
+.veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgb(var(--vr)) 0%,rgba(var(--vr),.86) 28%,rgba(var(--vr),0) 58%)}
 .copy{position:absolute;left:6vw;top:50%;transform:translateY(-50%);width:min(35rem,88vw)}
 .copy>*{transition:opacity .45s ease,transform .6s var(--ease)}
 .copy.swap>*{opacity:0;transform:translateY(14px)}
 .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:18px}
-.copy h1{font-size:clamp(34px,5vw,70px);line-height:.98}
-.copy h1 em{display:block;color:var(--accent);font-style:normal}
+.copy .hd{font-size:clamp(34px,5vw,70px);line-height:.98}
+.copy .hd em{display:block;color:var(--accent);font-style:normal}
 .lead{margin:20px 0 22px;color:var(--muted);line-height:1.6;max-width:30rem}
-.glass{background:var(--card);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:18px;padding:16px 18px;box-shadow:0 14px 40px rgba(92,26,43,.16);max-width:23rem;font-size:13px}
-.glass ul{display:grid;gap:7px}.glass li{display:flex;justify-content:space-between;gap:14px}.glass li b{color:var(--accent);font-weight:700;white-space:nowrap}
-.glass small{display:block;margin-top:10px;color:var(--muted);font-size:11.5px;line-height:1.45}
+.glass{background:var(--card);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:18px;padding:16px 18px;box-shadow:0 14px 40px rgba(92,26,43,.16);max-width:23rem;font-size:13px;color:#5C1A2B}
+.glass ul{display:grid;gap:7px}.glass li{display:flex;justify-content:space-between;gap:14px}.glass li b{color:#B04A5F;font-weight:700;white-space:nowrap}
+.glass small{display:block;margin-top:10px;color:#7d4a57;font-size:11.5px;line-height:1.45}
+.glass ul.l{gap:10px}.glass ul.l li{display:block}.glass .t{display:block;font-weight:700;line-height:1.3}.glass .d{display:block;color:#7d4a57;font-size:12px;line-height:1.4}
 .cta-row{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
 .rail{position:absolute;left:6vw;right:6vw;bottom:22px;display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
 .rail button{background:none;border:0;text-align:left;cursor:pointer;font-size:11px;color:var(--muted);padding:4px 0}
-.rail button::after{content:"";display:block;height:2px;margin-top:6px;border-radius:2px;background:linear-gradient(90deg,var(--accent) var(--f,0%),#5c1a2b1f var(--f,0%))}
+.rail button::after{content:"";display:block;height:2px;margin-top:6px;border-radius:2px;background:linear-gradient(90deg,var(--accent) var(--f,0%),var(--rl) var(--f,0%))}
 .rail button.on{color:var(--ink);font-weight:700}.rail button.on::after{height:3px;margin-top:5px}
-.script{position:absolute;right:6vw;bottom:84px;font-family:Caveat,cursive;font-size:30px;transform:rotate(-6deg);color:var(--rt);text-align:right;line-height:1.1}
+.script{position:absolute;right:6vw;bottom:84px;font-family:Caveat,cursive;font-size:30px;transform:rotate(-6deg);color:var(--an);text-align:right;line-height:1.1}
 .skipj{position:absolute;right:6vw;bottom:24px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
 .hint{position:absolute;left:50%;bottom:62px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);transform:translateX(-50%);animation:hint 2s ease-in-out infinite;pointer-events:none}
 @keyframes hint{50%{transform:translate(-50%,6px)}}
-.nogl #journey{height:auto}.nogl .stage{position:relative;height:auto;padding:120px 6vw 50px}.nogl .copy{position:static;transform:none;width:auto;display:grid;gap:44px}
-.nogl canvas,.nogl .veil,.nogl .rail,.nogl .script,.nogl .skipj,.nogl .hint{display:none}
-.nogl article{max-width:34rem}.nogl article h2{font-size:clamp(28px,4vw,44px)}.nogl article h2 em{display:block;color:var(--accent);font-style:normal}
+.jr.nogl{height:auto}.jr.nogl .stage{position:relative;height:auto;padding:120px 6vw 50px}.jr.nogl .copy{position:static;transform:none;width:auto;display:grid;gap:44px}
+.jr.nogl canvas,.jr.nogl .veil,.jr.nogl .rail,.jr.nogl .script,.jr.nogl .skipj,.jr.nogl .hint{display:none}
+.jr.nogl article{max-width:34rem}.jr.nogl .hd{font-size:clamp(28px,4vw,44px)}
 
 /* section umum */
 section.s{padding:clamp(64px,8vw,110px) 0}
@@ -74,37 +76,73 @@ section.s{padding:clamp(64px,8vw,110px) 0}
 .s h2 em{color:var(--accent);font-style:normal}
 .sub{margin-top:14px;max-width:60ch;color:var(--muted)}
 
-/* harga */
-.dk{background:var(--ink);color:var(--bg);border-radius:44px}.dk .k{color:var(--blush)}.dk .sub{color:#f5ebddd9}
-.tb{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0 20px}
-.tb button{border:1.5px solid var(--blush);background:none;color:var(--bg);padding:10px 18px;border-radius:99px;font:500 14px Inter;cursor:pointer;transition:background-color .3s,color .3s}
-.tb button:hover{background:#e3b7a825}.tb button.on{background:var(--blush);color:var(--ink)}
-.nt{border:1.5px dashed var(--blush);border-radius:16px;padding:12px 16px;font-size:14px;color:var(--blush);max-width:760px}.nt b{color:var(--bg)}
-.mi{padding:22px 0;border-bottom:1px solid #e3b7a840;display:grid;grid-template-columns:1fr auto;gap:6px 30px;align-items:end;max-width:900px}
-.mi .l{grid-column:1/-1;display:flex;align-items:baseline;gap:12px}.mi h3{font-size:clamp(17px,1.9vw,22px);letter-spacing:-.03em}
-.mi .l i{flex:1;border-bottom:2px dotted #e3b7a880;transform:translateY(-5px)}.mi em{font:600 clamp(17px,1.9vw,22px) var(--fd);font-style:normal;color:var(--blush);white-space:nowrap}
-.mi .u{grid-column:1/-1;font:500 11px Inter;letter-spacing:.12em;text-transform:uppercase;color:var(--blush)}.mi p{font-size:14px;max-width:46ch;opacity:.92}
-.add{border:1.5px solid var(--blush);color:var(--blush);background:none;border-radius:99px;padding:9px 18px;font:500 14px Inter;cursor:pointer;transition:background-color .3s,color .3s,transform .2s}.add:hover{background:var(--blush);color:var(--ink)}.add:active{transform:scale(.94)}
-.q{display:flex;align-items:center;gap:14px;background:var(--blush);color:var(--ink);border-radius:99px;padding:4px;font-weight:700}.q output{min-width:1.2em;text-align:center}.q button{width:32px;height:32px;border-radius:50%;border:0;background:var(--ink);color:var(--bg);font-size:18px;cursor:pointer}
-.nota{margin-top:34px;max-width:900px;background:var(--paper);color:var(--ink);border-radius:26px;padding:24px 26px}
+/* harga + paket: satu section 3D */
+.hg{background:#EDD3C6;border-radius:0;--muted:#6b3345}
+.hg h2 em{color:var(--rt)}
+.book{perspective:2400px;margin-top:clamp(8px,2vw,24px)}
+.bk-3d{--rx:4deg;--ry:0deg;--pp:clamp(22px,3.4vw,52px);position:relative;max-width:1120px;margin:0 auto;padding:14px;transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateY(var(--ry));transition:transform .5s var(--ease),opacity .9s}
+.book.pre .bk-3d{opacity:0;transform:rotateX(42deg) translateY(70px) scale(.92);transition:none}
+.bk-cover{position:absolute;inset:0;border-radius:24px;background:linear-gradient(135deg,#7d2639 0%,#5C1A2B 45%,#3a1220 100%);box-shadow:0 26px 34px -26px #34101a55;transform:translateZ(-14px)}
+.bk-cover::after{content:"";position:absolute;inset:7px;border-radius:18px;border:1.5px solid #e3b7a84d}
+.bk-body{position:relative;display:grid;grid-template-columns:1fr 1fr;border-radius:10px;background:var(--paper);box-shadow:2px 2px 0 #eadcc9,4px 4px 0 #f6ecdd,6px 6px 0 #e2d1bb}
+.bk-body::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:84px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,#5c1a2b1c 42%,#5c1a2b40 50%,#5c1a2b1c 58%,transparent);pointer-events:none;z-index:3}
+.bk-l,.bk-r{position:relative;padding:var(--pp)}
+.bk-body{touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.bk-l{display:flex;flex-direction:column;border-radius:10px 0 0 10px;background:linear-gradient(90deg,#fbf6ee 72%,#f0e4d2)}
+.bk-r{border-radius:0 10px 10px 0;background:linear-gradient(270deg,#fbf6ee 72%,#f0e4d2);min-width:0}
+.bk-ft{margin-top:auto;padding-top:26px;font:600 11px Inter;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);opacity:.8}
+.bk-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:16px}
+.bk-h b{font:700 clamp(22px,2.4vw,30px) var(--fd);letter-spacing:-.04em}.bk-h span{font:600 11px Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.leaf{position:absolute;inset:0;display:none;transform-origin:left center;transform-style:preserve-3d;pointer-events:none;z-index:5}
+.leaf.go-f,.leaf.go-b{display:block}.leaf.go-f{animation:flip .95s cubic-bezier(.55,.05,.25,1) forwards}.leaf.go-b{animation:flipb .95s cubic-bezier(.55,.05,.25,1) forwards}
+.lf,.lb{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:0 10px 10px 0;overflow:hidden}
+.lf{padding:var(--pp);background:linear-gradient(270deg,#fbf6ee 72%,#f0e4d2)}
+.lb{transform:rotateY(180deg);padding:var(--pp);display:flex;flex-direction:column;border-radius:10px 0 0 10px;background:linear-gradient(90deg,#fbf6ee 72%,#f0e4d2)}
+@keyframes flip{0%{transform:rotateY(0)}100%{transform:rotateY(-178deg)}}@keyframes flipb{0%{transform:rotateY(-178deg)}100%{transform:rotateY(0)}}@keyframes shade{0%,100%{opacity:0}50%{opacity:1}}
+.lf::after,.lb::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#34101a44,transparent 60%);opacity:0;pointer-events:none}.leaf.go-f .lf::after,.leaf.go-f .lb::after,.leaf.go-b .lf::after,.leaf.go-b .lb::after{animation:shade .95s ease-in-out}
+.nota{position:relative;z-index:2;max-width:720px;margin:44px auto 0}
+.hg-head{text-align:center;max-width:760px;margin:0 auto}.hg-head .sub{margin-left:auto;margin-right:auto}
+.book:focus-visible{outline:2px solid var(--rt);outline-offset:8px;border-radius:24px}
+.bk-cat{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.bk-cat .no{font:800 clamp(72px,9vw,128px) var(--fd);letter-spacing:-.06em;line-height:.85;color:transparent;-webkit-text-stroke:1.8px #5c1a2b55}
+.bk-cat .ct{font:800 clamp(34px,4.4vw,60px) var(--fd);letter-spacing:-.05em;line-height:1.02;margin-top:8px}
+.bk-cat .orn{position:relative;display:block;width:min(220px,60%);height:1.5px;background:#5c1a2b66;margin:22px 0 20px}
+.bk-cat .orn::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;background:var(--rt);transform:translate(-50%,-50%) rotate(45deg);box-shadow:0 0 0 6px #fbf6ee}
+.bk-cat .tg2{font-size:clamp(15px,1.4vw,17px);max-width:26ch;color:var(--muted);line-height:1.5}
+.bk-cat .nt{margin-top:28px;max-width:34ch;text-align:left;font-size:13.5px}
+.bk-hint{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:30px;font:600 12px Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.bk-hint .arr{font:400 28px/1 Inter;letter-spacing:0;color:var(--rt);animation:nudge 1.6s ease-in-out infinite}.bk-hint .arr.r{animation-name:nudger}.bk-hint .tx{text-align:center}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(-7px)}}@keyframes nudger{0%,100%{transform:translateX(0)}50%{transform:translateX(7px)}}
+.bk-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}.bk-dots i{width:8px;height:8px;border-radius:99px;background:#5c1a2b33;transition:width .4s var(--ease),background-color .3s}.bk-dots i.on{width:26px;background:var(--ink)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.bk-3d.bump{animation:bump .35s ease-out}.bk-3d.bump.rb{animation-name:bumpr}
+@keyframes bump{0%,100%{translate:0}40%{translate:-10px}}@keyframes bumpr{0%,100%{translate:0}40%{translate:10px}}
+@media(prefers-reduced-motion:reduce){.leaf.go-f,.leaf.go-b{animation:none;display:none}.bk-3d{transition:none}}
+.nt{border:1.5px dashed #5c1a2b77;border-radius:16px;padding:12px 16px;font-size:14px;color:var(--muted)}.nt b{color:var(--ink)}
+.mi{padding:18px 0;border-bottom:1px solid #5c1a2b33;display:grid;grid-template-columns:1fr auto;gap:6px 24px;align-items:end}
+.mi .l{grid-column:1/-1;display:flex;align-items:baseline;gap:12px}.mi h3{font-size:clamp(17px,1.8vw,21px);letter-spacing:-.03em}
+.mi .l i{flex:1;border-bottom:2px dotted #5c1a2b66;transform:translateY(-5px)}.mi em{font:600 clamp(17px,1.8vw,21px) var(--fd);font-style:normal;color:var(--rt);white-space:nowrap}
+.mi .u{grid-column:1/-1;font:600 11px Inter;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.mi p{font-size:14px;max-width:44ch}
+.add{border:1.5px solid var(--ink);color:var(--ink);background:none;border-radius:99px;padding:9px 18px;font:500 14px Inter;cursor:pointer;transition:background-color .3s,color .3s,transform .2s}.add:hover{background:var(--ink);color:var(--bg)}.add:active{transform:scale(.94)}
+.q{display:flex;align-items:center;gap:14px;background:var(--ink);color:var(--bg);border-radius:99px;padding:4px;font-weight:700}.q output{min-width:1.2em;text-align:center}.q button{width:32px;height:32px;border-radius:50%;border:0;background:var(--blush);color:var(--ink);font-size:18px;cursor:pointer}
+.pkl{display:grid;gap:18px;margin-top:20px}
+.pk{background:var(--paper);border:1px solid #5c1a2b24;border-radius:24px;padding:22px;display:grid;gap:10px;position:relative;box-shadow:0 18px 36px -28px #5c1a2b88}
+.pk .hd2{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.pk h3{font-size:22px}.pk .pr{font:700 26px var(--fd);letter-spacing:-.04em}.pk .pr small{font:400 13px Inter;letter-spacing:0}
+.pk p{font-size:14px}.pk ul{columns:2;column-gap:20px;font-size:13.5px;line-height:1.5}.pk li{break-inside:avoid;margin-bottom:6px}.pk li::before{content:"✓  ";color:var(--rt)}.pk li.x::before{content:"–  "}.pk li.x{opacity:.85}
+.pk .sv{font-size:13px;color:var(--rt);font-weight:600}.pk .sv.n{font-weight:500}
+.pk .btn{justify-self:start}
+.pk.b{background:var(--ink);color:var(--bg);border-color:var(--ink)}.pk.b li::before{color:var(--blush)}.pk.b .btn{background:var(--blush);color:var(--ink)}.pk.b .btn i{background:var(--ink);color:var(--bg)}.pk.b .sv{color:var(--blush)}
+.tg{position:absolute;top:-12px;right:20px;background:var(--rt);color:var(--bg);font:700 11px Inter;padding:6px 14px;border-radius:99px;letter-spacing:.08em;text-transform:uppercase}
+.nota{margin-top:30px;background:var(--paper);color:var(--ink);border:1px solid #5c1a2b24;border-radius:26px;padding:24px 26px;box-shadow:0 18px 36px -28px #5c1a2b88}
 .nota h3{font-size:22px;margin-bottom:4px}.nota .sb{font-size:13px;opacity:.75;margin-bottom:10px}
 .nota .li{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1.5px dashed #5c1a2b44;font-size:14px}.nota .li small{display:block;opacity:.75;font-size:12px}
 .nota .tt{padding-top:14px;display:grid;gap:4px}.nota .tt div{display:flex;justify-content:space-between;font:700 18px var(--fd)}
 .nota .nb{font-size:12px;opacity:.8;margin:12px 0 16px;max-width:60ch}.nota .empty{font-size:14px;opacity:.8}
 
-/* paket */
-.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;align-items:stretch}
-.pk{background:var(--paper);border:1px solid #5c1a2b24;border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:14px;position:relative;box-shadow:0 22px 44px -30px #5c1a2b66;transition:translate .4s var(--ease)}
-.pk:hover{translate:0 -6px}.pk h3{font-size:24px}.pk .pr{font:700 clamp(26px,2.6vw,34px) var(--fd);letter-spacing:-.04em}.pk .pr small{font:400 14px Inter;letter-spacing:0}
-.pk p{font-size:14.5px}.pk ul{display:grid;gap:8px;font-size:14.5px;margin-bottom:12px}.pk li::before{content:"✓  ";color:var(--rt)}.pk li.x::before{content:"–  "}.pk li.x{opacity:.85}
-.pk .sv{font-size:13px;color:var(--rt);font-weight:600}.pk .sv.n{font-weight:500;opacity:.9}
-.pk .btn{margin-top:auto;justify-content:space-between}
-.pk.b{background:var(--ink);color:var(--bg);border-color:var(--ink);translate:0 -16px}.pk.b:hover{translate:0 -22px}.pk.b li::before{color:var(--blush)}.pk.b .btn{background:var(--blush);color:var(--ink)}.pk.b .btn i{background:var(--ink);color:var(--bg)}.pk.b .sv{color:var(--blush)}
-.tg{position:absolute;top:-14px;right:24px;background:var(--rt);color:var(--bg);font:700 11px Inter;padding:6px 14px;border-radius:99px;letter-spacing:.08em;text-transform:uppercase}
-
 /* alasan */
 .dk h2 em,.pin h2 em{color:var(--blush)}
-.pin{background:var(--ink);color:var(--bg);border-radius:44px 44px 0 0}.pin .k{color:var(--blush)}
+.pin{background:var(--ink);color:var(--bg);border-radius:0}.pin .k{color:var(--blush)}
 .hp{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:40px}
 .cd{grid-column:span 5;min-height:230px;padding:28px;border-radius:30px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;font-size:14.5px;line-height:1.5}
 .cd:nth-child(1),.cd:nth-child(4){grid-column:span 7}
@@ -131,7 +169,7 @@ section.s{padding:clamp(64px,8vw,110px) 0}
 .fq p{margin-top:12px;max-width:640px}
 
 /* cta + footer */
-.cta{background:var(--blush);text-align:center;border-radius:44px 44px 0 0}
+.cta{background:var(--blush);text-align:center;border-radius:0}
 .cta h2{font-size:clamp(30px,5.2vw,68px)}.cta p{max-width:560px;margin:24px auto 32px}
 .o{color:transparent;-webkit-text-stroke:1.8px var(--ink)}
 footer{background:var(--ink);color:var(--bg);padding:64px 0 40px}
@@ -147,181 +185,112 @@ footer .g{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}footer h3{fo
 
 @media(max-width:860px){
 .nav nav{display:none}
+.hg{border-radius:0}.pk ul{columns:1}
+.bk-3d{--rx:2deg;padding:9px}.bk-body{grid-template-columns:1fr}.bk-body::before{display:none}
+.bk-l{border-radius:10px 10px 0 0;background:#fbf6ee}.bk-r{border-radius:0 0 10px 10px;background:#f6ecdd;border-top:2px dashed #5c1a2b33}
+.bk-ft{display:none}.bk-cat .no{font-size:64px}
+.lf,.lb{border-radius:0 0 10px 10px}.lb{padding:0;background:#efe2cf}.lf{background:#f6ecdd}
 .pg,.fq,footer .g,.cr2,.kt{grid-template-columns:1fr}.pk.b{translate:none}
 .hp{grid-template-columns:1fr}.cd,.cd:nth-child(1),.cd:nth-child(4){grid-column:auto;min-height:0;padding:22px}
-.dk,.pin,.cta{border-radius:32px}.pin,.cta{border-radius:32px 32px 0 0}
+.dk,.pin,.cta{border-radius:0}
 }
 @media(max-width:760px){
-.veil{background:linear-gradient(180deg,var(--bg) 0%,rgba(245,235,221,.88) 48%,transparent 76%)}
+.veil{background:linear-gradient(180deg,rgb(var(--vr)) 0%,rgba(var(--vr),.88) 48%,rgba(var(--vr),0) 76%)}
+.glass .d{font-size:11px}.glass ul.l{gap:7px}.jr.dark .glass{padding:12px 14px}.jr.nogl .lead{display:block}
 .copy{top:84px;transform:none}.lead,.cta-row,.script,.hint{display:none}
 .eyebrow{margin-bottom:10px}.glass{margin-top:14px;max-width:100%;font-size:12px;padding:12px 14px}
 .rail{left:4vw;right:4vw;gap:6px}.rail button{font-size:9.5px}.skipj{display:none}
 }
 @media(max-width:480px){#sum u{display:none}.mi{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
-
-/* ===== section gabungan 3D: alasan + cara pesan + ketentuan ===== */
-.s3{position:relative;background:var(--ink);color:var(--bg);border-radius:44px}
-.s3 .k{color:var(--blush)}
-.s3 h2{font-size:clamp(26px,3.6vw,48px)}.s3 h2 em{color:var(--blush);font-style:normal}
-.s3 .sub{color:#f5ebddd9;margin-top:14px;max-width:30rem;font-size:15px}
-.s3 .pane{max-width:1240px;margin:auto;padding:clamp(64px,8vw,110px) clamp(18px,4vw,48px)}
-.s3 .chap+.chap{margin-top:56px}
-.s3 .its{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:28px}
-.s3 .ic{border-radius:28px;padding:24px;display:flex;flex-direction:column;gap:14px;font-size:15px;line-height:1.5;height:100%}
-.s3 .ic h3{font-size:clamp(18px,1.8vw,22px);line-height:1.15;margin-bottom:6px}
-.s3 .big{font:700 clamp(30px,4vw,52px) var(--fd);letter-spacing:-.05em;line-height:1;display:block}
-.s3 .big small{display:block;font:400 14px/1.4 Inter;letter-spacing:0;margin-top:6px}
-.s3 [data-v="0"] .ic{background:var(--blush);color:var(--ink)}
-.s3 [data-v="1"] .ic{background:var(--rt);color:var(--bg)}
-.s3 [data-v="2"] .ic{background:var(--bg);color:var(--ink)}
-.s3 [data-v="3"] .ic{background:#fff;color:var(--ink)}
-.s3 [data-ch="1"] .ic{background:var(--bg);color:var(--ink);flex-direction:row;align-items:flex-start;gap:16px}
-.s3 .no{width:44px;height:44px;flex:none;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:600 18px var(--fd)}
-.s3 [data-ch="2"] .ic{background:#f5ebdd14;border:1px solid #f5ebdd33;color:var(--bg)}
-.s3 [data-ch="2"] .ic h3{color:var(--blush)}
-.s3 .tabs,.s3 .skip3{display:none}
-/* mode 3D aktif */
-.s3.on3d .track{height:calc(100svh + 14*42svh)}
-.s3.on3d .anc{position:absolute;left:0;width:1px;height:1px;top:calc((100% - 100svh) * var(--k) / 14 + 2px);pointer-events:none}
-.s3.on3d .stick{position:sticky;top:0;height:100svh;overflow:hidden}
-.s3.on3d canvas{display:block;position:absolute;inset:0;width:100%;height:100%}
-.s3.on3d .stick::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--ink) 0%,rgba(92,26,43,.88) 30%,rgba(92,26,43,0) 56%)}
-.s3.on3d .pane{position:absolute;z-index:2;left:6vw;top:50%;transform:translateY(-50%);width:min(34rem,46vw);max-width:none;margin:0;padding:0;display:flex;flex-direction:column;gap:20px}
-.s3.on3d .tabs{display:flex;gap:10px;align-items:flex-end}
-.s3 .tabs button{flex:1;background:none;border:0;text-align:left;cursor:pointer;font:600 11px Inter;letter-spacing:.04em;color:#f5ebdd99;padding:6px 0}
-.s3 .tabs button::after{content:"";display:block;height:2px;margin-top:6px;border-radius:2px;background:linear-gradient(90deg,var(--blush) var(--f,0%),#f5ebdd2b var(--f,0%))}
-.s3 .tabs button[aria-current=true]{color:var(--bg)}
-.s3 .cnt{font:600 12px Inter;color:var(--blush);align-self:center;white-space:nowrap}
-.s3.on3d .deck{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
-.s3.on3d .chap,.s3.on3d .its{display:contents}
-.s3.on3d .chap+.chap{margin-top:0}
-.s3.on3d .chh{grid-row:1;grid-column:1}
-.s3.on3d .it{grid-row:2;grid-column:1}
-.s3.on3d .chh,.s3.on3d .it{opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .4s,transform .55s var(--ease),visibility 0s .4s}
-.s3.on3d .is-a{opacity:1;visibility:visible;transform:none;transition-delay:0s}
-.s3.on3d .skip3{display:block;position:absolute;z-index:3;right:6vw;bottom:28px;font:700 12px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--blush)}
-@media(max-width:760px){
-.s3{border-radius:32px}
-.s3.on3d canvas{height:42%}
-.s3.on3d .stick::before{display:none}
-.s3.on3d .pane{left:18px;right:18px;width:auto;top:auto;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:none;gap:14px}
-.s3 .sub{display:none}
-.s3.on3d .ic{padding:18px;font-size:14px;gap:10px}
-.s3.on3d .big{font-size:30px}
-.s3.on3d .skip3{right:18px;bottom:auto;top:calc(42svh - 30px)}
-}
-@media(max-height:760px){.s3 .sub{display:none}.s3 .k{margin-bottom:10px}}
 </style>
+<noscript><style>.jr{height:auto!important}.jr .stage{display:none}</style></noscript>
 </head>
 <body>
 <a class="skip" href="#harga">Lewati ke konten</a>
 
 <header class="nav">
   <a class="lg" href="#journey" aria-label="Menej Ets, kembali ke atas"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#5C1A2B"/><rect x="11" y="34" width="10" height="19" rx="5" fill="#B04A5F"/><rect x="27" y="22" width="10" height="31" rx="5" fill="#E3B7A8"/><rect x="43" y="11" width="10" height="42" rx="5" fill="#F5EBDD"/></svg>menej ets</a>
-  <nav aria-label="Navigasi utama"><a href="#harga">Harga</a><a href="#paket">Paket</a><a href="#cara">Cara Pesan</a><a href="#faq">FAQ</a></nav>
+  <nav aria-label="Navigasi utama"><a href="#harga">Harga</a><a href="#harga" data-tab="Paket Bulanan">Paket</a><a href="#cara" data-j="cara" data-step="1">Cara Pesan</a><a href="#faq">FAQ</a></nav>
   <a class="btn" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20ingin%20konsultasi%20layanan%20digital." target="_blank" rel="noopener">Konsultasi Gratis <i aria-hidden="true">→</i></a>
 </header>
 
 <main>
-<section id="journey" aria-label="Perjalanan layanan Menej Ets">
+<section class="jr" id="journey" aria-label="Perjalanan layanan Menej Ets">
   <div class="stage">
-    <canvas id="c" aria-hidden="true"></canvas>
+    <canvas aria-hidden="true"></canvas>
     <div class="veil"></div>
-    <div class="copy" id="copy" aria-live="polite">
-      <div class="eyebrow" id="eb">Mitra layanan digital untuk UMKM</div>
-      <h1><span id="h1">Fokus pada Bisnis.</span><em id="h2">Digitalnya Kami Kelola.</em></h1>
-      <p class="lead" id="lead">Konten Instagram, pengelolaan media sosial, Meta Ads, Google Ads, website, dan otomasi AI dalam satu mitra. Gulir untuk melihat layanan kami.</p>
-      <div class="glass" id="card"><ul><li><span>Mulai dari</span><b>Rp8.000 / caption</b></li><li><span>Konsultasi awal</span><b>Gratis</b></li><li><span>Paket bulanan</span><b>Rp229.000</b></li></ul></div>
+    <div class="copy" aria-live="polite">
+      <div class="eyebrow" data-eb>Mitra layanan digital untuk UMKM</div>
+      <h1 class="hd"><span data-h1>Fokus pada Bisnis.</span><em data-h2>Digitalnya Kami Kelola.</em></h1>
+      <p class="lead" data-lead>Konten Instagram, Meta Ads, Google Ads, website, dan otomasi AI dari satu tim. Harga jelas, pengerjaan terstruktur. Gulir untuk melihat layanan.</p>
+      <div class="glass" data-card><ul><li><span>Mulai dari</span><b>Rp8.000 / caption</b></li><li><span>Konsultasi awal</span><b>Gratis</b></li><li><span>Paket bulanan</span><b>Rp229.000</b></li></ul></div>
       <div class="cta-row"><a class="btn" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20ingin%20konsultasi%20layanan%20digital." target="_blank" rel="noopener">Konsultasi Gratis <i aria-hidden="true">→</i></a><a class="btn l" href="#harga">Lihat Harga <i aria-hidden="true">→</i></a></div>
     </div>
     <div class="hint" aria-hidden="true">Gulir ↓</div>
     <div class="script" aria-hidden="true">Satu mitra,<br>semua terkelola.</div>
     <a class="skipj" href="#harga">Lewati ↓</a>
-    <div class="rail" id="rail" role="group" aria-label="Langkah perjalanan"></div>
+    <div class="rail" role="group" aria-label="Langkah perjalanan"></div>
   </div>
   <noscript>
     <div style="padding:120px 6vw 40px;max-width:44rem">
       <h2>Fokus pada Bisnis. Digitalnya Kami Kelola.</h2>
-      <p>Konten AI mulai Rp8.000 per caption. Kelola Instagram mulai Rp99.000 per bulan. Iklan Digital (Meta dan Google Ads) mulai Rp99.000. Website mulai Rp149.000. Setup Otomasi AI Rp499.000. Paket bulanan: Starter Rp229.000, Growth Rp629.000, Business Pro Rp1.049.000.</p>
+      <p>Konten AI mulai Rp8.000 per caption. Kelola Instagram mulai Rp99.000 per bulan. Iklan Digital (Meta dan Google Ads) mulai Rp99.000. Website mulai Rp149.000, Landing Page 3D (three.js) mulai Rp447.000. Setup Otomasi AI Rp499.000. Paket bulanan: Starter Rp229.000, Growth Rp629.000, Business Pro Rp1.049.000.</p>
       <p><a href="https://wa.me/628567876751">Konsultasi gratis via WhatsApp</a></p>
     </div>
   </noscript>
 </section>
 
-<section class="s dk" id="harga" aria-labelledby="h-harga">
+<section class="s hg" id="harga" aria-labelledby="h-harga">
   <div class="w">
-    <p class="k">Harga layanan satuan</p>
-    <h2 id="h-harga">Susun nota layanan Anda.</h2>
-    <p class="sub">Pilih layanan dan total akan terhitung otomatis, lalu lanjutkan ke WhatsApp. Harga akhir dikonfirmasi melalui chat sebelum Anda menyetujui.</p>
-    <div class="tb" id="tb" role="tablist" aria-label="Kategori layanan"></div>
-    <div id="pn" role="tabpanel"></div>
+    <div class="hg-head">
+      <p class="k">Layanan dan harga</p>
+      <h2 id="h-harga">Layanan satuan dan <em>paket bulanan.</em></h2>
+      <p class="sub">Geser halaman untuk memilih kategori, tambahkan layanan ke nota, lalu lanjutkan ke WhatsApp. Harga akhir dikonfirmasi lewat chat sebelum Anda menyetujui.</p>
+    </div>
+    <div class="book" id="book" tabindex="0" role="group" aria-roledescription="buku menu" aria-label="Buku menu layanan. Gunakan tombol panah kiri dan kanan untuk berpindah kategori.">
+      <div class="bk-3d">
+        <div class="bk-cover" aria-hidden="true"></div>
+        <div class="bk-body">
+          <div class="bk-l" id="bl"></div>
+          <div class="bk-r">
+            <div id="pn"></div>
+            <div class="leaf" id="leaf" aria-hidden="true"><div class="lf"></div><div class="lb"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bk-hint" aria-hidden="true"><span class="arr l">‹</span><span class="tx">Geser ke kiri atau kanan untuk berpindah kategori</span><span class="arr r">›</span></div>
+    <div class="bk-dots" id="bkdots" aria-hidden="true"></div>
+    <p class="sr" id="bkst" aria-live="polite"></p>
     <div class="nota" id="nota" aria-live="polite"></div>
   </div>
 </section>
 
-<section class="s" id="paket" aria-labelledby="h-paket">
-  <div class="w">
-    <p class="k">Paket bulanan</p>
-    <h2 id="h-paket">Paket bulanan untuk <em>konten yang konsisten.</em></h2>
-    <p class="sub">Sudah termasuk kalender konten dan revisi sesuai paket. Budget iklan, Google Ads, dan website tidak termasuk.</p>
-    <div class="pg">
-      <article class="pk"><h3>Starter</h3><div class="pr">Rp229.000 <small>/ bulan</small></div><div class="sv">Hemat Rp35.000 dibanding membeli komponen yang setara secara satuan</div><p>Untuk mulai tampil rutin: 8 postingan per bulan.</p>
-        <ul><li>4 Reels 15–30 detik dan 4 desain gambar</li><li>8 caption</li><li>Ide dan jadwal 1 bulan</li><li>1× revisi per bulan</li><li class="x">Tidak termasuk unggah dan penjadwalan posting</li></ul>
-        <a class="btn" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20tertarik%20dengan%20paket%20Starter%20Rp229.000%2Fbulan.%0A%0AMohon%20informasi%20detail%20pengerjaan%20dan%20cara%20memulai." target="_blank" rel="noopener">Pilih Starter <i aria-hidden="true">→</i></a></article>
-      <article class="pk b"><span class="tg">Paling seimbang</span><h3>Growth</h3><div class="pr">Rp629.000 <small>/ bulan</small></div><div class="sv">Hemat Rp98.000 dibanding membeli komponen yang setara secara satuan</div><p>Akun terkelola, 16 postingan per bulan.</p>
-        <ul><li>8 Reels 15–30 detik dan 8 desain gambar</li><li>16 caption</li><li>Kalender konten bulanan</li><li>Unggah dan penjadwalan posting</li><li>Riset hashtag dan penataan profil</li><li>Evaluasi konten 1× per bulan</li><li>2× revisi per bulan</li><li class="x">Tidak termasuk balasan komentar, DM, dan iklan</li></ul>
-        <a class="btn" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20tertarik%20dengan%20paket%20Growth%20Rp629.000%2Fbulan.%0A%0AMohon%20informasi%20detail%20pengerjaan%20dan%20cara%20memulai." target="_blank" rel="noopener">Pilih Growth <i aria-hidden="true">→</i></a></article>
-      <article class="pk"><h3>Business Pro</h3><div class="pr">Rp1.049.000 <small>/ bulan</small></div><div class="sv n">Pengelolaan Instagram penuh tidak dijual satuan, sehingga penghematan tidak dihitung.</div><p>Pengelolaan menyeluruh, 24 postingan per bulan.</p>
-        <ul><li>12 Reels 15–30 detik dan 12 desain gambar</li><li>24 caption</li><li>Strategi dan kalender konten</li><li>Pengelolaan Instagram penuh, termasuk komentar dan DM</li><li>Pengelolaan iklan Meta</li><li>Laporan performa bulanan</li><li>3× revisi per bulan</li><li class="x">Tidak termasuk budget iklan, Google Ads, dan website</li></ul>
-        <a class="btn" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20tertarik%20dengan%20paket%20Business%20Pro%20Rp1.049.000%2Fbulan.%0A%0AMohon%20informasi%20detail%20pengerjaan%20dan%20cara%20memulai." target="_blank" rel="noopener">Pilih Business Pro <i aria-hidden="true">→</i></a></article>
+<section class="jr dark" id="cara" aria-label="Alasan memilih, cara pesan, dan ketentuan layanan">
+  <div class="stage">
+    <canvas aria-hidden="true"></canvas>
+    <div class="veil"></div>
+    <div class="copy" aria-live="polite">
+      <div class="eyebrow" data-eb>Alasan memilih Menej Ets</div>
+      <h2 class="hd"><span data-h1>Mitra Digital yang</span><em data-h2>Transparan sejak Awal.</em></h2>
+      <p class="lead" data-lead>Harga dan lingkup pekerjaan tertulis jelas sejak awal, sehingga Anda tahu persis apa yang dibayar.</p>
+      <div class="glass" data-card><ul class="l"><li><span class="t">Harga dan lingkup jelas</span><span class="d">Mulai Rp8.000 per caption. Batas pekerjaan tertulis di setiap layanan.</span></li><li><span class="t">Satu mitra, satu kontak</span><span class="d">Konten, iklan, website, dan otomasi ditangani satu tim.</span></li><li><span class="t">AI untuk produksi, tim untuk arah</span><span class="d">Strategi dan keputusan akhir tetap ditangani tim kami.</span></li><li><span class="t">Bayar sesuai kebutuhan</span><span class="d">Satuan, sekali bayar, atau paket bulanan. Paket bersifat opsional.</span></li></ul></div>
     </div>
+    <div class="script" aria-hidden="true">Jelas sejak awal.</div>
+    <a class="skipj" href="#faq">Lewati ↓</a>
+    <div class="rail" role="group" aria-label="Langkah"></div>
   </div>
-</section>
-
-<section class="s3" id="alasan" aria-label="Alasan memilih Menej Ets, cara pesan, dan ketentuan layanan">
-  <div class="track">
-    <span class="anc" id="cara" style="--k:4"></span>
-    <span class="anc" id="ketentuan" style="--k:8"></span>
-    <div class="stick">
-      <canvas id="c3" aria-hidden="true"></canvas>
-      <div class="pane">
-        <div class="tabs" role="group" aria-label="Bagian"><button type="button" aria-current="true">Alasan</button><button type="button">Cara pesan</button><button type="button">Ketentuan</button><span class="cnt" aria-hidden="true">1 / 4</span></div>
-        <div class="deck">
-          <div class="chap" data-ch="0">
-            <header class="chh" data-ch="0"><p class="k">Alasan memilih Menej Ets</p><h2>Mitra digital yang <em>transparan sejak awal.</em></h2></header>
-            <div class="its">
-              <article class="it" data-ch="0" data-v="0"><div class="ic"><b class="big">Rp8.000<small>mulai dari, per caption</small></b><div><h3>Harga dan lingkup transparan</h3>Setiap layanan memiliki harga dan batas pekerjaan yang tertulis jelas di menu.</div></div></article>
-              <article class="it" data-ch="0" data-v="1"><div class="ic"><b class="big">1 kontak</b><div><h3>Satu mitra, beragam kebutuhan</h3>Konten, iklan, website, dan otomasi dikelola melalui satu kontak.</div></div></article>
-              <article class="it" data-ch="0" data-v="2"><div class="ic"><b class="big">AI + tim</b><div><h3>AI untuk produksi, tim untuk arah</h3>AI mempercepat produksi, sementara arahan dan keputusan strategis tetap dari tim kami.</div></div></article>
-              <article class="it" data-ch="0" data-v="3"><div class="ic"><div class="ch"><span>Satuan</span><span>Sekali bayar</span><span>Paket bulanan</span></div><div><h3>Bayar sesuai kebutuhan</h3>Pesan satuan, sekali bayar, atau paket bulanan. Paket tidak wajib.</div></div></article>
-            </div>
-          </div>
-          <div class="chap" data-ch="1">
-            <header class="chh" data-ch="1"><p class="k">Cara pesan</p><h2>Dari nota <em>sampai hasil.</em></h2><p class="sub">Proses pemesanan yang sederhana dan transparan, dari penyusunan nota hingga hasil akhir.</p></header>
-            <div class="its">
-              <article class="it" data-ch="1"><div class="ic"><span class="no">1</span><div><h3>Susun nota</h3>Pilih layanan di menu, total dihitung otomatis.</div></div></article>
-              <article class="it" data-ch="1"><div class="ic"><span class="no">2</span><div><h3>Kirim ke WhatsApp</h3>Isi nota otomatis terbawa ke dalam chat.</div></div></article>
-              <article class="it" data-ch="1"><div class="ic"><span class="no">3</span><div><h3>Sepakati lingkup dan harga</h3>Estimasi waktu kami sampaikan sebelum Anda menyetujui.</div></div></article>
-              <article class="it" data-ch="1"><div class="ic"><span class="no">4</span><div><h3>Kami kerjakan, Anda terima</h3>Revisi mengikuti ketentuan layanan.</div></div></article>
-            </div>
-          </div>
-          <div class="chap" data-ch="2">
-            <header class="chh" data-ch="2"><p class="k">Ketentuan layanan</p><h2>Lingkup dan biaya, <em>tertulis di awal.</em></h2></header>
-            <div class="its">
-              <article class="it" data-ch="2"><div class="ic"><div><h3>Harga akhir</h3>Harga di menu berlaku per item atau per bulan sesuai keterangan. Harga akhir dikonfirmasi melalui chat sebelum Anda menyetujui.</div></div></article>
-              <article class="it" data-ch="2"><div class="ic"><div><h3>Revisi</h3>Dihitung per putaran: kumpulkan seluruh catatan dan kirim sekaligus. Starter 1, Growth 2, Business Pro 3 putaran per bulan.</div></div></article>
-              <article class="it" data-ch="2"><div class="ic"><div><h3>Budget iklan</h3>Dibayarkan langsung ke Meta atau Google. Biaya kami mencakup penyiapan dan pengelolaan iklan.</div></div></article>
-              <article class="it" data-ch="2"><div class="ic"><div><h3>Website, domain, dan hosting</h3>Harga website merupakan harga awal dan lingkupnya dikonfirmasi terlebih dahulu. Domain, hosting, dan plugin berbayar ditanggung terpisah, kecuali disepakati lain.</div></div></article>
-              <article class="it" data-ch="2"><div class="ic"><div><h3>Otomasi AI</h3>Dikerjakan di akun Claude Pro Anda sehingga akun aktif wajib dimiliki. Langganan dan biaya API pihak ketiga ditanggung terpisah.</div></div></article>
-              <article class="it" data-ch="2"><div class="ic"><div><h3>Hasil iklan dan penjualan</h3>Kami tidak menjamin penjualan maupun hasil iklan. Layanan dikerjakan sesuai menu dan paket yang disepakati.</div></div></article>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a class="skip3" href="#faq">Lewati ↓</a>
+  <noscript>
+    <div style="padding:80px 6vw 40px;max-width:44rem">
+      <h2>Mitra Digital yang Transparan sejak Awal</h2>
+      <p>Harga dan lingkup transparan, mulai Rp8.000 per caption. Satu mitra untuk konten, iklan, website, dan otomasi. AI untuk produksi, tim untuk arah. Bayar satuan, sekali bayar, atau paket bulanan.</p>
+      <h2>Cara Pesan</h2>
+      <p>1. Susun nota. 2. Kirim ke WhatsApp. 3. Sepakati lingkup dan harga. 4. Kami kerjakan, Anda terima.</p>
+      <h2>Ketentuan Layanan</h2>
+      <p>Harga akhir dikonfirmasi melalui chat. Revisi per putaran: Starter 1, Growth 2, Business Pro 3 per bulan. Budget iklan dibayarkan langsung ke Meta atau Google. Domain, hosting, dan plugin berbayar terpisah. Otomasi AI wajib akun Claude Pro aktif. Tidak ada jaminan penjualan atau hasil iklan.</p>
     </div>
-  </div>
+  </noscript>
 </section>
 
 <section class="s" id="faq" aria-labelledby="h-faq">
@@ -329,13 +298,13 @@ footer .g{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}footer h3{fo
     <div><p class="k">FAQ</p><h2 id="h-faq">Pertanyaan seputar <em>layanan dan harga</em></h2></div>
     <div>
       <details><summary>Bisa pesan satu layanan saja?</summary><p>Bisa. Seluruh layanan tersedia secara satuan, sedangkan paket bulanan bersifat opsional.</p></details>
-      <details><summary>Bagaimana cara memesan?</summary><p>Pilih layanan di menu lalu tekan Tambah ke Pesanan. Total dihitung otomatis dan nota terisi di chat WhatsApp. Anda juga dapat langsung memilih paket atau berkonsultasi terlebih dahulu.</p></details>
-      <details><summary>Apakah konten dibuat oleh AI?</summary><p>AI membantu mempercepat produksi. Arahan kreatif, seleksi hasil, dan keputusan strategis tetap dari tim kami.</p></details>
-      <details><summary>Apa bedanya Reels 15–30 dan 30–60 detik?</summary><p>Perbedaannya hanya pada durasi: 15–30 detik Rp35.000 dan 30–60 detik Rp60.000 per video.</p></details>
-      <details><summary>Apakah budget iklan sudah termasuk?</summary><p>Belum. Budget iklan dibayarkan langsung ke Meta atau Google. Biaya kami mencakup penyiapan dan pengelolaan.</p></details>
+      <details><summary>Bagaimana cara memesan?</summary><p>Pilih layanan di buku menu, tekan Tambah ke Pesanan, dan total dihitung otomatis. Nota lalu terisi di chat WhatsApp. Anda juga dapat langsung memilih paket atau berkonsultasi lebih dulu.</p></details>
+      <details><summary>Apakah konten dibuat oleh AI?</summary><p>AI membantu mempercepat produksi. Arahan kreatif, seleksi hasil, dan keputusan strategis tetap dipegang tim kami.</p></details>
+      <details><summary>Apa bedanya Reels 15–30 dan 30–60 detik?</summary><p>Perbedaannya hanya durasi. Reels 15–30 detik Rp35.000, Reels 30–60 detik Rp60.000 per video.</p></details>
+      <details><summary>Apakah budget iklan sudah termasuk?</summary><p>Belum. Budget iklan dibayarkan langsung ke Meta atau Google. Biaya kami mencakup penyiapan dan pengelolaan iklan.</p></details>
       <details><summary>Apakah website sudah termasuk domain dan hosting?</summary><p>Belum. Domain, hosting, dan plugin berbayar ditanggung terpisah, kecuali disepakati lain.</p></details>
       <details><summary>Apa itu Setup Otomasi Konten AI?</summary><p>Kami menyiapkan alur kerja AI di akun Claude Pro Anda untuk ide, naskah, dan caption. Biayanya Rp499.000 sekali bayar; akun Claude Pro wajib aktif dan langganannya ditanggung sendiri.</p></details>
-      <details><summary>Apakah memesan lewat nota berarti membayar?</summary><p>Belum. Nota hanya mengisi pesan WhatsApp. Harga akhir dikonfirmasi melalui chat.</p></details>
+      <details><summary>Apakah memesan lewat nota berarti membayar?</summary><p>Belum. Nota hanya menyusun pesan WhatsApp. Harga akhir dikonfirmasi melalui chat sebelum Anda menyetujui.</p></details>
       <details><summary>Apakah ada jaminan hasil?</summary><p>Kami tidak menjamin penjualan maupun hasil iklan. Layanan dikerjakan sesuai menu dan paket yang disepakati.</p></details>
     </div>
   </div>
@@ -345,7 +314,7 @@ footer .g{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}footer h3{fo
   <div class="w">
     <p class="k">Konsultasi pertama gratis</p>
     <h2 id="h-cta">Digital Anda sudah aktif.<br><span class="o">Sudahkah bekerja?</span></h2>
-    <p>Ceritakan usaha Anda melalui WhatsApp. Memulai dari satu layanan kecil pun tidak masalah.</p>
+    <p>Ceritakan kebutuhan usaha Anda lewat WhatsApp. Mulai dari satu layanan kecil pun tidak masalah.</p>
     <a class="btn" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20ingin%20konsultasi%20layanan%20digital." target="_blank" rel="noopener">Konsultasi Gratis <i aria-hidden="true">→</i></a>
   </div>
 </section>
@@ -355,7 +324,7 @@ footer .g{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}footer h3{fo
   <div class="w">
     <div class="g">
       <div><h3>Menej Ets</h3><p style="max-width:360px">Mitra layanan digital untuk UMKM: konten Instagram, Meta Ads, Google Ads, website, dan otomasi AI.</p></div>
-      <nav aria-label="Tautan"><h3>Jelajahi</h3><ul><li><a href="#harga">Harga layanan</a></li><li><a href="#paket">Paket bulanan</a></li><li><a href="#cara">Cara pesan</a></li><li><a href="#ketentuan">Ketentuan layanan</a></li><li><a href="#faq">FAQ</a></li></ul></nav>
+      <nav aria-label="Tautan"><h3>Jelajahi</h3><ul><li><a href="#harga">Harga layanan</a></li><li><a href="#harga" data-tab="Paket Bulanan">Paket bulanan</a></li><li><a href="#cara" data-j="cara" data-step="1">Cara pesan</a></li><li><a href="#cara" data-j="cara" data-step="2">Ketentuan layanan</a></li><li><a href="#faq">FAQ</a></li></ul></nav>
       <div><h3>Kontak</h3><ul><li><a href="https://wa.me/628567876751" target="_blank" rel="noopener">WhatsApp 0856 7876 751</a></li><li><a href="mailto:menejets@gmail.com">menejets@gmail.com</a></li><li><a href="https://instagram.com/menejets" target="_blank" rel="noopener">Instagram @menejets</a></li></ul></div>
     </div>
     <div class="wm" aria-hidden="true">menej ets</div>
@@ -368,80 +337,72 @@ footer .g{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}footer h3{fo
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"}}</script>
 <script type="module">
 import * as THREE from 'three';
+const $ = (s, r = document) => r.querySelector(s);
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const small = innerWidth < 760;
+const J = {};
 
-/* ---------- 1. Konten & keyframe kamera per langkah ---------- */
-const STEPS = [
+/* ---------- 1. Konten per langkah ---------- */
+const STEPS1 = [
   {tag:'Mulai', eb:'Mitra layanan digital untuk UMKM', h:['Fokus pada Bisnis.','Digitalnya Kami Kelola.'],
-   p:'Konten Instagram, pengelolaan media sosial, Meta Ads, Google Ads, website, dan otomasi AI dalam satu mitra. Gulir untuk melihat layanan kami.',
+   p:'Konten Instagram, Meta Ads, Google Ads, website, dan otomasi AI dari satu tim. Harga jelas, pengerjaan terstruktur. Gulir untuk melihat layanan.',
    card:'<ul><li><span>Mulai dari</span><b>Rp8.000 / caption</b></li><li><span>Konsultasi awal</span><b>Gratis</b></li><li><span>Paket bulanan</span><b>Rp229.000</b></li></ul>',
    at:[-14,3,-8], k:2.2},
   {tag:'Konten', eb:'Layanan 1 · Konten AI', h:['Konten Siap Posting,','Mulai Rp8.000.'],
-   p:'Reels, desain, carousel, dan caption diproduksi dengan bantuan AI, dengan arahan kreatif dari tim kami.',
+   p:'Reels, desain, carousel, dan caption yang siap tayang. Diproduksi dengan bantuan AI, lalu dikurasi dan diarahkan oleh tim kami.',
    card:'<ul><li><span>Reels 15–30 detik</span><b>Rp35.000</b></li><li><span>Reels 30–60 detik</span><b>Rp60.000</b></li><li><span>Desain 1 gambar</span><b>Rp15.000</b></li><li><span>Carousel Instagram</span><b>Rp35.000</b></li><li><span>Caption Instagram</span><b>Rp8.000</b></li></ul>',
    at:[-5.3,1.9,3.4], k:1.05},
   {tag:'Kelola IG', eb:'Layanan 2 · Kelola Instagram', h:['Akun Terkelola Rapi,','Jadwal Konsisten.'],
-   p:'Kami mengunggah, menjadwalkan, dan merapikan akun Anda. Pembuatan konten dipesan terpisah.',
-   card:'<ul><li><span>Upload &amp; Jadwal Posting</span><b>Rp99.000 / bln</b></li><li><span>Kelola Instagram Dasar</span><b>Rp199.000 / bln</b></li></ul><small>Hanya pengelolaan akun. Paket dasar tidak mencakup balasan komentar/DM.</small>',
+   p:'Kami mengunggah, menjadwalkan, dan merapikan akun Anda agar tampil konsisten. Pembuatan konten dipesan terpisah.',
+   card:'<ul><li><span>Upload &amp; Jadwal Posting</span><b>Rp99.000 / bln</b></li><li><span>Kelola Instagram Dasar</span><b>Rp199.000 / bln</b></li></ul><small>Hanya pengelolaan akun. Paket dasar tidak mencakup balasan komentar dan DM.</small>',
    at:[.7,1.9,-2.6], k:1.05},
   {tag:'Iklan', eb:'Layanan 3 · Iklan Digital', h:['Iklan Meta & Google,','Dikelola Profesional.'],
-   p:'Penyiapan dan pengelolaan iklan di Instagram, Facebook, dan pencarian Google.',
+   p:'Kami menyiapkan dan mengelola iklan Anda di Instagram, Facebook, dan pencarian Google.',
    card:'<ul><li><span>Setup Iklan Meta</span><b>Rp99.000</b></li><li><span>Kelola Iklan Meta</span><b>Rp199.000 / bln</b></li><li><span>Setup Google Ads</span><b>Rp149.000</b></li><li><span>Kelola Google Ads</span><b>Rp249.000 / bln</b></li></ul><small>Budget iklan dibayarkan langsung ke Meta atau Google. Tidak ada jaminan hasil.</small>',
    at:[6.7,1.9,-8.6], k:1.05},
-  {tag:'Website', eb:'Layanan 4 · Website', h:['Dari Landing Page','hingga Toko Online.'],
-   p:'Website untuk UMKM. Lingkup pekerjaan dikonfirmasi sebelum Anda menyetujui.',
-   card:'<ul><li><span>Landing Page Sederhana</span><b>mulai Rp149.000</b></li><li><span>Website WordPress</span><b>mulai Rp399.000</b></li><li><span>Landing Page Framer</span><b>mulai Rp499.000</b></li><li><span>Toko Online WooCommerce</span><b>mulai Rp699.000</b></li></ul><small>Domain dan hosting dibayar terpisah.</small>',
+  {tag:'Website', eb:'Layanan 4 · Website', h:['Dari Landing Page','hingga Dunia 3D.'],
+   p:'Dari landing page sederhana hingga landing page 3D interaktif seperti halaman ini. Lingkup dikonfirmasi sebelum Anda menyetujui.',
+   card:'<ul><li><span>Landing Page Sederhana</span><b>mulai Rp149.000</b></li><li><span>Website WordPress</span><b>mulai Rp399.000</b></li><li><span>Landing Page 3D (three.js)</span><b>mulai Rp447.000</b></li><li><span>Landing Page Framer</span><b>mulai Rp499.000</b></li><li><span>Toko Online WooCommerce</span><b>mulai Rp699.000</b></li></ul><small>Domain dan hosting dibayar terpisah.</small>',
    at:[12.7,1.9,-2.6], k:1.05},
   {tag:'Otomasi', eb:'Layanan 5 · Otomasi AI', h:['Alur Kerja AI','di Akun Claude Pro Anda.'],
-   p:'Kami menyiapkan alur kerja AI untuk ide, naskah, dan caption langsung di akun Claude Pro milik Anda.',
+   p:'Kami menyiapkan alur kerja AI untuk ide, naskah, dan caption di akun Claude Pro milik Anda, sehingga produksi konten lebih cepat dan konsisten.',
    card:'<ul><li><span>Setup Otomasi Konten AI</span><b>Rp499.000</b></li></ul><small>Wajib memiliki Claude Pro aktif. Biaya API dan langganan pihak ketiga dibayar terpisah.</small>',
    at:[14.7,1.9,5.4], k:1.05},
 ];
-const N = STEPS.length;
-const $ = s => document.querySelector(s);
-const journey = $('#journey'), copy = $('#copy'), canvas = $('#c'), rail = $('#rail');
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-function fallback(){
-  document.documentElement.classList.add('nogl');
-  copy.removeAttribute('aria-live');
-  copy.innerHTML = STEPS.map((s,i)=>`<article><div class="eyebrow">${s.eb}</div><h2>${s.h[0]}<em>${s.h[1]}</em></h2><p class="lead">${s.p}</p><div class="glass">${s.card}</div></article>`).join('');
+const STEPS2 = [
+  {tag:'Alasan', eb:'Alasan memilih Menej Ets', h:['Mitra Digital yang','Transparan sejak Awal.'],
+   p:'Harga dan lingkup pekerjaan tertulis jelas sejak awal, sehingga Anda tahu persis apa yang dibayar.',
+   card:'<ul class="l"><li><span class="t">Harga dan lingkup jelas</span><span class="d">Mulai Rp8.000 per caption. Batas pekerjaan tertulis di setiap layanan.</span></li><li><span class="t">Satu mitra, satu kontak</span><span class="d">Konten, iklan, website, dan otomasi ditangani satu tim.</span></li><li><span class="t">AI untuk produksi, tim untuk arah</span><span class="d">Strategi dan keputusan akhir tetap ditangani tim kami.</span></li><li><span class="t">Bayar sesuai kebutuhan</span><span class="d">Satuan, sekali bayar, atau paket bulanan. Paket bersifat opsional.</span></li></ul>',
+   at:[-7.3,1.9,1.4], k:1.05},
+  {tag:'Cara pesan', eb:'Cara Pesan', h:['Dari Nota','sampai Hasil.'],
+   p:'Empat langkah, dari memilih layanan hingga hasil Anda terima.',
+   card:'<ul class="l"><li><span class="t">1 · Susun nota</span><span class="d">Pilih layanan di menu; total dihitung otomatis.</span></li><li><span class="t">2 · Kirim ke WhatsApp</span><span class="d">Isi nota otomatis terbawa ke chat.</span></li><li><span class="t">3 · Sepakati lingkup dan harga</span><span class="d">Estimasi waktu kami sampaikan sebelum Anda menyetujui.</span></li><li><span class="t">4 · Kami kerjakan, Anda terima</span><span class="d">Revisi mengikuti ketentuan layanan.</span></li></ul>',
+   at:[5.7,1.9,-3.6], k:1.05},
+  {tag:'Ketentuan', eb:'Ketentuan Layanan', h:['Lingkup dan Biaya,','Tertulis di Awal.'],
+   p:'Ketentuan yang berlaku pada seluruh layanan, tertulis sejak awal.',
+   card:'<ul class="l"><li><span class="t">Harga akhir</span><span class="d">Dikonfirmasi melalui chat sebelum Anda menyetujui.</span></li><li><span class="t">Revisi</span><span class="d">Starter 1×, Growth 2×, Business Pro 3× per bulan.</span></li><li><span class="t">Budget iklan</span><span class="d">Dibayarkan langsung ke Meta atau Google.</span></li><li><span class="t">Website, domain, dan hosting</span><span class="d">Harga awal. Domain, hosting, dan plugin berbayar terpisah.</span></li><li><span class="t">Otomasi AI</span><span class="d">Wajib akun Claude Pro aktif. Biaya pihak ketiga terpisah.</span></li><li><span class="t">Hasil iklan dan penjualan</span><span class="d">Kami tidak menjamin penjualan maupun hasil iklan.</span></li></ul>',
+   at:[18.7,1.9,.4], k:1.05},
+];
+
+function fallback(root, steps, h1){
+  root.classList.add('nogl');
+  const copy = $('.copy', root); copy.removeAttribute('aria-live');
+  copy.innerHTML = steps.map((s, i) => { const H = (h1 && i === 0) ? 'h1' : 'h2';
+    return `<article><div class="eyebrow">${s.eb}</div><${H} class="hd">${s.h[0]}<em>${s.h[1]}</em></${H}><p class="lead">${s.p}</p><div class="glass">${s.card}</div></article>`; }).join('');
 }
 
-function boot(){
-  let renderer;
-  try{ renderer = new THREE.WebGLRenderer({canvas, antialias:true}); }catch(e){ return fallback(); }
-  const small = innerWidth < 760;
-  renderer.setPixelRatio(Math.min(devicePixelRatio, small ? 1.5 : 2));
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  renderer.toneMapping = THREE.NoToneMapping;
-
-  const BG = 0xF5EBDD;
-  const scene = new THREE.Scene();
-  scene.background = new THREE.Color(BG);
-  scene.fog = new THREE.Fog(BG, 70, 150);
-  const camera = new THREE.PerspectiveCamera(26, 1, .5, 220);
-
-  scene.add(new THREE.HemisphereLight(0xfff4ee, 0xe9cdbd, 1.9));
-  const sun = new THREE.DirectionalLight(0xfff0e0, 1.6);
-  sun.position.set(-10, 24, 12);
-  sun.castShadow = true;
-  sun.shadow.mapSize.set(small ? 1024 : 2048, small ? 1024 : 2048);
-  sun.target.position.set(0,0,-4); scene.add(sun.target);
-  Object.assign(sun.shadow.camera, {left:-45,right:45,top:45,bottom:-45,near:1,far:90});
-  sun.shadow.bias = -.0004; sun.shadow.radius = 6;
-  scene.add(sun);
-
-  /* ---------- helper clay ---------- */
+/* ---------- 2. Helper bentuk clay (per scene) ---------- */
+function makeEnv(scene){
   const C = {maroon:0x5C1A2B, rose:0xB04A5F, rt:0x9A3A4E, blush:0xE3B7A8, paper:0xFBF6EE};
   const mat = c => new THREE.MeshStandardMaterial({color:c, roughness:.92, metalness:0});
-  const M = {maroon:mat(C.maroon), rose:mat(C.rose), rt:mat(C.rt), blush:mat(C.blush), paper:mat(C.paper),
-    sand:mat(0xefdcc8), floor:mat(0xefe0cc), dark:mat(0x3a1019), leaf1:mat(0xd98a97), leaf2:mat(0xe3b7a8), leaf3:mat(0xc7667a), trunk:mat(0x8a5546)};
+  const M = {maroon:mat(C.maroon), rose:mat(C.rose), rt:mat(C.rt), blush:mat(C.blush), paper:mat(C.paper), sand:mat(0xefdcc8), dark:mat(0x3a1019),
+    leaf1:mat(0xd98a97), leaf2:mat(0xe3b7a8), leaf3:mat(0xc7667a), trunk:mat(0x8a5546), glow:new THREE.MeshBasicMaterial({color:0xffe3d6})};
   const sh = o => { o.castShadow = o.receiveShadow = true; return o; };
-  function box(w,h,d,m,x,y,z,p=scene){ const o = sh(new THREE.Mesh(new THREE.BoxGeometry(w,h,d), m)); o.position.set(x,y+h/2,z); p.add(o); return o; }
-  function cyl(r,h,m,x,y,z,p=scene,seg=20){ const o = sh(new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,seg), m)); o.position.set(x,y+h/2,z); p.add(o); return o; }
-  function sph(r,m,x,y,z,p=scene){ const o = sh(new THREE.Mesh(new THREE.SphereGeometry(r,20,16), m)); o.position.set(x,y,z); p.add(o); return o; }
-  function capsule(r,len,m,x,y,z,p=scene){ const o = sh(new THREE.Mesh(new THREE.CapsuleGeometry(r,len,6,16), m)); o.position.set(x,y+len/2+r,z); p.add(o); return o; }
+  const box = (w,h,d,m,x,y,z,p=scene) => { const o = sh(new THREE.Mesh(new THREE.BoxGeometry(w,h,d), m)); o.position.set(x,y+h/2,z); p.add(o); return o; };
+  const cyl = (r,h,m,x,y,z,p=scene,seg=20) => { const o = sh(new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,seg), m)); o.position.set(x,y+h/2,z); p.add(o); return o; };
+  const sph = (r,m,x,y,z,p=scene) => { const o = sh(new THREE.Mesh(new THREE.SphereGeometry(r,20,16), m)); o.position.set(x,y,z); p.add(o); return o; };
+  const capsule = (r,len,m,x,y,z,p=scene) => { const o = sh(new THREE.Mesh(new THREE.CapsuleGeometry(r,len,6,16), m)); o.position.set(x,y+len/2+r,z); p.add(o); return o; };
   function person(shirt, skin=0xd9a07a){
     const g = new THREE.Group();
     const body = sh(new THREE.Mesh(new THREE.CapsuleGeometry(.32,.7,6,14), mat(shirt))); body.position.y = .95;
@@ -472,28 +433,24 @@ function boot(){
     g.position.set(x,0,z); g.scale.setScalar(s); scene.add(g);
   }
   function pot(x,z,p=scene){ cyl(.28,.4,M.rt,x,0,z,p,14); sph(.34,M.leaf3,x,.62,z,p); sph(.24,M.leaf1,x+.2,.8,z+.05,p); }
+  return {C,M,mat,sh,box,cyl,sph,capsule,person,sign,floater,gear,tree,pot,floaters,spinners,scene,DT:1.36};
+}
 
-  /* ---------- 2. Dunia ---------- */
-  const ground = sh(new THREE.Mesh(new THREE.PlaneGeometry(240,240), M.floor));
-  ground.rotation.x = -Math.PI/2; scene.add(ground);
-  const grid = new THREE.GridHelper(240,120,0xe3cfb9,0xeadac5); grid.position.y = .01; scene.add(grid);
-
-  // Studio Menej Ets
+/* ---------- 3. Dunia 1: studio + 5 stasiun layanan (siang) ---------- */
+function buildWorld1(E){
+  const {C,M,sh,box,cyl,sph,capsule,person,sign,floater,gear,tree,pot,scene,DT} = E;
   const BX = -18, BZ = -14;
   box(8,2.6,7,M.blush,BX,0,BZ); box(5.5,8.4,5.5,M.maroon,BX,2.6,BZ); box(4,1.2,4,M.rose,BX,11,BZ);
   for(let i=0;i<6;i++) box(5.56,.4,5.56,M.paper,BX,3.5+i*1.3,BZ);
   box(1.4,2,.2,M.dark,BX+2.2,0,BZ+3.55);
   const sgn = sign('menej ets',5,1.1,'#FBF6EE','#5C1A2B',104); sgn.position.set(BX-.8,1.5,BZ+3.52); scene.add(sgn);
-  // Logo 3 bar sebagai patung
-  [[ -11,4.2,M.rose],[-9.4,6.8,M.blush],[-7.8,9.6,M.paper]].forEach(([x,h,m])=>{ capsule(.62,h-1.24,m,x,0,-12.5); });
+  [[-11,4.2,M.rose],[-9.4,6.8,M.blush],[-7.8,9.6,M.paper]].forEach(([x,h,m]) => capsule(.62,h-1.24,m,x,0,-12.5));
   pot(-14,-6.4); pot(-20.5,-9.5);
 
-  // 5 stasiun layanan
-  const DT = 1.36;
   const SX = [[-6,4],[0,-2],[6,-8],[12,-2],[14,6]];
   const NAMES = ['KONTEN AI','KELOLA IG','IKLAN','WEBSITE','OTOMASI AI'];
   const SHIRT = [0x2d4a7c,0xffffff,0x6a8f6a,0x3a1f2c,0xE3B7A8];
-  const stg = SX.map(([x,z],i)=>{
+  const stg = SX.map(([x,z],i) => {
     const g = new THREE.Group(); g.position.set(x,0,z); scene.add(g);
     box(6.4,.14,5.4,M.paper,0,0,-.3,g);
     box(4,1.1,1.4,M.blush,0,.14,0,g); box(4.1,.12,1.5,M.rose,0,1.24,0,g);
@@ -502,8 +459,6 @@ function boot(){
     const s = sign(NAMES[i],2.3,.52,'#5C1A2B','#F5EBDD',i===4?62:70); s.position.set(-2.1,.14+.35,2.21); g.add(s);
     return g;
   });
-
-  // S1 Konten AI: ponsel besar, ring light, kartu carousel
   { const g = stg[0], ph = new THREE.Group();
     box(1.5,2.9,.2,M.maroon,0,0,0,ph); box(1.26,2.6,.06,M.blush,0,.15,.12,ph);
     const tri = new THREE.Shape(); tri.moveTo(-.26,-.32); tri.lineTo(-.26,.32); tri.lineTo(.34,0);
@@ -512,94 +467,193 @@ function boot(){
     ph.position.set(.9,DT,-.9); ph.rotation.y = .3; g.add(ph);
     cyl(.05,2.5,M.maroon,2.2,DT,-.4,g,8);
     const ring = sh(new THREE.Mesh(new THREE.TorusGeometry(.55,.08,12,32), M.rose)); ring.position.set(2.2,DT+2.8,-.4); ring.rotation.y = .5; g.add(ring);
-    [[-.55,.0,M.rose],[-.4,.07,M.blush],[-.25,.14,M.paper]].forEach(([dx,dy,m],k)=>{ const c = box(.9,.06,.9,m,dx+.2,DT+dy,.12,g); c.rotation.y = .18-k*.12; });
-    const h1 = sph(.14,M.rose,.9,DT+3.4,-.6,g); floater(h1,.25,1.8);
-    const h2 = sph(.1,M.blush,-.2,DT+2.7,-.5,g); floater(h2,.2,1.5);
+    [[-.55,.0,M.rose],[-.4,.07,M.blush],[-.25,.14,M.paper]].forEach(([dx,dy,m],k) => { const c = box(.9,.06,.9,m,dx+.2,DT+dy,.12,g); c.rotation.y = .18-k*.12; });
+    floater(sph(.14,M.rose,.9,DT+3.4,-.6,g),.25,1.8); floater(sph(.1,M.blush,-.2,DT+2.7,-.5,g),.2,1.5);
   }
-  // S2 Kelola IG: papan kalender jadwal
   { const g = stg[1];
     box(3.2,2.7,.2,M.paper,.8,DT,-.9,g); box(3.2,.5,.22,M.maroon,.8,DT+2.2,-.9,g);
     const on = {2:M.rose,5:M.blush,8:M.maroon,10:M.rose,13:M.blush,15:M.rose,18:M.maroon,21:M.rose,23:M.blush,26:M.rose};
     for(let r=0;r<4;r++) for(let c=0;c<7;c++){ const i = r*7+c; box(.3,.3,.08,on[i]||M.sand,.8+(c-3)*.41,DT+.12+r*.5,-.77,g); }
-    const pin = sph(.16,M.rose,.8+1.1,DT+2.2+.9,-.6,g); floater(pin,.22,1.6);
-    cyl(.05,.5,M.maroon,.8+1.1,DT+2.7,-.6,g,8).position.y += 0;
+    floater(sph(.16,M.rose,.8+1.1,DT+2.2+.9,-.6,g),.22,1.6);
   }
-  // S3 Iklan: grafik batang + megafon
   { const g = stg[2];
-    [[-.1,1.3,M.rose],[.75,2.1,M.blush],[1.6,3.1,M.maroon]].forEach(([dx,h,m])=>box(.62,h,.62,m,.6+dx,DT,-.9,g));
+    [[-.1,1.3,M.rose],[.75,2.1,M.blush],[1.6,3.1,M.maroon]].forEach(([dx,h,m]) => box(.62,h,.62,m,.6+dx,DT,-.9,g));
     const mg = new THREE.Group();
     const cone = sh(new THREE.Mesh(new THREE.ConeGeometry(.55,1.2,20), M.rose)); cone.rotation.z = Math.PI/2; mg.add(cone);
     cyl(.14,.5,M.maroon,-.55,-.25,0,mg,12);
     mg.position.set(-1.1,DT+.8,.1); mg.rotation.y = -.35; g.add(mg);
-    [0,1,2].forEach(k=>{ const c = sh(new THREE.Mesh(new THREE.CylinderGeometry(.22,.22,.07,18), M.blush)); c.position.set(.5+k*.7,DT+3.6+k*.25,-.2); c.rotation.x = Math.PI/2; g.add(c); floater(c,.2,1.3+k*.2); });
+    [0,1,2].forEach(k => { const c = sh(new THREE.Mesh(new THREE.CylinderGeometry(.22,.22,.07,18), M.blush)); c.position.set(.5+k*.7,DT+3.6+k*.25,-.2); c.rotation.x = Math.PI/2; g.add(c); floater(c,.2,1.3+k*.2); });
   }
-  // S4 Website: jendela browser
   { const g = stg[3];
     box(3.6,2.8,.2,M.paper,.8,DT,-.9,g); box(3.6,.45,.22,M.maroon,.8,DT+2.35,-.9,g);
-    [[-.95,M.rose],[-.75,M.blush],[-.55,M.paper]].forEach(([dx,m])=>sph(.07,m,.8+dx-.6,DT+2.57,-.77,g));
+    [[-.95,M.rose],[-.75,M.blush],[-.55,M.paper]].forEach(([dx,m]) => sph(.07,m,.8+dx-.6,DT+2.57,-.77,g));
     box(2,.75,.22,M.rose,.2,DT+1.4,-.9,g); box(1.1,.1,.22,M.blush,.2,DT+1.1,-.9,g); box(1.5,.1,.22,M.blush,.2,DT+.9,-.9,g);
     box(1.9,.5,.22,M.blush,.2,DT+.2,-.9,g); box(.9,1.1,.22,M.blush,1.35,DT+.9,-.9,g);
     const cur = sh(new THREE.Mesh(new THREE.ConeGeometry(.15,.42,3), M.maroon)); cur.position.set(1.7,DT+.7,-.55); cur.rotation.z = -.5; g.add(cur); floater(cur,.12,2);
+    // kubus 3D melayang = layanan Landing Page 3D
+    const cube = sh(new THREE.Mesh(new THREE.BoxGeometry(.7,.7,.7), M.rose)); cube.position.set(-1.35,DT+2.7,-.4); cube.rotation.set(.5,.6,0); g.add(cube); floater(cube,.2,1.5);
   }
-  // S5 Otomasi AI: robot + roda gigi
   { const g = stg[4], r = new THREE.Group();
     box(1.5,1.5,1.1,M.rose,0,0,0,r); box(.9,.5,.12,M.blush,0,.45,.58,r);
     const head = sph(.62,M.paper,0,2.1,0,r); head.scale.y = .88;
     sph(.12,M.maroon,-.22,2.15,.52,r); sph(.12,M.maroon,.22,2.15,.52,r);
-    cyl(.04,.5,M.maroon,0,2.55,0,r,8); const an = sph(.11,M.rose,0,3.2,0,r); floater(an,.1,2.4);
+    cyl(.04,.5,M.maroon,0,2.55,0,r,8); floater(sph(.11,M.rose,0,3.2,0,r),.1,2.4);
     cyl(.12,1,M.maroon,-.95,.3,0,r,12); cyl(.12,1,M.maroon,.95,.3,0,r,12);
     r.position.set(.5,DT,-.9); r.rotation.y = .25; g.add(r);
     gear(.5,2.15,DT+1.7,-.5,g,M.rt,1); gear(.34,2.95,DT+1.25,-.5,g,M.blush,-1.4);
-    const sp = sph(.1,M.blush,-.6,DT+2.9,-.4,g); floater(sp,.25,1.7);
+    floater(sph(.1,M.blush,-.6,DT+2.9,-.4,g),.25,1.7);
   }
-
-  // dekorasi
   [[-24,-6,1.1],[-22,-21,1.3,M.leaf2],[-6,-18,1,M.leaf3],[-2,-13,.9],[4,-15,1.2,M.leaf2],[10,-13,1],[18,-9,1.1,M.leaf3],[18.5,1,1.2],[21,10,1],[8,10.5,1.1,M.leaf2],[-13,9,1.2],[-4,10,.9,M.leaf3],[2,7,1],[-1,-8,.9,M.leaf2],[16,-6,.8]]
-    .forEach(([x,z,s,m])=>tree(x,z,s,m||M.leaf1));
+    .forEach(([x,z,s,m]) => tree(x,z,s,m||M.leaf1));
   pot(-2.6,1.8); pot(9.8,-5.8); pot(17.2,-4.6);
 
-  /* ---------- 3. Rute + pemandu ---------- */
-  const route = new THREE.CatmullRomCurve3([
-    [-17,-6],[-11,.5],[-8.5,5.7],[-4,5.8],[-2,2.4],[0,-.4],[3,-4],[6,-6.2],[8.6,-5],[9.2,-1.2],[12,.2],[13,3.2],[14,7.8]
-  ].map(([x,z])=>new THREE.Vector3(x,.05,z)), false, 'catmullrom', .5);
-  const tube = new THREE.Mesh(new THREE.TubeGeometry(route, 420, .13, 8, false), new THREE.MeshStandardMaterial({color:C.rose, roughness:.6, emissive:C.rose, emissiveIntensity:.15}));
+  return {
+    route:[[-17,-6],[-11,.5],[-8.5,5.7],[-4,5.8],[-2,2.4],[0,-.4],[3,-4],[6,-6.2],[8.6,-5],[9.2,-1.2],[12,.2],[13,3.2],[14,7.8]],
+    fronts:[null,[-6,5.7],[0,-.4],[6,-6.2],[12,.2],[14,7.8]]
+  };
+}
+
+/* ---------- 4. Dunia 2: alasan, cara pesan, ketentuan (malam) ---------- */
+function buildWorld2(E){
+  const {C,M,sh,box,cyl,sph,capsule,person,sign,floater,tree,pot,scene,DT} = E;
+  const POS = [[-8,2],[5,-3],[18,1]];
+  const NAMES = ['ALASAN','CARA PESAN','KETENTUAN'];
+  const SHIRT = [0xE3B7A8,0xFBF6EE,0xB04A5F];
+  const PX = [[-2.7,-1.1],[-2.9,.2],[-2.8,-1.2]];
+  const st = POS.map(([x,z],i) => {
+    const g = new THREE.Group(); g.position.set(x,0,z); scene.add(g);
+    box(7.2,.14,5.6,M.paper,0,0,-.2,g);
+    const p = person(SHIRT[i]); p.position.set(PX[i][0],.14,PX[i][1]); g.add(p);
+    box(2.7,.7,.1,M.maroon,-2.3,.14,2.15,g);
+    const s = sign(NAMES[i],2.3,.52,'#5C1A2B','#F5EBDD',i===0?68:56); s.position.set(-2.3,.14+.35,2.21); g.add(s);
+    return g;
+  });
+
+  // A · Alasan: podium 4 pilar + papan harga
+  { const g = st[0];
+    box(4.4,.5,1.7,M.blush,.2,.14,0,g);
+    [[-1.2,.4,M.rose],[-.4,.8,M.maroon],[.4,1.2,M.rose],[1.2,1.6,M.maroon]].forEach(([dx,len,m]) => capsule(.26,len,m,dx+.2,.64,0,g));
+    cyl(.07,1.3,M.maroon,-1.1,.14,-1.6,g,8); cyl(.07,1.3,M.maroon,1.5,.14,-1.6,g,8);
+    box(3.2,1.7,.16,M.rose,.2,1.44,-1.6,g);
+    const pt = sign('Rp8.000',2.6,1.2,'#FBF6EE','#5C1A2B',104); pt.position.set(.2,1.44+.85,-1.6+.09); g.add(pt);
+    [[-1.6,3.2,-.3],[1.9,3.4,.2],[2.6,2.4,-1.2]].forEach(([x,y,z],k) => { const c = sh(new THREE.Mesh(new THREE.CylinderGeometry(.24,.24,.07,18), M.blush)); c.position.set(x,y,z); c.rotation.x = Math.PI/2; g.add(c); floater(c,.2,1.3+k*.25); });
+    floater(sph(.2,M.glow,1.4,3.0,0,g),.25,1.9);
+  }
+  // B · Cara pesan: 4 anak tangga bernomor + ponsel berisi chat
+  { const g = st[1];
+    [0,1,2,3].forEach(k => {
+      const h = .5+k*.45, x = -1.5+k*1.15;
+      box(1.05,h,1.3,k%2?M.rose:M.blush,x,.14,.3,g);
+      const n = sign(String(k+1),.7,.7,'#5C1A2B','#F5EBDD',300); n.position.set(x,.14+h-.38,.3+.66); g.add(n);
+    });
+    box(1.5,2.7,.2,M.maroon,.7,.14,-1.9,g); box(1.28,2.46,.06,M.blush,.7,.26,-1.77,g);
+    box(.82,.3,.05,M.rose,.5,2.1,-1.73,g); box(.62,.3,.05,M.paper,.95,1.65,-1.73,g); box(.9,.3,.05,M.rose,.45,1.2,-1.73,g);
+    [0,1,2].forEach(k => sph(.06,M.maroon,.55+k*.18,.75,-1.72,g));
+    floater(sph(.15,M.rose,2.6,3.0,-1.4,g),.22,1.7); floater(sph(.1,M.blush,-.6,3.4,-1.2,g),.2,1.4);
+  }
+  // C · Ketentuan: papan daftar periksa + meja berisi stempel
+  { const g = st[2];
+    box(3.6,.9,1.2,M.blush,.6,.14,.4,g);
+    cyl(.07,1.1,M.maroon,-.6,.14,-1.5,g,8); cyl(.07,1.1,M.maroon,1.8,.14,-1.5,g,8);
+    box(2.8,2.6,.16,M.paper,.6,1.24,-1.5,g); box(.9,.34,.24,M.maroon,.6,3.7,-1.5,g);
+    for(let r=0;r<5;r++){ const y = 1.44+1.8-r*.45; box(.3,.3,.06,M.rose,-.5,y,-1.4,g); box(1.6,.14,.06,M.blush,.75,y+.08,-1.4,g); }
+    box(1.2,.12,.9,M.paper,-.4,1.04,.4,g); cyl(.32,.02,M.rose,-.4,1.16,.4,g);
+    const stamp = new THREE.Group();
+    cyl(.5,.16,M.rose,0,0,0,stamp); cyl(.16,.6,M.maroon,0,.16,0,stamp,12); sph(.26,M.maroon,0,.9,0,stamp);
+    stamp.position.set(1.7,1.7,.4); g.add(stamp); floater(stamp,.15,1.6);
+    floater(sph(.14,M.glow,-1.4,3.2,-.4,g),.22,1.7); floater(sph(.1,M.glow,2.6,3.3,-1.2,g),.2,1.4);
+  }
+
+  // dekor malam: lampu, pohon, pot, bintang
+  const lamp = (x,z) => { cyl(.07,2.4,M.paper,x,0,z,scene,8); sph(.24,M.glow,x,2.55,z); };
+  [[-13,6],[-4,6.5],[1,-7],[10,-6],[12,6],[22,-2]].forEach(([x,z]) => lamp(x,z));
+  [[-15,-4,1.2],[-12,-8,1],[-1,6,1],[8,4,1.1,M.leaf2],[3,-9,1.3],[14,-7,1.1,M.leaf3],[22,5,1.2],[24,-5,1],[-18,3,1.1,M.leaf2],[-4,-5,.9]]
+    .forEach(([x,z,s,m]) => tree(x,z,s,m||M.leaf1));
+  pot(-3.5,5.5); pot(10.8,-3); pot(13.2,5);
+  for(let i=0;i<16;i++){ const s = sph(.09,M.glow,-20+i*3.1+Math.sin(i*7)*2,3+(i%4)*1.1,-10+Math.cos(i*5)*8); s.castShadow = false; floater(s,.3,1+(i%5)*.3); }
+
+  return {
+    route:[[-14,7.5],[-11,5.2],[-8,3.7],[-4,2.8],[-.8,.6],[2.4,-.9],[5,-1.1],[9,-.5],[12.5,1.5],[15.5,3],[18,2.7]],
+    fronts:[[-8,3.7],[5,-1.1],[18,2.7]]
+  };
+}
+
+/* ---------- 5. Mesin perjalanan scroll (dipakai kedua section) ---------- */
+function createJourney(cfg){
+  const root = $(cfg.root), steps = cfg.steps, N = steps.length;
+  if(!root) return;
+  const canvas = $('canvas', root), copy = $('.copy', root), rail = $('.rail', root);
+  let renderer;
+  try{ renderer = new THREE.WebGLRenderer({canvas, antialias:true}); }catch(e){ return fallback(root, steps, cfg.h1); }
+  renderer.setPixelRatio(Math.min(devicePixelRatio, small ? 1.5 : 2));
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.toneMapping = THREE.NoToneMapping;
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(cfg.bg);
+  scene.fog = new THREE.Fog(cfg.bg, 70, 150);
+  const camera = new THREE.PerspectiveCamera(26, 1, .5, 220);
+
+  scene.add(new THREE.HemisphereLight(cfg.hemi[0], cfg.hemi[1], cfg.hemi[2]));
+  const sun = new THREE.DirectionalLight(cfg.sun[0], cfg.sun[1]);
+  const [tx,,tz] = cfg.target;
+  sun.position.set(tx-10, 24, tz+16);
+  sun.castShadow = true;
+  sun.shadow.mapSize.set(small ? 1024 : 2048, small ? 1024 : 2048);
+  sun.target.position.set(...cfg.target); scene.add(sun.target);
+  Object.assign(sun.shadow.camera, {left:-45,right:45,top:45,bottom:-45,near:1,far:90});
+  sun.shadow.bias = -.0004; sun.shadow.radius = 6;
+  scene.add(sun);
+
+  const E = makeEnv(scene);
+  const ground = E.sh(new THREE.Mesh(new THREE.PlaneGeometry(240,240), new THREE.MeshStandardMaterial({color:cfg.floor, roughness:.95})));
+  ground.rotation.x = -Math.PI/2; scene.add(ground);
+  const grid = new THREE.GridHelper(240,120,cfg.grid[0],cfg.grid[1]); grid.position.y = .01; scene.add(grid);
+
+  const W = cfg.build(E);
+  const route = new THREE.CatmullRomCurve3(W.route.map(([x,z]) => new THREE.Vector3(x,.05,z)), false, 'catmullrom', .5);
+  const tube = new THREE.Mesh(new THREE.TubeGeometry(route, 420, .13, 8, false), new THREE.MeshStandardMaterial({color:cfg.route, roughness:.6, emissive:cfg.route, emissiveIntensity:.15}));
   scene.add(tube);
   const tubeCount = tube.geometry.index.count; tube.geometry.setDrawRange(0,0);
-  const guide = person(C.rose, 0xe0aa86); scene.add(guide);
+  const guide = E.person(cfg.guide, 0xe0aa86); scene.add(guide);
 
-  // posisi rute tiap stasiun (supaya pemandu berhenti di depan meja saat langkahnya aktif)
-  const fronts = [[-6,5.7],[0,-.4],[6,-6.2],[12,.2],[14,7.8]];
   const SM = 1200, pts = []; for(let i=0;i<=SM;i++) pts.push(route.getPointAt(i/SM));
-  const U = [0, ...fronts.map(([x,z])=>{ let b=0,bd=1e9; pts.forEach((p,i)=>{ const d=(p.x-x)**2+(p.z-z)**2; if(d<bd){bd=d;b=i;} }); return b/SM; })];
+  const U = W.fronts.map(f => { if(!f) return 0; let b=0, bd=1e9; pts.forEach((p,i) => { const d=(p.x-f[0])**2+(p.z-f[1])**2; if(d<bd){bd=d;b=i;} }); return b/SM; });
   for(let i=1;i<U.length;i++) U[i] = Math.max(U[i], U[i-1]+.002);
   U[N-1] = 1;
 
-  /* ---------- 4. UI ---------- */
-  rail.innerHTML = STEPS.map((s,n)=>`<button type="button" data-n="${n}" aria-label="Langkah ${n+1}: ${s.tag}">${s.tag}</button>`).join('');
+  /* UI */
+  rail.style.gridTemplateColumns = `repeat(${N},1fr)`;
+  rail.innerHTML = steps.map((s,n) => `<button type="button" data-n="${n}" aria-label="Langkah ${n+1}: ${s.tag}">${s.tag}</button>`).join('');
   const railEls = [...rail.children];
-  rail.addEventListener('click', e=>{ const b = e.target.closest('button'); if(!b) return;
-    const max = journey.offsetHeight - innerHeight; scrollTo({top: journey.offsetTop + (+b.dataset.n/(N-1))*max, behavior: reduce?'auto':'smooth'}); });
+  const range = () => { const r = root.getBoundingClientRect(); return {r, max:Math.max(1, r.height-innerHeight)}; };
+  const goto = n => { const {r,max} = range(); scrollTo({top: scrollY + r.top + (n/(N-1))*max, behavior: reduce ? 'auto' : 'smooth'}); };
+  rail.addEventListener('click', e => { const b = e.target.closest('button'); if(b) goto(+b.dataset.n); });
+  J[cfg.key] = {goto};
+
+  const el = {eb:$('[data-eb]',root), h1:$('[data-h1]',root), h2:$('[data-h2]',root), lead:$('[data-lead]',root), card:$('[data-card]',root)};
   let shown = 0, tm = 0;
   function showStep(i){
     if(i === shown) return; shown = i; copy.classList.add('swap'); clearTimeout(tm);
-    tm = setTimeout(()=>{ const s = STEPS[shown];
-      $('#eb').textContent = s.eb; $('#h1').textContent = s.h[0]; $('#h2').textContent = s.h[1];
-      $('#lead').textContent = s.p; $('#card').innerHTML = s.card; copy.classList.remove('swap'); }, reduce?0:220);
+    tm = setTimeout(() => { const s = steps[shown];
+      el.eb.textContent = s.eb; el.h1.textContent = s.h[0]; el.h2.textContent = s.h[1];
+      el.lead.textContent = s.p; el.card.innerHTML = s.card; copy.classList.remove('swap'); }, reduce ? 0 : 220);
   }
 
-  /* ---------- 5. Kamera & loop ---------- */
+  /* kamera */
   const ease = t => t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2;
   const OFFSET = new THREE.Vector3(9,10,10);
-  const camPos = new THREE.Vector3(), camLook = new THREE.Vector3().fromArray(STEPS[0].at);
+  const camPos = new THREE.Vector3(), camLook = new THREE.Vector3().fromArray(steps[0].at);
   const tPos = new THREE.Vector3(), tLook = new THREE.Vector3(), a = new THREE.Vector3(), b = new THREE.Vector3();
   const camFor = (st,out) => out.fromArray(st.at).addScaledVector(OFFSET, st.k*1.6);
-  camFor(STEPS[0], camPos);
+  camFor(steps[0], camPos);
   function resize(){
     const w = innerWidth, h = innerHeight;
     renderer.setSize(w,h,false); camera.aspect = w/h;
     camera.fov = w/h < 1 ? 40 : 26;
     if(w/h >= 1) camera.setViewOffset(w,h,-w*.17,0,w,h);
-    else camera.setViewOffset(w,h,0,-h*.2,w,h);   // portrait: dunia turun ke bagian bawah, teks di atas
+    else camera.setViewOffset(w,h,0,-h*.2,w,h);
     camera.updateProjectionMatrix();
   }
   addEventListener('resize', resize); resize();
@@ -607,15 +661,15 @@ function boot(){
   const clock = new THREE.Clock(); let smooth = 0, bob = 0;
   function frame(){
     const dt = Math.min(.05, clock.getDelta()), time = clock.elapsedTime;
-    const max = Math.max(1, journey.offsetHeight - innerHeight);
-    const raw = Math.min(1, Math.max(0, (scrollY - journey.offsetTop) / max));
-    const moving = Math.abs(raw - smooth) > .0008;
-    smooth += (raw - smooth) * (reduce ? 1 : .08);
-    const f = smooth*(N-1), i = Math.min(N-2, Math.floor(f)), k = ease(f - i);
+    const {r, max} = range();
+    if(r.bottom > -60 && r.top < innerHeight + 60){
+      const raw = Math.min(1, Math.max(0, -r.top / max));
+      const moving = Math.abs(raw - smooth) > .0008;
+      smooth += (raw - smooth) * (reduce ? 1 : .08);
+      const f = smooth*(N-1), i = Math.min(N-2, Math.floor(f)), k = ease(f - i);
 
-    if(scrollY < journey.offsetTop + journey.offsetHeight + 50){
-      tPos.lerpVectors(camFor(STEPS[i],a), camFor(STEPS[i+1],b), k);
-      tLook.lerpVectors(a.fromArray(STEPS[i].at), b.fromArray(STEPS[i+1].at), k);
+      tPos.lerpVectors(camFor(steps[i],a), camFor(steps[i+1],b), k);
+      tLook.lerpVectors(a.fromArray(steps[i].at), b.fromArray(steps[i+1].at), k);
       camPos.lerp(tPos, reduce?1:.12); camLook.lerp(tLook, reduce?1:.12);
       camera.position.copy(camPos); camera.lookAt(camLook);
 
@@ -628,135 +682,32 @@ function boot(){
       guide.position.y = reduce ? 0 : Math.abs(Math.sin(bob))*.12;
 
       if(!reduce){
-        floaters.forEach(o=>{ o.m.position.y = o.y + Math.sin(time*o.s+o.p)*o.a; o.m.rotation.y += dt*.6; });
-        spinners.forEach(o=>{ o.g.rotation.z += o.dir*dt*.8; });
+        E.floaters.forEach(o => { o.m.position.y = o.y + Math.sin(time*o.s+o.p)*o.a; o.m.rotation.y += dt*.6; });
+        E.spinners.forEach(o => { o.g.rotation.z += o.dir*dt*.8; });
       }
       const idx = Math.round(f);
       showStep(idx);
-      railEls.forEach((el,n)=>{ el.classList.toggle('on', n===idx); el.style.setProperty('--f', (n<idx?100:n===idx?Math.round((1-Math.abs(f-idx)*2)*100):0)+'%'); });
+      railEls.forEach((e,n) => { e.classList.toggle('on', n===idx); e.style.setProperty('--f', (n<idx?100:n===idx?Math.round((1-Math.abs(f-idx)*2)*100):0)+'%'); });
       renderer.render(scene, camera);
     }
     requestAnimationFrame(frame);
   }
   frame();
 }
-boot();
+
+createJourney({key:'journey', root:'#journey', steps:STEPS1, h1:true, build:buildWorld1,
+  bg:0xF5EBDD, floor:0xefe0cc, grid:[0xe3cfb9,0xeadac5], hemi:[0xfff4ee,0xe9cdbd,1.9], sun:[0xfff0e0,1.6], target:[0,0,-4], route:0xB04A5F, guide:0xB04A5F});
+createJourney({key:'cara', root:'#cara', steps:STEPS2, h1:false, build:buildWorld2,
+  bg:0x5C1A2B, floor:0x6e2539, grid:[0x7d3147,0x742b40], hemi:[0xffeadf,0xa85a6d,1.55], sun:[0xffe2d2,1.5], target:[5,0,-1], route:0xE3B7A8, guide:0xE3B7A8});
+
+
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[data-j]'); if(!a) return;
+  const j = J[a.dataset.j]; if(!j) return;
+  e.preventDefault(); j.goto(+a.dataset.step || 0);
+});
 </script>
 
-<script type="module">
-import * as THREE from 'three';
-(()=>{
-const sec=document.getElementById('alasan');if(!sec)return;
-const track=sec.querySelector('.track'),stick=sec.querySelector('.stick'),cv=sec.querySelector('#c3');
-const items=[...sec.querySelectorAll('.it')],heads=[...sec.querySelectorAll('.chh')],tabs=[...sec.querySelectorAll('.tabs button')],cnt=sec.querySelector('.cnt');
-const CH=items.map(e=>+e.dataset.ch),N=items.length;
-const FIRST=[0,1,2].map(c=>CH.indexOf(c)),COUNT=[0,1,2].map(c=>CH.filter(x=>x===c).length);
-const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
-let R;try{R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true,powerPreference:'low-power'})}catch(e){return}
-sec.classList.add('on3d');
-R.setPixelRatio(Math.min(devicePixelRatio||1,2));R.setClearColor(0x000000,0);
-const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(38,1,.1,100);
-scene.add(new THREE.HemisphereLight(0xfff1e6,0x5C1A2B,1.2));
-const dl=new THREE.DirectionalLight(0xffffff,2.4);dl.position.set(4,6,7);scene.add(dl);
-const rl=new THREE.PointLight(0xE3B7A8,18,30);rl.position.set(-4,-2,5);scene.add(rl);
-const C={ink:0x5C1A2B,rose:0x9A3A4E,acc:0xB04A5F,blush:0xE3B7A8,cream:0xF5EBDD,white:0xFFFFFF};
-const mat=c=>new THREE.MeshStandardMaterial({color:c,roughness:.5,metalness:.05,emissive:c,emissiveIntensity:0});
-const basic=c=>new THREE.MeshBasicMaterial({color:c});
-function rbox(w,h,d,r,m){const s=new THREE.Shape(),x=-w/2,y=-h/2;
- s.moveTo(x+r,y);s.lineTo(x+w-r,y);s.quadraticCurveTo(x+w,y,x+w,y+r);s.lineTo(x+w,y+h-r);s.quadraticCurveTo(x+w,y+h,x+w-r,y+h);s.lineTo(x+r,y+h);s.quadraticCurveTo(x,y+h,x,y+h-r);s.lineTo(x,y+r);s.quadraticCurveTo(x,y,x+r,y);
- const g=new THREE.ExtrudeGeometry(s,{depth:d,bevelEnabled:true,bevelThickness:.04,bevelSize:.04,bevelSegments:3,curveSegments:6});g.translate(0,0,-d/2);return new THREE.Mesh(g,m)}
-const sph=(r,c)=>new THREE.Mesh(new THREE.SphereGeometry(r,24,16),mat(c));
-
-/* ---- partikel latar ---- */
-{const n=170,p=new Float32Array(n*3);for(let i=0;i<n;i++){p[i*3]=-8+Math.random()*50;p[i*3+1]=-5+Math.random()*10;p[i*3+2]=-9+Math.random()*8}
- const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(p,3));
- scene.add(new THREE.Points(g,new THREE.PointsMaterial({color:C.blush,size:.06,transparent:true,opacity:.5})))}
-
-/* ---- bab 1: alasan (4 ubin + ikon) ---- */
-const g0=new THREE.Group();scene.add(g0);
-const spin=[];
-const tiles=[[-1.5,1.05,C.blush],[1.5,1.05,C.rose],[-1.5,-1.05,C.cream],[1.5,-1.05,C.white]].map(([x,y,c])=>{
- const t=new THREE.Group(),m=mat(c);t.position.set(x,y,0);t.add(rbox(2.7,1.9,.5,.28,m));t.userData.m=m;g0.add(t);return t});
-{const coin=new THREE.Group();const d=new THREE.Mesh(new THREE.CylinderGeometry(.5,.5,.14,40),mat(C.ink));d.rotation.x=Math.PI/2;coin.add(d);
- const r=new THREE.Mesh(new THREE.TorusGeometry(.32,.045,12,40),mat(C.blush));r.position.z=.09;coin.add(r);coin.position.z=.5;tiles[0].add(coin);spin.push(o=>{coin.rotation.y+=o*1.3})}
-{const hub=new THREE.Group(),orb=new THREE.Group();hub.add(sph(.26,C.cream));
- for(let i=0;i<3;i++){const a=i*Math.PI*2/3,s=sph(.13,C.blush);s.position.set(Math.cos(a)*.62,Math.sin(a)*.62,0);orb.add(s)}
- orb.add(new THREE.Mesh(new THREE.TorusGeometry(.62,.012,8,60),basic(C.blush)));hub.add(orb);hub.position.z=.45;tiles[1].add(hub);spin.push(o=>{orb.rotation.z+=o*.8})}
-{const ai=new THREE.Mesh(new THREE.IcosahedronGeometry(.42,0),mat(C.rose));ai.position.set(-.5,0,.5);tiles[2].add(ai);
- [.2,.5,.8].forEach(x=>{const s=sph(.13,C.ink);s.position.set(x,0,.45);tiles[2].add(s)});spin.push(o=>{ai.rotation.x+=o*.5;ai.rotation.y+=o*.8})}
-{[[.5,C.rose],[.9,C.acc],[1.3,C.ink]].forEach(([h,c],i)=>{const b=rbox(.26,h,.2,.1,mat(c));b.position.set((i-1)*.42,-.65+h/2,.4);tiles[3].add(b)})}
-
-/* ---- bab 2: cara pesan (tangga 4 langkah + bola) ---- */
-const g1=new THREE.Group();g1.position.x=16;g1.rotation.y=-.42;scene.add(g1);
-const numCv=[];
-function numTex(n){const c=document.createElement('canvas');c.width=c.height=128;const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;
- const draw=()=>{const x=c.getContext('2d');x.clearRect(0,0,128,128);x.fillStyle='#5C1A2B';x.beginPath();x.arc(64,64,60,0,7);x.fill();x.fillStyle='#F5EBDD';x.font='600 66px Poppins,Inter,sans-serif';x.textAlign='center';x.textBaseline='middle';x.fillText(n,64,70);t.needsUpdate=true};
- draw();numCv.push(draw);return t}
-const stepCols=[C.blush,C.acc,C.rose,C.cream];
-const steps=[0,1,2,3].map(i=>{const h=.8+i*.7,x=(i-1.5)*1.55,top=-1.7+h,m=mat(stepCols[i]),s=new THREE.Group();
- const b=rbox(1.35,h,1.2,.14,m);b.position.set(x,-1.7+h/2,0);s.add(b);
- const pl=new THREE.Mesh(new THREE.PlaneGeometry(.62,.62),new THREE.MeshBasicMaterial({map:numTex(i+1),transparent:true}));pl.position.set(x,top-.5,.66);s.add(pl);
- g1.add(s);return {s,m,top,x}});
-const ball=sph(.3,C.white);ball.material.emissiveIntensity=.25;g1.add(ball);ball.position.set(steps[0].x,steps[0].top+.32,0);
-{const f=new THREE.Group(),pole=new THREE.Mesh(new THREE.CylinderGeometry(.03,.03,.9,8),mat(C.cream));pole.position.y=.45;f.add(pole);
- const fl=new THREE.Mesh(new THREE.ConeGeometry(.2,.45,3),mat(C.blush));fl.rotation.z=-Math.PI/2;fl.position.set(.22,.72,0);f.add(fl);f.position.set(steps[3].x+.45,steps[3].top,0);g1.add(f)}
-
-/* ---- bab 3: ketentuan (cincin 6 dokumen) ---- */
-const g2=new THREE.Group();g2.position.x=32;scene.add(g2);const ring=new THREE.Group();g2.add(ring);
-const slabs=[0,1,2,3,4,5].map(i=>{const a=i/6*Math.PI*2,s=new THREE.Group(),m=mat(i%2?C.blush:C.cream);
- s.add(rbox(1.5,2.1,.1,.16,m));s.userData.m=m;
- const bd=new THREE.Mesh(new THREE.CircleGeometry(.17,24),basic([C.acc,C.rose,C.ink][i%3]));bd.position.set(-.45,.72,.1);s.add(bd);
- [[.95,.25],[.9,0],[.95,-.25],[.6,-.5]].forEach(([w,y])=>{const l=new THREE.Mesh(new THREE.PlaneGeometry(w,.09),basic(C.rose));l.position.set(0,y,.1);s.add(l)});
- s.position.set(Math.sin(a)*2.6,0,Math.cos(a)*2.6);s.rotation.y=a;ring.add(s);return s});
-
-/* ---- kamera, ukuran, scroll ---- */
-const FOC=[{x:0,y:0,w:6.4,h:5},{x:16,y:-.1,w:7.4,h:5},{x:32,y:0,w:6.4,h:4.8}];
-let idx=0,ch=0,cx=0,cy=0,dist=9,distFor=[9,9,9],snap=true,running=false;
-const clock=new THREE.Clock(),clamp=(v,a,b)=>Math.min(b,Math.max(a,v)),damp=(a,b,k)=>a+(b-a)*k;
-function resize(){const w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;R.setSize(w,h,false);cam.aspect=w/h;
- const wide=innerWidth>760;if(wide)cam.setViewOffset(w,h,-w*.2,0,w,h);else cam.clearViewOffset();cam.updateProjectionMatrix();
- const ae=wide?cam.aspect*.52:cam.aspect,tn=Math.tan(19*Math.PI/180);
- distFor=FOC.map(f=>Math.max(f.w/(2*tn*ae),f.h/(2*tn))*1.1);snap=true;}
-new ResizeObserver(resize).observe(stick);addEventListener('resize',resize);
-document.fonts&&document.fonts.ready.then(()=>numCv.forEach(f=>f()));
-
-function setActive(i){idx=i;ch=CH[i];
- items.forEach((e,n)=>e.classList.toggle('is-a',n===i));
- heads.forEach(h=>h.classList.toggle('is-a',+h.dataset.ch===ch));
- tabs.forEach((b,c)=>b.setAttribute('aria-current',c===ch));
- cnt.textContent=(i-FIRST[ch]+1)+' / '+COUNT[ch]}
-function upd(){const r=track.getBoundingClientRect(),span=Math.max(1,track.offsetHeight-stick.offsetHeight),f=clamp(-r.top/span,0,1)*N,i=Math.min(N-1,Math.floor(f));
- if(i!==idx)setActive(i);
- tabs.forEach((b,c)=>b.style.setProperty('--f',clamp((f-FIRST[c])/COUNT[c],0,1)*100+'%'))}
-let tk=false;addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(()=>{tk=false;upd()})}},{passive:true});
-tabs.forEach((b,c)=>b.addEventListener('click',()=>{const span=track.offsetHeight-stick.offsetHeight;
- scrollTo({top:scrollY+track.getBoundingClientRect().top+FIRST[c]/N*span+2,behavior:RM?'auto':'smooth'})}));
-
-/* ---- loop ---- */
-const wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
-function frame(){if(!running)return;requestAnimationFrame(frame);
- const dt=Math.min(clock.getDelta(),.05),t=clock.elapsedTime,k=RM||snap?1:1-Math.exp(-dt*6),kc=RM||snap?1:1-Math.exp(-dt*3.2);
- const o=RM?0:dt,F=FOC[ch];
- cx=damp(cx,F.x,kc);cy=damp(cy,F.y,kc);dist=damp(dist,distFor[ch],kc);
- cam.position.set(cx,cy+.5,dist);cam.lookAt(cx,cy,0);
- if(!RM){g0.position.y=Math.sin(t*.7)*.08;g0.rotation.y=Math.sin(t*.35)*.1;g1.rotation.y=-.42+Math.sin(t*.3)*.05;g2.position.y=Math.sin(t*.6)*.06}
- spin.forEach(f=>f(o));
- tiles.forEach((tl,i)=>{const a=ch===0&&i===idx,m=tl.userData.m,s=ch===0?(a?1.14:.92):1;
-  tl.scale.setScalar(damp(tl.scale.x,s,k));tl.position.z=damp(tl.position.z,a?.9:0,k);m.emissiveIntensity=damp(m.emissiveIntensity,a?.3:0,k)});
- const j=ch===1?idx-FIRST[1]:0;
- steps.forEach((s,i)=>{s.m.emissiveIntensity=damp(s.m.emissiveIntensity,ch===1?(i===j?.55:i<j?.2:0):0,k);s.s.position.z=damp(s.s.position.z,ch===1&&i===j?.25:0,k)});
- {const T=steps[j],dx=Math.abs(T.x-ball.position.x);ball.position.x=damp(ball.position.x,T.x,k);
-  ball.position.y=damp(ball.position.y,T.top+.32+Math.min(dx*.3,1.1),k)+(RM?0:Math.abs(Math.sin(t*3))*.004*(dx<.05?6:0))}
- const q=ch===2?idx-FIRST[2]:0;
- ring.rotation.y+=wrap(-(q/6)*Math.PI*2-ring.rotation.y)*k;
- slabs.forEach((s,i)=>{const a=ch===2&&i===q,m=s.userData.m;s.scale.setScalar(damp(s.scale.x,a?1.18:1,k));m.emissiveIntensity=damp(m.emissiveIntensity,a?.3:0,k)});
- snap=false;R.render(scene,cam)}
-function start(){if(running)return;running=true;clock.getDelta();frame()}
-new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&!document.hidden)start();else running=false})},{rootMargin:'100px'}).observe(stick);
-document.addEventListener('visibilitychange',()=>{if(document.hidden)running=false});
-resize();setActive(0);upd();
-})();
-</script>
 <script>
 /* ---------- Menu harga, nota, dan pesan WhatsApp ---------- */
 (()=>{
@@ -769,26 +720,49 @@ const S=[
 ["Konten AI","Desain 1 Gambar",15000,"u","per desain","1 gambar untuk 1 postingan feed"],
 ["Konten AI","Carousel Instagram",35000,"u","per carousel","1 postingan geser, maks. 5 slide"],
 ["Konten AI","Caption Instagram",8000,"u","per caption","1 caption siap posting"],
-["Kelola Instagram","Upload & Jadwal Posting",99000,"m","per bulan","Konten dari Anda, kami unggah dan jadwalkan. Tidak termasuk penataan profil dan pembuatan konten."],
-["Kelola Instagram","Kelola Instagram Dasar",199000,"m","per bulan","Unggah, penjadwalan, penataan profil, dan riset hashtag. Tidak termasuk balasan komentar/DM dan pembuatan konten."],
+["Kelola Instagram","Upload & Jadwal Posting",99000,"m","per bulan","Konten disediakan Anda; kami yang mengunggah dan menjadwalkan. Tidak termasuk penataan profil dan pembuatan konten."],
+["Kelola Instagram","Kelola Instagram Dasar",199000,"m","per bulan","Unggah, penjadwalan, penataan profil, dan riset hashtag. Tidak termasuk balasan komentar dan DM maupun pembuatan konten."],
 ["Iklan Digital","Setup Iklan Meta",99000,"o","sekali bayar","Penyiapan awal iklan Instagram dan Facebook"],
 ["Iklan Digital","Kelola Iklan Meta",199000,"m","per bulan","Pengelolaan iklan Instagram dan Facebook"],
 ["Iklan Digital","Setup Google Ads (Pencarian)",149000,"o","sekali bayar","Penyiapan awal iklan di pencarian Google"],
 ["Iklan Digital","Kelola Google Ads (Pencarian)",249000,"m","per bulan","Pengelolaan iklan pencarian Google"],
 ["Website","Landing Page Sederhana",149000,"w","harga awal, sekali bayar","1 halaman info usaha dengan tombol kontak"],
 ["Website","Website WordPress",399000,"w","harga awal, sekali bayar","Beberapa halaman standar dan form kontak"],
-["Website","Landing Page Framer",499000,"w","harga awal, sekali bayar","1 halaman modern dengan animasi halus"],
+["Website","Landing Page 3D (three.js)",447000,"w","harga awal, sekali bayar","1 halaman interaktif dengan dunia 3D yang bergerak mengikuti scroll, seperti yang Anda lihat di halaman ini"],
+["Website","Landing Page Framer",499000,"w","harga awal, sekali bayar","1 halaman modern dengan animasi yang halus"],
 ["Website","Toko Online WooCommerce",699000,"w","harga awal, sekali bayar","Katalog, keranjang, checkout, maks. 5 produk awal"],
-["Otomasi AI","Setup Otomasi Konten AI",499000,"o","sekali bayar","Alur kerja AI di akun Claude Pro Anda. Wajib memiliki Claude Pro aktif."]];
-const NOTE={"Konten AI":"Diproduksi dengan bantuan AI. Harga per item.","Kelola Instagram":"Hanya pengelolaan akun. Pembuatan konten dipesan terpisah.","Iklan Digital":"Budget iklan dibayarkan langsung ke Meta atau Google. Tidak ada jaminan hasil.","Website":"Harga awal; lingkup dikonfirmasi terlebih dahulu. Domain dan hosting dibayar terpisah.","Otomasi AI":"Biaya API dan langganan pihak ketiga dibayar terpisah. Wajib memiliki akun Claude Pro aktif."};
+["Otomasi AI","Setup Otomasi Konten AI",499000,"o","sekali bayar","Alur kerja AI disiapkan di akun Claude Pro Anda. Wajib memiliki Claude Pro aktif."]];
+const NOTE={"Konten AI":"Diproduksi dengan bantuan AI. Harga per item.","Kelola Instagram":"Hanya pengelolaan akun. Pembuatan konten dipesan terpisah.","Iklan Digital":"Budget iklan dibayarkan langsung ke Meta atau Google. Tidak ada jaminan hasil.","Website":"Harga awal; lingkup dikonfirmasi terlebih dahulu. Domain dan hosting dibayar terpisah.","Otomasi AI":"Biaya API dan langganan pihak ketiga dibayar terpisah. Wajib memiliki akun Claude Pro aktif.","Paket Bulanan":"Sudah termasuk kalender konten dan revisi sesuai paket. Budget iklan, Google Ads, dan website tidak termasuk."};
 const cats=Object.keys(NOTE),cart={},HI='Halo Menej Ets, saya ingin konsultasi layanan digital.';let tab=cats[0];
 
 const row=i=>{const s=S[i],q=cart[i],e=esc(s[1]);
 const c=q?`<div class="q" role="group" aria-label="Jumlah ${e}"><button type="button" data-i="${i}" data-d="-1" aria-label="Kurangi ${e}">−</button><output>${q}</output><button type="button" data-i="${i}" data-d="1" aria-label="Tambah ${e}">+</button></div>`:`<button class="add" type="button" data-i="${i}" data-d="1" aria-label="Tambah ${e} ke pesanan">Tambah ke Pesanan</button>`;
 return `<div class="mi"><div class="l"><h3>${e}</h3><i></i><em>${s[3]=='w'?'Mulai ':''}${R(s[2])}</em></div><div class="u">${s[4]}</div><p>${esc(s[5])}</p><div>${c}</div></div>`};
-function renderMenu(){
-$('#tb').innerHTML=cats.map((c,n)=>`<button role="tab" type="button" aria-selected="${c==tab}" tabindex="${c==tab?0:-1}" class="${c==tab?'on':''}" data-c="${c}">${c}</button>`).join('');
-$('#pn').innerHTML=`<p class="nt"><b>Catatan:</b> ${NOTE[tab]}</p>`+S.map((s,i)=>s[0]==tab?row(i):'').join('')}
+const PAKET='Paket Bulanan';
+const PK=[
+{n:'Starter',pr:'Rp229.000',sv:'Hemat Rp35.000 dibanding membeli komponen yang setara secara satuan',p:'Untuk mulai tampil rutin: 8 postingan per bulan.',f:['4 Reels 15–30 detik dan 4 desain gambar','8 caption','Ide dan jadwal 1 bulan','1× revisi per bulan'],x:['Tidak termasuk unggah dan penjadwalan posting']},
+{n:'Growth',b:1,tag:'Paling seimbang',pr:'Rp629.000',sv:'Hemat Rp98.000 dibanding membeli komponen yang setara secara satuan',p:'Akun terkelola, 16 postingan per bulan.',f:['8 Reels 15–30 detik dan 8 desain gambar','16 caption','Kalender konten bulanan','Unggah dan penjadwalan posting','Riset hashtag dan penataan profil','Evaluasi konten 1× per bulan','2× revisi per bulan'],x:['Tidak termasuk balasan komentar, DM, dan iklan']},
+{n:'Business Pro',pr:'Rp1.049.000',svn:'Pengelolaan Instagram penuh tidak dijual satuan, sehingga penghematan tidak dihitung.',p:'Pengelolaan menyeluruh, 24 postingan per bulan.',f:['12 Reels 15–30 detik dan 12 desain gambar','24 caption','Strategi dan kalender konten','Pengelolaan Instagram penuh, termasuk komentar dan DM','Pengelolaan iklan Meta','Laporan performa bulanan','3× revisi per bulan'],x:['Tidak termasuk budget iklan, Google Ads, dan website']}];
+const pkHtml=k=>`<article class="pk${k.b?' b':''}">${k.tag?`<span class="tg">${k.tag}</span>`:''}<div class="hd2"><h3>${k.n}</h3><div class="pr">${k.pr} <small>/ bulan</small></div></div><div class="sv${k.svn?' n':''}">${k.sv||k.svn}</div><p>${k.p}</p><ul>${k.f.map(x=>`<li>${x}</li>`).join('')}${k.x.map(x=>`<li class="x">${x}</li>`).join('')}</ul><a class="btn" href="${wa(`Halo Menej Ets, saya tertarik dengan paket ${k.n} ${k.pr}/bulan.\n\nMohon informasi detail pengerjaan dan cara memulai.`)}" target="_blank" rel="noopener">Pilih ${k.n} <i aria-hidden="true">→</i></a></article>`;
+const TAG={'Konten AI':'Konten siap tayang untuk akun bisnis Anda','Kelola Instagram':'Akun terkelola rapi dengan jadwal yang konsisten','Iklan Digital':'Iklan Meta dan Google yang dikelola profesional','Website':'Dari landing page sederhana hingga dunia 3D','Otomasi AI':'Alur kerja AI di akun Claude Pro Anda','Paket Bulanan':'Konten rutin dalam satu paket bulanan'};
+const leftHtml=t=>`<div class="bk-cat"><span class="no" aria-hidden="true">${String(cats.indexOf(t)+1).padStart(2,'0')}</span><h3 class="ct">${t}</h3><i class="orn" aria-hidden="true"></i><p class="tg2">${TAG[t]}</p><p class="nt"><b>Catatan:</b> ${NOTE[t]}</p></div><p class="bk-ft" aria-hidden="true">Menej Ets · Buku Menu</p>`;
+const rightHtml=t=>`<div class="bk-h"><b>${t}</b><span>Halaman ${cats.indexOf(t)+1} / ${cats.length}</span></div>`+(t==PAKET?`<div class="pkl">${PK.map(pkHtml).join('')}</div>`:S.map((s,i)=>s[0]==t?row(i):'').join(''));
+const mob=()=>matchMedia('(max-width:860px)').matches,rmo=()=>matchMedia('(prefers-reduced-motion:reduce)').matches;
+function marks(){$('#bkdots').innerHTML=cats.map(c=>`<i class="${c==tab?'on':''}"></i>`).join('');$('#bkst').textContent=`Halaman ${cats.indexOf(tab)+1} dari ${cats.length}: ${tab}`}
+let fin=null;
+function endFlip(){const lf=$('#leaf');if(!lf)return;lf.classList.remove('go-f','go-b');if(fin){const f=fin;fin=null;f()}}
+function setTab(c){
+if(c===tab)return;endFlip();
+const lf=$('#leaf'),fwd=cats.indexOf(c)>cats.indexOf(tab),oldL=$('#bl').innerHTML,oldR=$('#pn').innerHTML;
+tab=c;const nL=leftHtml(c),nR=rightHtml(c);marks();
+if(!lf||rmo()){$('#bl').innerHTML=nL;$('#pn').innerHTML=nR;return}
+const fr=lf.children[0],bk=lf.children[1];
+if(mob()){fr.innerHTML=oldR;bk.innerHTML='';$('#bl').innerHTML=nL;$('#pn').innerHTML=nR;void lf.offsetWidth;lf.classList.add('go-f')}
+else if(fwd){fr.innerHTML=oldR;bk.innerHTML=nL;$('#pn').innerHTML=nR;fin=()=>{$('#bl').innerHTML=nL};void lf.offsetWidth;lf.classList.add('go-f')}
+else{fr.innerHTML=nR;bk.innerHTML=oldL;$('#bl').innerHTML=nL;fin=()=>{$('#pn').innerHTML=nR};void lf.offsetWidth;lf.classList.add('go-b')}
+lf.onanimationend=e=>{if(e.target===lf)endFlip()}}
+function step(d){const i=cats.indexOf(tab)+d;if(i<0||i>=cats.length){const b3=$('#book .bk-3d');b3.classList.remove('bump','rb');void b3.offsetWidth;b3.classList.add('bump');if(d>0)b3.classList.add('rb');return}setTab(cats[i])}
+function renderMenu(){$('#bl').innerHTML=leftHtml(tab);$('#pn').innerHTML=rightHtml(tab);marks()}
 function calc(){let one=0,mo=0,web=0,ads=0,ai=0,n=0;const L=[];Object.keys(cart).forEach(i=>{const s=S[i],q=cart[i],sub=s[2]*q;s[3]=='m'?mo+=sub:one+=sub;n+=q;if(s[0]=='Website')web=1;if(s[0]=='Iklan Digital')ads=1;if(s[0]=='Otomasi AI')ai=1;L.push(`- ${s[1]} (${s[4]}): ${q} × ${R(s[2])} = ${R(sub)}`)});return{one,mo,web,ads,ai,n,L}}
 function msg(){const c=calc();if(!c.n)return HI;
 const notes=[c.web&&'(Website: harga awal, lingkup dikonfirmasi terlebih dahulu. Domain dan hosting dibayar terpisah)',c.ads&&'(Budget iklan dibayarkan langsung ke Meta atau Google, tidak termasuk biaya pengelolaan)',c.ai&&'(Otomasi AI: wajib memiliki akun Claude Pro aktif, langganan dibayar sendiri)','(Biaya pihak ketiga tidak termasuk. Harga final dikonfirmasi melalui chat)'].filter(Boolean).join('\n');
@@ -800,15 +774,25 @@ $('#bwa').textContent=c.n?'Lanjut ke WhatsApp':'Hubungi via WhatsApp';$('#bwa').
 $('#nota').innerHTML=`<h3>Nota Pesanan</h3><p class="sb">Menej Ets · estimasi, bukan tagihan</p>`+(c.n?k.map(i=>{const s=S[i];return `<div class="li"><div><b>${esc(s[1])}</b><small>${R(s[2])} × ${cart[i]} · ${s[4]}</small></div><b>${R(s[2]*cart[i])}</b></div>`}).join('')+`<div class="tt">${c.one?`<div><span>Sekali bayar</span><span>${R(c.one)}</span></div>`:''}${c.mo?`<div><span>Per bulan</span><span>${R(c.mo)}</span></div>`:''}</div><p class="nb">Harga website merupakan harga awal. Budget iklan, domain, hosting, dan biaya pihak ketiga tidak termasuk. Harga akhir disepakati melalui chat.</p><a class="btn" href="${url}" target="_blank" rel="noopener">Lanjut ke WhatsApp <i aria-hidden="true">→</i></a>`:`<p class="empty">Belum ada layanan yang dipilih. Tekan Tambah ke Pesanan di atas untuk menyusun nota.</p>`)}
 function render(){renderMenu();renderNota()}
 document.addEventListener('click',e=>{const t=e.target;
+const dt=t.closest('a[data-tab]');if(dt)setTab(dt.dataset.tab);
 const d=t.closest('#pn button[data-i]');if(d){const i=+d.dataset.i,dd=+d.dataset.d;cart[i]=Math.max(0,(cart[i]||0)+dd);if(!cart[i])delete cart[i];renderMenu();renderNota();
 const f=$(`#pn button[data-i="${i}"][data-d="${dd}"]`)||$(`#pn button[data-i="${i}"]`);f&&f.focus();return}
-const tb=t.closest('#tb button');if(tb){tab=tb.dataset.c;renderMenu();$(`#tb button[data-c="${tab}"]`).focus();return}
 if(t.closest('#sum')){document.getElementById(Object.keys(cart).length?'nota':'harga').scrollIntoView({behavior:'smooth',block:Object.keys(cart).length?'center':'start'})}});
-$('#tb').addEventListener('keydown',e=>{if(e.key!='ArrowRight'&&e.key!='ArrowLeft')return;e.preventDefault();const i=cats.indexOf(tab);tab=cats[(i+(e.key=='ArrowRight'?1:-1)+cats.length)%cats.length];renderMenu();$(`#tb button[data-c="${tab}"]`).focus()});
+(()=>{const bk=$('#book'),body=$('.bk-body',bk);let sx=0,sy=0,dr=false,sup=0,wl=0;
+body.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;sx=e.clientX;sy=e.clientY;dr=true});
+addEventListener('pointerup',e=>{if(!dr)return;dr=false;const dx=e.clientX-sx,dy=e.clientY-sy;if(Math.abs(dx)>48&&Math.abs(dx)>Math.abs(dy)*1.4){sup=Date.now();step(dx<0?1:-1)}});
+addEventListener('pointercancel',()=>dr=false);
+body.addEventListener('click',e=>{if(Date.now()-sup<350){e.preventDefault();e.stopPropagation()}},true);
+const b3=bk.firstElementChild;
+if('IntersectionObserver' in window&&!rmo()){bk.classList.add('pre');const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){bk.classList.remove('pre');io.disconnect()}},{threshold:.2});io.observe(bk)}
+if(matchMedia('(hover:hover) and (min-width:861px)').matches)bk.addEventListener('pointermove',e=>{const r=bk.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;b3.style.setProperty('--ry',(x*5).toFixed(2)+'deg');b3.style.setProperty('--rx',(4-y*3).toFixed(2)+'deg')});
+bk.addEventListener('pointerleave',()=>{b3.style.removeProperty('--ry');b3.style.removeProperty('--rx')});
+bk.addEventListener('keydown',e=>{if(e.target!==bk)return;if(e.key=='ArrowRight'){e.preventDefault();step(1)}if(e.key=='ArrowLeft'){e.preventDefault();step(-1)}});
+bk.addEventListener('wheel',e=>{if(Math.abs(e.deltaX)<=Math.abs(e.deltaY)||Math.abs(e.deltaX)<30)return;e.preventDefault();if(Date.now()-wl<800)return;wl=Date.now();step(e.deltaX>0?1:-1)},{passive:false})})();
 render();
 /* bar WhatsApp muncul setelah perjalanan 3D */
-const j=$('#journey'),bar=$('#bar');
-const bt=()=>bar.classList.toggle('show',scrollY>j.offsetTop+j.offsetHeight-innerHeight+8);
+const j=$('#journey'),j2=$('#cara'),bar=$('#bar');
+const bt=()=>{const r=j2.getBoundingClientRect();bar.classList.toggle('show',scrollY>j.offsetTop+j.offsetHeight-innerHeight+8&&!(r.top<innerHeight&&r.bottom>0))};
 addEventListener('scroll',bt,{passive:true});addEventListener('resize',bt);bt();
 })();
 </script>
