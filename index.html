@@ -366,6 +366,18 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
 .sp.stuck .sp-view{height:calc(var(--vh)*.55)}.sp.stuck .sp-scene{transform:scale(.55)}.sp.stuck{margin-bottom:calc(var(--vh)*.45)}
 .sp.stuck .sp-tabs{margin-top:10px}
 @media(max-width:700px){.sp{--vh:250px;top:80px}}
+/* layanan: warna sage seperti hero */
+.hg{background:#DCE7D6}
+.sp{background:#DCE7D6}
+.sp-view{background:linear-gradient(#E6EEE1 0,#DCE7D6 48%,#D2DECC 100%);border:1px solid #CFDCC9;box-shadow:0 22px 48px -26px rgba(18,37,30,.4)}
+.sp-floor{background-color:#C5D5BF;background-image:repeating-linear-gradient(90deg,transparent 0 139px,rgba(79,99,88,.22) 139px 141px),repeating-linear-gradient(0deg,transparent 0 59px,rgba(79,99,88,.16) 59px 61px)}
+.st::before{content:"";position:absolute;left:-12%;right:-12%;bottom:30px;height:40px;border-radius:16px;background:#F4F7EF;box-shadow:0 9px 0 #B3C6AE,0 22px 22px -8px rgba(18,37,30,.25);transform:perspective(260px) rotateX(58deg);z-index:-1}
+.sp-cart::after{background:rgba(18,37,30,.24)}
+.hg .nota,.hg .pd,.hg .sp-tabs button{background:rgba(251,253,248,.96);border:1px solid #CFDCC9}
+.hg .sp-tabs button[aria-pressed=true]{background:var(--tinta);border-color:var(--tinta)}
+.hg .pd,.hg .nota{box-shadow:0 14px 30px -20px rgba(18,37,30,.38)}
+.hg .sp-note,.hg .sp-lh p{color:#4F6358}
+
 #barchip{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));left:auto;z-index:60;width:56px;height:56px;min-height:0;padding:0;display:grid;place-items:center;border:0;border-radius:50%;background:var(--tinta);color:var(--gading);box-shadow:0 14px 30px -10px rgba(0,0,0,.5);transform:translateY(200%);transition:transform .6s cubic-bezier(.22,.8,.2,1)}#barchip.show{transform:none}
 #barchip svg{width:28px;height:28px}#barchip .bn{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--kunyit);color:var(--tinta);font:600 12px/22px var(--fs);text-align:center}#barchip .bn[hidden]{display:none}
 .glass{background:#FFFDF8;border:1px solid #E2D9C3;box-shadow:0 8px 20px -12px rgba(18,37,30,.25)}.jr.dark .glass{background:rgba(255,255,255,.05);border-color:#2F4B40;box-shadow:none}
