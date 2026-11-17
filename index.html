@@ -127,6 +127,57 @@ section.s{padding:clamp(64px,8vw,110px) 0}
 .nota .nb{font-size:13px;line-height:18px;color:var(--muted);margin:12px 0 16px;max-width:60ch}.nota .empty{font-size:14px;color:var(--muted);text-align:center}
 .nota.prt{animation:prt .7s var(--ease)}@keyframes prt{from{clip-path:inset(0 -8px 100% -8px)}to{clip-path:inset(0 -8px -14px -8px)}}
 
+/* karya: cincin 3D preview 4 website demo */
+.rg-sec{background:var(--gading);overflow-x:clip;border-bottom:2px solid var(--tinta)}
+.rg-head{text-align:center;max-width:760px;margin:0 auto}.rg-head .sub{margin-left:auto;margin-right:auto}
+.rg{--cw:clamp(250px,32vw,400px);margin-top:clamp(28px,4vw,48px)}
+.rg-stage{position:relative;perspective:1600px;perspective-origin:50% 40%;touch-action:pan-y;outline:none;cursor:grab;-webkit-user-select:none;user-select:none}
+.rg-stage:active{cursor:grabbing}
+.rg-stage:focus-visible{outline:3px solid var(--tinta);outline-offset:8px;border-radius:var(--r-lg)}
+.rg-ring{display:flex;flex-wrap:wrap;justify-content:center;gap:28px}
+.rg-card{width:var(--cw);font-size:calc(var(--cw)/22);background:var(--gading);border:2px solid var(--tinta);border-radius:var(--r-md);box-shadow:6px 6px 0 var(--tinta);overflow:hidden;position:relative}
+.rg-bar{height:34px;display:flex;align-items:center;gap:6px;padding:0 12px;background:var(--gading-200);border-bottom:2px solid var(--tinta);font:500 11px/1 var(--fm);color:var(--muted)}
+.rg-bar i{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--tinta);background:var(--gading)}.rg-bar i:first-child{background:var(--bata)}.rg-bar i:nth-child(2){background:var(--kunyit)}
+.rg-bar span{margin-left:8px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--gading);border:1.5px solid var(--line-s);border-radius:99px;padding:5px 10px}
+.rg-screen{position:relative;aspect-ratio:16/11;overflow:hidden;background:#222}
+.rg-screen>svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.rg-screen svg *{transform-box:fill-box}
+.rg-hero{position:absolute;left:6%;bottom:9%;max-width:56%;color:var(--hc,#fff);pointer-events:none;z-index:2}
+.rg-hero small{display:block;font:500 .62em/1.2 var(--fm);letter-spacing:.1em;text-transform:uppercase;opacity:.85;margin-bottom:.7em}
+.rg-hero b{display:block;font:600 1.9em/1.04 var(--fd);letter-spacing:-.02em}.rg-hero b em{font-style:italic;font-weight:500}
+.rg-hero u{display:inline-block;margin-top:1em;font:600 .7em/1 var(--fs);text-decoration:none;padding:.7em 1.1em;border-radius:.7em;background:var(--hb,#FFB81C);color:var(--hk,#12251E)}
+.rg-screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff;z-index:5}
+.rg.on3d .rg-ring{display:block;position:relative;height:calc(var(--cw)*.69 + 64px);transform-style:preserve-3d;gap:0}
+.rg.on3d .rg-card{position:absolute;left:50%;top:14px;margin-left:calc(var(--cw)/-2);backface-visibility:hidden;-webkit-backface-visibility:hidden;will-change:transform}
+.rg.on3d .rg-card::after{content:"";position:absolute;inset:0;background:var(--tinta);opacity:var(--dim,0);pointer-events:none;z-index:9}
+.rg.on3d .rg-card:not(.front){cursor:pointer}
+.rg.on3d .rg-card:not(.front) .rg-screen iframe{pointer-events:none}
+.rg-floor{width:min(520px,80vw);height:0;margin:34px auto 0;border-top:2px dashed var(--line-s)}
+.rg-dots{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:20px}
+.rg-dots button{min-height:44px;padding:8px 16px;border:2px solid var(--tinta);background:transparent;color:var(--tinta);border-radius:var(--r-md);font:600 14px/1 var(--fs);cursor:pointer;transition:background-color .2s,transform .18s var(--ets)}
+.rg-dots button:hover{background:var(--gading-200)}.rg-dots button[aria-pressed=true]{background:var(--kunyit);box-shadow:3px 3px 0 var(--tinta)}.rg-dots button:active{transform:translate(2px,2px)}
+.rg-info{max-width:620px;margin:26px auto 0;background:var(--gading);border:2px solid var(--tinta);border-radius:var(--r-lg);box-shadow:6px 6px 0 var(--tinta);padding:clamp(20px,2.4vw,30px)}
+.rg-info>*{transition:opacity .35s ease,transform .45s var(--ease)}.rg-info.swap>*{opacity:0;transform:translateY(10px)}
+.rg-info h3{font-size:clamp(26px,3vw,38px);margin-bottom:10px}.rg-info p.d{color:var(--muted);margin-bottom:14px}
+.rg-info ul{display:grid;gap:6px;font-size:14px;line-height:20px;margin-bottom:6px}.rg-info li::before{content:"→ ";color:var(--lab);font-family:var(--fm)}
+.rg-info .cta-row{margin-top:16px}
+.rg-info .fn{margin-top:14px;font-size:13px;line-height:18px;color:var(--muted)}
+.rg-s-steam{animation:rgsteam 3s ease-in-out infinite}
+@keyframes rgsteam{0%{transform:translateY(10px);opacity:0}35%{opacity:.75}100%{transform:translateY(-16px);opacity:0}}
+.rg-fl{animation:rgfl 5s ease-in-out infinite}@keyframes rgfl{50%{transform:translateY(-8px) rotate(14deg)}}
+.rg-sway{transform-origin:50% 100%;animation:rgsw 4s ease-in-out infinite}@keyframes rgsw{50%{transform:rotate(4deg)}}
+.rg-draw{stroke-dasharray:6 9;animation:rgdash 2.4s linear infinite}@keyframes rgdash{to{stroke-dashoffset:-60}}
+.rg-win{animation:rgwin 3.2s ease-in-out infinite}@keyframes rgwin{50%{opacity:.45}}
+.rg-sun{animation:rgsun 4s ease-in-out infinite}@keyframes rgsun{50%{transform:scale(1.15)}}
+.rg-road{stroke-dasharray:16 14;animation:rgroad .9s linear infinite}@keyframes rgroad{to{stroke-dashoffset:-30}}
+.rg-city{animation:rgcity 7s linear infinite}@keyframes rgcity{to{transform:translateX(-80px)}}
+.rg-bob{animation:rgbob .5s ease-in-out infinite}@keyframes rgbob{50%{transform:translateY(-1.5px)}}
+.rg-wh{transform-origin:50% 50%;animation:rgspin .5s linear infinite}@keyframes rgspin{to{transform:rotate(360deg)}}
+.rg-beam{transform-origin:50% 0;animation:rgbeam 4.5s ease-in-out infinite}.rg-beam.b{animation-direction:reverse;animation-delay:-1.2s}@keyframes rgbeam{0%,100%{transform:rotate(-16deg)}50%{transform:rotate(16deg)}}
+.rg-eq{transform-origin:50% 100%;animation:rgeq .8s ease-in-out infinite}@keyframes rgeq{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
+.rg-pulse{transform-origin:50% 50%;animation:rgpl .6s ease-in-out infinite}@keyframes rgpl{50%{transform:scale(1.12)}}
+@media(max-width:760px){.rg{--cw:min(300px,78vw)}.rg-hero b{font-size:1.7em}}
+
 /* faq */
 .fq{display:grid;grid-template-columns:1fr 1.6fr;gap:48px}.fq h2{font-size:clamp(28px,3.4vw,46px)}
 .fq details{border-top:2px dashed var(--line-s);padding:20px 0}.fq details:last-child{border-bottom:2px dashed var(--line-s)}
@@ -175,7 +226,7 @@ footer .lg{color:var(--gading);margin-bottom:16px}
 
 <header class="nav">
   <a class="lg" href="#journey" aria-label="Menej Ets, kembali ke atas"><svg viewBox="0 0 240 240" aria-hidden="true"><rect width="240" height="240" rx="56" fill="#12251E"/><rect x="100" y="44" width="40" height="104" rx="20" fill="#F5EFE3"/><circle cx="120" cy="188" r="22" fill="#FFB81C"/></svg><span>menej <em>ets</em></span></a>
-  <nav aria-label="Navigasi utama"><a href="#harga">Harga</a><a href="#harga" data-tab="Paket Bulanan">Paket</a><a href="#cara" data-j="cara" data-step="1">Cara Pesan</a><a href="#faq">FAQ</a></nav>
+  <nav aria-label="Navigasi utama"><a href="#harga">Harga</a><a href="#harga" data-tab="Paket Bulanan">Paket</a><a href="#karya">Karya</a><a href="#cara" data-j="cara" data-step="1">Cara Pesan</a><a href="#faq">FAQ</a></nav>
   <a class="btn" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20ingin%20konsultasi%20layanan%20digital." target="_blank" rel="noopener">Ceritakan usahamu <i aria-hidden="true">→</i></a>
 </header>
 
@@ -220,6 +271,103 @@ footer .lg{color:var(--gading);margin-bottom:16px}
       <div class="bk-dots" id="bkdots" aria-hidden="true"></div>
       <p class="sr" id="bkst" aria-live="polite"></p>
       <div class="nota" id="nota" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="s rg-sec" id="karya" aria-labelledby="h-karya">
+  <div class="w">
+    <div class="rg-head">
+      <p class="k">Contoh hasil kerja</p>
+      <h2 id="h-karya">Empat website demo, <em>satu gaya 3D.</em></h2>
+      <p class="sub">Putar cincinnya untuk melihat preview tiap website. Semuanya landing page interaktif yang bergerak mengikuti scroll, dibuat untuk jenis usaha yang berbeda.</p>
+    </div>
+    <div class="rg" id="rg">
+      <div class="rg-stage" id="rgs" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Preview empat website demo. Gunakan tombol panah kiri dan kanan untuk berpindah.">
+        <div class="rg-ring" id="rgr">
+
+          <article class="rg-card" data-n="0">
+            <div class="rg-bar" aria-hidden="true"><i></i><i></i><i></i><span>menej-cafe.vercel.app</span></div>
+            <div class="rg-screen" style="--hc:#F5EFE3;--hb:#E8A94B;--hk:#2A170E">
+              <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="rgc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3D2517"/><stop offset="1" stop-color="#1D110A"/></linearGradient><radialGradient id="rgcg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#E8A94B" stop-opacity=".45"/><stop offset="1" stop-color="#E8A94B" stop-opacity="0"/></radialGradient></defs>
+                <rect width="320" height="220" fill="url(#rgc)"/><circle cx="236" cy="130" r="96" fill="url(#rgcg)"/>
+                <g class="rg-fl" style="animation-delay:-1s"><ellipse cx="190" cy="40" rx="9" ry="6" fill="#6B3B1E" transform="rotate(30 190 40)"/><path d="M182 42 Q190 38 198 38" stroke="#2A170E" stroke-width="1.6" fill="none"/></g>
+                <g class="rg-fl" style="animation-delay:-3s"><ellipse cx="290" cy="64" rx="8" ry="5.5" fill="#8A4F26" transform="rotate(-20 290 64)"/><path d="M283 64 Q290 60 297 62" stroke="#2A170E" stroke-width="1.6" fill="none"/></g>
+                <g class="rg-fl" style="animation-delay:-2s"><ellipse cx="160" cy="176" rx="7" ry="5" fill="#6B3B1E" transform="rotate(50 160 176)"/></g>
+                <ellipse cx="236" cy="168" rx="58" ry="11" fill="#F5EFE3"/><ellipse cx="236" cy="166" rx="40" ry="6" fill="#E0D6C0"/>
+                <path d="M194 112 H278 V128 C278 152 260 164 236 164 C212 164 194 152 194 128 Z" fill="#F5EFE3"/><path d="M278 120 H288 A12 12 0 0 1 288 144 H274" stroke="#F5EFE3" stroke-width="6" fill="none"/>
+                <ellipse cx="236" cy="112" rx="42" ry="7.5" fill="#6B3B1E"/><ellipse cx="236" cy="111" rx="30" ry="4" fill="#8A4F26"/>
+                <path class="rg-s-steam" d="M222 100 C213 86 230 80 221 62" stroke="#F5EFE3" stroke-width="3.2" fill="none" stroke-linecap="round"/><path class="rg-s-steam" style="animation-delay:.9s" d="M238 100 C229 84 247 78 238 58" stroke="#F5EFE3" stroke-width="3.2" fill="none" stroke-linecap="round"/><path class="rg-s-steam" style="animation-delay:1.8s" d="M254 100 C246 88 261 82 253 66" stroke="#F5EFE3" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+              </svg>
+              <div class="rg-hero"><small>Teduh Kopi · Bandung</small><b>Secangkir <em>Tenang,</em> dari Biji ke Meja.</b></div>
+            </div>
+          </article>
+
+          <article class="rg-card" data-n="1">
+            <div class="rg-bar" aria-hidden="true"><i></i><i></i><i></i><span>menej-properti.vercel.app</span></div>
+            <div class="rg-screen" style="--hc:#12301F;--hb:#12301F;--hk:#F5EFE3">
+              <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="rgsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CFE5D0"/><stop offset="1" stop-color="#F4F0DC"/></linearGradient></defs>
+                <rect width="320" height="220" fill="url(#rgsky)"/>
+                <circle class="rg-sun" cx="272" cy="38" r="17" fill="#FFB81C"/>
+                <ellipse cx="240" cy="236" rx="230" ry="82" fill="#8DB48A"/><ellipse cx="120" cy="250" rx="200" ry="70" fill="#5F8F66"/>
+                <path class="rg-draw" d="M14 214 C84 194 150 192 222 176" stroke="#F5EFE3" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <g class="rg-sway"><rect x="172" y="146" width="6" height="26" fill="#6B5A3C"/><circle cx="175" cy="136" r="19" fill="#2F6B3E"/><circle cx="186" cy="146" r="12" fill="#3F8250"/></g>
+                <rect x="204" y="130" width="64" height="42" fill="#F5EFE3"/><polygon points="196,132 236,98 276,132" fill="#B33D22"/>
+                <rect x="230" y="146" width="13" height="26" rx="2" fill="#12251E"/>
+                <rect class="rg-win" x="210" y="140" width="13" height="13" fill="#FFB81C"/><rect class="rg-win" x="250" y="140" width="13" height="13" fill="#FFB81C" style="animation-delay:-1.4s"/>
+              </svg>
+              <div class="rg-hero"><small>Rindang Residence · Bogor</small><b>Pulang ke rumah yang <em>asri.</em></b><u>Booking Survei</u></div>
+            </div>
+          </article>
+
+          <article class="rg-card" data-n="2">
+            <div class="rg-bar" aria-hidden="true"><i></i><i></i><i></i><span>menej-rent-truck.vercel.app</span></div>
+            <div class="rg-screen" style="--hc:#F5EFE3;--hb:#FFB81C;--hk:#14213D">
+              <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="rgt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2E55"/><stop offset="1" stop-color="#0F1A33"/></linearGradient></defs>
+                <rect width="320" height="220" fill="url(#rgt)"/>
+                <g fill="#FFB81C" opacity=".8"><circle cx="40" cy="30" r="1.6"/><circle cx="120" cy="18" r="1.2"/><circle cx="210" cy="40" r="1.6"/><circle cx="290" cy="22" r="1.2"/></g>
+                <g class="rg-city" fill="#0E1A33"><rect x="0" y="120" width="26" height="60"/><rect x="30" y="96" width="30" height="84"/><rect x="64" y="132" width="22" height="48"/><rect x="90" y="108" width="28" height="72"/><rect x="122" y="128" width="24" height="52"/><rect x="150" y="90" width="30" height="90"/><rect x="184" y="124" width="24" height="56"/><rect x="212" y="104" width="30" height="76"/><rect x="246" y="130" width="22" height="50"/><rect x="272" y="100" width="30" height="80"/><rect x="306" y="124" width="24" height="56"/><rect x="334" y="96" width="30" height="84"/><rect x="368" y="132" width="22" height="48"/></g>
+                <rect y="176" width="320" height="44" fill="#0A1224"/><line class="rg-road" x1="0" y1="200" x2="320" y2="200" stroke="#FFB81C" stroke-width="3"/>
+                <g class="rg-bob"><rect x="148" y="116" width="114" height="52" rx="4" fill="#FFB81C"/><rect x="156" y="124" width="98" height="4" fill="#14213D" opacity=".25"/><rect x="156" y="134" width="98" height="4" fill="#14213D" opacity=".25"/><rect x="264" y="130" width="42" height="38" rx="7" fill="#F5EFE3"/><rect x="284" y="136" width="18" height="14" rx="3" fill="#14213D"/><rect x="148" y="168" width="158" height="6" fill="#0A1224"/>
+                <g><circle cx="178" cy="176" r="10" fill="#0A1224" stroke="#F5EFE3" stroke-width="2"/><g class="rg-wh"><line x1="178" y1="168" x2="178" y2="184" stroke="#F5EFE3" stroke-width="2"/></g></g>
+                <g><circle cx="226" cy="176" r="10" fill="#0A1224" stroke="#F5EFE3" stroke-width="2"/><g class="rg-wh"><line x1="226" y1="168" x2="226" y2="184" stroke="#F5EFE3" stroke-width="2"/></g></g>
+                <g><circle cx="286" cy="176" r="10" fill="#0A1224" stroke="#F5EFE3" stroke-width="2"/><g class="rg-wh"><line x1="286" y1="168" x2="286" y2="184" stroke="#F5EFE3" stroke-width="2"/></g></g></g>
+                <g stroke="#F5EFE3" stroke-width="2" stroke-linecap="round" opacity=".5"><line x1="112" y1="136" x2="140" y2="136"/><line x1="100" y1="148" x2="136" y2="148"/><line x1="118" y1="160" x2="142" y2="160"/></g>
+              </svg>
+              <div class="rg-hero" style="top:9%;bottom:auto;max-width:50%"><small>Lintas Nusa Trans</small><b>Barang Aman, Sampai <em>Tepat Waktu.</em></b></div>
+            </div>
+          </article>
+
+          <article class="rg-card" data-n="3">
+            <div class="rg-bar" aria-hidden="true"><i></i><i></i><i></i><span>menej-rent-audio.vercel.app</span></div>
+            <div class="rg-screen" style="--hc:#fff;--hb:#FF3DA5;--hk:#fff">
+              <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="rga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A1030"/><stop offset="1" stop-color="#0B0618"/></linearGradient><linearGradient id="rgb1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF3DA5" stop-opacity=".7"/><stop offset="1" stop-color="#FF3DA5" stop-opacity="0"/></linearGradient><linearGradient id="rgb2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6C5CFF" stop-opacity=".7"/><stop offset="1" stop-color="#6C5CFF" stop-opacity="0"/></linearGradient></defs>
+                <rect width="320" height="220" fill="url(#rga)"/>
+                <g transform="translate(100 0)"><polygon class="rg-beam" points="60,0 -2,230 122,230" fill="url(#rgb1)"/></g>
+                <g transform="translate(100 0)"><polygon class="rg-beam b" points="60,0 -2,230 122,230" fill="url(#rgb2)"/></g>
+                <g><rect x="196" y="82" width="86" height="124" rx="8" fill="#1F1638" stroke="#3E3266" stroke-width="2"/><circle cx="239" cy="108" r="9" fill="#0A0614" stroke="#6C5CFF" stroke-width="2"/><circle class="rg-pulse" cx="239" cy="160" r="26" fill="#0A0614" stroke="#FF3DA5" stroke-width="3"/><circle class="rg-pulse" cx="239" cy="160" r="10" fill="#2A1A48"/></g>
+                <g><rect x="150" y="150" width="34" height="56" rx="5" fill="#1F1638" stroke="#3E3266" stroke-width="2"/><circle class="rg-pulse" cx="167" cy="184" r="11" fill="#0A0614" stroke="#6C5CFF" stroke-width="2.5"/></g>
+                <g fill="#FF3DA5"><rect class="rg-eq" x="150" y="118" width="5" height="28" rx="2"/><rect class="rg-eq" x="159" y="118" width="5" height="28" rx="2" style="animation-delay:-.3s;animation-duration:.7s"/><rect class="rg-eq" x="168" y="118" width="5" height="28" rx="2" style="animation-delay:-.55s;animation-duration:.95s"/><rect class="rg-eq" x="177" y="118" width="5" height="28" rx="2" style="animation-delay:-.15s"/></g>
+                <rect y="206" width="320" height="14" fill="#0B0618"/>
+              </svg>
+              <div class="rg-hero" style="top:9%;bottom:auto;max-width:50%"><small>Rumble Audio Rental</small><b>Sound system yang <em>bikin pesta hidup.</em></b></div>
+            </div>
+          </article>
+
+        </div>
+        <div class="rg-floor" aria-hidden="true"></div>
+      </div>
+      <div class="rg-dots" id="rgd" role="group" aria-label="Pilih website demo">
+        <button type="button" aria-pressed="true">Kafe</button><button type="button" aria-pressed="false">Properti</button><button type="button" aria-pressed="false">Truk</button><button type="button" aria-pressed="false">Sound System</button>
+      </div>
+      <div class="rg-info" id="rgi" aria-live="polite">
+        <div class="eyebrow" data-e>Demo 01 · Kedai kopi</div>
+        <h3 data-t>Teduh Kopi</h3>
+        <p class="d" data-d>Cerita secangkir kopi dari biji sampai meja, bergerak mengikuti scroll.</p>
+        <ul data-f></ul>
+        <div class="cta-row"><a class="btn" data-go href="https://menej-cafe.vercel.app" target="_blank" rel="noopener">Buka demo <i aria-hidden="true">↗</i></a><button class="btn l" type="button" id="rgp">Preview langsung</button></div>
+        <p class="fn">Semua demo memakai brand fiktif. Harga dan kontak di dalamnya hanya contoh.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -280,7 +428,7 @@ footer .lg{color:var(--gading);margin-bottom:16px}
   <div class="w">
     <div class="g">
       <div><a class="lg" href="#journey" aria-label="Menej Ets"><svg viewBox="0 0 240 240" aria-hidden="true"><rect width="240" height="240" rx="56" fill="#F5EFE3"/><rect x="100" y="44" width="40" height="104" rx="20" fill="#12251E"/><circle cx="120" cy="188" r="22" fill="#B33D22"/></svg><span>menej <em>ets</em></span></a><p style="max-width:360px">Kelola ads, Instagram, website, dan automasi untuk UMKM. Satu tim. Seluruh alur. Beres.</p></div>
-      <nav aria-label="Tautan"><h3>Jelajahi</h3><ul><li><a href="#harga">Harga layanan</a></li><li><a href="#harga" data-tab="Paket Bulanan">Paket bulanan</a></li><li><a href="#cara" data-j="cara" data-step="1">Cara pesan</a></li><li><a href="#cara" data-j="cara" data-step="2">Ketentuan layanan</a></li><li><a href="#faq">FAQ</a></li></ul></nav>
+      <nav aria-label="Tautan"><h3>Jelajahi</h3><ul><li><a href="#harga">Harga layanan</a></li><li><a href="#harga" data-tab="Paket Bulanan">Paket bulanan</a></li><li><a href="#karya">Contoh karya</a></li><li><a href="#cara" data-j="cara" data-step="1">Cara pesan</a></li><li><a href="#cara" data-j="cara" data-step="2">Ketentuan layanan</a></li><li><a href="#faq">FAQ</a></li></ul></nav>
       <div><h3>Kontak</h3><ul><li><a href="https://wa.me/628567876751" target="_blank" rel="noopener">WhatsApp 0856 7876 751</a></li><li><a href="mailto:menejets@gmail.com">menejets@gmail.com</a></li><li><a href="https://instagram.com/menejets" target="_blank" rel="noopener">Instagram @menejets</a></li></ul></div>
     </div>
     <div class="wm" aria-hidden="true">menej <em>ets</em></div>
@@ -770,6 +918,61 @@ render();
 const j=$('#journey'),j2=$('#cara'),bar=$('#bar');
 const bt=()=>{const r=j2.getBoundingClientRect();bar.classList.toggle('show',scrollY>j.offsetTop+j.offsetHeight-innerHeight+8&&!(r.top<innerHeight&&r.bottom>0))};
 addEventListener('scroll',bt,{passive:true});addEventListener('resize',bt);bt();
+})();
+</script>
+
+<script>
+/* ---------- Karya: cincin 3D preview website demo ---------- */
+(()=>{
+const $=s=>document.querySelector(s),rg=$('#rg'),stage=$('#rgs'),ring=$('#rgr'),info=$('#rgi'),btns=[...document.querySelectorAll('#rgd button')],cards=[...ring.children],N=cards.length;
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const D=[
+{e:'Demo 01 · Kedai kopi',t:'Teduh Kopi',d:'Cerita secangkir kopi dari biji sampai meja, bergerak mengikuti scroll, lengkap dengan alur pesan ambil di kedai.',f:['Perjalanan 3D mengikuti scroll','Panel pesan 4 langkah','Nuansa hangat dan tenang'],u:'https://menej-cafe.vercel.app'},
+{e:'Demo 02 · Properti',t:'Rindang Residence',d:'Perumahan asri di Bogor untuk pembeli rumah pertama, dari gerbang sampai serah terima kunci.',f:['Empat tipe rumah dan booking survei','Simulasi cicilan KPR','Perjalanan 3D dari gerbang ke rumah contoh'],u:'https://menej-properti.vercel.app'},
+{e:'Demo 03 · Logistik',t:'Lintas Nusa Trans',d:'Jasa trucking antarkota dengan pemilih armada yang bisa diputar dan form minta penawaran.',f:['Pemilih armada 3D: CDD, Fuso, Tronton, Trailer','Contoh rute Sumatra ke Bali','Form penawaran dan tombol WhatsApp'],u:'https://menej-rent-truck.vercel.app'},
+{e:'Demo 04 · Sewa alat',t:'Rumble Audio Rental',d:'Sewa sound system, DJ, dan lampu panggung dengan kalkulator biaya langsung di halaman.',f:['Empat paket sewa berdasarkan jumlah tamu','Simulasi suasana lampu di panggung 3D','Kalkulator estimasi dan FAQ'],u:'https://menej-rent-audio.vercel.app'}];
+let ang=0,tgt=0,front=0,raf=0,last=Date.now(),vis=false,live=-1,tm=0;
+const mod=n=>((n%N)+N)%N,R=()=>cards[0].offsetWidth*.82;
+function setInfo(i){
+  info.classList.add('swap');clearTimeout(tm);
+  tm=setTimeout(()=>{const x=D[i];
+    info.querySelector('[data-e]').textContent=x.e;info.querySelector('[data-t]').textContent=x.t;info.querySelector('[data-d]').textContent=x.d;
+    info.querySelector('[data-f]').innerHTML=x.f.map(s=>`<li>${s}</li>`).join('');info.querySelector('[data-go]').href=x.u;
+    $('#rgp').textContent='Preview langsung';info.classList.remove('swap')},reduce?0:200);
+}
+function closeLive(){if(live<0)return;const f=cards[live].querySelector('iframe');f&&f.remove();live=-1}
+function layout(){
+  const r=R();ring.style.transform=`translateZ(${-r}px) rotateY(${ang}deg)`;
+  let f=mod(Math.round(-ang/90));
+  cards.forEach((c,i)=>{c.style.transform=`rotateY(${i*90}deg) translateZ(${r}px)`;
+    let d=((ang+i*90)%360+540)%360-180;c.style.setProperty('--dim',Math.min(.45,Math.abs(d)/180*.9).toFixed(2));c.classList.toggle('front',i===f)});
+  if(f!==front){front=f;closeLive();btns.forEach((b,k)=>b.setAttribute('aria-pressed',k===f));setInfo(f)}
+}
+function tick(){const d=tgt-ang;if(Math.abs(d)<.05||reduce){ang=tgt;layout();raf=0;return}ang+=d*.1;layout();raf=requestAnimationFrame(tick)}
+function go(i){last=Date.now();let t=-i*90;t+=Math.round((ang-t)/360)*360;tgt=t;cancelAnimationFrame(raf);tick()}
+function enable(){
+  rg.classList.add('on3d');layout();
+  btns.forEach((b,i)=>b.addEventListener('click',()=>go(i)));
+  cards.forEach((c,i)=>c.addEventListener('click',e=>{if(!c.classList.contains('front')){e.preventDefault();go(i)}},true));
+  /* seret */
+  let x0=0,a0=0,dr=false,mv=false,v=0,lx=0;
+  stage.addEventListener('pointerdown',e=>{if(e.target.closest('iframe'))return;if(e.pointerType==='mouse'&&e.button!==0)return;dr=true;mv=false;x0=lx=e.clientX;a0=ang;v=0;cancelAnimationFrame(raf);last=Date.now()});
+  addEventListener('pointermove',e=>{if(!dr)return;const dx=e.clientX-x0;if(!mv&&Math.abs(dx)>7)mv=true;if(!mv)return;ang=a0+dx*.35;v=.6*v+.4*(e.clientX-lx)*.35;lx=e.clientX;layout()});
+  const end=()=>{if(!dr)return;dr=false;if(mv){tgt=Math.round((ang+v*6)/90)*90;last=Date.now();tick()}};
+  addEventListener('pointerup',end);addEventListener('pointercancel',end);
+  stage.addEventListener('click',e=>{if(mv){e.preventDefault();e.stopPropagation();mv=false}},true);
+  stage.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();go(mod(front+1))}if(e.key==='ArrowLeft'){e.preventDefault();go(mod(front-1))}});
+  /* preview langsung */
+  $('#rgp').addEventListener('click',()=>{
+    if(live===front){closeLive();$('#rgp').textContent='Preview langsung';return}
+    closeLive();const s=cards[front].querySelector('.rg-screen'),f=document.createElement('iframe');
+    f.src=D[front].u;f.title='Preview langsung '+D[front].t;f.loading='lazy';f.setAttribute('sandbox','allow-scripts allow-same-origin');s.appendChild(f);live=front;$('#rgp').textContent='Tutup preview'});
+  /* putar otomatis saat terlihat dan tidak disentuh */
+  if('IntersectionObserver' in window)new IntersectionObserver(es=>{vis=es.some(e=>e.isIntersecting)},{threshold:.4}).observe(stage);
+  if(!reduce)setInterval(()=>{if(vis&&live<0&&!dr&&Date.now()-last>5000&&!stage.matches(':focus-within'))go(mod(front+1))},4000);
+  let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(layout,150)});
+}
+enable();setInfo(0);
 })();
 </script>
 </body>
