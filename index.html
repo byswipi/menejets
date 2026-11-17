@@ -127,18 +127,7 @@ section.s{padding:clamp(64px,8vw,110px) 0}
 .nota .nb{font-size:13px;line-height:18px;color:var(--muted);margin:12px 0 16px;max-width:60ch}.nota .empty{font-size:14px;color:var(--muted);text-align:center}
 .nota.prt{animation:prt .7s var(--ease)}@keyframes prt{from{clip-path:inset(0 -8px 100% -8px)}to{clip-path:inset(0 -8px -14px -8px)}}
 
-/* karya: cincin 3D preview 4 website demo */
-.rg-sec{background:var(--gading);overflow-x:clip;border-bottom:2px solid var(--tinta)}
-.rg-head{text-align:center;max-width:760px;margin:0 auto}.rg-head .sub{margin-left:auto;margin-right:auto}
-.rg{--cw:clamp(250px,32vw,400px);margin-top:clamp(28px,4vw,48px)}
-.rg-stage{position:relative;perspective:1600px;perspective-origin:50% 40%;touch-action:pan-y;outline:none;cursor:grab;-webkit-user-select:none;user-select:none}
-.rg-stage:active{cursor:grabbing}
-.rg-stage:focus-visible{outline:3px solid var(--tinta);outline-offset:8px;border-radius:var(--r-lg)}
-.rg-ring{display:flex;flex-wrap:wrap;justify-content:center;gap:28px}
-.rg-card{width:var(--cw);font-size:calc(var(--cw)/22);background:var(--gading);border:2px solid var(--tinta);border-radius:var(--r-md);box-shadow:6px 6px 0 var(--tinta);overflow:hidden;position:relative}
-.rg-bar{height:34px;display:flex;align-items:center;gap:6px;padding:0 12px;background:var(--gading-200);border-bottom:2px solid var(--tinta);font:500 11px/1 var(--fm);color:var(--muted)}
-.rg-bar i{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--tinta);background:var(--gading)}.rg-bar i:first-child{background:var(--bata)}.rg-bar i:nth-child(2){background:var(--kunyit)}
-.rg-bar a{margin-left:8px;text-decoration:none;display:block;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--gading);border:1.5px solid var(--line-s);border-radius:99px;padding:5px 10px;transition:background-color .2s}.rg-bar a:hover{background:var(--kunyit)}.rg-bar a b{font-weight:600;float:right}
+/* karya: kartu preview 4 website demo */
 .rg-screen{position:relative;aspect-ratio:16/11;overflow:hidden;background:#222}
 .rg-screen>svg{position:absolute;inset:0;width:100%;height:100%;display:block}
 .rg-screen svg *{transform-box:fill-box}
@@ -147,20 +136,6 @@ section.s{padding:clamp(64px,8vw,110px) 0}
 .rg-hero b{display:block;font:600 1.9em/1.04 var(--fd);letter-spacing:-.02em}.rg-hero b em{font-style:italic;font-weight:500}
 .rg-hero u{display:inline-block;margin-top:1em;font:600 .7em/1 var(--fs);text-decoration:none;padding:.7em 1.1em;border-radius:.7em;background:var(--hb,#FFB81C);color:var(--hk,#12251E)}
 .rg-screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff;z-index:5}
-.rg.on3d .rg-ring{display:block;position:relative;height:calc(var(--cw)*.69 + 64px);transform-style:preserve-3d;gap:0}
-.rg.on3d .rg-card{position:absolute;left:50%;top:14px;margin-left:calc(var(--cw)/-2);backface-visibility:hidden;-webkit-backface-visibility:hidden;will-change:transform}
-.rg.on3d .rg-card::after{content:"";position:absolute;inset:0;background:var(--tinta);opacity:var(--dim,0);pointer-events:none;z-index:9}
-.rg.on3d .rg-card:not(.front){cursor:pointer}
-.rg.on3d .rg-card:not(.front) .rg-screen iframe{pointer-events:none}
-.rg-floor{width:min(520px,80vw);height:0;margin:34px auto 0;border-top:2px dashed var(--line-s)}
-.rg-dots{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:20px}
-.rg-dots{gap:14px}.rg-dots button{position:relative;width:12px;height:12px;padding:0;border:2px solid var(--tinta);background:transparent;border-radius:99px;cursor:pointer;transition:width .25s var(--ets),background-color .2s}.rg-dots button::before{content:"";position:absolute;inset:-16px -8px}.rg-dots button[aria-pressed=true]{width:30px;background:var(--kunyit)}
-.rg-info{max-width:620px;margin:26px auto 0;background:var(--gading);border:2px solid var(--tinta);border-radius:var(--r-lg);box-shadow:6px 6px 0 var(--tinta);padding:clamp(20px,2.4vw,30px)}
-.rg-info>*{transition:opacity .35s ease,transform .45s var(--ease)}.rg-info.swap>*{opacity:0;transform:translateY(10px)}
-.rg-info h3{font-size:clamp(26px,3vw,38px);margin-bottom:10px}.rg-info p.d{color:var(--muted);margin-bottom:14px}
-.rg-info ul{display:grid;gap:6px;font-size:14px;line-height:20px;margin-bottom:6px}.rg-info li::before{content:"→ ";color:var(--lab);font-family:var(--fm)}
-.rg-info .cta-row{margin-top:16px}
-.rg-info .fn{margin-top:14px;font-size:13px;line-height:18px;color:var(--muted)}
 .rg-s-steam{animation:rgsteam 3s ease-in-out infinite}
 @keyframes rgsteam{0%{transform:translateY(10px);opacity:0}35%{opacity:.75}100%{transform:translateY(-16px);opacity:0}}
 .rg-fl{animation:rgfl 5s ease-in-out infinite}@keyframes rgfl{50%{transform:translateY(-8px) rotate(14deg)}}
@@ -177,6 +152,18 @@ section.s{padding:clamp(64px,8vw,110px) 0}
 .rg-pulse{transform-origin:50% 50%;animation:rgpl .6s ease-in-out infinite}@keyframes rgpl{50%{transform:scale(1.12)}}
 @media(max-width:760px){.rg{--cw:min(300px,78vw)}.rg-hero b{font-size:1.7em}}
 
+
+.wk-sec{background:var(--gading);overflow-x:clip;border-bottom:2px solid var(--tinta)}
+.wk-head{text-align:center;max-width:760px;margin:0 auto}.wk-head .sub{margin-left:auto;margin-right:auto}
+.wks{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:clamp(32px,4vw,52px)}
+.wk{display:block;text-align:left;padding:0;border:1px solid #E2D9C3;border-radius:28px;background:#FFFDF8;overflow:hidden;cursor:pointer;box-shadow:0 12px 32px -12px rgba(18,37,30,.18);transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out,box-shadow .3s}
+.wk:hover{box-shadow:0 30px 60px -24px rgba(18,37,30,.35)}
+.wk .rg-screen{font-size:12.5px}.wk .rg-hero b{font-size:1.6em}.wk .rg-hero{max-width:47%!important}
+.wk .cap{padding:16px 18px 18px;display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+.wk .cap b{display:block;font:600 18px/1.15 var(--fd);color:var(--tinta)}.wk .cap small{display:block;margin-top:4px;font:500 11px/1.3 var(--fm);letter-spacing:.06em;text-transform:uppercase;color:var(--daun)}
+.wk .cap i{font-style:normal;flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--kunyit);border:1.5px solid var(--tinta);transition:transform .3s var(--ets)}.wk:hover .cap i{transform:rotate(45deg) scale(1.1)}
+.wk-n{text-align:center;margin-top:30px;font-size:14px;color:var(--daun)}
+@media(max-width:980px){.wks{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin-left:calc(-1*clamp(18px,4vw,48px));margin-right:calc(-1*clamp(18px,4vw,48px));padding:6px clamp(18px,4vw,48px) 24px;scrollbar-width:none}.wks::-webkit-scrollbar{display:none}.wk{flex:none;width:min(300px,78vw);scroll-snap-align:center}}
 .rg-act{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:20px}
 .rgm{position:fixed;inset:0;z-index:100;background:rgba(18,37,30,.8);display:flex;align-items:center;justify-content:center;padding:2.5vh 2.5vw}.rgm[hidden]{display:none}
 .rgm-box{width:min(1320px,100%);height:100%;display:flex;flex-direction:column;background:var(--gading);border:2px solid var(--tinta);border-radius:var(--r-md);box-shadow:6px 6px 0 var(--kunyit);overflow:hidden}
@@ -334,20 +321,15 @@ footer .lg{color:var(--gading);margin-bottom:16px}
   </div>
 </section>
 
-<section class="s rg-sec" id="karya" aria-labelledby="h-karya">
+<section class="s wk-sec" id="karya" aria-labelledby="h-karya">
   <div class="w">
-    <div class="rg-head">
+    <div class="wk-head">
       <p class="k">Contoh hasil kerja</p>
-      <h2 id="h-karya">Empat website demo, <em>satu gaya 3D.</em></h2>
-      <p class="sub">Geser kartunya, lalu ketuk untuk melihat preview layar besar. Brand dan harga di tiap demo hanya contoh.</p>
+      <h2 id="h-karya">Website 3D yang <em>bergerak mengikuti scroll.</em></h2>
+      <p class="sub">Empat demo untuk usaha yang berbeda. Ketuk untuk melihat preview.</p>
     </div>
-    <div class="rg" id="rg">
-      <div class="rg-stage" id="rgs" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Preview empat website demo. Gunakan tombol panah kiri dan kanan untuk berpindah.">
-        <div class="rg-ring" id="rgr">
-
-          <article class="rg-card" data-n="0">
-            <div class="rg-bar"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><a href="https://menej-cafe.vercel.app" target="_blank" rel="noopener" aria-label="Buka website menej-cafe.vercel.app">menej-cafe.vercel.app <b aria-hidden="true">↗</b></a></div>
-            <div class="rg-screen" style="--hc:#F5EFE3;--hb:#E8A94B;--hk:#2A170E">
+    <div class="wks" id="wks">
+      <button class="wk" type="button" aria-label="Lihat preview Teduh Kopi"><div class="rg-screen" style="--hc:#F5EFE3;--hb:#E8A94B;--hk:#2A170E">
               <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="rgc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3D2517"/><stop offset="1" stop-color="#1D110A"/></linearGradient><radialGradient id="rgcg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#E8A94B" stop-opacity=".45"/><stop offset="1" stop-color="#E8A94B" stop-opacity="0"/></radialGradient></defs>
                 <rect width="320" height="220" fill="url(#rgc)"/><circle cx="236" cy="130" r="96" fill="url(#rgcg)"/>
                 <g class="rg-fl" style="animation-delay:-1s"><ellipse cx="190" cy="40" rx="9" ry="6" fill="#6B3B1E" transform="rotate(30 190 40)"/><path d="M182 42 Q190 38 198 38" stroke="#2A170E" stroke-width="1.6" fill="none"/></g>
@@ -359,12 +341,8 @@ footer .lg{color:var(--gading);margin-bottom:16px}
                 <path class="rg-s-steam" d="M222 100 C213 86 230 80 221 62" stroke="#F5EFE3" stroke-width="3.2" fill="none" stroke-linecap="round"/><path class="rg-s-steam" style="animation-delay:.9s" d="M238 100 C229 84 247 78 238 58" stroke="#F5EFE3" stroke-width="3.2" fill="none" stroke-linecap="round"/><path class="rg-s-steam" style="animation-delay:1.8s" d="M254 100 C246 88 261 82 253 66" stroke="#F5EFE3" stroke-width="3.2" fill="none" stroke-linecap="round"/>
               </svg>
               <div class="rg-hero"><small>Teduh Kopi · Bandung</small><b>Secangkir <em>Tenang,</em> dari Biji ke Meja.</b></div>
-            </div>
-          </article>
-
-          <article class="rg-card" data-n="1">
-            <div class="rg-bar"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><a href="https://menej-properti.vercel.app" target="_blank" rel="noopener" aria-label="Buka website menej-properti.vercel.app">menej-properti.vercel.app <b aria-hidden="true">↗</b></a></div>
-            <div class="rg-screen" style="--hc:#12301F;--hb:#12301F;--hk:#F5EFE3">
+            </div><span class="cap"><span><b>Teduh Kopi</b><small>Kedai kopi</small></span><i aria-hidden="true">↗</i></span></button>
+      <button class="wk" type="button" aria-label="Lihat preview Rindang Residence"><div class="rg-screen" style="--hc:#12301F;--hb:#12301F;--hk:#F5EFE3">
               <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="rgsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CFE5D0"/><stop offset="1" stop-color="#F4F0DC"/></linearGradient></defs>
                 <rect width="320" height="220" fill="url(#rgsky)"/>
                 <circle class="rg-sun" cx="272" cy="38" r="17" fill="#FFB81C"/>
@@ -376,12 +354,8 @@ footer .lg{color:var(--gading);margin-bottom:16px}
                 <rect class="rg-win" x="210" y="140" width="13" height="13" fill="#FFB81C"/><rect class="rg-win" x="250" y="140" width="13" height="13" fill="#FFB81C" style="animation-delay:-1.4s"/>
               </svg>
               <div class="rg-hero"><small>Rindang Residence · Bogor</small><b>Pulang ke rumah yang <em>asri.</em></b><u>Booking Survei</u></div>
-            </div>
-          </article>
-
-          <article class="rg-card" data-n="2">
-            <div class="rg-bar"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><a href="https://menej-rent-truck.vercel.app" target="_blank" rel="noopener" aria-label="Buka website menej-rent-truck.vercel.app">menej-rent-truck.vercel.app <b aria-hidden="true">↗</b></a></div>
-            <div class="rg-screen" style="--hc:#F5EFE3;--hb:#FFB81C;--hk:#14213D">
+            </div><span class="cap"><span><b>Rindang Residence</b><small>Properti</small></span><i aria-hidden="true">↗</i></span></button>
+      <button class="wk" type="button" aria-label="Lihat preview Lintas Nusa Trans"><div class="rg-screen" style="--hc:#F5EFE3;--hb:#FFB81C;--hk:#14213D">
               <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="rgt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2E55"/><stop offset="1" stop-color="#0F1A33"/></linearGradient></defs>
                 <rect width="320" height="220" fill="url(#rgt)"/>
                 <g fill="#FFB81C" opacity=".8"><circle cx="40" cy="30" r="1.6"/><circle cx="120" cy="18" r="1.2"/><circle cx="210" cy="40" r="1.6"/><circle cx="290" cy="22" r="1.2"/></g>
@@ -394,12 +368,8 @@ footer .lg{color:var(--gading);margin-bottom:16px}
                 <g stroke="#F5EFE3" stroke-width="2" stroke-linecap="round" opacity=".5"><line x1="112" y1="136" x2="140" y2="136"/><line x1="100" y1="148" x2="136" y2="148"/><line x1="118" y1="160" x2="142" y2="160"/></g>
               </svg>
               <div class="rg-hero" style="top:9%;bottom:auto;max-width:50%"><small>Lintas Nusa Trans</small><b>Barang Aman, Sampai <em>Tepat Waktu.</em></b></div>
-            </div>
-          </article>
-
-          <article class="rg-card" data-n="3">
-            <div class="rg-bar"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><a href="https://menej-rent-audio.vercel.app" target="_blank" rel="noopener" aria-label="Buka website menej-rent-audio.vercel.app">menej-rent-audio.vercel.app <b aria-hidden="true">↗</b></a></div>
-            <div class="rg-screen" style="--hc:#fff;--hb:#FF3DA5;--hk:#fff">
+            </div><span class="cap"><span><b>Lintas Nusa Trans</b><small>Logistik</small></span><i aria-hidden="true">↗</i></span></button>
+      <button class="wk" type="button" aria-label="Lihat preview Rumble Audio Rental"><div class="rg-screen" style="--hc:#fff;--hb:#FF3DA5;--hk:#fff">
               <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="rga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A1030"/><stop offset="1" stop-color="#0B0618"/></linearGradient><linearGradient id="rgb1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF3DA5" stop-opacity=".7"/><stop offset="1" stop-color="#FF3DA5" stop-opacity="0"/></linearGradient><linearGradient id="rgb2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6C5CFF" stop-opacity=".7"/><stop offset="1" stop-color="#6C5CFF" stop-opacity="0"/></linearGradient></defs>
                 <rect width="320" height="220" fill="url(#rga)"/>
                 <g transform="translate(100 0)"><polygon class="rg-beam" points="60,0 -2,230 122,230" fill="url(#rgb1)"/></g>
@@ -410,22 +380,9 @@ footer .lg{color:var(--gading);margin-bottom:16px}
                 <rect y="206" width="320" height="14" fill="#0B0618"/>
               </svg>
               <div class="rg-hero" style="top:9%;bottom:auto;max-width:50%"><small>Rumble Audio Rental</small><b>Sound system yang <em>bikin pesta hidup.</em></b></div>
-            </div>
-          </article>
-
-        </div>
-        <div class="rg-floor" aria-hidden="true"></div>
-      </div>
-      <div class="rg-dots" id="rgd" role="group" aria-label="Pilih website demo">
-        <button type="button" aria-label="Teduh Kopi" aria-pressed="true"></button><button type="button" aria-label="Rindang Residence" aria-pressed="false"></button><button type="button" aria-label="Lintas Nusa Trans" aria-pressed="false"></button><button type="button" aria-label="Rumble Audio Rental" aria-pressed="false"></button>
-      </div>
-      <div class="rg-act"><button class="btn" type="button" id="rgp">Lihat preview <i aria-hidden="true">↗</i></button></div>
-      <div class="rg-info sr" id="rgi" aria-live="polite">
-        <div class="eyebrow" data-e>Kedai kopi</div>
-        <h3 data-t>Teduh Kopi</h3>
-        <p class="d" data-d>Cerita secangkir kopi dari biji sampai meja, bergerak mengikuti scroll.</p>
-      </div>
+            </div><span class="cap"><span><b>Rumble Audio Rental</b><small>Sewa alat</small></span><i aria-hidden="true">↗</i></span></button>
     </div>
+    <p class="wk-n">Brand dan harga di tiap demo hanya contoh.</p>
   </div>
 </section>
 
@@ -1002,65 +959,19 @@ addEventListener('scroll',bt,{passive:true});addEventListener('resize',bt);bt();
 </script>
 
 <script>
-/* ---------- Karya: cincin 3D preview website demo ---------- */
+/* ---------- Karya: kartu preview dan pop up ---------- */
 (()=>{
-const $=s=>document.querySelector(s),rg=$('#rg'),stage=$('#rgs'),ring=$('#rgr'),info=$('#rgi'),btns=[...document.querySelectorAll('#rgd button')],cards=[...ring.children],N=cards.length;
+const $=s=>document.querySelector(s),cards=[...document.querySelectorAll('#wks .wk')];
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-const D=[
-{e:'Kedai kopi',t:'Teduh Kopi',d:'Perjalanan secangkir kopi dari biji ke meja.',u:'https://menej-cafe.vercel.app'},
-{e:'Properti',t:'Rindang Residence',d:'Perumahan asri di Bogor, dari gerbang sampai kunci.',u:'https://menej-properti.vercel.app'},
-{e:'Logistik',t:'Lintas Nusa Trans',d:'Trucking antarkota dengan pemilih armada 3D.',u:'https://menej-rent-truck.vercel.app'},
-{e:'Sewa alat',t:'Rumble Audio Rental',d:'Sewa sound system dengan kalkulator biaya.',u:'https://menej-rent-audio.vercel.app'}];
-let ang=0,tgt=0,front=0,raf=0,last=Date.now(),vis=false,tm=0,mopen=false,opener=null;
-const mod=n=>((n%N)+N)%N,R=()=>cards[0].offsetWidth*.82;
-function setInfo(i){
-  info.classList.add('swap');clearTimeout(tm);
-  tm=setTimeout(()=>{const x=D[i];
-    info.querySelector('[data-e]').textContent=x.e;info.querySelector('[data-t]').textContent=x.t;info.querySelector('[data-d]').textContent=x.d;
-    info.classList.remove('swap')},reduce?0:200);
-  
-}
-function layout(){
-  const r=R();ring.style.transform=`translateZ(${-r}px) rotateY(${ang}deg)`;
-  let f=mod(Math.round(-ang/90));
-  cards.forEach((c,i)=>{c.style.transform=`rotateY(${i*90}deg) translateZ(${r}px)`;
-    let d=((ang+i*90)%360+540)%360-180;c.style.setProperty('--dim',Math.min(.45,Math.abs(d)/180*.9).toFixed(2));c.classList.toggle('front',i===f)});
-  if(f!==front){front=f;btns.forEach((b,k)=>b.setAttribute('aria-pressed',k===f));setInfo(f)}
-}
-function tick(){const d=tgt-ang;if(Math.abs(d)<.05||reduce){ang=tgt;layout();raf=0;return}ang+=d*.1;layout();raf=requestAnimationFrame(tick)}
-function go(i){last=Date.now();let t=-i*90;t+=Math.round((ang-t)/360)*360;tgt=t;cancelAnimationFrame(raf);tick()}
-
-/* pop up preview */
-const m=$('#rgm'),mf=$('#rgmf');
-function openM(i){
-  opener=document.activeElement;mopen=true;
-  $('#rgmt').textContent=D[i].t+' · '+D[i].u.replace('https://','');$('#rgmo').href=D[i].u;mf.title='Preview '+D[i].t;mf.src=D[i].u;
-  m.hidden=false;document.body.style.overflow='hidden';$('#rgmx').focus();
-}
-function closeM(){if(!mopen)return;mopen=false;m.hidden=true;mf.src='about:blank';document.body.style.overflow='';last=Date.now();opener&&opener.focus&&opener.focus()}
-$('#rgp').addEventListener('click',()=>openM(front));
-$('#rgmx').addEventListener('click',closeM);
-m.addEventListener('click',e=>{if(e.target===m)closeM()});
-addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
-
-rg.classList.add('on3d');layout();
-btns.forEach((b,i)=>b.addEventListener('click',()=>go(i)));
-cards.forEach((c,i)=>c.addEventListener('click',e=>{
-  if(e.target.closest('a'))return;
-  e.preventDefault();
-  if(!c.classList.contains('front'))go(i);else openM(i)},true));
-/* seret */
-let x0=0,a0=0,dr=false,mv=false,v=0,lx=0;
-stage.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;dr=true;mv=false;x0=lx=e.clientX;a0=ang;v=0;cancelAnimationFrame(raf);last=Date.now()});
-addEventListener('pointermove',e=>{if(!dr)return;const dx=e.clientX-x0;if(!mv&&Math.abs(dx)>7)mv=true;if(!mv)return;ang=a0+dx*.35;v=.6*v+.4*(e.clientX-lx)*.35;lx=e.clientX;layout()});
-const end=()=>{if(!dr)return;dr=false;if(mv){tgt=Math.round((ang+v*6)/90)*90;last=Date.now();tick()}};
-addEventListener('pointerup',end);addEventListener('pointercancel',end);
-stage.addEventListener('click',e=>{if(mv){e.preventDefault();e.stopPropagation();mv=false}},true);
-stage.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();go(mod(front+1))}if(e.key==='ArrowLeft'){e.preventDefault();go(mod(front-1))}if(e.key==='Enter'){e.preventDefault();openM(front)}});
-if('IntersectionObserver' in window)new IntersectionObserver(es=>{vis=es.some(e=>e.isIntersecting)},{threshold:.4}).observe(stage);
-if(!reduce)setInterval(()=>{if(vis&&!mopen&&!dr&&Date.now()-last>5000&&!stage.matches(':focus-within'))go(mod(front+1))},4000);
-let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(layout,150)});
-setInfo(0);
+const D=[['Teduh Kopi','https://menej-cafe.vercel.app'],['Rindang Residence','https://menej-properti.vercel.app'],['Lintas Nusa Trans','https://menej-rent-truck.vercel.app'],['Rumble Audio Rental','https://menej-rent-audio.vercel.app']];
+const m=$('#rgm'),mf=$('#rgmf');let opener=null;
+function openM(i){opener=document.activeElement;$('#rgmt').textContent=D[i][0]+' · '+D[i][1].replace('https://','');$('#rgmo').href=D[i][1];mf.title='Preview '+D[i][0];mf.src=D[i][1];m.hidden=false;document.body.style.overflow='hidden';$('#rgmx').focus()}
+function closeM(){if(m.hidden)return;m.hidden=true;mf.src='about:blank';document.body.style.overflow='';opener&&opener.focus&&opener.focus()}
+cards.forEach((c,i)=>c.addEventListener('click',()=>openM(i)));
+$('#rgmx').addEventListener('click',closeM);m.addEventListener('click',e=>{if(e.target===m)closeM()});addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+if(!reduce&&matchMedia('(hover:hover)').matches)cards.forEach(c=>{
+  c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.setProperty('--ry',(x*9).toFixed(1)+'deg');c.style.setProperty('--rx',(-y*9).toFixed(1)+'deg')});
+  c.addEventListener('pointerleave',()=>{c.style.setProperty('--ry','0deg');c.style.setProperty('--rx','0deg')})});
 })();
 </script>
 <script>
