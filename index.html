@@ -154,8 +154,7 @@ section.s{padding:clamp(64px,8vw,110px) 0}
 .rg.on3d .rg-card:not(.front) .rg-screen iframe{pointer-events:none}
 .rg-floor{width:min(520px,80vw);height:0;margin:34px auto 0;border-top:2px dashed var(--line-s)}
 .rg-dots{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:20px}
-.rg-dots button{min-height:44px;padding:8px 16px;border:2px solid var(--tinta);background:transparent;color:var(--tinta);border-radius:var(--r-md);font:600 14px/1 var(--fs);cursor:pointer;transition:background-color .2s,transform .18s var(--ets)}
-.rg-dots button:hover{background:var(--gading-200)}.rg-dots button[aria-pressed=true]{background:var(--kunyit);box-shadow:3px 3px 0 var(--tinta)}.rg-dots button:active{transform:translate(2px,2px)}
+.rg-dots{gap:14px}.rg-dots button{position:relative;width:12px;height:12px;padding:0;border:2px solid var(--tinta);background:transparent;border-radius:99px;cursor:pointer;transition:width .25s var(--ets),background-color .2s}.rg-dots button::before{content:"";position:absolute;inset:-16px -8px}.rg-dots button[aria-pressed=true]{width:30px;background:var(--kunyit)}
 .rg-info{max-width:620px;margin:26px auto 0;background:var(--gading);border:2px solid var(--tinta);border-radius:var(--r-lg);box-shadow:6px 6px 0 var(--tinta);padding:clamp(20px,2.4vw,30px)}
 .rg-info>*{transition:opacity .35s ease,transform .45s var(--ease)}.rg-info.swap>*{opacity:0;transform:translateY(10px)}
 .rg-info h3{font-size:clamp(26px,3vw,38px);margin-bottom:10px}.rg-info p.d{color:var(--muted);margin-bottom:14px}
@@ -289,7 +288,7 @@ footer .lg{color:var(--gading);margin-bottom:16px}
     <div class="rg-head">
       <p class="k">Contoh hasil kerja</p>
       <h2 id="h-karya">Empat website demo, <em>satu gaya 3D.</em></h2>
-      <p class="sub">Putar cincinnya, lalu ketuk kartu di depan untuk membuka preview layar besar. Semuanya landing page interaktif yang bergerak mengikuti scroll, dibuat untuk jenis usaha yang berbeda.</p>
+      <p class="sub">Geser kartunya, lalu ketuk untuk melihat preview layar besar. Brand dan harga di tiap demo hanya contoh.</p>
     </div>
     <div class="rg" id="rg">
       <div class="rg-stage" id="rgs" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Preview empat website demo. Gunakan tombol panah kiri dan kanan untuk berpindah.">
@@ -367,15 +366,13 @@ footer .lg{color:var(--gading);margin-bottom:16px}
         <div class="rg-floor" aria-hidden="true"></div>
       </div>
       <div class="rg-dots" id="rgd" role="group" aria-label="Pilih website demo">
-        <button type="button" aria-pressed="true">Kafe</button><button type="button" aria-pressed="false">Properti</button><button type="button" aria-pressed="false">Truk</button><button type="button" aria-pressed="false">Sound System</button>
+        <button type="button" aria-label="Teduh Kopi" aria-pressed="true"></button><button type="button" aria-label="Rindang Residence" aria-pressed="false"></button><button type="button" aria-label="Lintas Nusa Trans" aria-pressed="false"></button><button type="button" aria-label="Rumble Audio Rental" aria-pressed="false"></button>
       </div>
-      <div class="rg-act"><a class="btn" data-go href="https://menej-cafe.vercel.app" target="_blank" rel="noopener">Buka demo <i aria-hidden="true">↗</i></a><button class="btn l" type="button" id="rgp">Preview layar besar</button></div>
+      <div class="rg-act"><button class="btn" type="button" id="rgp">Lihat preview <i aria-hidden="true">↗</i></button></div>
       <div class="rg-info" id="rgi" aria-live="polite">
-        <div class="eyebrow" data-e>Demo 01 · Kedai kopi</div>
+        <div class="eyebrow" data-e>Kedai kopi</div>
         <h3 data-t>Teduh Kopi</h3>
         <p class="d" data-d>Cerita secangkir kopi dari biji sampai meja, bergerak mengikuti scroll.</p>
-        <ul data-f></ul>
-        <p class="fn">Semua demo memakai brand fiktif. Harga dan kontak di dalamnya hanya contoh.</p>
       </div>
     </div>
   </div>
@@ -938,18 +935,18 @@ addEventListener('scroll',bt,{passive:true});addEventListener('resize',bt);bt();
 const $=s=>document.querySelector(s),rg=$('#rg'),stage=$('#rgs'),ring=$('#rgr'),info=$('#rgi'),btns=[...document.querySelectorAll('#rgd button')],cards=[...ring.children],N=cards.length;
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const D=[
-{e:'Demo 01 · Kedai kopi',t:'Teduh Kopi',d:'Cerita secangkir kopi dari biji sampai meja, bergerak mengikuti scroll, lengkap dengan alur pesan ambil di kedai.',f:['Perjalanan 3D mengikuti scroll','Panel pesan 4 langkah','Nuansa hangat dan tenang'],u:'https://menej-cafe.vercel.app'},
-{e:'Demo 02 · Properti',t:'Rindang Residence',d:'Perumahan asri di Bogor untuk pembeli rumah pertama, dari gerbang sampai serah terima kunci.',f:['Empat tipe rumah dan booking survei','Simulasi cicilan KPR','Perjalanan 3D dari gerbang ke rumah contoh'],u:'https://menej-properti.vercel.app'},
-{e:'Demo 03 · Logistik',t:'Lintas Nusa Trans',d:'Jasa trucking antarkota dengan pemilih armada yang bisa diputar dan form minta penawaran.',f:['Pemilih armada 3D: CDD, Fuso, Tronton, Trailer','Contoh rute Sumatra ke Bali','Form penawaran dan tombol WhatsApp'],u:'https://menej-rent-truck.vercel.app'},
-{e:'Demo 04 · Sewa alat',t:'Rumble Audio Rental',d:'Sewa sound system, DJ, dan lampu panggung dengan kalkulator biaya langsung di halaman.',f:['Empat paket sewa berdasarkan jumlah tamu','Simulasi suasana lampu di panggung 3D','Kalkulator estimasi dan FAQ'],u:'https://menej-rent-audio.vercel.app'}];
+{e:'Kedai kopi',t:'Teduh Kopi',d:'Perjalanan secangkir kopi dari biji ke meja.',u:'https://menej-cafe.vercel.app'},
+{e:'Properti',t:'Rindang Residence',d:'Perumahan asri di Bogor, dari gerbang sampai kunci.',u:'https://menej-properti.vercel.app'},
+{e:'Logistik',t:'Lintas Nusa Trans',d:'Trucking antarkota dengan pemilih armada 3D.',u:'https://menej-rent-truck.vercel.app'},
+{e:'Sewa alat',t:'Rumble Audio Rental',d:'Sewa sound system dengan kalkulator biaya.',u:'https://menej-rent-audio.vercel.app'}];
 let ang=0,tgt=0,front=0,raf=0,last=Date.now(),vis=false,tm=0,mopen=false,opener=null;
 const mod=n=>((n%N)+N)%N,R=()=>cards[0].offsetWidth*.82;
 function setInfo(i){
   info.classList.add('swap');clearTimeout(tm);
   tm=setTimeout(()=>{const x=D[i];
     info.querySelector('[data-e]').textContent=x.e;info.querySelector('[data-t]').textContent=x.t;info.querySelector('[data-d]').textContent=x.d;
-    info.querySelector('[data-f]').innerHTML=x.f.map(s=>`<li>${s}</li>`).join('');info.classList.remove('swap')},reduce?0:200);
-  rg.querySelector('[data-go]').href=D[i].u;
+    info.classList.remove('swap')},reduce?0:200);
+  
 }
 function layout(){
   const r=R();ring.style.transform=`translateZ(${-r}px) rotateY(${ang}deg)`;
