@@ -258,6 +258,45 @@ section.s{padding:clamp(64px,8vw,110px) 0}
 .fq summary::after{content:"+";font:500 26px/1 var(--fm);transition:transform .25s var(--ets)}.fq details[open] summary::after{transform:rotate(45deg)}
 .fq p{margin-top:10px;max-width:640px;color:var(--muted)}
 
+/* belanja 3D */
+.sp{--sw:230px;margin-top:6px}
+.sp-view{position:relative;height:clamp(270px,32vw,320px);perspective:760px;perspective-origin:50% 28%;overflow:hidden;border:2px solid var(--tinta);border-radius:var(--r-lg);background:var(--gading);box-shadow:6px 6px 0 var(--tinta);touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.sp-world{position:absolute;left:50%;bottom:0;width:0;height:100%;transform-style:preserve-3d;transition:transform 1s cubic-bezier(.55,0,.2,1)}
+.sp-floor{position:absolute;left:-1800px;width:3600px;bottom:0;height:300px;transform-origin:50% 100%;transform:rotateX(74deg);background-color:var(--gading-200);background-image:repeating-linear-gradient(90deg,transparent 0 119px,rgba(18,37,30,.14) 119px 121px),repeating-linear-gradient(0deg,transparent 0 59px,rgba(18,37,30,.14) 59px 61px)}
+.st{position:absolute;left:calc(var(--i)*var(--sw) - 75px);bottom:58px;width:150px;height:176px;transform-style:preserve-3d;transform:translateZ(-150px);cursor:pointer}
+.st>div{position:absolute;background:var(--ac);border:2px solid var(--tinta);transition:filter .5s}
+.st .f{inset:0;transform:translateZ(32px);border-radius:10px 10px 4px 4px;padding:10px 10px 0;display:flex;flex-direction:column;gap:10px}
+.st .bk{inset:0;transform:rotateY(180deg) translateZ(32px)}
+.st .rt{width:64px;height:176px;left:43px;transform:rotateY(90deg) translateZ(75px);filter:brightness(.78)}
+.st .lf{width:64px;height:176px;left:43px;transform:rotateY(-90deg) translateZ(75px);filter:brightness(.78)}
+.st .tp{width:150px;height:64px;top:56px;transform:rotateX(90deg) translateZ(88px);filter:brightness(1.18)}
+.st:not(.on) .f{filter:brightness(.8)}.st.on .f{box-shadow:0 0 0 4px var(--kunyit)}
+.st .pl{display:flex;align-items:center;gap:7px;align-self:stretch;background:var(--on);color:var(--ac);border-radius:8px;padding:6px 8px;font:600 13.5px/1.1 var(--fd);white-space:nowrap;overflow:hidden;justify-content:center}.st .pl i{display:none}
+.st .sh{flex:1;display:grid;grid-template-rows:repeat(3,1fr);gap:0;margin:0 -10px}
+.st .sh span{border-bottom:5px solid var(--on);background:repeating-linear-gradient(90deg,transparent 0 10px,var(--on) 10px 30px,transparent 30px 36px,var(--on) 36px 52px,transparent 52px 60px) no-repeat;background-size:100% 62%;background-position:0 100%;opacity:.9}
+.st .sh span:nth-child(2){opacity:.6}.st .sh span:nth-child(3){opacity:.35}
+.sp-cart{position:absolute;left:50%;bottom:6px;width:176px;margin-left:-88px;z-index:5;pointer-events:none}
+.sp-cart::after{content:"";position:absolute;left:8%;right:8%;bottom:-5px;height:12px;border-radius:50%;background:rgba(18,37,30,.2);z-index:-1}
+.sp-cart .cw{transition:transform .25s}.sp-cart.rv .cw{transform:scaleX(-1)}.sp-cart .cs{display:block;width:100%;height:auto;overflow:visible}
+.sp-cart.mv .cs{animation:spbob .3s ease-in-out infinite}.sp-cart.mv .wh{animation:spwh .45s linear infinite}.wh{transform-box:fill-box;transform-origin:center}
+@keyframes spbob{50%{transform:translateY(-3px)}}@keyframes spwh{to{transform:rotate(360deg)}}
+.sp-cart.jig{animation:spjig .5s var(--ets)}@keyframes spjig{30%{transform:scale(1.07,.94)}60%{transform:scale(.97,1.04)}}
+#spload .drop{animation:spdrop .45s var(--ets) both}@keyframes spdrop{from{transform:translateY(-60px);opacity:0}to{transform:none;opacity:1}}
+.sp-bd{position:absolute;right:-2px;top:-8px;min-width:30px;height:30px;padding:0 8px;border-radius:15px;background:var(--bata);color:var(--gading);border:2.5px solid var(--tinta);font:600 15px/25px var(--fs);text-align:center}.sp-bd[hidden]{display:none}.sp-bd.bp{animation:spbp .45s var(--ets)}@keyframes spbp{40%{transform:scale(1.35)}}
+.sp-nav{position:absolute;top:42%;z-index:6;width:42px;height:42px;border-radius:50%;border:2px solid var(--tinta);background:var(--gading);color:var(--tinta);font:600 24px/1 var(--fs);cursor:pointer;display:grid;place-items:center;padding:0 0 3px;transition:background-color .2s,opacity .2s}.sp-nav:hover{background:var(--kunyit)}.sp-nav:disabled{opacity:.3;cursor:default}.sp-nav.l{left:12px}.sp-nav.r{right:12px}
+.sp-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0 6px}
+.sp-tabs button{min-height:40px;padding:8px 16px;border:2px solid var(--tinta);border-radius:999px;background:transparent;color:var(--tinta);font:600 14px/1 var(--fs);cursor:pointer;transition:background-color .2s,transform .18s var(--ets)}.sp-tabs button:hover{background:var(--gading)}.sp-tabs button[aria-pressed=true]{background:var(--tinta);color:var(--gading)}
+.sp-list{max-width:980px;margin:18px auto 0}.sp-list.fd{animation:spin .5s var(--ease)}@keyframes spin{from{opacity:0;transform:translateY(10px)}}
+.sp-lh{text-align:center;margin-bottom:16px}.sp-lh h3{font:600 clamp(24px,3vw,32px)/1.1 var(--fd)}.sp-lh p{color:var(--muted);font-size:15px;margin-top:4px}
+.sp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.pd{display:flex;flex-direction:column;gap:6px;background:var(--gading);border:2px solid var(--tinta);border-radius:var(--r-md);padding:18px 18px 16px;transition:transform .25s var(--ets),box-shadow .25s}.pd:hover{transform:translateY(-3px);box-shadow:4px 4px 0 var(--tinta)}.pd.in{background:#FFF3D0}
+.pd .pt{display:flex;justify-content:space-between;align-items:baseline;gap:12px}.pd h4{font:600 17px/22px var(--fs)}.pd em{font:600 20px/1 var(--fd);font-style:normal;white-space:nowrap}
+.pd .pu{font:500 12px/16px var(--fm);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}.pd p{font-size:14px;line-height:21px;color:var(--muted)}
+.pd details{font-size:14px}.pd summary{cursor:pointer;font-weight:600;padding:4px 0}.pd details ul{margin:6px 0 0;padding-left:18px;list-style:disc}.pd details li{margin-bottom:4px;line-height:20px}.pd details li.x{color:var(--muted)}.pd details .sv{font-size:13px;margin-top:6px}
+.pd .pa{margin-top:auto;padding-top:10px}.pd .add.on{background:var(--tinta);color:var(--gading)}
+.sp-note{text-align:center;font-size:13px;color:var(--muted);margin-top:16px}.sp-note b{color:var(--tinta)}
+.fly{position:fixed;width:28px;height:28px;border-radius:8px;border:3px solid var(--tinta);z-index:90;pointer-events:none}
+@media(max-width:700px){.sp{--sw:190px}.sp-view{height:270px}.sp-cart{width:150px;margin-left:-75px}.sp-nav{width:38px;height:38px;top:38%}.sp-nav.l{left:8px}.sp-nav.r{right:8px}.sp-tabs{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;margin-left:-20px;margin-right:-20px;padding:2px 20px 6px;scrollbar-width:none}.sp-tabs button{flex:none}.sp-grid{grid-template-columns:1fr}}
 /* cta + footer */
 .cta{background:var(--gading-200);text-align:center;border-top:2px solid var(--tinta)}
 .cta h2{font-size:clamp(34px,5.6vw,76px);line-height:1}.cta p.l2{max-width:560px;margin:22px auto 30px;font-size:19px;line-height:29px}
@@ -277,6 +316,8 @@ footer .lg{color:var(--gading);margin-bottom:16px}
 #barchip{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:60;display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:10px 18px;border:2px solid var(--kunyit);border-radius:var(--r-md);background:var(--tinta);color:var(--gading);font:600 14px/1 var(--fs);box-shadow:3px 3px 0 var(--kunyit);cursor:pointer;transform:translateY(160%);transition:transform .45s var(--ets)}#barchip.show{transform:none}#barchip b{color:var(--kunyit)}
 #bar:focus-within{outline:0}#bar :focus-visible{outline-color:var(--kunyit)}
 
+footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-content:space-between;gap:16px 32px;flex-wrap:wrap}footer .fs .lg{margin:0}footer .fs nav{display:flex;gap:6px 26px;flex-wrap:wrap}footer .fs nav a{font:500 15px/1 var(--fs);padding:8px 0}footer .fnote{margin:18px 0 0;width:100%;padding-top:16px;border-top:1.5px solid var(--line)}
+@media(max-width:700px){footer .fs{flex-direction:column;align-items:flex-start}}
 @media(max-width:860px){
 .nav nav{display:none}
 .cf{--cw:min(330px,84vw);--ch:clamp(420px,calc(100svh - 300px),620px)}.cf-h{padding:18px 18px 12px}.cf-tag,.cf-it{padding-left:18px;padding-right:18px}.cf-f{margin:4px 18px 0}.cf-it .mi{padding:9px 0}.cf-it .mi p{font-size:12.5px;line-height:18px}.cf-it .add{padding:7px 14px;font-size:13px;min-height:38px}.cf-tag{display:none}
@@ -338,13 +379,19 @@ footer .lg{color:var(--gading);margin-bottom:16px}
       <h2 id="h-harga">Layanan satuan dan paket <em>bulanan.</em></h2>
     </div>
     <div id="bkwrap">
-      <div class="cf" id="cf" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Kartu menu layanan. Gunakan tombol panah kiri dan kanan untuk berpindah kartu.">
-        <div class="cf-stage" id="cfs"></div>
-        <div class="cf-floor" aria-hidden="true"></div>
+      <div class="sp" id="sp">
+        <div class="sp-view" id="spv">
+          <div class="sp-world" id="spw"><div class="sp-floor" aria-hidden="true"></div></div>
+          <div class="sp-cart" id="spc" aria-hidden="true">
+            <div class="cw"><svg class="cs" viewBox="0 0 220 170"><path d="M82 112V132M162 112V132" fill="none" stroke="#12251E" stroke-width="7" stroke-linecap="round"/><path d="M10 18H36L58 112H168" fill="none" stroke="#12251E" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M44 38H198L178 102H62Z" fill="#E9E0CC"/><g id="spload"></g><path d="M96 38L102 102M132 38L136 102M170 38L168 102M53 70H188" fill="none" stroke="#12251E" stroke-width="3.5" opacity=".4"/><path d="M44 38H198L178 102H62Z" fill="none" stroke="#12251E" stroke-width="7" stroke-linejoin="round"/><g class="wh"><circle cx="82" cy="146" r="15" fill="#FFB81C" stroke="#12251E" stroke-width="6"/><path d="M82 135V157M71 146H93" stroke="#12251E" stroke-width="3.5"/></g><g class="wh"><circle cx="162" cy="146" r="15" fill="#FFB81C" stroke="#12251E" stroke-width="6"/><path d="M162 135V157M151 146H173" stroke="#12251E" stroke-width="3.5"/></g></svg></div>
+            <span class="sp-bd" id="spbd" hidden>0</span>
+          </div>
+          <button class="sp-nav l" id="spp" type="button" aria-label="Kategori sebelumnya">‹</button>
+          <button class="sp-nav r" id="spn" type="button" aria-label="Kategori berikutnya">›</button>
+        </div>
+        <div class="sp-tabs" id="spt" aria-label="Kategori layanan"></div>
       </div>
-      <div class="bk-hint" aria-hidden="true"><span class="arr l">‹</span><span class="tx">Geser kartu untuk berpindah kategori</span><span class="arr r">›</span></div>
-      <div class="bk-dots" id="bkdots" aria-hidden="true"></div>
-      <p class="sr" id="bkst" aria-live="polite"></p>
+      <div class="sp-list" id="sple" aria-live="polite"></div>
       <div class="nota" id="nota" aria-live="polite"></div>
     </div>
   </div>
@@ -484,14 +531,10 @@ footer .lg{color:var(--gading);margin-bottom:16px}
 </main>
 
 <footer>
-  <div class="w">
-    <div class="g">
-      <div><a class="lg" href="#journey" aria-label="Menej Ets"><svg viewBox="0 0 240 240" aria-hidden="true"><rect width="240" height="240" rx="56" fill="#F5EFE3"/><rect x="100" y="44" width="40" height="104" rx="20" fill="#12251E"/><circle cx="120" cy="188" r="22" fill="#B33D22"/></svg><span>menej <em>ets</em></span></a><p style="max-width:360px">Kelola ads, Instagram, website, dan automasi untuk UMKM. Satu tim. Seluruh alur. Beres.</p></div>
-      <nav aria-label="Tautan"><h3>Jelajahi</h3><ul><li><a href="#harga">Harga layanan</a></li><li><a href="#harga" data-tab="Paket Bulanan">Paket bulanan</a></li><li><a href="#karya">Contoh karya</a></li><li><a href="#cara" data-j="cara" data-step="1">Cara pesan</a></li><li><a href="#cara" data-j="cara" data-step="2">Ketentuan layanan</a></li><li><a href="#faq">FAQ</a></li></ul></nav>
-      <div><h3>Kontak</h3><ul><li><a href="https://wa.me/628567876751" target="_blank" rel="noopener">WhatsApp 0856 7876 751</a></li><li><a href="mailto:menejets@gmail.com">menejets@gmail.com</a></li><li><a href="https://instagram.com/menejets" target="_blank" rel="noopener">Instagram @menejets</a></li></ul></div>
-    </div>
-    <div class="wm" aria-hidden="true">menej <em>ets</em></div>
-    <p class="fnote">© 2026 Menej Ets. Semua hak dilindungi.</p>
+  <div class="w fs">
+    <a class="lg" href="#journey" aria-label="Menej Ets, kembali ke atas"><svg viewBox="0 0 240 240" aria-hidden="true"><rect width="240" height="240" rx="56" fill="#F5EFE3"/><rect x="100" y="44" width="40" height="104" rx="20" fill="#12251E"/><circle cx="120" cy="188" r="22" fill="#FFB81C"/></svg><span>menej <em>ets</em></span></a>
+    <nav aria-label="Kontak"><a href="https://wa.me/628567876751" target="_blank" rel="noopener">WhatsApp</a><a href="https://instagram.com/menejets" target="_blank" rel="noopener">Instagram</a><a href="mailto:menejets@gmail.com">Email</a></nav>
+    <p class="fnote">© 2026 Menej Ets</p>
   </div>
 </footer>
 
@@ -897,56 +940,52 @@ const S=[
 ["Website","Landing Page 3D (three.js)",447000,"w","harga awal, sekali bayar","1 halaman interaktif dengan dunia 3D yang bergerak mengikuti scroll, seperti halaman ini"],
 ["Website","Landing Page Framer",499000,"w","harga awal, sekali bayar","1 halaman modern dengan animasi yang halus"],
 ["Website","Toko Online WooCommerce",699000,"w","harga awal, sekali bayar","Katalog, keranjang, checkout, maks. 5 produk awal"],
-["Otomasi AI","Setup Otomasi Konten AI",499000,"o","sekali bayar","Alur kerja AI disiapkan di akun Claude Pro milikmu. Wajib memiliki Claude Pro aktif."]];
+["Otomasi AI","Setup Otomasi Konten AI",499000,"o","sekali bayar","Alur kerja AI disiapkan di akun Claude Pro milikmu. Wajib memiliki Claude Pro aktif."],
+["Paket Bulanan","Starter",229000,"m","per bulan","Untuk mulai tampil rutin: 8 postingan per bulan.",0],
+["Paket Bulanan","Growth",629000,"m","per bulan","Akun terkelola, 16 postingan per bulan.",1],
+["Paket Bulanan","Business Pro",1049000,"m","per bulan","Pengelolaan menyeluruh, 24 postingan per bulan.",2]];
 const NOTE={"Konten AI":"Dibuat dengan bantuan AI. Harga per item.","Kelola Instagram":"Hanya pengelolaan akun. Konten dipesan terpisah.","Iklan Digital":"Budget iklan dibayar langsung ke Meta atau Google. Tanpa jaminan hasil.","Website":"Harga awal. Domain dan hosting dibayar terpisah.","Otomasi AI":"Wajib akun Claude Pro aktif. Biaya pihak ketiga terpisah.","Paket Bulanan":"Termasuk kalender konten dan revisi. Budget iklan, Google Ads, dan website tidak termasuk."};
 const cats=Object.keys(NOTE),cart={},HI='Halo Menej Ets, saya ingin konsultasi layanan digital.';let tab=cats[0];
 
-const row=i=>{const s=S[i],q=cart[i],e=esc(s[1]);
-const c=q?`<div class="q" role="group" aria-label="Jumlah ${e}"><button type="button" data-i="${i}" data-d="-1" aria-label="Kurangi ${e}">−</button><output>${q}</output><button type="button" data-i="${i}" data-d="1" aria-label="Tambah ${e}">+</button></div>`:`<button class="add" type="button" data-i="${i}" data-d="1" aria-label="Tambah ${e} ke pesanan">Tambah ke Pesanan</button>`;
-return `<div class="mi"><div class="l"><h3>${e}</h3><i></i><em>${s[3]=='w'?'Mulai ':''}${R(s[2])}</em></div><div class="u">${s[4]}</div><p>${esc(s[5])}</p><div>${c}</div></div>`};
 const PAKET='Paket Bulanan';
 const PK=[
 {n:'Starter',pr:'Rp229.000',sv:'Hemat Rp35.000 dibanding membeli komponen yang setara secara satuan',p:'Untuk mulai tampil rutin: 8 postingan per bulan.',f:['4 Reels 15–30 detik dan 4 desain gambar','8 caption','Ide dan jadwal 1 bulan','1× revisi per bulan'],x:['Tidak termasuk unggah dan penjadwalan posting']},
 {n:'Growth',b:1,tag:'Paling seimbang',pr:'Rp629.000',sv:'Hemat Rp98.000 dibanding membeli komponen yang setara secara satuan',p:'Akun terkelola, 16 postingan per bulan.',f:['8 Reels 15–30 detik dan 8 desain gambar','16 caption','Kalender konten bulanan','Unggah dan penjadwalan posting','Riset hashtag dan penataan profil','Evaluasi konten 1× per bulan','2× revisi per bulan'],x:['Tidak termasuk balasan komentar, DM, dan iklan']},
 {n:'Business Pro',pr:'Rp1.049.000',svn:'Pengelolaan Instagram penuh tidak dijual satuan, sehingga penghematan tidak dihitung.',p:'Pengelolaan menyeluruh, 24 postingan per bulan.',f:['12 Reels 15–30 detik dan 12 desain gambar','24 caption','Strategi dan kalender konten','Pengelolaan Instagram penuh, termasuk komentar dan DM','Pengelolaan iklan Meta','Laporan performa bulanan','3× revisi per bulan'],x:['Tidak termasuk budget iklan, Google Ads, dan website']}];
-const pkHtml=k=>`<article class="pk${k.b?' b':''}">${k.tag?`<span class="tg">${k.tag}</span>`:''}<div class="hd2"><h3>${k.n}</h3><div class="pr">${k.pr} <small>/ bulan</small></div></div><div class="sv${k.svn?' n':''}">${k.sv||k.svn}</div><p>${k.p}</p><ul>${k.f.map(x=>`<li>${x}</li>`).join('')}${k.x.map(x=>`<li class="x">${x}</li>`).join('')}</ul><a class="btn" href="${wa(`Halo Menej Ets, saya tertarik dengan paket ${k.n} ${k.pr}/bulan.\n\nMohon informasi detail pengerjaan dan cara memulai.`)}" target="_blank" rel="noopener">Pilih ${k.n} <i aria-hidden="true">→</i></a></article>`;
 const TAG={'Konten AI':'Konten siap tayang untuk akun bisnismu','Kelola Instagram':'Akun terkelola rapi, jadwal konsisten','Iklan Digital':'Iklan Meta dan Google yang dikelola profesional','Website':'Dari landing page sederhana hingga dunia 3D','Otomasi AI':'Alur kerja AI di akun Claude Pro-mu','Paket Bulanan':'Konten rutin dalam satu paket bulanan'};
 const ACC=[['#12251E','#F5EFE3'],['#1F3B31','#F5EFE3'],['#4F6358','#F5EFE3'],['#12251E','#F5EFE3'],['#1F3B31','#F5EFE3'],['#FFB81C','#12251E']];
-let PAGES=[],isOpen=false,pos=0,tgt=0,raf=0,sup=0,fi=-1;
 const rmo=()=>matchMedia('(prefers-reduced-motion:reduce)').matches,clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-const pkRow=k=>{const e=esc(k.n),sv=k.sv?' · hemat '+k.sv.match(/Rp[\d.]+/)[0]:'',tg=k.tag?' · '+k.tag.toLowerCase():'';
-return `<div class="mi"><div class="l"><h3>${e}</h3><i></i><em>${k.pr}</em></div><div class="u">per bulan${sv}${tg}</div><p>${k.p} ${k.f.join('; ')}. ${k.x.join('; ')}.</p><div><a class="add" href="${wa(`Halo Menej Ets, saya tertarik dengan paket ${k.n} ${k.pr}/bulan.\n\nMohon informasi detail pengerjaan dan cara memulai.`)}" target="_blank" rel="noopener" aria-label="Pilih paket ${e} via WhatsApp">Pilih ${e}</a></div></div>`};
-const unitHtml=u=>u.pk!=null?pkRow(PK[u.pk]):row(u.i);
-const cardHtml=(p,n)=>`<article class="cf-card" data-n="${n}" style="--ac:${ACC[cats.indexOf(p.cat)][0]};--on:${ACC[cats.indexOf(p.cat)][1]}"><header class="cf-h"><span class="no" aria-hidden="true">${String(cats.indexOf(p.cat)+1).padStart(2,'0')}</span><h3>${p.cat}</h3><span class="pg">${n+1} / ${PAGES.length||'·'}</span></header><p class="cf-tag">${p.part>1?`Lanjutan · bagian ${p.part} dari ${p.parts}`:TAG[p.cat]}</p><div class="cf-it">${p.units.map(unitHtml).join('')}</div><p class="cf-f"><b>Catatan:</b> ${NOTE[p.cat]}</p></article>`;
-function paginate(){
-const st=$('#cfs');st.innerHTML=cardHtml({cat:cats[0],units:[],part:1,parts:1},0);
-const card=st.firstElementChild,it=$('.cf-it',card),avail=it.clientHeight,m=document.createElement('div');
-m.style.cssText=`position:absolute;visibility:hidden;left:${it.offsetLeft}px;width:${it.clientWidth}px;top:0;height:auto;overflow:visible;flex:none;pointer-events:none`;card.appendChild(m);
-const out=[];
-cats.forEach(c=>{const us=c==PAKET?PK.map((k,i)=>({pk:i})):S.map((s,i)=>s[0]==c?{i}:null).filter(Boolean);
-m.className='cf-it';m.innerHTML='';let g=[],first=out.length;
-us.forEach(u=>{m.insertAdjacentHTML('beforeend',unitHtml(u));if(g.length&&m.scrollHeight>avail){out.push({cat:c,units:g});g=[];m.innerHTML=unitHtml(u)}g.push(u)});
-out.push({cat:c,units:g});const n=out.length-first;for(let k=first;k<out.length;k++){out[k].part=k-first+1;out[k].parts=n}});
-m.remove();PAGES=out;st.innerHTML=PAGES.map(cardHtml).join('')}
-function syncTab(){const cs=document.querySelectorAll('.cf-card');cs.forEach((c,i)=>c.querySelectorAll('button').forEach(b=>b.tabIndex=i==fi?0:-1))}
-function layout(){const cs=document.querySelectorAll('.cf-card');if(!cs.length)return;const cw=cs[0].offsetWidth;let f=-1,best=9;
-cs.forEach((c,i)=>{const d=i-pos,ad=Math.abs(d),sg=Math.sign(d);
-const x=sg*(Math.min(ad,1)*cw*.76+Math.max(ad-1,0)*cw*.2),ry=-clamp(d,-1,1)*48,z=-Math.min(ad,1)*110-Math.max(Math.min(ad,3)-1,0)*70;
-c.style.transform=`translate3d(${x.toFixed(1)}px,0,${z.toFixed(1)}px) rotateY(${ry.toFixed(1)}deg) scale(${(1-Math.min(ad,2)*.05).toFixed(3)})`;
-c.style.opacity=ad>3.4?0:ad>2?(1-(ad-2)/1.4).toFixed(2):1;c.style.visibility=ad>3.4?'hidden':'visible';c.style.zIndex=100-Math.round(ad*10);c.style.setProperty('--dim',(Math.min(ad,1)*.3).toFixed(2));
-const fr=ad<.5;c.classList.toggle('front',fr);if(ad<best){best=ad;f=i}});
-if(f!==fi){fi=f;syncTab()}}
-function marks(){const p=PAGES[tgt];if(!p)return;$('#bkdots').innerHTML=PAGES.map((_,i)=>`<i class="${i==tgt?'on':''}"></i>`).join('');$('#bkst').textContent=`Halaman ${tgt+1} dari ${PAGES.length}: ${p.cat}`}
-function animate(){cancelAnimationFrame(raf);const tick=()=>{const d=tgt-pos;if(Math.abs(d)<.003||rmo()){pos=tgt;layout();return}pos+=d*.13;layout();raf=requestAnimationFrame(tick)};tick()}
-function go(i){if(!isOpen)return;const n=clamp(i,0,PAGES.length-1);if(n===i){tgt=n;marks();animate()}else{const st=$('#cfs');st.classList.remove('bump','rb');void st.offsetWidth;st.classList.add('bump');if(i>n)st.classList.add('rb')}}
-const step=d=>go(tgt+d);
-function init(){
-if(isOpen)return;isOpen=true;paginate();tgt=0;tab=PAGES[0].cat;pos=0;fi=-1;layout();marks();rk=innerWidth+'x'+Math.round(innerHeight/40);
-if(!rmo()&&'IntersectionObserver' in window){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();pos=tgt-2.6;layout();animate()}},{threshold:.35});io.observe($('#cf'))}}
-function setTab(c){if(!isOpen)init();const i=PAGES.findIndex(p=>p.cat==c);if(i>=0)go(i)}
-function repag(){const p=PAGES[tgt],key=p.cat+JSON.stringify(p.units[0]);paginate();let n=PAGES.findIndex(x=>x.cat+JSON.stringify(x.units[0])==key);if(n<0)n=PAGES.findIndex(x=>x.cat==p.cat);tgt=pos=Math.max(0,n);fi=-1;layout();marks()}
-function renderMenu(){if(!isOpen)return;document.querySelectorAll('.cf-it').forEach((el,n)=>{el.innerHTML=PAGES[n].units.map(unitHtml).join('')});syncTab()}
-let rz,rk='';addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(!isOpen)return;const k=innerWidth+'x'+Math.round(innerHeight/40);if(k===rk)return;rk=k;repag()},250)});
+const CC=['#FFB81C','#B33D22','#4F6358','#F5EFE3','#1F3B31'];
+let cur=0,mvT=0;
+const total=()=>Object.values(cart).reduce((a,b)=>a+b,0);
+/* rak: satu per kategori, berdiri di lorong 3D */
+$('#spw').insertAdjacentHTML('beforeend',cats.map((c,i)=>`<div class="st" data-c="${i}" style="--i:${i};--ac:${ACC[i][0]};--on:${ACC[i][1]}"><div class="f"><b class="pl"><i>${String(i+1).padStart(2,'0')}</i>${c}</b><div class="sh"><span></span><span></span><span></span></div></div><div class="bk"></div><div class="rt"></div><div class="lf"></div><div class="tp"></div></div>`).join(''));
+$('#spt').innerHTML=cats.map((c,i)=>`<button type="button" data-c="${i}">${c}</button>`).join('');
+const pd=i=>{const s=S[i],q=cart[i],e=esc(s[1]),pk=s[0]==PAKET;
+const act=pk?(q?`<button class="add on" type="button" data-i="${i}" data-d="-1">Keluarkan dari troli</button>`:`<button class="add" type="button" data-i="${i}" data-d="1" aria-label="Masukkan ${e} ke troli">+ Masukkan ke troli</button>`)
+:(q?`<div class="q" role="group" aria-label="Jumlah ${e}"><button type="button" data-i="${i}" data-d="-1" aria-label="Kurangi ${e}">−</button><output>${q}</output><button type="button" data-i="${i}" data-d="1" aria-label="Tambah ${e}">+</button></div>`:`<button class="add" type="button" data-i="${i}" data-d="1" aria-label="Masukkan ${e} ke troli">+ Masukkan ke troli</button>`);
+const k=pk?PK[s[6]]:null,det=k?`<details><summary>Isi paket</summary><ul>${k.f.map(x=>`<li>${x}</li>`).join('')}${k.x.map(x=>`<li class="x">${x}</li>`).join('')}</ul>${k.sv?`<p class="sv">${k.sv}</p>`:''}</details>`:'';
+return `<article class="pd${q?' in':''}"><div class="pt"><h4>${e}</h4><em>${s[3]=='w'?'Mulai ':''}${R(s[2])}</em></div><div class="pu">${s[4]}</div><p>${esc(s[5])}</p>${det}<div class="pa">${act}</div></article>`};
+function renderList(fade){const c=cats[cur],L=$('#sple');
+L.innerHTML=`<div class="sp-lh"><h3>${c}</h3><p>${TAG[c]}</p></div><div class="sp-grid">${S.map((s,i)=>s[0]==c?pd(i):'').join('')}</div><p class="sp-note"><b>Catatan:</b> ${NOTE[c]}</p>`;
+if(fade&&!rmo()){L.classList.remove('fd');void L.offsetWidth;L.classList.add('fd')}}
+function renderLoad(anim){const n=total(),k=Math.min(n,9);
+$('#spload').innerHTML=Array.from({length:k},(_,j)=>{const r=j/3|0;return `<rect class="${anim&&j==k-1?'drop':''}" x="${70+(j%3)*33+(r%2?6:0)}" y="${100-29*(r+1)}" width="28" height="28" rx="6" fill="${CC[j%5]}" stroke="#12251E" stroke-width="3.5"/>`}).join('');
+const b=$('#spbd');b.textContent=n;b.hidden=!n;
+if(anim&&!rmo()){[b,$('#spc')].forEach((el,x)=>{const c=x?'jig':'bp';el.classList.remove(c);void el.offsetWidth;el.classList.add(c)})}}
+const swd=()=>parseFloat(getComputedStyle($('#sp')).getPropertyValue('--sw'))||230;
+function goCat(i,first){if(i<0||i>=cats.length)return;const w=$('#spw'),c=$('#spc'),n=Math.abs(i-cur),dir=i>=cur,dur=rmo()?0:.7+.2*Math.min(n,4);
+w.style.transitionDuration=dur+'s';w.style.transform=`translate3d(${-i*swd()}px,0,0)`;
+if(dur&&(n||first)){c.classList.add('mv');c.classList.toggle('rv',!dir);clearTimeout(mvT);mvT=setTimeout(()=>c.classList.remove('mv'),dur*1000)}
+cur=i;tab=cats[i];
+$$('.st').forEach((e,k)=>e.classList.toggle('on',k==i));
+$$('#spt button').forEach((e,k)=>e.setAttribute('aria-pressed',k==i));
+$('#spp').disabled=i==0;$('#spn').disabled=i==cats.length-1;renderList(true)}
+function setTab(c){const i=cats.indexOf(c);if(i>=0)goCat(i)}
+function fly(r){const col=CC[(Math.min(total(),9)-1)%5];if(rmo()){renderLoad(true);return}
+const c=$('#spc').getBoundingClientRect(),el=document.createElement('div');el.className='fly';el.style.cssText=`left:${r.x+r.width/2-14}px;top:${r.y+r.height/2-14}px;background:${col}`;document.body.appendChild(el);
+const tx=c.x+c.width*.5-(r.x+r.width/2),ty=c.y+c.height*.3-(r.y+r.height/2);
+el.animate([{transform:'translate(0,0) scale(1)'},{transform:`translate(${tx*.5}px,${ty*.5-80}px) scale(1.2)`,offset:.45},{transform:`translate(${tx}px,${ty}px) scale(.55)`}],{duration:720,easing:'cubic-bezier(.4,0,.6,1)'}).onfinish=()=>{el.remove();renderLoad(true)}}
 function calc(){let one=0,mo=0,web=0,ads=0,ai=0,n=0;const L=[];Object.keys(cart).forEach(i=>{const s=S[i],q=cart[i],sub=s[2]*q;s[3]=='m'?mo+=sub:one+=sub;n+=q;if(s[0]=='Website')web=1;if(s[0]=='Iklan Digital')ads=1;if(s[0]=='Otomasi AI')ai=1;L.push(`- ${s[1]} (${s[4]}): ${q} × ${R(s[2])} = ${R(sub)}`)});return{one,mo,web,ads,ai,n,L}}
 function msg(){const c=calc();if(!c.n)return HI;
 const notes=[c.web&&'(Website: harga awal, lingkup dikonfirmasi terlebih dahulu. Domain dan hosting dibayar terpisah)',c.ads&&'(Budget iklan dibayarkan langsung ke Meta atau Google, tidak termasuk biaya pengelolaan)',c.ai&&'(Otomasi AI: wajib memiliki akun Claude Pro aktif, langganan dibayar sendiri)','(Biaya pihak ketiga tidak termasuk. Harga final dikonfirmasi melalui chat)'].filter(Boolean).join('\n');
@@ -955,26 +994,34 @@ function renderNota(){const c=calc(),k=Object.keys(cart),url=wa(msg());
 const tot=[c.one?R(c.one):'',c.mo?R(c.mo)+'/bln':''].filter(Boolean).join(' + ');
 $('#barchip').innerHTML=c.n?`<b>${c.n}</b> item · Nota`:'Nota';$('#sum').innerHTML=c.n?`<b>${c.n} item</b><span>${tot}</span><u>Lihat nota</u>`:`<span>Belum ada pesanan</span><u>Pilih layanan</u>`;
 $('#bwa').textContent=c.n?'Lanjut ke WhatsApp':'Hubungi via WhatsApp';$('#bwa').href=url;
-$('#nota').innerHTML=`<h3>Nota Pesanan</h3><p class="sb">Menej Ets · estimasi, bukan tagihan</p>`+(c.n?k.map(i=>{const s=S[i];return `<div class="li"><div><b>${esc(s[1])}</b><small>${R(s[2])} × ${cart[i]} · ${s[4]}</small></div><b>${R(s[2]*cart[i])}</b></div>`}).join('')+`<div class="tt">${c.one?`<div><span>Sekali bayar</span><span>${R(c.one)}</span></div>`:''}${c.mo?`<div><span>Per bulan</span><span>${R(c.mo)}</span></div>`:''}</div><p class="nb">Harga website merupakan harga awal. Budget iklan, domain, hosting, dan biaya pihak ketiga tidak termasuk. Harga akhir disepakati melalui chat.</p><a class="btn" href="${url}" target="_blank" rel="noopener">Lanjut ke WhatsApp <i aria-hidden="true">→</i></a>`:`<p class="empty">Belum ada layanan yang dipilih. Tekan Tambah ke Pesanan di atas untuk menyusun nota.</p>`)}
+$('#nota').innerHTML=`<h3>Nota Pesanan</h3><p class="sb">Menej Ets · estimasi, bukan tagihan</p>`+(c.n?k.map(i=>{const s=S[i];return `<div class="li"><div><b>${esc(s[1])}</b><small>${R(s[2])} × ${cart[i]} · ${s[4]}</small></div><b>${R(s[2]*cart[i])}</b></div>`}).join('')+`<div class="tt">${c.one?`<div><span>Sekali bayar</span><span>${R(c.one)}</span></div>`:''}${c.mo?`<div><span>Per bulan</span><span>${R(c.mo)}</span></div>`:''}</div><p class="nb">Harga website merupakan harga awal. Budget iklan, domain, hosting, dan biaya pihak ketiga tidak termasuk. Harga akhir disepakati melalui chat.</p><a class="btn" href="${url}" target="_blank" rel="noopener">Lanjut ke WhatsApp <i aria-hidden="true">→</i></a>`:`<p class="empty">Belum ada layanan yang dipilih. Masukkan layanan ke troli untuk menyusun nota.</p>`)}
 function render(){renderNota()}
 let lastN=0;const _rn=renderNota;renderNota=function(){_rn();const n=Object.keys(cart).length;if(n&&n!==lastN&&!rmo()){const e=$('#nota');e.classList.remove('prt');void e.offsetWidth;e.classList.add('prt')}lastN=n};
 document.addEventListener('click',e=>{const t=e.target;
 const dt=t.closest('a[data-tab]');if(dt)setTab(dt.dataset.tab);
-const d=t.closest('.cf-card button[data-i]');if(d){const i=+d.dataset.i,dd=+d.dataset.d;cart[i]=Math.max(0,(cart[i]||0)+dd);if(!cart[i])delete cart[i];renderMenu();renderNota();
-const f=$(`.cf-card.front button[data-i="${i}"][data-d="${dd}"]`)||$(`.cf-card.front button[data-i="${i}"]`);f&&f.focus();return}
+const d=t.closest('.sp-list button[data-i]');
+if(d){const i=+d.dataset.i,dd=+d.dataset.d,r=d.getBoundingClientRect(),before=cart[i]||0,q=S[i][0]==PAKET?clamp(before+dd,0,1):Math.max(0,before+dd);
+if(q)cart[i]=q;else delete cart[i];renderList();renderNota();
+const f=$(`.sp-list button[data-i="${i}"][data-d="${dd}"]`)||$(`.sp-list button[data-i="${i}"]`);f&&f.focus({preventScroll:true});
+if(q>before)fly(r);else renderLoad();return}
+const tb=t.closest('#spt button');if(tb){goCat(+tb.dataset.c);return}
+const st=t.closest('.st');if(st){goCat(+st.dataset.c);return}
+if(t.closest('#spp')){goCat(cur-1);return}if(t.closest('#spn')){goCat(cur+1);return}
 if(t.closest('#sum')){document.getElementById(Object.keys(cart).length?'nota':'harga').scrollIntoView({behavior:'smooth',block:Object.keys(cart).length?'center':'start'})}});
-(()=>{const cf=$('#cf');let x0=0,p0=0,dr=false,mv=false,vel=0,lx=0,lt=0,wl=0;
-const cw=()=>(document.querySelector('.cf-card')||{offsetWidth:360}).offsetWidth*.9;
-cf.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;dr=true;mv=false;x0=lx=e.clientX;p0=pos;lt=performance.now();vel=0;cancelAnimationFrame(raf)});
-addEventListener('pointermove',e=>{if(!dr)return;const dx=e.clientX-x0;if(!mv&&Math.abs(dx)>7)mv=true;if(!mv)return;pos=clamp(p0-dx/cw(),-.35,PAGES.length-.65);layout();const t=performance.now();vel=.7*vel+.3*((lx-e.clientX)/cw())/Math.max(1,t-lt)*16;lx=e.clientX;lt=t});
-const end=()=>{if(!dr)return;dr=false;if(mv){sup=Date.now();tgt=clamp(Math.round(pos+vel*4),0,PAGES.length-1);marks();animate()}};
-addEventListener('pointerup',end);addEventListener('pointercancel',end);
-cf.addEventListener('click',e=>{if(Date.now()-sup<350){e.preventDefault();e.stopPropagation();return}const c=e.target.closest('.cf-card');if(c&&!c.classList.contains('front')){e.preventDefault();e.stopPropagation();go(+c.dataset.n)}},true);
-cf.addEventListener('keydown',e=>{if(e.key=='ArrowRight'){e.preventDefault();step(1)}if(e.key=='ArrowLeft'){e.preventDefault();step(-1)}});
-cf.addEventListener('wheel',e=>{if(Math.abs(e.deltaX)<=Math.abs(e.deltaY)||Math.abs(e.deltaX)<30)return;e.preventDefault();if(Date.now()-wl<650)return;wl=Date.now();step(e.deltaX>0?1:-1)},{passive:false});
+(()=>{const v=$('#spv');let x0=null;
+v.addEventListener('pointerdown',e=>{if(!e.target.closest('button'))x0=e.clientX});
+addEventListener('pointerup',e=>{if(x0===null)return;const dx=e.clientX-x0;x0=null;if(Math.abs(dx)>50)goCat(cur+(dx<0?1:-1))});
+addEventListener('pointercancel',()=>{x0=null});
+addEventListener('keydown',e=>{if(!v.contains(document.activeElement))return;if(e.key=='ArrowRight')goCat(cur+1);if(e.key=='ArrowLeft')goCat(cur-1)});
+let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{const w=$('#spw');w.style.transitionDuration='0s';w.style.transform=`translate3d(${-cur*swd()}px,0,0)`},150)});
+/* masuk: troli berjalan ke rak pertama saat bagian ini terlihat */
+const w=$('#spw');
+if(!rmo()&&'IntersectionObserver' in window){w.style.transitionDuration='0s';w.style.transform=`translate3d(${swd()*2.2}px,0,0)`;
+ new IntersectionObserver((es,o)=>{if(es.some(x=>x.isIntersecting)){o.disconnect();void w.offsetWidth;goCat(0,true)}},{threshold:.4}).observe(v);
+ renderList();$$('.st').forEach((e,k)=>e.classList.toggle('on',k==0));$$('#spt button').forEach((e,k)=>e.setAttribute('aria-pressed',k==0));$('#spp').disabled=true}
+else goCat(0,true);
 })();
-let fontsDone=false;const boot=()=>{init();if(!fontsDone&&document.fonts&&document.fonts.status!=='loaded')document.fonts.ready.then(()=>{fontsDone=true;repag()})};
-(document.fonts?Promise.race([document.fonts.ready,new Promise(r=>setTimeout(r,1500))]):Promise.resolve()).then(boot);
+renderLoad();
 render();
 /* bar WhatsApp muncul setelah perjalanan 3D */
 const j=$('#journey'),j2=$('#cara'),bar=$('#bar');
