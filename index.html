@@ -364,6 +364,14 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
 .pd,.btn,.sp-tabs button,.add,.wk{transition-timing-function:cubic-bezier(.22,.8,.2,1)}
 .sp-list.fd{animation-duration:.6s}
 @media(hover:none){.pd:hover{transform:none;box-shadow:var(--sh-2)}.btn:hover{transform:none}}
+/* layanan: latar polos, adegan troli menempel saat scroll */
+.hg{background:var(--gading);border-top:0;border-bottom:0}
+.sp{--vh:300px;position:sticky;top:78px;z-index:8;background:var(--gading);padding:8px 0 4px;margin-bottom:0;transition:margin-bottom .45s cubic-bezier(.22,.8,.2,1)}
+.sp-view{height:var(--vh);perspective:none;background:#EFE7D6;transition:height .45s cubic-bezier(.22,.8,.2,1)}
+.sp-scene{position:absolute;left:0;right:0;bottom:0;height:var(--vh);perspective:800px;perspective-origin:50% 22%;transform-origin:50% 100%;transition:transform .45s cubic-bezier(.22,.8,.2,1)}
+.sp.stuck .sp-view{height:calc(var(--vh)*.55)}.sp.stuck .sp-scene{transform:scale(.55)}.sp.stuck{margin-bottom:calc(var(--vh)*.45)}
+.sp.stuck .sp-tabs{margin-top:10px}
+@media(max-width:700px){.sp{--vh:250px;top:80px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:opacity .12s!important}html{scroll-behavior:auto}}
 </style>
 <noscript><style>.jr{height:auto!important}.jr .stage{display:none}</style></noscript>
@@ -409,13 +417,14 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
       <h2 id="h-harga">Layanan satuan dan paket <em>bulanan.</em></h2>
     </div>
     <div id="bkwrap">
+      <div id="spsent" aria-hidden="true"></div>
       <div class="sp" id="sp">
-        <div class="sp-view" id="spv">
+        <div class="sp-view" id="spv"><div class="sp-scene" id="sps">
           <div class="sp-world" id="spw"><div class="sp-floor" aria-hidden="true"></div></div>
           <div class="sp-cart" id="spc" aria-hidden="true">
             <div class="cw"><svg class="cs" viewBox="0 0 220 170"><path d="M82 112V132M162 112V132" fill="none" stroke="#12251E" stroke-width="7" stroke-linecap="round"/><path d="M10 18H36L58 112H168" fill="none" stroke="#12251E" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M44 38H198L178 102H62Z" fill="#E9E0CC"/><g id="spload"></g><path d="M96 38L102 102M132 38L136 102M170 38L168 102M53 70H188" fill="none" stroke="#12251E" stroke-width="3.5" opacity=".4"/><path d="M44 38H198L178 102H62Z" fill="none" stroke="#12251E" stroke-width="7" stroke-linejoin="round"/><g class="wh"><circle cx="82" cy="146" r="15" fill="#F5EFE3" stroke="#12251E" stroke-width="6"/><path d="M82 135V157M71 146H93" stroke="#12251E" stroke-width="3.5"/></g><g class="wh"><circle cx="162" cy="146" r="15" fill="#F5EFE3" stroke="#12251E" stroke-width="6"/><path d="M162 135V157M151 146H173" stroke="#12251E" stroke-width="3.5"/></g></svg></div>
             <span class="sp-bd" id="spbd" hidden>0</span>
-          </div>
+          </div></div>
         </div>
         <div class="sp-tabs" id="spt" aria-label="Kategori layanan"></div>
       </div>
@@ -1049,6 +1058,8 @@ render();
 /* bar WhatsApp muncul setelah perjalanan 3D */
 const j=$('#journey'),j2=$('#cara'),chip=$('#barchip'),nt=$('#nota');
 const bt=()=>{const r=j2.getBoundingClientRect(),q=nt.getBoundingClientRect(),ok=scrollY>j.offsetTop+j.offsetHeight-innerHeight+8&&!(r.top<innerHeight&&r.bottom>0)&&!(q.top<innerHeight*.8&&q.bottom>innerHeight*.2);chip.classList.toggle('show',ok&&Object.keys(cart).length>0)};
+const spE=$('#sp'),spS=$('#spsent');let stk=false;const chk=()=>{const t=parseFloat(getComputedStyle(spE).top)||78,v=spS.getBoundingClientRect().top<=t+1;if(v!==stk){stk=v;spE.classList.toggle('stuck',v)}};
+addEventListener('scroll',chk,{passive:true});addEventListener('resize',chk);chk();
 window.__bt=bt;addEventListener('scroll',bt,{passive:true});addEventListener('resize',bt);bt();
 })();
 </script>
