@@ -14,7 +14,7 @@
 <meta property="og:description" content="Satu tim, seluruh alur. Kami pegang konten Instagram, iklan, website, dan otomasi AI untuk UMKM. Harga jelas.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Crect width='240' height='240' rx='56' fill='%2312251E'/%3E%3Crect x='100' y='44' width='40' height='104' rx='20' fill='%23F5EFE3'/%3E%3Ccircle cx='120' cy='188' r='22' fill='%23FFB81C'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..800&family=Instrument+Sans:wght@400..700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500..700&family=Instrument+Sans:wght@400..700&display=swap">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Menej Ets","url":"https://instagram.com/menejets","email":"menejets@gmail.com","telephone":"+628567876751","description":"Pengelola digital untuk UMKM: konten Instagram, iklan Meta dan Google, website, dan otomasi AI.","sameAs":["https://instagram.com/menejets"]}</script>
 <style>
 :root{--tinta:#12251E;--tinta-700:#1F3B31;--gading:#F5EFE3;--gading-200:#E9E0CC;--kunyit:#FFB81C;--kunyit-tua:#8A5A00;--bata:#B33D22;--daun:#4F6358;
@@ -824,10 +824,10 @@ function createJourney(cfg){
   if(!root) return;
   const canvas = $('canvas', root), copy = $('.copy', root), rail = $('.rail', root);
   let renderer;
-  try{ renderer = new THREE.WebGLRenderer({canvas, antialias:true}); }catch(e){ return fallback(root, steps, cfg.h1); }
-  renderer.setPixelRatio(Math.min(devicePixelRatio, small ? 1.5 : 2));
+  try{ renderer = new THREE.WebGLRenderer({canvas, antialias:!small, powerPreference:'high-performance'}); }catch(e){ return fallback(root, steps, cfg.h1); }
+  renderer.setPixelRatio(Math.min(devicePixelRatio, small ? 1.25 : 2));
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.shadowMap.type = small ? THREE.PCFShadowMap : THREE.PCFSoftShadowMap;
   renderer.toneMapping = THREE.NoToneMapping;
 
   const scene = new THREE.Scene();
