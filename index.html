@@ -178,6 +178,15 @@ section.s{padding:clamp(64px,8vw,110px) 0}
 .rg-pulse{transform-origin:50% 50%;animation:rgpl .6s ease-in-out infinite}@keyframes rgpl{50%{transform:scale(1.12)}}
 @media(max-width:760px){.rg{--cw:min(300px,78vw)}.rg-hero b{font-size:1.7em}}
 
+.rg-act{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+.rgm{position:fixed;inset:0;z-index:100;background:rgba(18,37,30,.8);display:flex;align-items:center;justify-content:center;padding:2.5vh 2.5vw}.rgm[hidden]{display:none}
+.rgm-box{width:min(1320px,100%);height:100%;display:flex;flex-direction:column;background:var(--gading);border:2px solid var(--tinta);border-radius:var(--r-md);box-shadow:6px 6px 0 var(--kunyit);overflow:hidden}
+.rgm-h{display:flex;align-items:center;gap:10px;padding:8px 10px 8px 16px;border-bottom:2px solid var(--tinta);background:var(--gading-200)}
+.rgm-h b{flex:1;min-width:0;font:600 18px/1.2 var(--fd);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rgm-h .btn{min-height:42px;padding:8px 14px;font-size:14px;box-shadow:none}
+.rgm iframe{flex:1;width:100%;border:0;background:#fff}
+@media(max-width:760px){.rgm{padding:0}.rgm-box{border:0;border-radius:0;box-shadow:none;height:100dvh}.rgm-h{padding-left:12px}.rgm-h b{font-size:15px}}
+
 /* faq */
 .fq{display:grid;grid-template-columns:1fr 1.6fr;gap:48px}.fq h2{font-size:clamp(28px,3.4vw,46px)}
 .fq details{border-top:2px dashed var(--line-s);padding:20px 0}.fq details:last-child{border-bottom:2px dashed var(--line-s)}
@@ -280,7 +289,7 @@ footer .lg{color:var(--gading);margin-bottom:16px}
     <div class="rg-head">
       <p class="k">Contoh hasil kerja</p>
       <h2 id="h-karya">Empat website demo, <em>satu gaya 3D.</em></h2>
-      <p class="sub">Putar cincinnya untuk melihat preview tiap website. Semuanya landing page interaktif yang bergerak mengikuti scroll, dibuat untuk jenis usaha yang berbeda.</p>
+      <p class="sub">Putar cincinnya, lalu ketuk kartu di depan untuk membuka preview layar besar. Semuanya landing page interaktif yang bergerak mengikuti scroll, dibuat untuk jenis usaha yang berbeda.</p>
     </div>
     <div class="rg" id="rg">
       <div class="rg-stage" id="rgs" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Preview empat website demo. Gunakan tombol panah kiri dan kanan untuk berpindah.">
@@ -360,12 +369,12 @@ footer .lg{color:var(--gading);margin-bottom:16px}
       <div class="rg-dots" id="rgd" role="group" aria-label="Pilih website demo">
         <button type="button" aria-pressed="true">Kafe</button><button type="button" aria-pressed="false">Properti</button><button type="button" aria-pressed="false">Truk</button><button type="button" aria-pressed="false">Sound System</button>
       </div>
+      <div class="rg-act"><a class="btn" data-go href="https://menej-cafe.vercel.app" target="_blank" rel="noopener">Buka demo <i aria-hidden="true">↗</i></a><button class="btn l" type="button" id="rgp">Preview layar besar</button></div>
       <div class="rg-info" id="rgi" aria-live="polite">
         <div class="eyebrow" data-e>Demo 01 · Kedai kopi</div>
         <h3 data-t>Teduh Kopi</h3>
         <p class="d" data-d>Cerita secangkir kopi dari biji sampai meja, bergerak mengikuti scroll.</p>
         <ul data-f></ul>
-        <div class="cta-row"><a class="btn" data-go href="https://menej-cafe.vercel.app" target="_blank" rel="noopener">Buka demo <i aria-hidden="true">↗</i></a><button class="btn l" type="button" id="rgp">Preview langsung</button></div>
         <p class="fn">Semua demo memakai brand fiktif. Harga dan kontak di dalamnya hanya contoh.</p>
       </div>
     </div>
@@ -435,6 +444,8 @@ footer .lg{color:var(--gading);margin-bottom:16px}
     <p class="fnote">© 2026 Menej Ets. Semua hak dilindungi.</p>
   </div>
 </footer>
+
+<div class="rgm" id="rgm" hidden role="dialog" aria-modal="true" aria-labelledby="rgmt"><div class="rgm-box"><div class="rgm-h"><b id="rgmt"></b><a class="btn" id="rgmo" href="#" target="_blank" rel="noopener">Tab baru <i aria-hidden="true">↗</i></a><button class="btn l" type="button" id="rgmx">Tutup ✕</button></div><iframe id="rgmf" title="Preview website demo" allow="autoplay; fullscreen" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-modals"></iframe></div></div>
 
 <div id="bar" role="region" aria-label="Ringkasan nota dan WhatsApp"><button id="sum" type="button"></button><a class="btn" id="bwa" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20ingin%20konsultasi%20layanan%20digital." target="_blank" rel="noopener">Hubungi via WhatsApp</a></div>
 
@@ -931,48 +942,56 @@ const D=[
 {e:'Demo 02 · Properti',t:'Rindang Residence',d:'Perumahan asri di Bogor untuk pembeli rumah pertama, dari gerbang sampai serah terima kunci.',f:['Empat tipe rumah dan booking survei','Simulasi cicilan KPR','Perjalanan 3D dari gerbang ke rumah contoh'],u:'https://menej-properti.vercel.app'},
 {e:'Demo 03 · Logistik',t:'Lintas Nusa Trans',d:'Jasa trucking antarkota dengan pemilih armada yang bisa diputar dan form minta penawaran.',f:['Pemilih armada 3D: CDD, Fuso, Tronton, Trailer','Contoh rute Sumatra ke Bali','Form penawaran dan tombol WhatsApp'],u:'https://menej-rent-truck.vercel.app'},
 {e:'Demo 04 · Sewa alat',t:'Rumble Audio Rental',d:'Sewa sound system, DJ, dan lampu panggung dengan kalkulator biaya langsung di halaman.',f:['Empat paket sewa berdasarkan jumlah tamu','Simulasi suasana lampu di panggung 3D','Kalkulator estimasi dan FAQ'],u:'https://menej-rent-audio.vercel.app'}];
-let ang=0,tgt=0,front=0,raf=0,last=Date.now(),vis=false,live=-1,tm=0;
+let ang=0,tgt=0,front=0,raf=0,last=Date.now(),vis=false,tm=0,mopen=false,opener=null;
 const mod=n=>((n%N)+N)%N,R=()=>cards[0].offsetWidth*.82;
 function setInfo(i){
   info.classList.add('swap');clearTimeout(tm);
   tm=setTimeout(()=>{const x=D[i];
     info.querySelector('[data-e]').textContent=x.e;info.querySelector('[data-t]').textContent=x.t;info.querySelector('[data-d]').textContent=x.d;
-    info.querySelector('[data-f]').innerHTML=x.f.map(s=>`<li>${s}</li>`).join('');info.querySelector('[data-go]').href=x.u;
-    $('#rgp').textContent='Preview langsung';info.classList.remove('swap')},reduce?0:200);
+    info.querySelector('[data-f]').innerHTML=x.f.map(s=>`<li>${s}</li>`).join('');info.classList.remove('swap')},reduce?0:200);
+  rg.querySelector('[data-go]').href=D[i].u;
 }
-function closeLive(){if(live<0)return;const f=cards[live].querySelector('iframe');f&&f.remove();live=-1}
 function layout(){
   const r=R();ring.style.transform=`translateZ(${-r}px) rotateY(${ang}deg)`;
   let f=mod(Math.round(-ang/90));
   cards.forEach((c,i)=>{c.style.transform=`rotateY(${i*90}deg) translateZ(${r}px)`;
     let d=((ang+i*90)%360+540)%360-180;c.style.setProperty('--dim',Math.min(.45,Math.abs(d)/180*.9).toFixed(2));c.classList.toggle('front',i===f)});
-  if(f!==front){front=f;closeLive();btns.forEach((b,k)=>b.setAttribute('aria-pressed',k===f));setInfo(f)}
+  if(f!==front){front=f;btns.forEach((b,k)=>b.setAttribute('aria-pressed',k===f));setInfo(f)}
 }
 function tick(){const d=tgt-ang;if(Math.abs(d)<.05||reduce){ang=tgt;layout();raf=0;return}ang+=d*.1;layout();raf=requestAnimationFrame(tick)}
 function go(i){last=Date.now();let t=-i*90;t+=Math.round((ang-t)/360)*360;tgt=t;cancelAnimationFrame(raf);tick()}
-function enable(){
-  rg.classList.add('on3d');layout();
-  btns.forEach((b,i)=>b.addEventListener('click',()=>go(i)));
-  cards.forEach((c,i)=>c.addEventListener('click',e=>{if(!c.classList.contains('front')){e.preventDefault();go(i)}},true));
-  /* seret */
-  let x0=0,a0=0,dr=false,mv=false,v=0,lx=0;
-  stage.addEventListener('pointerdown',e=>{if(e.target.closest('iframe'))return;if(e.pointerType==='mouse'&&e.button!==0)return;dr=true;mv=false;x0=lx=e.clientX;a0=ang;v=0;cancelAnimationFrame(raf);last=Date.now()});
-  addEventListener('pointermove',e=>{if(!dr)return;const dx=e.clientX-x0;if(!mv&&Math.abs(dx)>7)mv=true;if(!mv)return;ang=a0+dx*.35;v=.6*v+.4*(e.clientX-lx)*.35;lx=e.clientX;layout()});
-  const end=()=>{if(!dr)return;dr=false;if(mv){tgt=Math.round((ang+v*6)/90)*90;last=Date.now();tick()}};
-  addEventListener('pointerup',end);addEventListener('pointercancel',end);
-  stage.addEventListener('click',e=>{if(mv){e.preventDefault();e.stopPropagation();mv=false}},true);
-  stage.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();go(mod(front+1))}if(e.key==='ArrowLeft'){e.preventDefault();go(mod(front-1))}});
-  /* preview langsung */
-  $('#rgp').addEventListener('click',()=>{
-    if(live===front){closeLive();$('#rgp').textContent='Preview langsung';return}
-    closeLive();const s=cards[front].querySelector('.rg-screen'),f=document.createElement('iframe');
-    f.src=D[front].u;f.title='Preview langsung '+D[front].t;f.loading='lazy';f.setAttribute('sandbox','allow-scripts allow-same-origin');s.appendChild(f);live=front;$('#rgp').textContent='Tutup preview'});
-  /* putar otomatis saat terlihat dan tidak disentuh */
-  if('IntersectionObserver' in window)new IntersectionObserver(es=>{vis=es.some(e=>e.isIntersecting)},{threshold:.4}).observe(stage);
-  if(!reduce)setInterval(()=>{if(vis&&live<0&&!dr&&Date.now()-last>5000&&!stage.matches(':focus-within'))go(mod(front+1))},4000);
-  let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(layout,150)});
+
+/* pop up preview */
+const m=$('#rgm'),mf=$('#rgmf');
+function openM(i){
+  opener=document.activeElement;mopen=true;
+  $('#rgmt').textContent=D[i].t+' · '+D[i].u.replace('https://','');$('#rgmo').href=D[i].u;mf.title='Preview '+D[i].t;mf.src=D[i].u;
+  m.hidden=false;document.body.style.overflow='hidden';$('#rgmx').focus();
 }
-enable();setInfo(0);
+function closeM(){if(!mopen)return;mopen=false;m.hidden=true;mf.src='about:blank';document.body.style.overflow='';last=Date.now();opener&&opener.focus&&opener.focus()}
+$('#rgp').addEventListener('click',()=>openM(front));
+$('#rgmx').addEventListener('click',closeM);
+m.addEventListener('click',e=>{if(e.target===m)closeM()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+
+rg.classList.add('on3d');layout();
+btns.forEach((b,i)=>b.addEventListener('click',()=>go(i)));
+cards.forEach((c,i)=>c.addEventListener('click',e=>{
+  if(e.target.closest('a'))return;
+  e.preventDefault();
+  if(!c.classList.contains('front'))go(i);else openM(i)},true));
+/* seret */
+let x0=0,a0=0,dr=false,mv=false,v=0,lx=0;
+stage.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;dr=true;mv=false;x0=lx=e.clientX;a0=ang;v=0;cancelAnimationFrame(raf);last=Date.now()});
+addEventListener('pointermove',e=>{if(!dr)return;const dx=e.clientX-x0;if(!mv&&Math.abs(dx)>7)mv=true;if(!mv)return;ang=a0+dx*.35;v=.6*v+.4*(e.clientX-lx)*.35;lx=e.clientX;layout()});
+const end=()=>{if(!dr)return;dr=false;if(mv){tgt=Math.round((ang+v*6)/90)*90;last=Date.now();tick()}};
+addEventListener('pointerup',end);addEventListener('pointercancel',end);
+stage.addEventListener('click',e=>{if(mv){e.preventDefault();e.stopPropagation();mv=false}},true);
+stage.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();go(mod(front+1))}if(e.key==='ArrowLeft'){e.preventDefault();go(mod(front-1))}if(e.key==='Enter'){e.preventDefault();openM(front)}});
+if('IntersectionObserver' in window)new IntersectionObserver(es=>{vis=es.some(e=>e.isIntersecting)},{threshold:.4}).observe(stage);
+if(!reduce)setInterval(()=>{if(vis&&!mopen&&!dr&&Date.now()-last>5000&&!stage.matches(':focus-within'))go(mod(front+1))},4000);
+let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(layout,150)});
+setInfo(0);
 })();
 </script>
 </body>
