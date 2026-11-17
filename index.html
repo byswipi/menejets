@@ -20,7 +20,7 @@
 :root{--tinta:#12251E;--tinta-700:#1F3B31;--gading:#F5EFE3;--gading-200:#E9E0CC;--kunyit:#FFB81C;--kunyit-tua:#8A5A00;--bata:#B33D22;--daun:#4F6358;
 --surface:var(--gading);--raised:var(--gading-200);--text:var(--tinta);--muted:var(--daun);--line:#CFC4AB;--line-s:#6F6A52;--stamp-c:var(--tinta);--fr:var(--tinta);--lab:var(--kunyit-tua);
 --fd:"Fraunces",Georgia,"Times New Roman",serif;--fs:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--fm:"DM Mono",ui-monospace,Menlo,monospace;
---r-sm:4px;--r-md:12px;--r-lg:28px;--ease:cubic-bezier(.2,.8,.2,1);--ets:cubic-bezier(.3,1.4,.5,1)}
+--r-sm:4px;--r-md:12px;--r-lg:28px;--ease:cubic-bezier(.2,.8,.2,1);--ets:cubic-bezier(.22,.8,.2,1)}
 .jr.dark,.dk{--surface:var(--tinta);--raised:var(--tinta-700);--text:var(--gading);--muted:#C9C2B0;--line:#2F4B40;--line-s:#8FA397;--stamp-c:var(--kunyit);--fr:var(--kunyit);--lab:var(--kunyit)}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -178,7 +178,7 @@ section.s{padding:clamp(64px,8vw,110px) 0}
 .fm-head{text-align:center;max-width:720px;margin:0 auto 34px}.fm-head .sub{margin-left:auto;margin-right:auto}
 .fm{--rx:58deg;--rz:-22deg;position:relative;height:clamp(540px,76vh,700px);border:2px solid var(--tinta);border-radius:28px;overflow:hidden;box-shadow:6px 6px 0 var(--tinta);perspective:1800px;background:radial-gradient(120% 90% at 50% 20%,#F9F5EA,#E4DAC2);touch-action:pan-y}
 .fmw{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 1.2s cubic-bezier(.3,.7,.2,1)}
-.fmp{position:absolute;left:50%;top:50%;width:1400px;height:1000px;margin:-500px 0 0 -700px;transform-style:preserve-3d;transform-origin:700px 500px;transition:transform 1.2s cubic-bezier(.3,.7,.2,1);border-radius:22px;box-shadow:0 60px 90px -30px rgba(18,37,30,.35)}
+.fmp{position:absolute;left:50%;top:50%;width:1400px;height:1000px;margin:-500px 0 0 -700px;transform-style:preserve-3d;transform-origin:700px 500px;transition:transform 1.1s cubic-bezier(.45,.05,.2,1);border-radius:22px;box-shadow:0 60px 90px -30px rgba(18,37,30,.35)}
 .fmp>svg{position:absolute;inset:0;width:100%;height:100%;border-radius:22px}
 .fm-route{stroke-dasharray:3 14;animation:fmr 2.4s linear infinite}@keyframes fmr{to{stroke-dashoffset:-34}}
 .fm-g{position:absolute;width:0;height:0;transform-style:preserve-3d}
@@ -262,7 +262,7 @@ section.s{padding:clamp(64px,8vw,110px) 0}
 /* belanja 3D */
 .sp{--sw:230px;margin-top:6px}
 .sp-view{position:relative;height:clamp(270px,32vw,320px);perspective:760px;perspective-origin:50% 28%;overflow:hidden;border:2px solid var(--tinta);border-radius:var(--r-lg);background:var(--gading);box-shadow:6px 6px 0 var(--tinta);touch-action:pan-y;user-select:none;-webkit-user-select:none}
-.sp-world{position:absolute;left:50%;bottom:0;width:0;height:100%;transform-style:preserve-3d;transition:transform 1s cubic-bezier(.55,0,.2,1)}
+.sp-world{position:absolute;left:50%;bottom:0;width:0;height:100%;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.6,0,.2,1)}
 .sp-floor{position:absolute;left:-1800px;width:3600px;bottom:0;height:300px;transform-origin:50% 100%;transform:rotateX(74deg);background-color:var(--gading-200);background-image:repeating-linear-gradient(90deg,transparent 0 119px,rgba(18,37,30,.14) 119px 121px),repeating-linear-gradient(0deg,transparent 0 59px,rgba(18,37,30,.14) 59px 61px)}
 .st{position:absolute;left:calc(var(--i)*var(--sw) - 75px);bottom:58px;width:150px;height:176px;transform-style:preserve-3d;transform:translateZ(-150px);cursor:pointer}
 .st>div{position:absolute;background:var(--ac);border:2px solid var(--tinta);transition:filter .5s}
@@ -351,6 +351,16 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
 .chip{border:0;box-shadow:0 10px 20px -6px rgba(0,0,0,.55)}
 .ph{box-shadow:0 36px 70px -22px rgba(0,0,0,.7),0 0 0 6px var(--tinta-700)}
 .rgm-box{box-shadow:0 40px 90px -24px rgba(0,0,0,.65)}
+/* disederhanakan: sedikit tombol, gerak lebih halus */
+.script,.skipj,.hint,.chip,.sp-nav,.fm-hint{display:none!important}
+.rail button{font-size:0;padding:6px 0}.rail button::after{margin-top:0}.rail{gap:8px}
+.btn.pulse::after{display:none}.ph-tilt{animation:none}.sp-cart.jig{animation:none}
+.fm-card:not(.sel) .fm-b{display:none}.fm-card #fmpv,.fm-card #fmnx{display:none}
+.sp-lh{margin-bottom:12px}
+#barchip{right:50%;transform:translate(50%,160%);transition:transform .6s cubic-bezier(.22,.8,.2,1);min-height:44px}#barchip.show{transform:translate(50%,0)}
+.pd,.btn,.sp-tabs button,.add,.wk{transition-timing-function:cubic-bezier(.22,.8,.2,1)}
+.sp-list.fd{animation-duration:.6s}
+@media(hover:none){.pd:hover{transform:none;box-shadow:var(--sh-2)}.btn:hover{transform:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:opacity .12s!important}html{scroll-behavior:auto}}
 </style>
 <noscript><style>.jr{height:auto!important}.jr .stage{display:none}</style></noscript>
@@ -360,7 +370,7 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
 
 <header class="nav">
   <a class="lg" href="#journey" aria-label="Menej Ets, kembali ke atas"><svg viewBox="0 0 240 240" aria-hidden="true"><rect width="240" height="240" rx="56" fill="#12251E"/><rect x="100" y="44" width="40" height="104" rx="20" fill="#F5EFE3"/><circle cx="120" cy="188" r="22" fill="#FFB81C"/></svg><span>menej <em>ets</em></span></a>
-  <nav aria-label="Navigasi utama"><a href="#harga">Harga</a><a href="#harga" data-tab="Paket Bulanan">Paket</a><a href="#karya">Karya</a><a href="#cara" data-j="cara" data-step="1">Cara Pesan</a><a href="#faq">FAQ</a></nav>
+  <nav aria-label="Navigasi utama"><a href="#harga">Harga</a><a href="#karya">Karya</a><a href="#faq">FAQ</a></nav>
   <a class="btn" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20ingin%20konsultasi%20layanan%20digital." target="_blank" rel="noopener">Ceritakan usahamu <i aria-hidden="true">→</i></a>
 </header>
 
@@ -374,11 +384,10 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
       <h1 class="hd"><span data-h1>Ets, biar kami yang</span><em data-h2 class="hl">menej.</em></h1>
       <p class="lead" data-lead>Konten Instagram, iklan, website, sampai otomasi AI kami urus dalam satu alur, jadi kamu bisa fokus ke produkmu. Gulir untuk melihat layanan dan harganya.</p>
       <div class="glass" data-card><ul><li><span>Mulai dari</span><b>Rp8.000 / caption</b></li><li><span>Konsultasi awal</span><b>Gratis</b></li><li><span>Paket bulanan</span><b>Rp229.000</b></li></ul></div>
-      <div class="cta-row"><a class="btn" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20ingin%20konsultasi%20layanan%20digital." target="_blank" rel="noopener">Ceritakan usahamu <i aria-hidden="true">→</i></a><a class="btn l" href="#harga">Lihat harga <i aria-hidden="true">→</i></a></div>
+      <div class="cta-row"><a class="btn" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20ingin%20konsultasi%20layanan%20digital." target="_blank" rel="noopener">Ceritakan usahamu <i aria-hidden="true">→</i></a></div>
     </div>
-    <div class="hint" aria-hidden="true">Gulir ↓</div>
-    <div class="script" aria-hidden="true">Beres</div>
-    <a class="skipj" href="#harga">Lewati ↓</a>
+    
+    
     <div class="rail" role="group" aria-label="Langkah perjalanan"></div>
   </div>
   <noscript>
@@ -404,8 +413,6 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
             <div class="cw"><svg class="cs" viewBox="0 0 220 170"><path d="M82 112V132M162 112V132" fill="none" stroke="#12251E" stroke-width="7" stroke-linecap="round"/><path d="M10 18H36L58 112H168" fill="none" stroke="#12251E" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M44 38H198L178 102H62Z" fill="#E9E0CC"/><g id="spload"></g><path d="M96 38L102 102M132 38L136 102M170 38L168 102M53 70H188" fill="none" stroke="#12251E" stroke-width="3.5" opacity=".4"/><path d="M44 38H198L178 102H62Z" fill="none" stroke="#12251E" stroke-width="7" stroke-linejoin="round"/><g class="wh"><circle cx="82" cy="146" r="15" fill="#F5EFE3" stroke="#12251E" stroke-width="6"/><path d="M82 135V157M71 146H93" stroke="#12251E" stroke-width="3.5"/></g><g class="wh"><circle cx="162" cy="146" r="15" fill="#F5EFE3" stroke="#12251E" stroke-width="6"/><path d="M162 135V157M151 146H173" stroke="#12251E" stroke-width="3.5"/></g></svg></div>
             <span class="sp-bd" id="spbd" hidden>0</span>
           </div>
-          <button class="sp-nav l" id="spp" type="button" aria-label="Kategori sebelumnya">‹</button>
-          <button class="sp-nav r" id="spn" type="button" aria-label="Kategori berikutnya">›</button>
         </div>
         <div class="sp-tabs" id="spt" aria-label="Kategori layanan"></div>
       </div>
@@ -435,7 +442,7 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
                 <path class="rg-s-steam" d="M222 100 C213 86 230 80 221 62" stroke="#F5EFE3" stroke-width="3.2" fill="none" stroke-linecap="round"/><path class="rg-s-steam" style="animation-delay:.9s" d="M238 100 C229 84 247 78 238 58" stroke="#F5EFE3" stroke-width="3.2" fill="none" stroke-linecap="round"/><path class="rg-s-steam" style="animation-delay:1.8s" d="M254 100 C246 88 261 82 253 66" stroke="#F5EFE3" stroke-width="3.2" fill="none" stroke-linecap="round"/>
               </svg>
               <div class="rg-hero"><small>Teduh Kopi · Bandung</small><b>Secangkir <em>Tenang,</em> dari Biji ke Meja.</b></div>
-            </div><span class="cap"><span><b>Teduh Kopi</b><small>Kedai kopi</small></span><i aria-hidden="true">↗</i></span></button>
+            </div><span class="cap"><span><b>Teduh Kopi</b><small>Kedai kopi</small></span></span></button>
       <button class="wk" type="button" aria-label="Lihat preview Rindang Residence"><div class="rg-screen" style="--hc:#12301F;--hb:#12301F;--hk:#F5EFE3">
               <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="rgsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CFE5D0"/><stop offset="1" stop-color="#F4F0DC"/></linearGradient></defs>
                 <rect width="320" height="220" fill="url(#rgsky)"/>
@@ -448,7 +455,7 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
                 <rect class="rg-win" x="210" y="140" width="13" height="13" fill="#FFB81C"/><rect class="rg-win" x="250" y="140" width="13" height="13" fill="#FFB81C" style="animation-delay:-1.4s"/>
               </svg>
               <div class="rg-hero"><small>Rindang Residence · Bogor</small><b>Pulang ke rumah yang <em>asri.</em></b><u>Booking Survei</u></div>
-            </div><span class="cap"><span><b>Rindang Residence</b><small>Properti</small></span><i aria-hidden="true">↗</i></span></button>
+            </div><span class="cap"><span><b>Rindang Residence</b><small>Properti</small></span></span></button>
       <button class="wk" type="button" aria-label="Lihat preview Lintas Nusa Trans"><div class="rg-screen" style="--hc:#F5EFE3;--hb:#FFB81C;--hk:#14213D">
               <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="rgt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2E55"/><stop offset="1" stop-color="#0F1A33"/></linearGradient></defs>
                 <rect width="320" height="220" fill="url(#rgt)"/>
@@ -462,7 +469,7 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
                 <g stroke="#F5EFE3" stroke-width="2" stroke-linecap="round" opacity=".5"><line x1="112" y1="136" x2="140" y2="136"/><line x1="100" y1="148" x2="136" y2="148"/><line x1="118" y1="160" x2="142" y2="160"/></g>
               </svg>
               <div class="rg-hero" style="top:9%;bottom:auto;max-width:50%"><small>Lintas Nusa Trans</small><b>Barang Aman, Sampai <em>Tepat Waktu.</em></b></div>
-            </div><span class="cap"><span><b>Lintas Nusa Trans</b><small>Logistik</small></span><i aria-hidden="true">↗</i></span></button>
+            </div><span class="cap"><span><b>Lintas Nusa Trans</b><small>Logistik</small></span></span></button>
       <button class="wk" type="button" aria-label="Lihat preview Rumble Audio Rental"><div class="rg-screen" style="--hc:#fff;--hb:#FF3DA5;--hk:#fff">
               <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="rga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A1030"/><stop offset="1" stop-color="#0B0618"/></linearGradient><linearGradient id="rgb1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF3DA5" stop-opacity=".7"/><stop offset="1" stop-color="#FF3DA5" stop-opacity="0"/></linearGradient><linearGradient id="rgb2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6C5CFF" stop-opacity=".7"/><stop offset="1" stop-color="#6C5CFF" stop-opacity="0"/></linearGradient></defs>
                 <rect width="320" height="220" fill="url(#rga)"/>
@@ -474,7 +481,7 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
                 <rect y="206" width="320" height="14" fill="#0B0618"/>
               </svg>
               <div class="rg-hero" style="top:9%;bottom:auto;max-width:50%"><small>Rumble Audio Rental</small><b>Sound system yang <em>bikin pesta hidup.</em></b></div>
-            </div><span class="cap"><span><b>Rumble Audio Rental</b><small>Sewa alat</small></span><i aria-hidden="true">↗</i></span></button>
+            </div><span class="cap"><span><b>Rumble Audio Rental</b><small>Sewa alat</small></span></span></button>
     </div>
     <p class="wk-n">Brand dan harga di tiap demo hanya contoh.</p>
   </div>
@@ -490,7 +497,6 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
       <p class="lead" data-lead>Harga dan batas pekerjaan kami tulis dari awal, jadi tidak ada kejutan di belakang.</p>
       <div class="glass" data-card><ul class="l"><li><span class="t">Harga terbuka</span><span class="d">Mulai Rp8.000 per caption. Batas pekerjaan tercantum di tiap layanan.</span></li><li><span class="t">Satu tim, satu kontak</span><span class="d">Konten, iklan, website, dan otomasi lewat satu tim.</span></li><li><span class="t">AI untuk produksi, tim untuk arah</span><span class="d">Strategi dan keputusan akhir tetap di tangan tim kami.</span></li><li><span class="t">Bayar sesuai kebutuhan</span><span class="d">Bisa satuan, sekali bayar, atau paket bulanan. Paket tidak wajib.</span></li></ul></div>
     </div>
-    <a class="skipj" href="#faq">Lewati ↓</a>
     <div class="rail" role="group" aria-label="Langkah"></div>
   </div>
   <noscript>
@@ -516,7 +522,6 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
         <p id="fma">Ada 9 titik berisi pertanyaan seputar harga dan layanan. Ketuk satu untuk membaca jawabannya.</p>
         <div class="fm-b"><button class="btn l" type="button" id="fmpv" aria-label="Pertanyaan sebelumnya">‹</button><button class="btn l" type="button" id="fmnx" aria-label="Pertanyaan berikutnya">›</button><button class="btn" type="button" id="fms">Mulai dari 1</button></div>
       </div>
-      <div class="fm-hint" aria-hidden="true">Ketuk titik kuning</div>
     </div>
     <noscript><ul style="margin-top:24px;display:grid;gap:12px"><li><b>Bisa pesan satu layanan saja?</b> Bisa. Semua layanan dijual satuan, jadi kamu tidak perlu mengambil paket bulanan.</li><li><b>Bagaimana cara memesan?</b> Pilih layanan di menu, masukkan ke troli, lalu kirim nota lewat WhatsApp. Total terhitung otomatis. Kalau masih ragu, kamu boleh ngobrol dulu sebelum memesan.</li><li><b>Apakah konten dibuat oleh AI?</b> AI membantu mempercepat produksi. Arahan kreatif, pemilihan hasil, dan keputusan strategis tetap kami pegang.</li><li><b>Apa bedanya Reels 15–30 dan 30–60 detik?</b> Bedanya hanya di durasi. Reels 15–30 detik Rp35.000, Reels 30–60 detik Rp60.000 per video.</li><li><b>Apakah budget iklan sudah termasuk?</b> Belum. Budget iklan dibayar langsung ke Meta atau Google. Biaya dari kami untuk penyiapan dan pengelolaan iklan.</li><li><b>Apakah website sudah termasuk domain dan hosting?</b> Belum. Domain, hosting, dan plugin berbayar dihitung terpisah, kecuali kita sepakati lain.</li><li><b>Apa itu Setup Otomasi Konten AI?</b> Kami menyiapkan alur kerja AI di akun Claude Pro milikmu untuk ide, naskah, dan caption. Biayanya Rp499.000 sekali bayar. Akun Claude Pro harus aktif dan langganannya kamu bayar sendiri.</li><li><b>Apakah memesan lewat nota berarti membayar?</b> Belum. Nota hanya merangkum pesananmu ke pesan WhatsApp. Harga akhir kami konfirmasi lewat chat sebelum kamu setuju.</li><li><b>Apakah ada jaminan hasil?</b> Kami tidak menjamin penjualan atau hasil iklan. Yang kami pastikan, layanan dikerjakan sesuai menu dan paket yang disepakati.</li></ul></noscript>
   </div>
@@ -541,7 +546,6 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
             <p class="bu m4">Tenang, kami yang menej.</p>
           </div>
         </div>
-        <span class="chip c1">Konten</span><span class="chip c2">Iklan</span><span class="chip c3">Website</span><span class="chip c4">Otomasi</span>
       </div>
     </div>
   </div>
@@ -556,9 +560,8 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
   </div>
 </footer>
 
-<div class="rgm" id="rgm" hidden role="dialog" aria-modal="true" aria-labelledby="rgmt"><div class="rgm-box"><div class="rgm-h"><b id="rgmt"></b><a class="btn" id="rgmo" href="#" target="_blank" rel="noopener">Tab baru <i aria-hidden="true">↗</i></a><button class="btn l" type="button" id="rgmx">Tutup ✕</button></div><iframe id="rgmf" title="Preview website demo" allow="autoplay; fullscreen" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-modals"></iframe></div></div>
+<div class="rgm" id="rgm" hidden role="dialog" aria-modal="true" aria-labelledby="rgmt"><div class="rgm-box"><div class="rgm-h"><b id="rgmt"></b><a class="btn" id="rgmo" href="#" target="_blank" rel="noopener">Tab baru </a><button class="btn l" type="button" id="rgmx">Tutup ✕</button></div><iframe id="rgmf" title="Preview website demo" allow="autoplay; fullscreen" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-modals"></iframe></div></div>
 
-<div id="bar" role="region" aria-label="Ringkasan nota dan WhatsApp"><button id="sum" type="button"></button><a class="btn" id="bwa" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20ingin%20konsultasi%20layanan%20digital." target="_blank" rel="noopener">Hubungi via WhatsApp</a><button id="barx" type="button" aria-label="Sembunyikan ringkasan nota">✕</button></div>
 <button id="barchip" type="button" aria-label="Tampilkan ringkasan nota">Nota</button>
 
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"}}</script>
@@ -985,20 +988,20 @@ const act=pk?(q?`<button class="add on" type="button" data-i="${i}" data-d="-1">
 const k=pk?PK[s[6]]:null,det=k?`<details><summary>Isi paket</summary><ul>${k.f.map(x=>`<li>${x}</li>`).join('')}${k.x.map(x=>`<li class="x">${x}</li>`).join('')}</ul>${k.sv?`<p class="sv">${k.sv}</p>`:''}</details>`:'';
 return `<article class="pd${q?' in':''}"><div class="pt"><h4>${e}</h4><em>${s[3]=='w'?'Mulai ':''}${R(s[2])}</em></div><div class="pu">${s[4]}</div><p>${esc(s[5])}</p>${det}<div class="pa">${act}</div></article>`};
 function renderList(fade){const c=cats[cur],L=$('#sple');
-L.innerHTML=`<div class="sp-lh"><h3>${c}</h3><p>${TAG[c]}</p></div><div class="sp-grid">${S.map((s,i)=>s[0]==c?pd(i):'').join('')}</div><p class="sp-note"><b>Catatan:</b> ${NOTE[c]}</p>`;
+L.innerHTML=`<div class="sp-lh"><h3>${c}</h3></div><div class="sp-grid">${S.map((s,i)=>s[0]==c?pd(i):'').join('')}</div><p class="sp-note"><b>Catatan:</b> ${NOTE[c]}</p>`;
 if(fade&&!rmo()){L.classList.remove('fd');void L.offsetWidth;L.classList.add('fd')}}
 function renderLoad(anim){const n=total(),k=Math.min(n,9);
 $('#spload').innerHTML=Array.from({length:k},(_,j)=>{const r=j/3|0;return `<rect class="${anim&&j==k-1?'drop':''}" x="${70+(j%3)*33+(r%2?6:0)}" y="${100-29*(r+1)}" width="28" height="28" rx="6" fill="${CC[j%5]}" stroke="#12251E" stroke-width="3.5"/>`}).join('');
 const b=$('#spbd');b.textContent=n;b.hidden=!n;
 if(anim&&!rmo()){[b,$('#spc')].forEach((el,x)=>{const c=x?'jig':'bp';el.classList.remove(c);void el.offsetWidth;el.classList.add(c)})}}
 const swd=()=>parseFloat(getComputedStyle($('#sp')).getPropertyValue('--sw'))||230;
-function goCat(i,first){if(i<0||i>=cats.length)return;const w=$('#spw'),c=$('#spc'),n=Math.abs(i-cur),dir=i>=cur,dur=rmo()?0:.7+.2*Math.min(n,4);
+function goCat(i,first){if(i<0||i>=cats.length)return;const w=$('#spw'),c=$('#spc'),n=Math.abs(i-cur),dir=i>=cur,dur=rmo()?0:.8+.16*Math.min(n,4);
 w.style.transitionDuration=dur+'s';w.style.transform=`translate3d(${-i*swd()}px,0,0)`;
 if(dur&&(n||first)){c.classList.add('mv');c.classList.toggle('rv',!dir);clearTimeout(mvT);mvT=setTimeout(()=>c.classList.remove('mv'),dur*1000)}
 cur=i;tab=cats[i];
 $$('.st').forEach((e,k)=>e.classList.toggle('on',k==i));
 $$('#spt button').forEach((e,k)=>e.setAttribute('aria-pressed',k==i));
-$('#spp').disabled=i==0;$('#spn').disabled=i==cats.length-1;renderList(true)}
+renderList(true)}
 function setTab(c){const i=cats.indexOf(c);if(i>=0)goCat(i)}
 function fly(r){const col=CC[(Math.min(total(),9)-1)%5];if(rmo()){renderLoad(true);return}
 const c=$('#spc').getBoundingClientRect(),el=document.createElement('div');el.className='fly';el.style.cssText=`left:${r.x+r.width/2-14}px;top:${r.y+r.height/2-14}px;background:${col}`;document.body.appendChild(el);
@@ -1010,11 +1013,11 @@ const notes=[c.web&&'(Website: harga awal, lingkup dikonfirmasi terlebih dahulu.
 return `Halo Menej Ets, saya ingin memesan layanan berikut:\n\n${c.L.join('\n')}\n\n${[c.one?'Estimasi sekali bayar: '+R(c.one):'',c.mo?'Estimasi per bulan: '+R(c.mo):''].filter(Boolean).join('\n')}\n${notes}\n\nMohon informasi mengenai proses pemesanan. Terima kasih.`}
 function renderNota(){const c=calc(),k=Object.keys(cart),url=wa(msg());
 const tot=[c.one?R(c.one):'',c.mo?R(c.mo)+'/bln':''].filter(Boolean).join(' + ');
-$('#barchip').innerHTML=c.n?`<b>${c.n}</b> item · Nota`:'Nota';$('#sum').innerHTML=c.n?`<b>${c.n} item</b><span>${tot}</span><u>Lihat nota</u>`:`<span>Belum ada pesanan</span><u>Pilih layanan</u>`;
-$('#bwa').textContent=c.n?'Lanjut ke WhatsApp':'Hubungi via WhatsApp';$('#bwa').href=url;
+$('#barchip').innerHTML=c.n?`<b>${c.n}</b> item · Lihat nota`:'Nota';
+
 $('#nota').innerHTML=`<h3>Nota Pesanan</h3><p class="sb">Menej Ets · estimasi, bukan tagihan</p>`+(c.n?k.map(i=>{const s=S[i];return `<div class="li"><div><b>${esc(s[1])}</b><small>${R(s[2])} × ${cart[i]} · ${s[4]}</small></div><b>${R(s[2]*cart[i])}</b></div>`}).join('')+`<div class="tt">${c.one?`<div><span>Sekali bayar</span><span>${R(c.one)}</span></div>`:''}${c.mo?`<div><span>Per bulan</span><span>${R(c.mo)}</span></div>`:''}</div><p class="nb">Harga website merupakan harga awal. Budget iklan, domain, hosting, dan biaya pihak ketiga tidak termasuk. Harga akhir disepakati melalui chat.</p><a class="btn" href="${url}" target="_blank" rel="noopener">Lanjut ke WhatsApp <i aria-hidden="true">→</i></a>`:`<p class="empty">Belum ada layanan yang dipilih. Masukkan layanan ke troli untuk menyusun nota.</p>`)}
 function render(){renderNota()}
-let lastN=0;const _rn=renderNota;renderNota=function(){_rn();const n=Object.keys(cart).length;if(n&&n!==lastN&&!rmo()){const e=$('#nota');e.classList.remove('prt');void e.offsetWidth;e.classList.add('prt')}lastN=n};
+let lastN=0;const _rn=renderNota;renderNota=function(){_rn();const n=Object.keys(cart).length;if(n&&n!==lastN&&!rmo()){const e=$('#nota');e.classList.remove('prt');void e.offsetWidth;e.classList.add('prt')}lastN=n;window.__bt&&window.__bt()};
 document.addEventListener('click',e=>{const t=e.target;
 const dt=t.closest('a[data-tab]');if(dt)setTab(dt.dataset.tab);
 const d=t.closest('.sp-list button[data-i]');
@@ -1024,8 +1027,7 @@ const f=$(`.sp-list button[data-i="${i}"][data-d="${dd}"]`)||$(`.sp-list button[
 if(q>before)fly(r);else renderLoad();return}
 const tb=t.closest('#spt button');if(tb){goCat(+tb.dataset.c);return}
 const st=t.closest('.st');if(st){goCat(+st.dataset.c);return}
-if(t.closest('#spp')){goCat(cur-1);return}if(t.closest('#spn')){goCat(cur+1);return}
-if(t.closest('#sum')){document.getElementById(Object.keys(cart).length?'nota':'harga').scrollIntoView({behavior:'smooth',block:Object.keys(cart).length?'center':'start'})}});
+if(t.closest('#barchip'))$('#nota').scrollIntoView({behavior:'smooth',block:'center'})});
 (()=>{const v=$('#spv');let x0=null;
 v.addEventListener('pointerdown',e=>{if(!e.target.closest('button'))x0=e.clientX});
 addEventListener('pointerup',e=>{if(x0===null)return;const dx=e.clientX-x0;x0=null;if(Math.abs(dx)>50)goCat(cur+(dx<0?1:-1))});
@@ -1036,17 +1038,15 @@ let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{const 
 const w=$('#spw');
 if(!rmo()&&'IntersectionObserver' in window){w.style.transitionDuration='0s';w.style.transform=`translate3d(${swd()*2.2}px,0,0)`;
  new IntersectionObserver((es,o)=>{if(es.some(x=>x.isIntersecting)){o.disconnect();void w.offsetWidth;goCat(0,true)}},{threshold:.4}).observe(v);
- renderList();$$('.st').forEach((e,k)=>e.classList.toggle('on',k==0));$$('#spt button').forEach((e,k)=>e.setAttribute('aria-pressed',k==0));$('#spp').disabled=true}
+ renderList();$$('.st').forEach((e,k)=>e.classList.toggle('on',k==0));$$('#spt button').forEach((e,k)=>e.setAttribute('aria-pressed',k==0))}
 else goCat(0,true);
 })();
 renderLoad();
 render();
 /* bar WhatsApp muncul setelah perjalanan 3D */
-const j=$('#journey'),j2=$('#cara'),bar=$('#bar');
-let hid=true;const chip=$('#barchip');
-const bt=()=>{const r=j2.getBoundingClientRect(),ok=scrollY>j.offsetTop+j.offsetHeight-innerHeight+8&&!(r.top<innerHeight&&r.bottom>0);bar.classList.toggle('show',ok&&!hid);chip.classList.toggle('show',ok&&hid)};
-$('#barx').addEventListener('click',()=>{hid=true;bt()});chip.addEventListener('click',()=>{hid=false;bt()});
-addEventListener('scroll',bt,{passive:true});addEventListener('resize',bt);bt();
+const j=$('#journey'),j2=$('#cara'),chip=$('#barchip'),nt=$('#nota');
+const bt=()=>{const r=j2.getBoundingClientRect(),q=nt.getBoundingClientRect(),ok=scrollY>j.offsetTop+j.offsetHeight-innerHeight+8&&!(r.top<innerHeight&&r.bottom>0)&&!(q.top<innerHeight*.8&&q.bottom>innerHeight*.2);chip.classList.toggle('show',ok&&Object.keys(cart).length>0)};
+window.__bt=bt;addEventListener('scroll',bt,{passive:true});addEventListener('resize',bt);bt();
 })();
 </script>
 
@@ -1099,7 +1099,7 @@ FAQ.forEach((f,i)=>{
  p.innerHTML=`<button type="button" aria-label="Pertanyaan ${i+1}: ${f[0].replace(/"/g,'&quot;')}"><span>${i+1}</span></button>`;
  p.firstChild.addEventListener('click',()=>go(i));ov.appendChild(p);pins.push(p)});
 /* pin digambar tegak di lapisan 2D, posisinya mengikuti titik tanah di peta 3D */
-let vis=true;const place=()=>{if(vis){const fr=fm.getBoundingClientRect();gs.forEach((g,k)=>{const r=g.firstChild.getBoundingClientRect();pins[k].style.transform=`translate(${(r.x+r.width/2-fr.x).toFixed(1)}px,${(r.y+r.height/2-fr.y).toFixed(1)}px)`})}requestAnimationFrame(place)};requestAnimationFrame(place);
+let vis=true;const place=()=>{if(vis){const fr=fm.getBoundingClientRect(),P=gs.map(g=>g.firstChild.getBoundingClientRect());P.forEach((r,k)=>{pins[k].style.transform=`translate3d(${(r.x+r.width/2-fr.x).toFixed(1)}px,${(r.y+r.height/2-fr.y).toFixed(1)}px,0)`})}requestAnimationFrame(place)};requestAnimationFrame(place);
 if('IntersectionObserver' in window)new IntersectionObserver(es=>{vis=es.some(e=>e.isIntersecting)},{rootMargin:'100px'}).observe(fm);
 /* kamera */
 const card=$('#fmc'),E=$('#fme'),T=$('#fmt'),A=$('#fma'),S=$('#fms');let idx=-1,tm=0;
@@ -1112,10 +1112,10 @@ function cam(i){
  fmp.style.transform=`rotateX(var(--rx)) rotateZ(var(--rz)) scale(${sc}) translate(${700-x}px,${500-y}px)`;
 }
 function show(i){
- card.classList.add('sw');clearTimeout(tm);
+ card.classList.add('sw');card.classList.toggle('sel',i>=0);clearTimeout(tm);
  tm=setTimeout(()=>{
   if(i<0){E.textContent='Peta pertanyaan';T.textContent='Ketuk titik di peta';A.textContent='Ada 9 titik berisi pertanyaan seputar harga dan layanan. Ketuk satu untuk membaca jawabannya.';S.textContent='Mulai dari 1'}
-  else{E.textContent=`Pertanyaan ${i+1} dari ${FAQ.length}`;T.textContent=FAQ[i][0];A.textContent=FAQ[i][1];S.textContent='Lihat peta'}
+  else{E.textContent=`Pertanyaan ${i+1} dari ${FAQ.length}`;T.textContent=FAQ[i][0];A.textContent=FAQ[i][1];S.textContent='Kembali ke peta'}
   card.classList.remove('sw')},reduce?0:220)}
 function go(i){idx=i;fm.classList.toggle('has',i>=0);pins.forEach((p,k)=>p.classList.toggle('on',k===i));gs.forEach((g,k)=>g.classList.toggle('on',k===i));cam(i);show(i)}
 $('#fmpv').addEventListener('click',()=>go(idx<0?FAQ.length-1:(idx-1+FAQ.length)%FAQ.length));
