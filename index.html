@@ -186,6 +186,57 @@ section.s{padding:clamp(64px,8vw,110px) 0}
 .rgm iframe{flex:1;width:100%;border:0;background:#fff}
 @media(max-width:760px){.rgm{padding:0}.rgm-box{border:0;border-radius:0;box-shadow:none;height:100dvh}.rgm-h{padding-left:12px}.rgm-h b{font-size:15px}}
 
+/* faq 3D */
+.fqs{background:var(--gading)}
+.fq{align-items:start}.fq-l{position:sticky;top:96px}
+.fq .fq-r details{border:2px solid var(--tinta);border-radius:var(--r-md);background:var(--gading);box-shadow:4px 4px 0 var(--tinta);padding:0;margin-bottom:14px;transition:transform .25s var(--ets),box-shadow .25s var(--ets),background-color .2s}
+.fq .fq-r details:last-child{border-bottom:2px solid var(--tinta);margin-bottom:0}
+.fq .fq-r details:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--tinta)}
+.fq .fq-r details[open]{background:#FFF8E5;box-shadow:6px 6px 0 var(--kunyit);border-color:var(--tinta)}
+.fq .fq-r summary{padding:14px 18px;gap:14px;justify-content:flex-start;font:600 17px/24px var(--fs)}
+.fq .fq-r summary::after{margin-left:auto;display:grid;place-items:center;width:32px;height:32px;flex:none;border:2px solid var(--tinta);border-radius:50%;background:var(--kunyit);font:600 20px/1 var(--fs);transition:transform .3s var(--ets)}
+.fq .fq-r details[open] summary::after{transform:rotate(135deg)}
+.fq .n{flex:none;font:500 12px/1 var(--fm);letter-spacing:.06em;color:var(--lab);padding:6px 8px;border:1.5px dashed var(--line-s);border-radius:var(--r-sm)}
+.fq .fq-r p{margin:0;padding:0 18px 18px 64px;max-width:none}
+.fq .fq-r details[open] p{animation:fqin .45s var(--ease)}@keyframes fqin{from{opacity:0;transform:translateY(-8px) rotateX(-25deg)}}
+.cube-wrap{--c:132px;position:relative;width:var(--c);height:var(--c);margin:54px 0 0 14px;perspective:900px}
+.cube-tilt{width:100%;height:100%;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out}
+.cube{position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:cubespin 16s linear infinite}
+.cube b{position:absolute;inset:0;display:grid;place-items:center;border:2px solid var(--tinta);font:600 calc(var(--c)*.38)/1 var(--fd);color:var(--tinta);background:var(--kunyit)}
+.cube .f1{transform:translateZ(calc(var(--c)/2))}.cube .f2{transform:rotateY(90deg) translateZ(calc(var(--c)/2));background:var(--gading)}.cube .f3{transform:rotateY(180deg) translateZ(calc(var(--c)/2));background:var(--bata);color:var(--gading)}
+.cube .f4{transform:rotateY(-90deg) translateZ(calc(var(--c)/2));background:var(--tinta);color:var(--kunyit)}.cube .f5{transform:rotateX(90deg) translateZ(calc(var(--c)/2));background:var(--gading-200)}.cube .f6{transform:rotateX(-90deg) translateZ(calc(var(--c)/2));background:var(--daun);color:var(--gading);font-size:calc(var(--c)*.3)}
+@keyframes cubespin{from{transform:rotateX(-24deg) rotateY(0)}to{transform:rotateX(-24deg) rotateY(360deg)}}
+.cube-sh{position:absolute;left:8%;right:8%;bottom:-46px;height:18px;border-radius:50%;background:rgba(18,37,30,.22);filter:blur(6px);animation:cubesh 4s ease-in-out infinite}@keyframes cubesh{50%{transform:scaleX(.8);opacity:.6}}
+/* cta 3D */
+.cta2{position:relative;background:var(--tinta);color:var(--gading);overflow:hidden;padding-bottom:0;border-top:2px solid var(--tinta)}
+.cta2::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 78% 45%,rgba(255,184,28,.22),transparent 70%);pointer-events:none}
+.cta2-g{position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,5vw,64px);align-items:center}
+.cta2 h2{font-size:clamp(40px,6.6vw,92px);line-height:.98}.cta2 h2 em{color:var(--kunyit)}
+.cta2 p.l2{max-width:30rem;margin:22px 0 30px;font-size:19px;line-height:29px;color:#D9D2BF}
+.cta2 .btn{border-color:var(--kunyit);box-shadow:3px 3px 0 var(--gading)}
+.btn.pulse{position:relative}.btn.pulse::after{content:"";position:absolute;inset:-6px;border-radius:calc(var(--r-md) + 6px);border:2px solid var(--kunyit);animation:cpulse 2.2s ease-out infinite;pointer-events:none}@keyframes cpulse{0%{transform:scale(.96);opacity:.9}100%{transform:scale(1.14,1.3);opacity:0}}
+.ph-wrap{perspective:1200px;display:flex;justify-content:center;padding:30px 0 60px}
+.ph-tilt{position:relative;transform-style:preserve-3d;transform:rotateY(calc(-16deg + var(--ry,0deg))) rotateX(calc(6deg + var(--rx,0deg)));transition:transform .25s ease-out;animation:phfl 6s ease-in-out infinite}
+@keyframes phfl{50%{translate:0 -12px}}
+.ph{width:clamp(230px,24vw,290px);border:3px solid var(--gading);border-radius:34px;background:#0C1A15;box-shadow:12px 14px 0 rgba(0,0,0,.35),0 0 0 6px var(--tinta-700);overflow:hidden}
+.ph-h{display:flex;align-items:center;gap:10px;padding:16px 16px 12px;background:var(--tinta-700);border-bottom:1.5px solid var(--line)}
+.ph-h .av{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--kunyit);color:var(--tinta);font:600 20px/1 var(--fd)}.ph-h b{display:block;font:600 14px/1.1 var(--fs)}.ph-h small{font:500 11px/1 var(--fm);color:#7FD39A}
+.ph-b{display:flex;flex-direction:column;gap:10px;padding:16px 12px 22px;min-height:258px;justify-content:flex-start}
+.bu{max-width:82%;padding:9px 12px;border-radius:14px 14px 14px 4px;background:#243E34;font-size:13px;line-height:18px;opacity:0;align-self:flex-start}
+.bu.me{align-self:flex-end;background:var(--kunyit);color:var(--tinta);border-radius:14px 14px 4px 14px}
+.m1{animation:bm1 11s infinite}.m2{animation:bm2 11s infinite}.m3{animation:bm3 11s infinite}.m4{animation:bm4 11s infinite}
+@keyframes bm1{0%,3%{opacity:0;transform:translateY(12px) scale(.92)}7%,88%{opacity:1;transform:none}95%,100%{opacity:0}}
+@keyframes bm2{0%,19%{opacity:0;transform:translateY(12px) scale(.92)}23%,88%{opacity:1;transform:none}95%,100%{opacity:0}}
+@keyframes bm3{0%,38%{opacity:0;transform:translateY(12px) scale(.92)}42%,88%{opacity:1;transform:none}95%,100%{opacity:0}}
+@keyframes bm4{0%,57%{opacity:0;transform:translateY(12px) scale(.92)}61%,88%{opacity:1;transform:none}95%,100%{opacity:0}}
+.chip{position:absolute;padding:8px 14px;border:2px solid var(--tinta);border-radius:99px;background:var(--gading);color:var(--tinta);font:600 13px/1 var(--fs);box-shadow:3px 3px 0 var(--kunyit);animation:chfl 5s ease-in-out infinite}
+.c1{left:-14%;top:12%;transform:translateZ(70px)}.c2{right:-12%;top:30%;transform:translateZ(90px);animation-delay:-1.2s}.c3{left:-10%;bottom:20%;transform:translateZ(80px);animation-delay:-2.4s}.c4{right:-8%;bottom:6%;transform:translateZ(60px);animation-delay:-3.4s}
+@keyframes chfl{50%{translate:0 -10px}}
+.mq{position:relative;margin-top:clamp(20px,3vw,40px);border-top:2px solid var(--line);padding:16px 0;overflow:hidden;white-space:nowrap;font:600 clamp(20px,3vw,34px)/1 var(--fd);font-style:italic;color:var(--tinta-700);background:var(--kunyit)}
+.mq-t{display:inline-block;animation:mq 26s linear infinite;color:var(--tinta)}.mq-t span{display:inline-block;padding-right:.4em}@keyframes mq{to{transform:translateX(-50%)}}
+@media(max-width:860px){.fq-l{position:static}.cube-wrap{display:none}.cta2-g{grid-template-columns:1fr}.cta2-t{text-align:center}.cta2 p.l2{margin-left:auto;margin-right:auto}.ph-wrap{padding-bottom:44px}.fq .fq-r p{padding-left:18px}}
+@media(max-width:480px){.fq .fq-r summary{font-size:16px;padding:12px 14px}.fq .n{display:none}.chip{font-size:12px;padding:7px 11px}}
+
 /* faq */
 .fq{display:grid;grid-template-columns:1fr 1.6fr;gap:48px}.fq h2{font-size:clamp(28px,3.4vw,46px)}
 .fq details{border-top:2px dashed var(--line-s);padding:20px 0}.fq details:last-child{border-bottom:2px dashed var(--line-s)}
@@ -369,7 +420,7 @@ footer .lg{color:var(--gading);margin-bottom:16px}
         <button type="button" aria-label="Teduh Kopi" aria-pressed="true"></button><button type="button" aria-label="Rindang Residence" aria-pressed="false"></button><button type="button" aria-label="Lintas Nusa Trans" aria-pressed="false"></button><button type="button" aria-label="Rumble Audio Rental" aria-pressed="false"></button>
       </div>
       <div class="rg-act"><button class="btn" type="button" id="rgp">Lihat preview <i aria-hidden="true">↗</i></button></div>
-      <div class="rg-info" id="rgi" aria-live="polite">
+      <div class="rg-info sr" id="rgi" aria-live="polite">
         <div class="eyebrow" data-e>Kedai kopi</div>
         <h3 data-t>Teduh Kopi</h3>
         <p class="d" data-d>Cerita secangkir kopi dari biji sampai meja, bergerak mengikuti scroll.</p>
@@ -403,30 +454,51 @@ footer .lg{color:var(--gading);margin-bottom:16px}
   </noscript>
 </section>
 
-<section class="s" id="faq" aria-labelledby="h-faq">
+<section class="s fqs" id="faq" aria-labelledby="h-faq">
   <div class="w fq">
-    <div><p class="k">FAQ</p><h2 id="h-faq">Pertanyaan seputar <em>harga.</em></h2></div>
-    <div>
-      <details><summary>Bisa pesan satu layanan saja?</summary><p>Bisa. Seluruh layanan tersedia secara satuan, sedangkan paket bulanan bersifat opsional.</p></details>
-      <details><summary>Bagaimana cara memesan?</summary><p>Pilih layanan di kartu menu, tekan Tambah ke Pesanan, dan total dihitung otomatis. Nota lalu terisi di chat WhatsApp. Kamu juga bisa langsung memilih paket atau ngobrol dulu.</p></details>
-      <details><summary>Apakah konten dibuat oleh AI?</summary><p>AI membantu mempercepat produksi. Arahan kreatif, seleksi hasil, dan keputusan strategis tetap dipegang tim kami.</p></details>
-      <details><summary>Apa bedanya Reels 15–30 dan 30–60 detik?</summary><p>Perbedaannya hanya durasi. Reels 15–30 detik Rp35.000, Reels 30–60 detik Rp60.000 per video.</p></details>
-      <details><summary>Apakah budget iklan sudah termasuk?</summary><p>Belum. Budget iklan dibayarkan langsung ke Meta atau Google. Biaya kami mencakup penyiapan dan pengelolaan iklan.</p></details>
-      <details><summary>Apakah website sudah termasuk domain dan hosting?</summary><p>Belum. Domain, hosting, dan plugin berbayar ditanggung terpisah, kecuali disepakati lain.</p></details>
-      <details><summary>Apa itu Setup Otomasi Konten AI?</summary><p>Kami menyiapkan alur kerja AI di akun Claude Pro milikmu untuk ide, naskah, dan caption. Biayanya Rp499.000 sekali bayar; akun Claude Pro wajib aktif dan langganannya kamu tanggung sendiri.</p></details>
-      <details><summary>Apakah memesan lewat nota berarti membayar?</summary><p>Belum. Nota hanya menyusun pesan WhatsApp. Harga akhir dikonfirmasi melalui chat sebelum kamu setuju.</p></details>
-      <details><summary>Apakah ada jaminan hasil?</summary><p>Kami tidak menjamin penjualan maupun hasil iklan. Layanan dikerjakan sesuai menu dan paket yang disepakati.</p></details>
+    <div class="fq-l">
+      <p class="k">FAQ</p><h2 id="h-faq">Pertanyaan seputar <em>harga.</em></h2>
+      <p class="sub">Ketuk pertanyaan untuk membuka jawabannya.</p>
+      <div class="cube-wrap" aria-hidden="true"><div class="cube-tilt"><div class="cube"><b class="f1">?</b><b class="f2">Rp</b><b class="f3">✓</b><b class="f4">AI</b><b class="f5">3D</b><b class="f6">Ets</b></div></div><div class="cube-sh"></div></div>
+    </div>
+    <div class="fq-r">
+      <details><summary><span class="n" aria-hidden="true">01</span><span class="q2">Bisa pesan satu layanan saja?</span></summary><p>Bisa. Seluruh layanan tersedia secara satuan, sedangkan paket bulanan bersifat opsional.</p></details>
+      <details><summary><span class="n" aria-hidden="true">02</span><span class="q2">Bagaimana cara memesan?</span></summary><p>Pilih layanan di kartu menu, tekan Tambah ke Pesanan, dan total dihitung otomatis. Nota lalu terisi di chat WhatsApp. Kamu juga bisa langsung memilih paket atau ngobrol dulu.</p></details>
+      <details><summary><span class="n" aria-hidden="true">03</span><span class="q2">Apakah konten dibuat oleh AI?</span></summary><p>AI membantu mempercepat produksi. Arahan kreatif, seleksi hasil, dan keputusan strategis tetap dipegang tim kami.</p></details>
+      <details><summary><span class="n" aria-hidden="true">04</span><span class="q2">Apa bedanya Reels 15–30 dan 30–60 detik?</span></summary><p>Perbedaannya hanya durasi. Reels 15–30 detik Rp35.000, Reels 30–60 detik Rp60.000 per video.</p></details>
+      <details><summary><span class="n" aria-hidden="true">05</span><span class="q2">Apakah budget iklan sudah termasuk?</span></summary><p>Belum. Budget iklan dibayarkan langsung ke Meta atau Google. Biaya kami mencakup penyiapan dan pengelolaan iklan.</p></details>
+      <details><summary><span class="n" aria-hidden="true">06</span><span class="q2">Apakah website sudah termasuk domain dan hosting?</span></summary><p>Belum. Domain, hosting, dan plugin berbayar ditanggung terpisah, kecuali disepakati lain.</p></details>
+      <details><summary><span class="n" aria-hidden="true">07</span><span class="q2">Apa itu Setup Otomasi Konten AI?</span></summary><p>Kami menyiapkan alur kerja AI di akun Claude Pro milikmu untuk ide, naskah, dan caption. Biayanya Rp499.000 sekali bayar; akun Claude Pro wajib aktif dan langganannya kamu tanggung sendiri.</p></details>
+      <details><summary><span class="n" aria-hidden="true">08</span><span class="q2">Apakah memesan lewat nota berarti membayar?</span></summary><p>Belum. Nota hanya menyusun pesan WhatsApp. Harga akhir dikonfirmasi melalui chat sebelum kamu setuju.</p></details>
+      <details><summary><span class="n" aria-hidden="true">09</span><span class="q2">Apakah ada jaminan hasil?</span></summary><p>Kami tidak menjamin penjualan maupun hasil iklan. Layanan dikerjakan sesuai menu dan paket yang disepakati.</p></details>
     </div>
   </div>
 </section>
 
-<section class="s cta" id="kontak" aria-labelledby="h-cta">
-  <div class="w">
-    <p class="k">Konsultasi pertama gratis</p>
-    <h2 id="h-cta">Ceritakan <em>usahamu.</em></h2>
-    <p class="l2">Kami cek di mana pelanggan berhenti. Mulai dari satu layanan kecil pun boleh.</p>
-    <a class="btn" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20ingin%20konsultasi%20layanan%20digital." target="_blank" rel="noopener">Ceritakan usahamu <i aria-hidden="true">→</i></a>
+<section class="s cta2 dk" id="kontak" aria-labelledby="h-cta">
+  <div class="w cta2-g">
+    <div class="cta2-t">
+      <p class="k">Konsultasi pertama gratis</p>
+      <h2 id="h-cta">Ceritakan <em>usahamu.</em></h2>
+      <p class="l2">Kami cek di mana pelanggan berhenti. Mulai dari satu layanan kecil pun boleh.</p>
+      <a class="btn pulse" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20ingin%20konsultasi%20layanan%20digital." target="_blank" rel="noopener">Ceritakan usahamu <i aria-hidden="true">→</i></a>
+    </div>
+    <div class="ph-wrap" aria-hidden="true">
+      <div class="ph-tilt">
+        <div class="ph">
+          <div class="ph-h"><span class="av">e</span><span><b>Menej Ets</b><small>online</small></span></div>
+          <div class="ph-b">
+            <p class="bu me m1">Halo Menej Ets, saya mau konsultasi.</p>
+            <p class="bu m2">Ets, boleh cerita dulu usahamu apa?</p>
+            <p class="bu me m3">Jualan kue, tapi Instagram belum rapi.</p>
+            <p class="bu m4">Tenang, kami yang menej.</p>
+          </div>
+        </div>
+        <span class="chip c1">Konten</span><span class="chip c2">Iklan</span><span class="chip c3">Website</span><span class="chip c4">Otomasi</span>
+      </div>
+    </div>
   </div>
+  <div class="mq" aria-hidden="true"><div class="mq-t"><span>Konten AI ✦ Kelola Instagram ✦ Iklan Digital ✦ Website 3D ✦ Otomasi AI ✦ </span><span>Konten AI ✦ Kelola Instagram ✦ Iklan Digital ✦ Website 3D ✦ Otomasi AI ✦ </span></div></div>
 </section>
 </main>
 
@@ -989,6 +1061,16 @@ if('IntersectionObserver' in window)new IntersectionObserver(es=>{vis=es.some(e=
 if(!reduce)setInterval(()=>{if(vis&&!mopen&&!dr&&Date.now()-last>5000&&!stage.matches(':focus-within'))go(mod(front+1))},4000);
 let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(layout,150)});
 setInfo(0);
+})();
+</script>
+<script>
+/* parallax kubus FAQ dan ponsel CTA */
+(()=>{
+if(matchMedia('(prefers-reduced-motion:reduce)').matches||!matchMedia('(hover:hover)').matches)return;
+const pairs=[['.cube-tilt','#faq'],['.ph-tilt','#kontak']];
+pairs.forEach(([t,sec])=>{const el=document.querySelector(t),box=document.querySelector(sec);if(!el||!box)return;
+ box.addEventListener('pointermove',e=>{const r=box.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.setProperty('--ry',(x*28).toFixed(1)+'deg');el.style.setProperty('--rx',(-y*20).toFixed(1)+'deg')});
+ box.addEventListener('pointerleave',()=>{el.style.setProperty('--ry','0deg');el.style.setProperty('--rx','0deg')});});
 })();
 </script>
 </body>
