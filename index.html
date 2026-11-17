@@ -368,6 +368,7 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
 @media(max-width:700px){.sp{--vh:250px;top:80px}}
 #barchip{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));left:auto;z-index:60;width:56px;height:56px;min-height:0;padding:0;display:grid;place-items:center;border:0;border-radius:50%;background:var(--tinta);color:var(--gading);box-shadow:0 14px 30px -10px rgba(0,0,0,.5);transform:translateY(200%);transition:transform .6s cubic-bezier(.22,.8,.2,1)}#barchip.show{transform:none}
 #barchip svg{width:28px;height:28px}#barchip .bn{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--kunyit);color:var(--tinta);font:600 12px/22px var(--fs);text-align:center}#barchip .bn[hidden]{display:none}
+.glass{background:#FFFDF8;border:1px solid #E2D9C3;box-shadow:0 8px 20px -12px rgba(18,37,30,.25)}.jr.dark .glass{background:rgba(255,255,255,.05);border-color:#2F4B40;box-shadow:none}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:opacity .12s!important}html{scroll-behavior:auto}}
 </style>
 <noscript><style>.jr{height:auto!important}.jr .stage{display:none}</style></noscript>
@@ -934,7 +935,7 @@ function createJourney(cfg){
 }
 
 createJourney({key:'journey', root:'#journey', steps:STEPS1, h1:true, build:buildWorld1,
-  bg:0xF5EFE3, floor:0xE9E0CC, grid:[0xCFC4AB,0xDBD1BA], hemi:[0xFFFBF2,0xD9D0B8,1.9], sun:[0xFFF6E2,1.6], target:[0,0,-4], route:0xFFB81C, guide:0xFFB81C});
+  bg:0xDCE7D6, floor:0xC5D5BF, grid:[0xAEC2A8,0xB9CBB3], hemi:[0xF6FBF3,0xB5C4AE,1.9], sun:[0xFFFBEE,1.6], target:[0,0,-4], route:0xFFB81C, guide:0xFFB81C});
 createJourney({key:'cara', root:'#cara', steps:STEPS2, h1:false, build:buildWorld2,
   dark:true, bg:0x12251E, floor:0x1F3B31, grid:[0x2F4B40,0x294237], hemi:[0xE8EFE9,0x4F6358,1.5], sun:[0xF5EFE3,1.4], target:[5,0,-1], route:0xFFB81C, guide:0xFFB81C});
 
