@@ -173,6 +173,33 @@ section.s{padding:clamp(64px,8vw,110px) 0}
 .rgm iframe{flex:1;width:100%;border:0;background:#fff}
 @media(max-width:760px){.rgm{padding:0}.rgm-box{border:0;border-radius:0;box-shadow:none;height:100dvh}.rgm-h{padding-left:12px}.rgm-h b{font-size:15px}}
 
+/* faq: peta 3D */
+.fm-head{text-align:center;max-width:720px;margin:0 auto 34px}.fm-head .sub{margin-left:auto;margin-right:auto}
+.fm{--rx:58deg;--rz:-22deg;position:relative;height:clamp(540px,76vh,700px);border:2px solid var(--tinta);border-radius:28px;overflow:hidden;box-shadow:6px 6px 0 var(--tinta);perspective:1800px;background:radial-gradient(120% 90% at 50% 20%,#F9F5EA,#E4DAC2);touch-action:pan-y}
+.fmw{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 1.2s cubic-bezier(.3,.7,.2,1)}
+.fmp{position:absolute;left:50%;top:50%;width:1400px;height:1000px;margin:-500px 0 0 -700px;transform-style:preserve-3d;transform-origin:700px 500px;transition:transform 1.2s cubic-bezier(.3,.7,.2,1);border-radius:22px;box-shadow:0 60px 90px -30px rgba(18,37,30,.35)}
+.fmp>svg{position:absolute;inset:0;width:100%;height:100%;border-radius:22px}
+.fm-route{stroke-dasharray:3 14;animation:fmr 2.4s linear infinite}@keyframes fmr{to{stroke-dashoffset:-34}}
+.fm-g{position:absolute;width:0;height:0;transform-style:preserve-3d}
+.fm-g i{position:absolute;left:-30px;top:-30px;width:60px;height:60px;border-radius:50%;border:3px solid var(--kunyit);opacity:0}.fm-g.on i{animation:fmrg 1.8s ease-out infinite}@keyframes fmrg{0%{transform:scale(.3);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+.fm-g u{position:absolute;left:-7px;top:-7px;width:14px;height:14px;border-radius:50%;background:rgba(18,37,30,.35);filter:blur(2px)}
+.fm-pin{position:absolute;width:0;height:0;transform-style:preserve-3d;transform:rotateZ(calc(-1*var(--rz))) rotateX(calc(-1*var(--rx)));transform-origin:0 0}
+.fm-pin button{position:absolute;left:-23px;top:-55px;width:46px;height:46px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--kunyit);border:2.5px solid var(--tinta);box-shadow:3px 3px 0 rgba(18,37,30,.25);cursor:pointer;padding:0;transition:transform .35s var(--ets),background-color .25s,box-shadow .25s}
+.fm-pin button span{display:block;transform:rotate(45deg);font:600 17px/41px var(--fd);text-align:center;color:var(--tinta)}
+.fm-pin button:hover{transform:rotate(-45deg) scale(1.15)}
+.fm-pin.on button{background:var(--tinta);transform:rotate(-45deg) scale(1.3);box-shadow:4px 4px 0 var(--kunyit)}.fm-pin.on button span{color:var(--kunyit)}
+.fm.has .fm-pin:not(.on) button{opacity:.78}
+.fm-pin button:focus-visible{outline:3px solid var(--tinta);outline-offset:4px}
+.bd{position:absolute;transform-style:preserve-3d}
+.bd b{position:absolute;display:block}.bd .t{inset:0;transform:translateZ(var(--h));background:var(--c);border-radius:3px}
+.bd .f{left:0;top:100%;width:100%;height:var(--h);transform-origin:top;transform:rotateX(90deg);background:var(--c);filter:brightness(.82)}
+.bd .r{left:100%;top:0;width:var(--h);height:100%;transform-origin:left;transform:rotateY(-90deg);background:var(--c);filter:brightness(.66)}
+.fm-card{position:absolute;right:28px;top:50%;transform:translateY(-50%);z-index:5;width:min(380px,calc(100% - 56px));background:var(--surface);color:var(--text);border:2px solid var(--tinta);border-radius:var(--r-lg);padding:24px;box-shadow:6px 6px 0 var(--tinta);transition:opacity .3s ease,transform .45s var(--ease)}
+.fm-card.sw{opacity:0;transform:translateY(calc(-50% + 12px))}
+.fm-card h3{font-size:clamp(22px,2.2vw,30px);line-height:1.12;margin-bottom:12px}.fm-card p{color:var(--muted);font-size:16px;line-height:25px;margin-bottom:18px}
+.fm-b{display:flex;gap:10px;flex-wrap:wrap}.fm-b .btn{min-height:44px;padding:10px 16px}.fm-b .btn.l{min-width:46px;padding:10px 0}
+.fm-hint{position:absolute;left:22px;bottom:18px;z-index:4;font:500 12px/16px var(--fm);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:opacity .4s}.fm.has .fm-hint{opacity:0}
+@media(max-width:860px){.fm{--rx:55deg;height:clamp(560px,82vh,680px)}.fm-card{right:12px;left:12px;top:auto;bottom:12px;width:auto;transform:none;padding:18px;border-radius:20px;box-shadow:4px 4px 0 var(--tinta)}.fm-card.sw{transform:translateY(12px)}.fm-card p{font-size:15px;line-height:23px;margin-bottom:14px}.fm-hint{display:none}}
 /* faq 3D */
 .fqs{background:var(--gading)}
 .fq{align-items:start}.fq-l{position:sticky;top:96px}
@@ -246,6 +273,8 @@ footer .lg{color:var(--gading);margin-bottom:16px}
 #sum{flex:1;min-width:0;background:none;border:0;cursor:pointer;text-align:left;display:flex;align-items:center;gap:10px;white-space:nowrap;overflow:hidden;padding:6px 0;color:var(--gading)}
 #sum span{overflow:hidden;text-overflow:ellipsis}#sum u{color:var(--kunyit);margin-left:auto;text-underline-offset:3px}
 #bar .btn{flex:none;min-height:44px;padding:10px 18px;box-shadow:none;border-color:var(--kunyit)}
+#barx{flex:none;width:38px;height:38px;border-radius:10px;border:1.5px solid var(--line);background:transparent;color:var(--gading);font-size:15px;cursor:pointer;transition:background-color .2s}#barx:hover{background:var(--tinta-700)}
+#barchip{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:60;display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:10px 18px;border:2px solid var(--kunyit);border-radius:var(--r-md);background:var(--tinta);color:var(--gading);font:600 14px/1 var(--fs);box-shadow:3px 3px 0 var(--kunyit);cursor:pointer;transform:translateY(160%);transition:transform .45s var(--ets)}#barchip.show{transform:none}#barchip b{color:var(--kunyit)}
 #bar:focus-within{outline:0}#bar :focus-visible{outline-color:var(--kunyit)}
 
 @media(max-width:860px){
@@ -412,23 +441,19 @@ footer .lg{color:var(--gading);margin-bottom:16px}
 </section>
 
 <section class="s fqs" id="faq" aria-labelledby="h-faq">
-  <div class="w fq">
-    <div class="fq-l">
-      <p class="k">FAQ</p><h2 id="h-faq">Pertanyaan seputar <em>harga.</em></h2>
-      <p class="sub">Ketuk pertanyaan untuk membuka jawabannya.</p>
-      <div class="cube-wrap" aria-hidden="true"><div class="cube-tilt"><div class="cube"><b class="f1">?</b><b class="f2">Rp</b><b class="f3">✓</b><b class="f4">AI</b><b class="f5">3D</b><b class="f6">Ets</b></div></div><div class="cube-sh"></div></div>
+  <div class="w">
+    <div class="fm-head"><p class="k">FAQ</p><h2 id="h-faq">Peta pertanyaan <em>seputar harga.</em></h2><p class="sub">Jelajahi petanya, ketuk satu titik untuk membaca jawabannya.</p></div>
+    <div class="fm" id="fm">
+      <div class="fmw" id="fmw"><div class="fmp" id="fmp"></div></div>
+      <div class="fm-card" id="fmc" aria-live="polite">
+        <div class="eyebrow" id="fme">Peta pertanyaan</div>
+        <h3 id="fmt">Ketuk titik di peta</h3>
+        <p id="fma">Ada 9 titik berisi pertanyaan seputar harga dan layanan. Ketuk satu untuk membaca jawabannya.</p>
+        <div class="fm-b"><button class="btn l" type="button" id="fmpv" aria-label="Pertanyaan sebelumnya">‹</button><button class="btn l" type="button" id="fmnx" aria-label="Pertanyaan berikutnya">›</button><button class="btn" type="button" id="fms">Mulai dari 1</button></div>
+      </div>
+      <div class="fm-hint" aria-hidden="true">Ketuk titik kuning</div>
     </div>
-    <div class="fq-r">
-      <details><summary><span class="n" aria-hidden="true">01</span><span class="q2">Bisa pesan satu layanan saja?</span></summary><p>Bisa. Seluruh layanan tersedia secara satuan, sedangkan paket bulanan bersifat opsional.</p></details>
-      <details><summary><span class="n" aria-hidden="true">02</span><span class="q2">Bagaimana cara memesan?</span></summary><p>Pilih layanan di kartu menu, tekan Tambah ke Pesanan, dan total dihitung otomatis. Nota lalu terisi di chat WhatsApp. Kamu juga bisa langsung memilih paket atau ngobrol dulu.</p></details>
-      <details><summary><span class="n" aria-hidden="true">03</span><span class="q2">Apakah konten dibuat oleh AI?</span></summary><p>AI membantu mempercepat produksi. Arahan kreatif, seleksi hasil, dan keputusan strategis tetap dipegang tim kami.</p></details>
-      <details><summary><span class="n" aria-hidden="true">04</span><span class="q2">Apa bedanya Reels 15–30 dan 30–60 detik?</span></summary><p>Perbedaannya hanya durasi. Reels 15–30 detik Rp35.000, Reels 30–60 detik Rp60.000 per video.</p></details>
-      <details><summary><span class="n" aria-hidden="true">05</span><span class="q2">Apakah budget iklan sudah termasuk?</span></summary><p>Belum. Budget iklan dibayarkan langsung ke Meta atau Google. Biaya kami mencakup penyiapan dan pengelolaan iklan.</p></details>
-      <details><summary><span class="n" aria-hidden="true">06</span><span class="q2">Apakah website sudah termasuk domain dan hosting?</span></summary><p>Belum. Domain, hosting, dan plugin berbayar ditanggung terpisah, kecuali disepakati lain.</p></details>
-      <details><summary><span class="n" aria-hidden="true">07</span><span class="q2">Apa itu Setup Otomasi Konten AI?</span></summary><p>Kami menyiapkan alur kerja AI di akun Claude Pro milikmu untuk ide, naskah, dan caption. Biayanya Rp499.000 sekali bayar; akun Claude Pro wajib aktif dan langganannya kamu tanggung sendiri.</p></details>
-      <details><summary><span class="n" aria-hidden="true">08</span><span class="q2">Apakah memesan lewat nota berarti membayar?</span></summary><p>Belum. Nota hanya menyusun pesan WhatsApp. Harga akhir dikonfirmasi melalui chat sebelum kamu setuju.</p></details>
-      <details><summary><span class="n" aria-hidden="true">09</span><span class="q2">Apakah ada jaminan hasil?</span></summary><p>Kami tidak menjamin penjualan maupun hasil iklan. Layanan dikerjakan sesuai menu dan paket yang disepakati.</p></details>
-    </div>
+    <noscript><ul style="margin-top:24px;display:grid;gap:12px"><li><b>Bisa pesan satu layanan saja?</b> Bisa. Seluruh layanan tersedia secara satuan, sedangkan paket bulanan bersifat opsional.</li><li><b>Bagaimana cara memesan?</b> Pilih layanan di kartu menu, tekan Tambah ke Pesanan, dan total dihitung otomatis. Nota lalu terisi di chat WhatsApp. Kamu juga bisa langsung memilih paket atau ngobrol dulu.</li><li><b>Apakah konten dibuat oleh AI?</b> AI membantu mempercepat produksi. Arahan kreatif, seleksi hasil, dan keputusan strategis tetap dipegang tim kami.</li><li><b>Apa bedanya Reels 15–30 dan 30–60 detik?</b> Perbedaannya hanya durasi. Reels 15–30 detik Rp35.000, Reels 30–60 detik Rp60.000 per video.</li><li><b>Apakah budget iklan sudah termasuk?</b> Belum. Budget iklan dibayarkan langsung ke Meta atau Google. Biaya kami mencakup penyiapan dan pengelolaan iklan.</li><li><b>Apakah website sudah termasuk domain dan hosting?</b> Belum. Domain, hosting, dan plugin berbayar ditanggung terpisah, kecuali disepakati lain.</li><li><b>Apa itu Setup Otomasi Konten AI?</b> Kami menyiapkan alur kerja AI di akun Claude Pro milikmu untuk ide, naskah, dan caption. Biayanya Rp499.000 sekali bayar; akun Claude Pro wajib aktif dan langganannya kamu tanggung sendiri.</li><li><b>Apakah memesan lewat nota berarti membayar?</b> Belum. Nota hanya menyusun pesan WhatsApp. Harga akhir dikonfirmasi melalui chat sebelum kamu setuju.</li><li><b>Apakah ada jaminan hasil?</b> Kami tidak menjamin penjualan maupun hasil iklan. Layanan dikerjakan sesuai menu dan paket yang disepakati.</li></ul></noscript>
   </div>
 </section>
 
@@ -473,7 +498,8 @@ footer .lg{color:var(--gading);margin-bottom:16px}
 
 <div class="rgm" id="rgm" hidden role="dialog" aria-modal="true" aria-labelledby="rgmt"><div class="rgm-box"><div class="rgm-h"><b id="rgmt"></b><a class="btn" id="rgmo" href="#" target="_blank" rel="noopener">Tab baru <i aria-hidden="true">↗</i></a><button class="btn l" type="button" id="rgmx">Tutup ✕</button></div><iframe id="rgmf" title="Preview website demo" allow="autoplay; fullscreen" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-modals"></iframe></div></div>
 
-<div id="bar" role="region" aria-label="Ringkasan nota dan WhatsApp"><button id="sum" type="button"></button><a class="btn" id="bwa" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20ingin%20konsultasi%20layanan%20digital." target="_blank" rel="noopener">Hubungi via WhatsApp</a></div>
+<div id="bar" role="region" aria-label="Ringkasan nota dan WhatsApp"><button id="sum" type="button"></button><a class="btn" id="bwa" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20ingin%20konsultasi%20layanan%20digital." target="_blank" rel="noopener">Hubungi via WhatsApp</a><button id="barx" type="button" aria-label="Sembunyikan ringkasan nota">✕</button></div>
+<button id="barchip" type="button" aria-label="Tampilkan ringkasan nota">Nota</button>
 
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"}}</script>
 <script type="module">
@@ -928,7 +954,7 @@ const notes=[c.web&&'(Website: harga awal, lingkup dikonfirmasi terlebih dahulu.
 return `Halo Menej Ets, saya ingin memesan layanan berikut:\n\n${c.L.join('\n')}\n\n${[c.one?'Estimasi sekali bayar: '+R(c.one):'',c.mo?'Estimasi per bulan: '+R(c.mo):''].filter(Boolean).join('\n')}\n${notes}\n\nMohon informasi mengenai proses pemesanan. Terima kasih.`}
 function renderNota(){const c=calc(),k=Object.keys(cart),url=wa(msg());
 const tot=[c.one?R(c.one):'',c.mo?R(c.mo)+'/bln':''].filter(Boolean).join(' + ');
-$('#sum').innerHTML=c.n?`<b>${c.n} item</b><span>${tot}</span><u>Lihat nota</u>`:`<span>Belum ada pesanan</span><u>Pilih layanan</u>`;
+$('#barchip').innerHTML=c.n?`<b>${c.n}</b> item · Nota`:'Nota';$('#sum').innerHTML=c.n?`<b>${c.n} item</b><span>${tot}</span><u>Lihat nota</u>`:`<span>Belum ada pesanan</span><u>Pilih layanan</u>`;
 $('#bwa').textContent=c.n?'Lanjut ke WhatsApp':'Hubungi via WhatsApp';$('#bwa').href=url;
 $('#nota').innerHTML=`<h3>Nota Pesanan</h3><p class="sb">Menej Ets · estimasi, bukan tagihan</p>`+(c.n?k.map(i=>{const s=S[i];return `<div class="li"><div><b>${esc(s[1])}</b><small>${R(s[2])} × ${cart[i]} · ${s[4]}</small></div><b>${R(s[2]*cart[i])}</b></div>`}).join('')+`<div class="tt">${c.one?`<div><span>Sekali bayar</span><span>${R(c.one)}</span></div>`:''}${c.mo?`<div><span>Per bulan</span><span>${R(c.mo)}</span></div>`:''}</div><p class="nb">Harga website merupakan harga awal. Budget iklan, domain, hosting, dan biaya pihak ketiga tidak termasuk. Harga akhir disepakati melalui chat.</p><a class="btn" href="${url}" target="_blank" rel="noopener">Lanjut ke WhatsApp <i aria-hidden="true">→</i></a>`:`<p class="empty">Belum ada layanan yang dipilih. Tekan Tambah ke Pesanan di atas untuk menyusun nota.</p>`)}
 function render(){renderNota()}
@@ -953,7 +979,9 @@ let fontsDone=false;const boot=()=>{init();if(!fontsDone&&document.fonts&&docume
 render();
 /* bar WhatsApp muncul setelah perjalanan 3D */
 const j=$('#journey'),j2=$('#cara'),bar=$('#bar');
-const bt=()=>{const r=j2.getBoundingClientRect();bar.classList.toggle('show',scrollY>j.offsetTop+j.offsetHeight-innerHeight+8&&!(r.top<innerHeight&&r.bottom>0))};
+let hid=false;const chip=$('#barchip');
+const bt=()=>{const r=j2.getBoundingClientRect(),ok=scrollY>j.offsetTop+j.offsetHeight-innerHeight+8&&!(r.top<innerHeight&&r.bottom>0);bar.classList.toggle('show',ok&&!hid);chip.classList.toggle('show',ok&&hid)};
+$('#barx').addEventListener('click',()=>{hid=true;bt()});chip.addEventListener('click',()=>{hid=false;bt()});
 addEventListener('scroll',bt,{passive:true});addEventListener('resize',bt);bt();
 })();
 </script>
@@ -974,6 +1002,71 @@ if(!reduce&&matchMedia('(hover:hover)').matches)cards.forEach(c=>{
   c.addEventListener('pointerleave',()=>{c.style.setProperty('--ry','0deg');c.style.setProperty('--rx','0deg')})});
 })();
 </script>
+<script>
+/* ---------- FAQ: peta 3D ---------- */
+(()=>{
+const FAQ=[["Bisa pesan satu layanan saja?", "Bisa. Seluruh layanan tersedia secara satuan, sedangkan paket bulanan bersifat opsional."], ["Bagaimana cara memesan?", "Pilih layanan di kartu menu, tekan Tambah ke Pesanan, dan total dihitung otomatis. Nota lalu terisi di chat WhatsApp. Kamu juga bisa langsung memilih paket atau ngobrol dulu."], ["Apakah konten dibuat oleh AI?", "AI membantu mempercepat produksi. Arahan kreatif, seleksi hasil, dan keputusan strategis tetap dipegang tim kami."], ["Apa bedanya Reels 15–30 dan 30–60 detik?", "Perbedaannya hanya durasi. Reels 15–30 detik Rp35.000, Reels 30–60 detik Rp60.000 per video."], ["Apakah budget iklan sudah termasuk?", "Belum. Budget iklan dibayarkan langsung ke Meta atau Google. Biaya kami mencakup penyiapan dan pengelolaan iklan."], ["Apakah website sudah termasuk domain dan hosting?", "Belum. Domain, hosting, dan plugin berbayar ditanggung terpisah, kecuali disepakati lain."], ["Apa itu Setup Otomasi Konten AI?", "Kami menyiapkan alur kerja AI di akun Claude Pro milikmu untuk ide, naskah, dan caption. Biayanya Rp499.000 sekali bayar; akun Claude Pro wajib aktif dan langganannya kamu tanggung sendiri."], ["Apakah memesan lewat nota berarti membayar?", "Belum. Nota hanya menyusun pesan WhatsApp. Harga akhir dikonfirmasi melalui chat sebelum kamu setuju."], ["Apakah ada jaminan hasil?", "Kami tidak menjamin penjualan maupun hasil iklan. Layanan dikerjakan sesuai menu dan paket yang disepakati."]];
+const $=x=>document.querySelector(x),fm=$('#fm'),fmw=$('#fmw'),fmp=$('#fmp');
+if(!fm)return;
+const PT=[[220,690],[430,560],[650,720],[790,440],[990,620],[1180,770],[1130,370],[870,210],[560,270]];
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let seed=7;const rnd=()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+/* peta dasar */
+const cols=10,rows=8,cw=140,ch=125,pal=['#EFE7D4','#E8DEC6','#F3ECDC','#DFD5BA'],park=new Set(['2,4','3,4','7,1','8,5']);
+let svg='<rect width="1400" height="1000" fill="#FBF7EE"/>';
+for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const x=c*cw+13,y=r*ch+13,p=park.has(c+','+r);svg+=`<rect x="${x}" y="${y}" width="${cw-26}" height="${ch-26}" rx="12" fill="${p?'#BDD2B2':pal[Math.floor(rnd()*pal.length)]}"/>`;
+ if(p)for(let k=0;k<5;k++)svg+=`<circle cx="${x+18+rnd()*(cw-62)}" cy="${y+16+rnd()*(ch-58)}" r="${7+rnd()*6}" fill="#7FA37B"/>`}
+svg+='<path d="M-20 300 L1420 640" stroke="#FBF7EE" stroke-width="30"/><path d="M-20 300 L1420 640" stroke="#F0E6CD" stroke-width="2" stroke-dasharray="14 12"/>';
+svg+='<path d="M-20 930 C260 850 460 1010 760 920 S1180 840 1420 930" stroke="#BFD9D6" stroke-width="64" fill="none" stroke-linecap="round"/>';
+svg+='<path d="'+PT.map((p,i)=>(i?'L':'M')+p[0]+' '+p[1]).join(' ')+'" class="fm-route" stroke="#8A5A00" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/>';
+fmp.innerHTML='<svg viewBox="0 0 1400 1000" aria-hidden="true">'+svg+'</svg>';
+/* gedung 3D */
+const cols2=['#FBF7EE','#FFB81C','#4F6358','#12251E','#B33D22','#E9E0CC'];
+let n=0;for(let r=0;r<rows&&n<16;r++)for(let c=0;c<cols&&n<16;c++){
+ if(park.has(c+','+r)||(r>=6&&c>=0&&r===7)||rnd()>.22)continue;
+ const cx=c*cw+cw/2,cy=r*ch+ch/2;if(PT.some(p=>Math.hypot(p[0]-cx,p[1]-cy)<110))continue;
+ const w=46+rnd()*30,d=40+rnd()*26,h=34+rnd()*86,e=document.createElement('div');e.className='bd';
+ e.style.cssText=`left:${cx-w/2}px;top:${cy-d/2}px;width:${w}px;height:${d}px;--h:${h}px;--c:${cols2[Math.floor(rnd()*cols2.length)]}`;e.innerHTML='<b class="t"></b><b class="f"></b><b class="r"></b>';fmp.appendChild(e);n++}
+/* titik */
+const pins=[],gs=[];
+FAQ.forEach((f,i)=>{
+ const g=document.createElement('div');g.className='fm-g';g.style.cssText=`left:${PT[i][0]}px;top:${PT[i][1]}px`;g.innerHTML='<u></u><i></i>';fmp.appendChild(g);gs.push(g);
+ const p=document.createElement('div');p.className='fm-pin';p.style.cssText=`left:${PT[i][0]}px;top:${PT[i][1]}px`;
+ p.innerHTML=`<button type="button" aria-label="Pertanyaan ${i+1}: ${f[0].replace(/"/g,'&quot;')}"><span>${i+1}</span></button>`;
+ p.firstChild.addEventListener('click',()=>go(i));fmp.appendChild(p);pins.push(p)});
+/* kamera */
+const card=$('#fmc'),E=$('#fme'),T=$('#fmt'),A=$('#fma'),S=$('#fms');let idx=-1,tm=0;
+function cam(i){
+ const small=innerWidth<860,W=fm.clientWidth,H=fm.clientHeight;
+ let sc,x,y,ox=0,oy=0;
+ if(i<0){x=700;y=500;sc=small?Math.min(.5,W/1500):Math.min(.78,W/1450)}
+ else{x=PT[i][0];y=PT[i][1];sc=small?.95:1.15;if(small)oy=-H*.14;else ox=-W*.15}
+ fmw.style.transform=`translate3d(${ox}px,${oy}px,0)`;
+ fmp.style.transform=`rotateX(var(--rx)) rotateZ(var(--rz)) scale(${sc}) translate(${700-x}px,${500-y}px)`;
+}
+function show(i){
+ card.classList.add('sw');clearTimeout(tm);
+ tm=setTimeout(()=>{
+  if(i<0){E.textContent='Peta pertanyaan';T.textContent='Ketuk titik di peta';A.textContent='Ada 9 titik berisi pertanyaan seputar harga dan layanan. Ketuk satu untuk membaca jawabannya.';S.textContent='Mulai dari 1'}
+  else{E.textContent=`Pertanyaan ${i+1} dari ${FAQ.length}`;T.textContent=FAQ[i][0];A.textContent=FAQ[i][1];S.textContent='Lihat peta'}
+  card.classList.remove('sw')},reduce?0:220)}
+function go(i){idx=i;fm.classList.toggle('has',i>=0);pins.forEach((p,k)=>p.classList.toggle('on',k===i));gs.forEach((g,k)=>g.classList.toggle('on',k===i));cam(i);show(i)}
+$('#fmpv').addEventListener('click',()=>go(idx<0?FAQ.length-1:(idx-1+FAQ.length)%FAQ.length));
+$('#fmnx').addEventListener('click',()=>go(idx<0?0:(idx+1)%FAQ.length));
+S.addEventListener('click',()=>go(idx<0?0:-1));
+addEventListener('keydown',e=>{if(e.key==='Escape'&&idx>=0&&fm.contains(document.activeElement))go(-1)});
+let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>cam(idx),150)});
+cam(-1);
+/* klik titik: hit-test 3D kadang tidak akurat di sebagian browser, jadi dihitung dari posisi layar */
+const near=e=>{let best=-1,bd=34;pins.forEach((p,i)=>{const r=p.firstChild.getBoundingClientRect(),d=Math.hypot(e.clientX-(r.x+r.width/2),e.clientY-(r.y+r.height/2));if(d<bd){bd=d;best=i}});return best};
+fm.addEventListener('click',e=>{if(e.target.closest('.fm-card'))return;const i=near(e);if(i>=0)go(i)});
+fm.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;fm.style.cursor=!e.target.closest('.fm-card')&&near(e)>=0?'pointer':''});
+/* masuk: dari dekat ke tampilan peta saat terlihat */
+if(!reduce&&'IntersectionObserver' in window){fmp.style.transition='none';fmp.style.transform=`rotateX(var(--rx)) rotateZ(var(--rz)) scale(1.2) translate(${700-PT[0][0]}px,${500-PT[0][1]}px)`;
+ new IntersectionObserver((es,o)=>{if(es.some(e=>e.isIntersecting)){o.disconnect();void fmp.offsetWidth;fmp.style.transition='';cam(-1)}},{threshold:.3}).observe(fm)}
+})();
+</script>
+
 <script>
 /* parallax kubus FAQ dan ponsel CTA */
 (()=>{
