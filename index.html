@@ -366,6 +366,8 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
 .sp.stuck .sp-view{height:calc(var(--vh)*.55)}.sp.stuck .sp-scene{transform:scale(.55)}.sp.stuck{margin-bottom:calc(var(--vh)*.45)}
 .sp.stuck .sp-tabs{margin-top:10px}
 @media(max-width:700px){.sp{--vh:250px;top:80px}}
+#barchip{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));left:auto;z-index:60;width:56px;height:56px;min-height:0;padding:0;display:grid;place-items:center;border:0;border-radius:50%;background:var(--tinta);color:var(--gading);box-shadow:0 14px 30px -10px rgba(0,0,0,.5);transform:translateY(200%);transition:transform .6s cubic-bezier(.22,.8,.2,1)}#barchip.show{transform:none}
+#barchip svg{width:28px;height:28px}#barchip .bn{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--kunyit);color:var(--tinta);font:600 12px/22px var(--fs);text-align:center}#barchip .bn[hidden]{display:none}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:opacity .12s!important}html{scroll-behavior:auto}}
 </style>
 <noscript><style>.jr{height:auto!important}.jr .stage{display:none}</style></noscript>
@@ -568,7 +570,7 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
 
 <div class="rgm" id="rgm" hidden role="dialog" aria-modal="true" aria-labelledby="rgmt"><div class="rgm-box"><div class="rgm-h"><b id="rgmt"></b><a class="btn" id="rgmo" href="#" target="_blank" rel="noopener">Tab baru </a><button class="btn l" type="button" id="rgmx">Tutup ✕</button></div><iframe id="rgmf" title="Preview website demo" allow="autoplay; fullscreen" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-modals"></iframe></div></div>
 
-<button id="barchip" type="button" aria-label="Tampilkan ringkasan nota">Nota</button>
+<a id="barchip" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20ingin%20konsultasi%20layanan%20digital." target="_blank" rel="noopener" aria-label="Chat WhatsApp Menej Ets"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.02 3C8.84 3 3 8.83 3 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.7A13 13 0 0 0 16.02 29C23.18 29 29 23.17 29 16S23.18 3 16.02 3Zm0 23.6c-2 0-3.95-.54-5.66-1.55l-.4-.24-3.94 1.01 1.05-3.84-.26-.4A10.56 10.56 0 0 1 5.4 16c0-5.84 4.76-10.6 10.62-10.6S26.6 10.16 26.6 16s-4.74 10.6-10.58 10.6Zm5.82-7.93c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.19.21-.37.24-.69.08-.32-.16-1.34-.5-2.55-1.57-.94-.84-1.58-1.88-1.76-2.2-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.71-.98-2.34-.26-.62-.52-.53-.71-.54l-.61-.01c-.21 0-.56.08-.85.4-.29.32-1.12 1.09-1.12 2.66s1.15 3.09 1.31 3.3c.16.21 2.26 3.45 5.48 4.84.77.33 1.37.53 1.83.68.77.24 1.47.21 2.02.13.62-.09 1.88-.77 2.14-1.51.27-.74.27-1.38.19-1.51-.08-.13-.29-.21-.61-.37Z"/></svg><span class="bn" hidden></span></a>
 
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"}}</script>
 <script type="module">
@@ -1020,7 +1022,7 @@ const notes=[c.web&&'(Website: harga awal, lingkup dikonfirmasi terlebih dahulu.
 return `Halo Menej Ets, saya ingin memesan layanan berikut:\n\n${c.L.join('\n')}\n\n${[c.one?'Estimasi sekali bayar: '+R(c.one):'',c.mo?'Estimasi per bulan: '+R(c.mo):''].filter(Boolean).join('\n')}\n${notes}\n\nMohon informasi mengenai proses pemesanan. Terima kasih.`}
 function renderNota(){const c=calc(),k=Object.keys(cart),url=wa(msg());
 const tot=[c.one?R(c.one):'',c.mo?R(c.mo)+'/bln':''].filter(Boolean).join(' + ');
-$('#barchip').innerHTML=c.n?`<b>${c.n}</b> item · Lihat nota`:'Nota';
+{const f=$('#barchip'),bn=$('.bn',f);f.href=c.n?url:'https://wa.me/'+WA+'?text='+encodeURIComponent(HI);bn.textContent=c.n;bn.hidden=!c.n}
 
 $('#nota').innerHTML=`<h3>Nota Pesanan</h3><p class="sb">Menej Ets · estimasi, bukan tagihan</p>`+(c.n?k.map(i=>{const s=S[i];return `<div class="li"><div><b>${esc(s[1])}</b><small>${R(s[2])} × ${cart[i]} · ${s[4]}</small></div><b>${R(s[2]*cart[i])}</b></div>`}).join('')+`<div class="tt">${c.one?`<div><span>Sekali bayar</span><span>${R(c.one)}</span></div>`:''}${c.mo?`<div><span>Per bulan</span><span>${R(c.mo)}</span></div>`:''}</div><p class="nb">Harga website merupakan harga awal. Budget iklan, domain, hosting, dan biaya pihak ketiga tidak termasuk. Harga akhir disepakati melalui chat.</p><a class="btn" href="${url}" target="_blank" rel="noopener">Lanjut ke WhatsApp <i aria-hidden="true">→</i></a>`:`<p class="empty">Belum ada layanan yang dipilih. Masukkan layanan ke troli untuk menyusun nota.</p>`)}
 function render(){renderNota()}
@@ -1034,7 +1036,7 @@ const f=$(`.sp-list button[data-i="${i}"][data-d="${dd}"]`)||$(`.sp-list button[
 if(q>before)fly(r);else renderLoad();return}
 const tb=t.closest('#spt button');if(tb){goCat(+tb.dataset.c);return}
 const st=t.closest('.st');if(st){goCat(+st.dataset.c);return}
-if(t.closest('#barchip'))$('#nota').scrollIntoView({behavior:'smooth',block:'center'})});
+});
 (()=>{const v=$('#spv');let x0=null;
 v.addEventListener('pointerdown',e=>{if(!e.target.closest('button'))x0=e.clientX});
 addEventListener('pointerup',e=>{if(x0===null)return;const dx=e.clientX-x0;x0=null;if(Math.abs(dx)>50)goCat(cur+(dx<0?1:-1))});
@@ -1051,8 +1053,8 @@ else goCat(0,true);
 renderLoad();
 render();
 /* bar WhatsApp muncul setelah perjalanan 3D */
-const j=$('#journey'),j2=$('#cara'),chip=$('#barchip'),nt=$('#nota');
-const bt=()=>{const r=j2.getBoundingClientRect(),q=nt.getBoundingClientRect(),ok=scrollY>j.offsetTop+j.offsetHeight-innerHeight+8&&!(r.top<innerHeight&&r.bottom>0)&&!(q.top<innerHeight*.8&&q.bottom>innerHeight*.2);chip.classList.toggle('show',ok&&Object.keys(cart).length>0)};
+const j=$('#journey'),chip=$('#barchip');
+const bt=()=>{chip.classList.toggle('show',scrollY>j.offsetTop+j.offsetHeight-innerHeight+8)};
 const spE=$('#sp'),spS=$('#spsent');let stk=false;const chk=()=>{const t=parseFloat(getComputedStyle(spE).top)||78,v=spS.getBoundingClientRect().top<=t+1;if(v!==stk){stk=v;spE.classList.toggle('stuck',v)}};
 addEventListener('scroll',chk,{passive:true});addEventListener('resize',chk);chk();
 window.__bt=bt;addEventListener('scroll',bt,{passive:true});addEventListener('resize',bt);bt();
