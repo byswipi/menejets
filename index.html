@@ -260,23 +260,24 @@ section.s{padding:clamp(64px,8vw,110px) 0}
 .fq p{margin-top:10px;max-width:640px;color:var(--muted)}
 
 /* belanja 3D */
-.sp{--sw:230px;margin-top:6px}
-.sp-view{position:relative;height:clamp(270px,32vw,320px);perspective:760px;perspective-origin:50% 28%;overflow:hidden;border:2px solid var(--tinta);border-radius:var(--r-lg);background:var(--gading);box-shadow:6px 6px 0 var(--tinta);touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.sp{--sw:220px;--w:140px;--h:150px;--d:56px;margin-top:6px}
+.sp-view{position:relative;height:clamp(280px,30vw,300px);perspective:800px;perspective-origin:50% 22%;overflow:hidden;border:var(--bd);border-radius:28px;background:#F3ECDD;box-shadow:var(--sh-2);touch-action:pan-y;user-select:none;-webkit-user-select:none}
 .sp-world{position:absolute;left:50%;bottom:0;width:0;height:100%;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.6,0,.2,1)}
-.sp-floor{position:absolute;left:-1800px;width:3600px;bottom:0;height:300px;transform-origin:50% 100%;transform:rotateX(74deg);background-color:var(--gading-200);background-image:repeating-linear-gradient(90deg,transparent 0 119px,rgba(18,37,30,.14) 119px 121px),repeating-linear-gradient(0deg,transparent 0 59px,rgba(18,37,30,.14) 59px 61px)}
-.st{position:absolute;left:calc(var(--i)*var(--sw) - 75px);bottom:58px;width:150px;height:176px;transform-style:preserve-3d;transform:translateZ(-150px);cursor:pointer}
-.st>div{position:absolute;background:var(--ac);border:2px solid var(--tinta);transition:filter .5s}
-.st .f{inset:0;transform:translateZ(32px);border-radius:10px 10px 4px 4px;padding:10px 10px 0;display:flex;flex-direction:column;gap:10px}
-.st .bk{inset:0;transform:rotateY(180deg) translateZ(32px)}
-.st .rt{width:64px;height:176px;left:43px;transform:rotateY(90deg) translateZ(75px);filter:brightness(.78)}
-.st .lf{width:64px;height:176px;left:43px;transform:rotateY(-90deg) translateZ(75px);filter:brightness(.78)}
-.st .tp{width:150px;height:64px;top:56px;transform:rotateX(90deg) translateZ(88px);filter:brightness(1.18)}
-.st:not(.on) .f{filter:brightness(.8)}.st.on .f{box-shadow:0 0 0 4px var(--tinta)}.st.on .f{filter:brightness(1.15)}
+.sp-floor{position:absolute;left:-1800px;width:3600px;bottom:0;height:300px;transform-origin:50% 100%;transform:rotateX(72deg);background-color:#E3D9C1;background-image:repeating-linear-gradient(90deg,transparent 0 139px,rgba(18,37,30,.07) 139px 141px)}
+.st{position:absolute;left:calc(var(--i)*var(--sw) - var(--w)/2);bottom:96px;width:var(--w);height:var(--h);transform-style:preserve-3d;transform:translateZ(-120px);cursor:pointer}
+.st>div{position:absolute;background:var(--ac);transition:filter .5s}
+.st .f{inset:0;transform:translateZ(calc(var(--d)/2));border-radius:14px 14px 4px 4px;padding:10px 10px 0;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.st .bk{inset:0;transform:rotateY(180deg) translateZ(calc(var(--d)/2))}
+.st .rt{width:var(--d);height:var(--h);left:calc((var(--w) - var(--d))/2);transform:rotateY(90deg) translateZ(calc(var(--w)/2));filter:brightness(.8)}
+.st .lf{width:var(--d);height:var(--h);left:calc((var(--w) - var(--d))/2);transform:rotateY(-90deg) translateZ(calc(var(--w)/2));filter:brightness(.8)}
+.st .tp{width:var(--w);height:var(--d);top:calc((var(--h) - var(--d))/2);transform:rotateX(90deg) translateZ(calc(var(--h)/2));filter:brightness(1.2)}
+.st:not(.on) .f{filter:brightness(.82)}.st.on .f{filter:brightness(1.12)}
 .st .pl{display:flex;align-items:center;gap:7px;align-self:stretch;background:var(--on);color:var(--ac);border-radius:8px;padding:6px 8px;font:600 13.5px/1.1 var(--fd);white-space:nowrap;overflow:hidden;justify-content:center}.st .pl i{display:none}
-.st .sh{flex:1;display:grid;grid-template-rows:repeat(3,1fr);gap:0;margin:0 -10px}
+.st .sh{flex:1;display:grid;grid-template-rows:repeat(2,1fr);gap:0;margin:0 -10px}
 .st .sh span{border-bottom:5px solid var(--on);background:repeating-linear-gradient(90deg,transparent 0 10px,var(--on) 10px 30px,transparent 30px 36px,var(--on) 36px 52px,transparent 52px 60px) no-repeat;background-size:100% 62%;background-position:0 100%;opacity:.9}
-.st .sh span:nth-child(2){opacity:.6}.st .sh span:nth-child(3){opacity:.35}
-.sp-cart{position:absolute;left:50%;bottom:6px;width:176px;margin-left:-88px;z-index:5;pointer-events:none}
+.st .sh span:nth-child(2){opacity:.55}.st .sh span:nth-child(3){display:none}
+
+.sp-cart{position:absolute;left:50%;bottom:10px;width:150px;margin-left:-75px;z-index:5;pointer-events:none}
 .sp-cart::after{content:"";position:absolute;left:8%;right:8%;bottom:-5px;height:12px;border-radius:50%;background:rgba(18,37,30,.2);z-index:-1}
 .sp-cart .cw{transition:transform .25s}.sp-cart.rv .cw{transform:scaleX(-1)}.sp-cart .cs{display:block;width:100%;height:auto;overflow:visible}
 .sp-cart.mv .cs{animation:spbob .3s ease-in-out infinite}.sp-cart.mv .wh{animation:spwh .45s linear infinite}.wh{transform-box:fill-box;transform-origin:center}
@@ -297,7 +298,9 @@ section.s{padding:clamp(64px,8vw,110px) 0}
 .pd .pa{margin-top:auto;padding-top:10px}.pd .add.on{background:var(--tinta);color:var(--gading)}
 .sp-note{text-align:center;font-size:13px;color:var(--muted);margin-top:16px}.sp-note b{color:var(--tinta)}
 .fly{position:fixed;width:28px;height:28px;border-radius:8px;border:3px solid var(--tinta);z-index:90;pointer-events:none}
-@media(max-width:700px){.sp{--sw:190px}.sp-view{height:270px}.sp-cart{width:150px;margin-left:-75px}.sp-nav{width:38px;height:38px;top:38%}.sp-nav.l{left:8px}.sp-nav.r{right:8px}.sp-tabs{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;margin-left:-20px;margin-right:-20px;padding:2px 20px 6px;scrollbar-width:none}.sp-tabs button{flex:none}.sp-grid{grid-template-columns:1fr}}
+@media(max-width:700px){.sp{--sw:170px;--w:118px;--h:128px;--d:48px}.sp-view{height:250px}.st{bottom:92px}.sp-cart{width:124px;margin-left:-62px}.st .pl{font-size:12px;padding:5px 6px}
+.sp-tabs{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;margin-left:-20px;margin-right:-20px;padding:2px 20px 6px;scrollbar-width:none}.sp-tabs button{flex:none}
+.sp-grid{grid-template-columns:repeat(2,1fr);gap:10px}.pd{padding:14px 14px 12px;border-radius:18px;gap:4px}.pd .pt{flex-direction:column;gap:2px}.pd h4{font-size:14.5px;line-height:19px}.pd em{font-size:17px}.pd p{font-size:12.5px;line-height:18px}.pd .pu{font-size:10.5px}.pd .add{width:100%;padding:8px 6px;font-size:13px;min-height:38px}.pd .lgx{display:none}.pd .q{width:100%;justify-content:space-between;gap:4px}.pd .q button{width:34px;height:34px}.pd:last-child:nth-child(odd){grid-column:1/-1}.sp-lh h3{font-size:22px}}
 /* cta + footer */
 .cta{background:var(--gading-200);text-align:center;border-top:2px solid var(--tinta)}
 .cta h2{font-size:clamp(34px,5.6vw,76px);line-height:1}.cta p.l2{max-width:560px;margin:22px auto 30px;font-size:19px;line-height:29px}
@@ -340,8 +343,8 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
 .dk .btn,.jr.dark .btn,.cta2 .btn{box-shadow:0 12px 26px -10px rgba(0,0,0,.6)}#bar .btn{box-shadow:none}
 .nav{border:var(--bd);box-shadow:var(--sh-2)}
 .copy{box-shadow:var(--sh-3);border:var(--bd);border-radius:24px}.jr.dark .copy{border-color:#2F4B40;box-shadow:0 26px 56px -20px rgba(0,0,0,.6)}
-.nota,.pd,.sp-view,.fm,.fm-card{background:var(--card);border:var(--bd);box-shadow:var(--sh-2)}
-.nota,.fm-card{border-radius:24px}.pd{border-radius:22px;padding:20px 20px 18px}.sp-view{border-radius:28px;background:var(--card)}
+.nota,.pd,.fm,.fm-card{background:var(--card);border:var(--bd);box-shadow:var(--sh-2)}
+.nota,.fm-card{border-radius:24px}.pd{border-radius:22px;padding:20px 20px 18px}.sp-view{border-radius:28px;background:#F3ECDD}
 .pd:hover{transform:translateY(-3px);box-shadow:var(--sh-3)}.pd.in{background:#F6EEDC}
 .sp-tabs button{border:1px solid #D9CFB6;background:var(--card)}.sp-tabs button[aria-pressed=true]{background:var(--tinta);border-color:var(--tinta)}
 .sp-nav{border:1px solid #D9CFB6;box-shadow:var(--sh-1)}.add{border-width:1.5px}
@@ -983,8 +986,8 @@ const total=()=>Object.values(cart).reduce((a,b)=>a+b,0);
 $('#spw').insertAdjacentHTML('beforeend',cats.map((c,i)=>`<div class="st" data-c="${i}" style="--i:${i};--ac:${ACC[i][0]};--on:${ACC[i][1]}"><div class="f"><b class="pl"><i>${String(i+1).padStart(2,'0')}</i>${c}</b><div class="sh"><span></span><span></span><span></span></div></div><div class="bk"></div><div class="rt"></div><div class="lf"></div><div class="tp"></div></div>`).join(''));
 $('#spt').innerHTML=cats.map((c,i)=>`<button type="button" data-c="${i}">${c}</button>`).join('');
 const pd=i=>{const s=S[i],q=cart[i],e=esc(s[1]),pk=s[0]==PAKET;
-const act=pk?(q?`<button class="add on" type="button" data-i="${i}" data-d="-1">Keluarkan dari troli</button>`:`<button class="add" type="button" data-i="${i}" data-d="1" aria-label="Masukkan ${e} ke troli">+ Masukkan ke troli</button>`)
-:(q?`<div class="q" role="group" aria-label="Jumlah ${e}"><button type="button" data-i="${i}" data-d="-1" aria-label="Kurangi ${e}">−</button><output>${q}</output><button type="button" data-i="${i}" data-d="1" aria-label="Tambah ${e}">+</button></div>`:`<button class="add" type="button" data-i="${i}" data-d="1" aria-label="Masukkan ${e} ke troli">+ Masukkan ke troli</button>`);
+const act=pk?(q?`<button class="add on" type="button" data-i="${i}" data-d="-1">Keluarkan dari troli</button>`:`<button class="add" type="button" data-i="${i}" data-d="1" aria-label="Masukkan ${e} ke troli">+ <span class="lgx">Masukkan ke </span>troli</button>`)
+:(q?`<div class="q" role="group" aria-label="Jumlah ${e}"><button type="button" data-i="${i}" data-d="-1" aria-label="Kurangi ${e}">−</button><output>${q}</output><button type="button" data-i="${i}" data-d="1" aria-label="Tambah ${e}">+</button></div>`:`<button class="add" type="button" data-i="${i}" data-d="1" aria-label="Masukkan ${e} ke troli">+ <span class="lgx">Masukkan ke </span>troli</button>`);
 const k=pk?PK[s[6]]:null,det=k?`<details><summary>Isi paket</summary><ul>${k.f.map(x=>`<li>${x}</li>`).join('')}${k.x.map(x=>`<li class="x">${x}</li>`).join('')}</ul>${k.sv?`<p class="sv">${k.sv}</p>`:''}</details>`:'';
 return `<article class="pd${q?' in':''}"><div class="pt"><h4>${e}</h4><em>${s[3]=='w'?'Mulai ':''}${R(s[2])}</em></div><div class="pu">${s[4]}</div><p>${esc(s[5])}</p>${det}<div class="pa">${act}</div></article>`};
 function renderList(fade){const c=cats[cur],L=$('#sple');
