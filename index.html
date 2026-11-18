@@ -156,7 +156,7 @@ section.s{padding:clamp(64px,8vw,110px) 0}
 
 .wk-sec{background:var(--gading);overflow-x:clip;border-bottom:2px solid var(--tinta)}
 .wk-head{text-align:center;max-width:760px;margin:0 auto}.wk-head .sub{margin-left:auto;margin-right:auto}
-.wks{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:clamp(32px,4vw,52px)}
+.wks{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:clamp(32px,4vw,52px)}
 .wk{display:block;text-align:left;padding:0;border:1px solid #E2D9C3;border-radius:28px;background:#FFFDF8;overflow:hidden;cursor:pointer;box-shadow:0 12px 32px -12px rgba(18,37,30,.18);transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out,box-shadow .3s}
 .wk:hover{box-shadow:0 30px 60px -24px rgba(18,37,30,.35)}
 .wk .rg-screen{font-size:12.5px}.wk .rg-hero b{font-size:1.6em}.wk .rg-hero{max-width:47%!important}
@@ -431,9 +431,22 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
     <div class="wk-head">
       <p class="k">Contoh hasil kerja</p>
       <h2 id="h-karya">Seperti ini wujud <em>hasilnya.</em></h2>
-      <p class="sub">Empat demo untuk usaha yang berbeda. Ketuk untuk melihat preview.</p>
+      <p class="sub">Lima demo untuk usaha yang berbeda. Ketuk untuk melihat preview.</p>
     </div>
     <div class="wks" id="wks">
+      <button class="wk" type="button" aria-label="Lihat preview Alva Hills"><div class="rg-screen" style="--hc:#3A2414;--hb:#3A2414;--hk:#FFF6E6">
+              <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="rgah" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7D9A8"/><stop offset="1" stop-color="#FBEFD9"/></linearGradient></defs>
+                <rect width="320" height="220" fill="url(#rgah)"/>
+                <circle class="rg-sun" cx="250" cy="52" r="20" fill="#F4A940"/>
+                <ellipse cx="70" cy="232" rx="170" ry="92" fill="#B7C79A"/><ellipse cx="270" cy="244" rx="190" ry="86" fill="#8FA877"/><ellipse cx="150" cy="262" rx="230" ry="80" fill="#5E7A54"/>
+                <g class="rg-sway"><rect x="292" y="152" width="6" height="30" fill="#5A4430"/><circle cx="295" cy="142" r="19" fill="#3F6B45"/><circle cx="284" cy="152" r="12" fill="#4F7F53"/></g>
+                <rect x="170" y="140" width="92" height="46" fill="#F3E7D0"/><polygon points="160,142 216,102 272,142" fill="#8A5A34"/><rect x="170" y="140" width="92" height="6" fill="#B98A5A"/>
+                <rect x="208" y="156" width="16" height="30" rx="2" fill="#3B2615"/>
+                <rect class="rg-win" x="180" y="154" width="15" height="15" fill="#F4A940"/><rect class="rg-win" x="238" y="154" width="15" height="15" fill="#F4A940" style="animation-delay:-1.4s"/>
+                <path class="rg-draw" d="M14 212 C84 196 140 200 206 190" stroke="#FFF6E6" stroke-width="5" fill="none" stroke-linecap="round"/>
+              </svg>
+              <div class="rg-hero"><small>Alva Hills · Dau, Malang</small><b>Vila keluarga, <em>dekat Batu.</em></b><u>Cek Tanggal</u></div>
+            </div><span class="cap"><span><b>Alva Hills</b><small>Vila keluarga</small></span></span></button>
       <button class="wk" type="button" aria-label="Lihat preview Teduh Kopi"><div class="rg-screen" style="--hc:#F5EFE3;--hb:#E8A94B;--hk:#2A170E">
               <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="rgc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3D2517"/><stop offset="1" stop-color="#1D110A"/></linearGradient><radialGradient id="rgcg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#E8A94B" stop-opacity=".45"/><stop offset="1" stop-color="#E8A94B" stop-opacity="0"/></radialGradient></defs>
                 <rect width="320" height="220" fill="url(#rgc)"/><circle cx="236" cy="130" r="96" fill="url(#rgcg)"/>
@@ -1087,7 +1100,7 @@ window.__bt=bt;addEventListener('scroll',bt,{passive:true});addEventListener('re
 (()=>{
 const $=s=>document.querySelector(s),cards=[...document.querySelectorAll('#wks .wk')];
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-const D=[['Teduh Kopi','https://menej-cafe.vercel.app'],['Rindang Residence','https://menej-properti.vercel.app'],['Lintas Nusa Trans','https://menej-rent-truck.vercel.app'],['Rumble Audio Rental','https://menej-rent-audio.vercel.app']];
+const D=[['Alva Hills','https://alva-hills.vercel.app'],['Teduh Kopi','https://menej-cafe.vercel.app'],['Rindang Residence','https://menej-properti.vercel.app'],['Lintas Nusa Trans','https://menej-rent-truck.vercel.app'],['Rumble Audio Rental','https://menej-rent-audio.vercel.app']];
 const m=$('#rgm'),mf=$('#rgmf');let opener=null;
 function openM(i){opener=document.activeElement;$('#rgmt').textContent=D[i][0]+' · '+D[i][1].replace('https://','');$('#rgmo').href=D[i][1];mf.title='Preview '+D[i][0];mf.src=D[i][1];m.hidden=false;document.body.style.overflow='hidden';$('#rgmx').focus()}
 function closeM(){if(m.hidden)return;m.hidden=true;mf.src='about:blank';document.body.style.overflow='';opener&&opener.focus&&opener.focus()}
