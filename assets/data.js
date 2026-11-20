@@ -6,6 +6,7 @@ export const SERVICES = [
   {
     id: 'instagram', nav: 'Instagram', eyebrow: 'Kelola Instagram',
     title: 'Jasa kelola Instagram UMKM: Reels dan carousel rutin',
+    em: 'Reels dan carousel rutin',
     lead: 'Akun Instagram usahamu tampil rutin tanpa kamu repot. Kami buat kontennya, jadwalkan, dan unggah.',
     gets: ['Reels dan carousel siap tayang', 'Caption, hashtag, dan jadwal posting', 'Kami yang mengunggah ke akunmu'],
     note: 'Konten dibuat dengan bantuan AI, arahan dan keputusan akhir tetap tim kami. Foto dan video produk dari kamu.',
@@ -13,6 +14,7 @@ export const SERVICES = [
   {
     id: 'iklan', nav: 'Iklan', eyebrow: 'Iklan Digital',
     title: 'Jasa iklan Meta dan Google untuk UMKM',
+    em: 'Meta dan Google',
     lead: 'Iklan Instagram, Facebook, dan pencarian Google disiapkan dan dikelola supaya usahamu ditemukan calon pembeli.',
     gets: ['Setup akun iklan dan target audiens', 'Iklan dikelola dan dioptimasi tiap bulan', 'Laporan hasil yang mudah dibaca'],
     note: 'Budget iklan dibayar langsung ke Meta atau Google. Tanpa jaminan hasil.',
@@ -20,6 +22,7 @@ export const SERVICES = [
   {
     id: 'website', nav: 'Website', eyebrow: 'Website',
     title: 'Jasa pembuatan website UMKM yang siap dipakai jualan',
+    em: 'siap dipakai jualan',
     lead: 'Dari satu halaman sampai toko online, rapi di ponsel dan terhubung ke WhatsApp.',
     gets: ['Tampilan rapi di ponsel dan laptop', 'Tombol WhatsApp dan form kontak', 'SEO dasar supaya mudah ditemukan'],
     note: 'Harga awal, lingkup dikonfirmasi lewat chat. Domain dan hosting dibayar terpisah.',
@@ -27,6 +30,7 @@ export const SERVICES = [
   {
     id: 'properti', nav: 'Properti', eyebrow: 'Listing properti dan kalender OTA',
     title: 'Jasa listing Airbnb dan Booking.com, kalender satu pintu',
+    em: 'kalender satu pintu',
     lead: 'Listing vila, kost, atau rumah sewa dirapikan di beberapa platform, kalendernya digabung di websitemu.',
     gets: ['Judul, deskripsi, foto, dan harga disusun rapi', 'Tampil di Airbnb, Booking.com, Agoda, Traveloka', 'Kalender iCal digabung di website (add-on)'],
     note: 'Akun OTA tetap milikmu. Komisi platform tidak termasuk. Tanpa jaminan okupansi. Sinkron iCal tidak instan.',
@@ -34,6 +38,7 @@ export const SERVICES = [
   {
     id: 'otomasi', nav: 'Otomasi AI', eyebrow: 'Otomasi AI',
     title: 'Otomasi konten AI: ide, naskah, dan caption lebih cepat',
+    em: 'lebih cepat',
     lead: 'Alur kerja AI disiapkan di akun Claude Pro milikmu, supaya kamu bisa membuat konten sendiri dengan cepat.',
     gets: ['Alur kerja AI siap pakai', 'Ide, naskah, dan caption dalam satu alur', 'Panduan singkat cara memakainya'],
     note: 'Wajib akun Claude Pro aktif, langganan dibayar sendiri. Biaya pihak ketiga terpisah.',
@@ -96,11 +101,11 @@ export const PLATFORMS = {
 };
 
 export const KARYA = [
-  { name: 'Alva Hills', kind: 'Vila keluarga', line: 'Dau, Malang. Vila keluarga dekat Batu, dengan cek tanggal.', url: 'https://alva-hills.vercel.app' },
-  { name: 'Teduh Kopi', kind: 'Kedai kopi', line: 'Bandung. Secangkir tenang, dari biji ke meja.', url: 'https://menej-cafe.vercel.app' },
-  { name: 'Rindang Residence', kind: 'Properti', line: 'Bogor. Pulang ke rumah yang asri, dengan booking survei.', url: 'https://menej-properti.vercel.app' },
-  { name: 'Lintas Nusa Trans', kind: 'Logistik', line: 'Barang aman, sampai tepat waktu.', url: 'https://menej-rent-truck.vercel.app' },
-  { name: 'Rumble Audio Rental', kind: 'Sewa alat', line: 'Sound system yang bikin pesta hidup.', url: 'https://menej-rent-audio.vercel.app' },
+  { name: 'Alva Hills', kind: 'Vila keluarga', line: 'Dau, Malang. Vila keluarga dekat Batu, dengan cek tanggal.', url: 'https://alva-hills.vercel.app', img: 'assets/karya/alva-hills.jpg', alt: 'Cuplikan situs Alva Hills: vila keluarga di Malang dengan tombol cek tanggal.' },
+  { name: 'Teduh Kopi', kind: 'Kedai kopi', line: 'Bandung. Secangkir tenang, dari biji ke meja.', url: 'https://menej-cafe.vercel.app', img: 'assets/karya/teduh-kopi.jpg', alt: 'Cuplikan situs Teduh Kopi: kedai kopi dengan dunia 3D isometrik berwarna hangat.' },
+  { name: 'Rindang Residence', kind: 'Properti', line: 'Bogor. Pulang ke rumah yang asri, dengan booking survei.', url: 'https://menej-properti.vercel.app', img: 'assets/karya/rindang-residence.jpg', alt: 'Cuplikan situs Rindang Residence: perumahan dengan peta 3D rumah dan taman.' },
+  { name: 'Lintas Nusa Trans', kind: 'Logistik', line: 'Barang aman, sampai tepat waktu.', url: 'https://menej-rent-truck.vercel.app', img: 'assets/karya/lintas-nusa-trans.jpg', alt: 'Cuplikan situs Lintas Nusa Trans: jasa trucking dengan jalan dan gudang 3D.' },
+  { name: 'Rumble Audio Rental', kind: 'Sewa alat', line: 'Sound system yang bikin pesta hidup.', url: 'https://menej-rent-audio.vercel.app', img: 'assets/karya/rumble-audio-rental.jpg', alt: 'Cuplikan situs Rumble Audio Rental: sewa sound system dengan panggung dan lampu 3D.' },
 ];
 
 export const CALENDAR_SOURCES = [

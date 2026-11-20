@@ -121,3 +121,13 @@ Pemilik menyukai referensi agensi bergaya brutal (hitam, putih, oranye, huruf co
 - **Hero:** judul raksasa dengan "UMKM." oranye; blok oranye di kanan berisi ponsel 3D hitam (pengganti foto, karena belum ada foto) dan segel bulat.
 - **Strip layanan** bernomor 01–05 dan **band** "Isi dan harga ditulis dari awal" menggantikan bar bukti.
 - Diuji: `tests/contrast.test.mjs` (token, kontras, huruf, sudut) dan seluruh uji lain tetap lulus.
+
+## Addendum 2026-11-21: gaya Zero One (menggantikan gaya brutal)
+
+Pemilik meminta gaya situs zero-one-group.com secara keseluruhan. Hanya bahasa desainnya yang ditiru; logo, teks, dan aset mereka tidak dipakai. Isi, harga, SEO, nota, dan kalender tidak berubah.
+
+- **Palet:** hitam dan putih hemat tanpa warna aksen. Latar hitam `#000`, teks putih, garis 1px putih transparan; bagian terang (`.light`, CTA) putih berteks hitam. Paket unggulan dibalik (putih di atas hitam).
+- **Huruf:** Figtree (judul ringan dan isi), DM Serif Display miring untuk satu kata kunci per judul (`<em>`, diisi dari `data.js` field `em`), DM Mono untuk label, nav, dan tombol.
+- **Hero:** hitam dengan cahaya lembut, garis motif "usahamu → dilihat" yang tergambar saat dimuat, ponsel 3D abu-abu terang.
+- **Karya:** kisi dua kolom berisi cuplikan layar nyata lima demo (`assets/karya/*.jpg`), hitam-putih lalu berwarna saat disentuh. Kartu tidak lagi memuat `<h3>` di dalam `<button>`.
+- Diuji: kontras token terang dan gelap, huruf, `<em>` di H1 dan tiap H2, gambar karya ada, seluruh uji lain tetap lulus (72).

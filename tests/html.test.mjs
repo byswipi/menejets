@@ -40,7 +40,7 @@ test('H2 tiap layanan sama dengan judul di data dan terhubung ke bagiannya', () 
   for (const s of SERVICES) {
     const m = html.match(new RegExp(`<section[^>]*id="${s.id}"[^>]*aria-labelledby="h-${s.id}"`));
     assert.ok(m, `bagian #${s.id} tidak ada`);
-    const h2 = html.match(new RegExp(`<h2 id="h-${s.id}">([^<]*)</h2>`));
+    const h2 = html.match(new RegExp(`<h2 id="h-${s.id}">([\\s\\S]*?)</h2>`));
     assert.ok(h2, `h2 #h-${s.id} tidak ada`);
     assert.equal(text(h2[1]), s.title);
   }
@@ -97,4 +97,17 @@ test('tidak ada sisa konsep harga lama', () => {
 
 test('bagian statis selalu sinkron dengan data (jalankan: node scripts/render-static.mjs)', () => {
   assert.equal(render(html), html);
+});
+
+// ---------- gaya Zero One ----------
+test('H1 dan tiap H2 layanan memuat kata kunci miring dalam <em>', () => {
+  assert.ok(/<h1[^>]*>[\s\S]*<em>[^<]+<\/em>[\s\S]*<\/h1>/.test(html), 'H1 tanpa <em>');
+  for (const s of SERVICES) {
+    const h2 = html.match(new RegExp(`<h2 id="h-${s.id}">([\\s\\S]*?)</h2>`))[1];
+    assert.ok(h2.includes(`<em>${esc(s.em)}</em>`), `${s.id}: <em>${s.em}</em> tidak ada di H2`);
+  }
+});
+
+test('hero memuat garis motif (trace) yang disembunyikan dari pembaca layar', () => {
+  assert.ok(/<div class="trace" aria-hidden="true">/.test(html));
 });
