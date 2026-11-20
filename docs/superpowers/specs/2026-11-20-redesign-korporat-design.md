@@ -95,3 +95,18 @@ Dipilih pendekatan 1 karena deploy Vercel tidak berubah dan satu objek 3D tidak 
 - Urutan komponen di tiap bagian dan teks mikro (selama harga dan isi tidak berubah).
 - Struktur CSS dan penamaan kelas.
 - Pengujian visual di ponsel dan desktop.
+
+## Addendum 2026-11-21: konsep harga per paket dan copy SEO
+
+Pemilik meminta konsep harga yang tidak terlalu dipecah. Mengganti bagian "Menu harga" dan "Layanan" di atas.
+
+- **Satu bagian per layanan** (Instagram, Iklan, Website, Properti, Otomasi AI), masing-masing: judul berkata kunci, satu kalimat "kami jual apa", daftar singkat "kamu dapat apa", 1–3 paket, catatan.
+- **Paket, bukan butir.** Caption, desain, dan Instagram dasar tidak dijual terpisah. Satu paket per layanan dipilih ke nota; item dalam satu kelompok saling meniadakan.
+- **Harga** (pemilik menetapkan Listing 4 platform Rp850.000; sisanya keputusan kami):
+  Instagram per bulan: Mulai Rp349.000 (4 Reels + 4 Carousel), Tumbuh Rp699.000 (8 + 8), Pro Rp1.199.000 (12 + 12).
+  Iklan per bulan: Meta Rp349.000, Meta + Google Rp599.000.
+  Website sekali bayar: Landing Page Rp299.000, Website Bisnis Rp599.000, Toko Online Rp899.000.
+  Properti: Listing 1 platform Rp229.000, Listing 4 platform Rp850.000, Listing + Instagram Rp1.099.000 (listing 4 platform + Instagram Mulai, hemat Rp100.000, meniadakan paket Instagram terpisah). Add-on: Kalender iCal Rp90.000, Kelola listing dan harga Rp249.000 per bulan.
+  Otomasi AI: Setup Rp499.000.
+- **SEO:** title 50–60 karakter berkata kunci, meta 140–160 karakter, satu H1, H2 tiap layanan memuat kata kunci ("jasa kelola Instagram UMKM", "jasa listing Airbnb Booking.com", "jasa pembuatan website UMKM", "jasa iklan Meta dan Google", "otomasi konten AI"), canonical, JSON-LD FAQPage sama dengan FAQ yang tampil.
+- **Isi bagian layanan ditulis statis di HTML** (bukan dirender JS) agar terbaca mesin pencari; skrip `scripts/render-packages.mjs` mengisi kartu paket dari `data.js`, dan uji memastikan HTML cocok dengan data.
