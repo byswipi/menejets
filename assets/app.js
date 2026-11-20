@@ -1,6 +1,6 @@
 // Penyambung DOM situs Menej Ets. Logika murni ada di data.js, nota.js, ical.js, phone.js.
-import { SERVICES, CATEGORY_TAGS, FAQ, KARYA, PLATFORMS } from './data.js';
-import { GREETING, formatRupiah, whatsappUrl } from './nota.js';
+import { SERVICES, CATEGORY_NOTES, CATEGORY_TAGS, PACKAGES, FAQ, KARYA, PLATFORMS } from './data.js';
+import { GREETING, formatRupiah, setQty, summarize, buildMessage, whatsappUrl } from './nota.js';
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -85,6 +85,84 @@ function initNavSpy() {
   }, { rootMargin: '-45% 0px -50% 0px' }).observe(t));
 }
 
+const PACKAGE_CATEGORY = 'Paket Bulanan';
+
+export function initPricing() {
+  const tabsEl = $('#price-tabs'), listEl = $('#price-list'), notaEl = $('#nota');
+  if (!tabsEl || !listEl || !notaEl) return;
+  const cats = Object.keys(CATEGORY_NOTES);
+  let cart = {}, current = 0;
+
+  tabsEl.innerHTML = cats.map((c, i) => `<button type="button" role="tab" id="tab-${i}" aria-controls="price-list" data-c="${i}">${esc(c)}</button>`).join('');
+
+  function card(i) {
+    const [cat, name, price, kind, unit, desc, pkg] = SERVICES[i];
+    const q = cart[i] || 0, n = esc(name), isPkg = cat === PACKAGE_CATEGORY;
+    const act = isPkg
+      ? `<button class="btn ${q ? 'btn--primary' : 'btn--ghost'}" type="button" data-i="${i}" data-d="${q ? -1 : 1}" aria-pressed="${q ? 'true' : 'false'}">${q ? 'Keluarkan dari nota' : 'Masukkan ke nota'}<span class="visually-hidden"> ${n}</span></button>`
+      : q
+        ? `<div class="qty" role="group" aria-label="Jumlah ${n}"><button type="button" data-i="${i}" data-d="-1" aria-label="Kurangi ${n}">−</button><output>${q}</output><button type="button" data-i="${i}" data-d="1" aria-label="Tambah ${n}">+</button></div>`
+        : `<button class="btn btn--ghost" type="button" data-i="${i}" data-d="1">Tambah<span class="visually-hidden"> ${n} ke nota</span></button>`;
+    const pk = isPkg ? PACKAGES[pkg] : null;
+    const det = pk ? `<details><summary>Isi paket</summary><ul>${pk.f.map((x) => `<li>${esc(x)}</li>`).join('')}${pk.x.map((x) => `<li class="muted">${esc(x)}</li>`).join('')}</ul>${pk.sv ? `<p>${esc(pk.sv)}</p>` : pk.svn ? `<p>${esc(pk.svn)}</p>` : ''}</details>` : '';
+    return `<article class="pd${q ? ' pd--in' : ''}"><div class="pd__top"><h4>${n}</h4><span class="pd__price">${kind === 'w' ? 'Mulai ' : ''}${formatRupiah(price)}</span></div><span class="pd__unit">${esc(unit)}</span><p>${esc(desc)}</p>${det}<div class="pd__act">${act}</div></article>`;
+  }
+
+  function renderList() {
+    const cat = cats[current];
+    listEl.setAttribute('aria-labelledby', `tab-${current}`);
+    listEl.innerHTML = `<div class="pd-grid">${SERVICES.map((s, i) => (s[0] === cat ? card(i) : '')).join('')}</div><p class="price-note"><b>Catatan:</b> ${esc(CATEGORY_NOTES[cat])}</p>`;
+  }
+
+  function renderTabs() {
+    $$('button', tabsEl).forEach((b, i) => { b.setAttribute('aria-selected', i === current ? 'true' : 'false'); b.tabIndex = i === current ? 0 : -1; });
+  }
+
+  function renderNota() {
+    const s = summarize(cart), msg = buildMessage(cart), url = whatsappUrl(msg);
+    const keys = Object.keys(cart);
+    notaEl.innerHTML = `<h3>Nota Pesanan</h3><p class="nota__sub">Menej Ets · estimasi, bukan tagihan</p>` + (s.count
+      ? keys.map((k) => { const [, name, price, , unit] = SERVICES[k]; return `<div class="nota__line"><div><b>${esc(name)}</b><small>${formatRupiah(price)} × ${cart[k]} · ${esc(unit)}</small></div><b class="num">${formatRupiah(price * cart[k])}</b></div>`; }).join('')
+        + `<div class="nota__tot">${s.one ? `<div><span>Sekali bayar</span><span>${formatRupiah(s.one)}</span></div>` : ''}${s.mo ? `<div><span>Per bulan</span><span>${formatRupiah(s.mo)}</span></div>` : ''}</div>`
+        + `<p class="nota__nb">Harga website merupakan harga awal. Budget iklan, domain, hosting, dan biaya pihak ketiga tidak termasuk. Harga akhir disepakati melalui chat.</p><a class="btn btn--primary" href="${url}" target="_blank" rel="noopener">Lanjut ke WhatsApp</a>`
+      : `<p class="nota__empty">Belum ada layanan yang dipilih. Masukkan layanan ke nota untuk menyusunnya.</p>`);
+    const chip = $('#wa-chip'), badge = $('.wa-chip__n', chip);
+    chip.href = s.count ? url : whatsappUrl(GREETING);
+    badge.textContent = s.count;
+    badge.hidden = !s.count;
+  }
+
+  function setTab(i) { current = i; renderTabs(); renderList(); }
+
+  tabsEl.addEventListener('click', (e) => { const b = e.target.closest('button[data-c]'); if (b) setTab(+b.dataset.c); });
+  tabsEl.addEventListener('keydown', (e) => {
+    const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+    if (!step) return;
+    e.preventDefault();
+    const next = (current + step + cats.length) % cats.length;
+    setTab(next);
+    $(`#tab-${next}`).focus();
+  });
+  listEl.addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-i]');
+    if (!b) return;
+    const i = +b.dataset.i, d = +b.dataset.d;
+    cart = setQty(cart, i, d);
+    renderList(); renderNota();
+    (listEl.querySelector(`button[data-i="${i}"][data-d="${d}"]`) || listEl.querySelector(`button[data-i="${i}"]`))?.focus({ preventScroll: true });
+  });
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[data-tab]');
+    if (!link) return;
+    const i = cats.indexOf(link.dataset.tab);
+    if (i >= 0) setTab(i);
+  });
+
+  setTab(0);
+  renderNota();
+}
+
+
 export function initChrome() {
   renderServices();
   renderPlatforms();
@@ -99,3 +177,4 @@ export function initChrome() {
 }
 
 initChrome();
+initPricing();
