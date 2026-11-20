@@ -3,7 +3,9 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { CALENDAR_SOURCES } from '../assets/data.js';
 
-const css = readFileSync(new URL('../assets/site.css', import.meta.url), 'utf8');
+const siteCss = readFileSync(new URL('../assets/site.css', import.meta.url), 'utf8');
+// shell.css menimpa token warna site.css, jadi dibaca lebih dulu.
+const css = readFileSync(new URL('../assets/shell.css', import.meta.url), 'utf8') + '\n' + siteCss;
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const token = (name) => {
   const m = css.match(new RegExp(`--${name}:\\s*(#[0-9a-fA-F]{6})`));
@@ -21,15 +23,15 @@ const ratio = (a, b) => {
 };
 const atLeast = (fg, bg, label, min = 4.5) => assert.ok(ratio(fg, bg) >= min, `${label}: ${fg} di atas ${bg} = ${ratio(fg, bg).toFixed(2)} (< ${min})`);
 
-test('token warna gaya Zero One: hitam dan putih, tanpa warna aksen', () => {
-  assert.equal(token('bg').toUpperCase(), '#000000');
-  assert.equal(token('ink').toUpperCase(), '#FFFFFF');
+test('token warna palet terang: putih lavender, biru tua, tanpa oranye lama', () => {
+  assert.equal(token('bg').toUpperCase(), '#F4F3FA');
+  assert.equal(token('ink').toUpperCase(), '#1E1654');
   assert.equal(token('lt-bg').toUpperCase(), '#FFFFFF');
-  assert.equal(token('lt-ink').toUpperCase(), '#000000');
+  assert.equal(token('lt-ink').toUpperCase(), '#1E1654');
   assert.ok(!/FF4A00/i.test(css), 'oranye lama masih ada');
 });
 
-test('teks putih dan redup terbaca di atas hitam dan permukaan gelap', () => {
+test('teks biru tua dan redup terbaca di atas latar dan permukaan', () => {
   for (const bg of [token('bg'), token('surface')]) {
     atLeast(token('ink'), bg, 'ink');
     atLeast(token('muted'), bg, 'muted');
@@ -43,7 +45,7 @@ test('teks hitam dan redup terbaca di atas bagian putih', () => {
   }
 });
 
-test('tombol utama putih berteks hitam terbaca', () => {
+test('tombol utama biru tua berteks terang terbaca', () => {
   atLeast(token('bg'), token('ink'), 'tombol utama');
 });
 
