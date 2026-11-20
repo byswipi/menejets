@@ -428,8 +428,28 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
 .cal-st .w2 b{color:var(--bata)}
 .cal-dt{min-height:44px;font-size:14px;line-height:21px;color:var(--text)}
 .cal-n{font-size:12.5px;line-height:18px;color:var(--muted);margin-top:8px}
+.pp-pl{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;margin-top:clamp(28px,4vw,48px)}
+.pp-pc{background:#FFFDF8;border:1px solid #E2D9C3;border-radius:20px;padding:20px 22px;box-shadow:var(--sh-2)}
+.pp-pc h3{font:600 20px/1.2 var(--fd);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.pp-pc h3 small{font:500 11px/1 var(--fm);letter-spacing:.06em;text-transform:uppercase;color:var(--kunyit-tua)}
+.pp-pc ul{display:flex;flex-wrap:wrap;gap:8px}
+.pp-pc li{font:600 13px/1 var(--fs);padding:10px 14px;border-radius:10px;border:2px solid var(--tinta);transition:transform .25s var(--ets),box-shadow .25s}
+.pp-pc.ok li{background:var(--kunyit);box-shadow:0 3px 0 var(--tinta)}.pp-pc.ok li:hover{transform:translateY(-4px) rotateX(12deg);box-shadow:0 7px 0 var(--tinta)}
+.pp-pc.no li{background:var(--gading-200);border-style:dashed;color:var(--muted)}
+.pp-pc p{font-size:13px;line-height:19px;color:var(--muted);margin-top:14px}
+@media(max-width:860px){.pp-pl{grid-template-columns:1fr}}
 .pd{transform-style:preserve-3d;will-change:transform}
 @media(max-width:860px){.pp-g{grid-template-columns:1fr}.cal3-tilt{--rx:34deg;--rz:-6deg}.cal3-board{padding:10px;box-shadow:6px 6px 0 var(--tinta),0 24px 30px -16px rgba(18,37,30,.4)}.cal-g{gap:4px}.cd{font-size:11.5px;border-radius:6px}.cd small{display:none}.cal-st b{font-size:20px}}
+/* 3D: keadaan memuat, nav aktif, dan sentuhan kedalaman yang seragam */
+.ldr{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:16px;background:#DCE7D6;color:var(--tinta);font:500 12px/1 var(--fm);letter-spacing:.08em;text-transform:uppercase;perspective:500px;transition:opacity .6s,visibility .6s}
+.jr.dark .ldr{background:#12251E;color:var(--gading)}
+.ldr i{width:44px;height:44px;border-radius:12px;background:var(--kunyit);border:3px solid var(--tinta);box-shadow:0 8px 0 rgba(18,37,30,.25);animation:ldr 1s var(--ets) infinite alternate}
+@keyframes ldr{from{transform:rotateX(0) rotateZ(0)}to{transform:rotateX(60deg) rotateZ(45deg) translateY(-6px)}}
+.jr.ready .ldr,.jr.nogl .ldr{opacity:0;visibility:hidden}
+.nav nav a[aria-current=true]{background:var(--gading-200);box-shadow:inset 0 -3px 0 var(--kunyit)}
+.nav{perspective:600px}
+.wk,.nota,.fm,.pp-pc,.cal-st div{transition:transform .35s var(--ets),box-shadow .35s}
+.cal-st div:hover,.pp-pc:hover{transform:translateY(-3px);box-shadow:var(--sh-3)}
 @media(prefers-reduced-motion:reduce){.cal3-tilt{--rx:20deg;--rz:0deg}.cal3-board .cd.bk{transform:translateZ(var(--z,16px))}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:opacity .12s!important}html{scroll-behavior:auto}}
 </style>
@@ -448,6 +468,7 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
 <section class="jr" id="journey" aria-label="Perjalanan layanan Menej Ets">
   <div class="stage">
     <canvas aria-hidden="true"></canvas>
+    <div class="ldr" aria-hidden="true"><i></i>Memuat dunia 3D</div>
     <div class="veil"></div>
     <div class="copy" aria-live="polite">
       <div class="eyebrow" data-eb>Pengelola digital untuk UMKM</div>
@@ -463,7 +484,7 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
   <noscript>
     <div style="padding:120px 6vw 40px;max-width:44rem">
       <h2>Ets, biar kami yang <em>menej.</em></h2>
-      <p>Satu tim, seluruh alur. Konten AI mulai Rp8.000 per caption. Kelola Instagram mulai Rp99.000 per bulan. Iklan Digital (Meta dan Google Ads) mulai Rp99.000. Website mulai Rp149.000, Landing Page 3D (three.js) mulai Rp447.000. Setup Otomasi AI Rp499.000. Listing properti mulai Rp149.000 per platform, kalender sinkron OTA Rp349.000. Paket bulanan: Starter Rp229.000, Growth Rp629.000, Business Pro Rp1.049.000.</p>
+      <p>Satu tim, seluruh alur. Konten AI mulai Rp8.000 per caption. Kelola Instagram mulai Rp99.000 per bulan. Iklan Digital (Meta dan Google Ads) mulai Rp99.000. Website mulai Rp149.000, Landing Page 3D (three.js) mulai Rp447.000. Setup Otomasi AI Rp499.000. Listing properti Rp229.000 per platform, integrasi kalender iCal Rp90.000 per platform. Paket bulanan: Starter Rp229.000, Growth Rp629.000, Business Pro Rp1.049.000.</p>
       <p><a href="https://wa.me/628567876751">Konsultasi gratis via WhatsApp</a></p>
     </div>
   </noscript>
@@ -552,13 +573,13 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
     <div class="pp-t">
       <p class="k">Listing properti dan kalender OTA</p>
       <h2 id="h-pp">Satu kalender untuk semua <em>platform.</em></h2>
-      <p class="sub">Punya vila, kost, atau rumah sewa? Kami rapikan listing di Airbnb, Booking.com, Agoda, dan Traveloka, lalu menarik kalendernya ke websitemu supaya tanggal yang sudah terisi otomatis tertutup.</p>
+      <p class="sub">Punya vila, kost, atau rumah sewa? Kami rapikan listing di Airbnb, Booking.com, Agoda, dan Traveloka. Untuk platform yang punya iCal, kalendernya kami tarik ke websitemu supaya tanggal yang sudah terisi otomatis tertutup.</p>
       <ol class="pp-st">
         <li><span><b>Listing dirapikan</b>Judul, deskripsi, foto, harga, dan aturan menginap disusun sama di tiap platform.</span></li>
         <li><span><b>Kalender digabung</b>Tautan iCal dari tiap platform dibaca dan disatukan menjadi satu kalender.</span></li>
         <li><span><b>Website ikut terbarui</b>Tamu melihat tanggal kosong yang benar, lalu memesan lewat WhatsApp.</span></li>
       </ol>
-      <div class="pp-pr" aria-label="Ringkasan harga"><span>Listing <b>Rp149.000</b>/platform</span><span>4 platform <b>Rp449.000</b></span><span>Kalender sinkron <b>Rp349.000</b></span></div>
+      <div class="pp-pr" aria-label="Ringkasan harga"><span>Listing <b>Rp229.000</b>/platform</span><span>4 platform <b>Rp749.000</b></span><span>Kalender iCal <b>Rp90.000</b>/platform</span></div>
       <div class="pp-cta"><a class="btn" href="#harga" data-tab="Listing Properti">Harga listing <i aria-hidden="true">→</i></a><a class="btn l" href="#harga" data-tab="Kalender OTA">Harga kalender</a></div>
     </div>
     <div class="pp-d">
@@ -568,7 +589,11 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
       <p class="cal-n">Contoh data. Kalender dibaca dari 4 tautan iCal contoh, lalu digabung. Sinkron iCal tidak instan, tergantung jadwal tiap platform.</p>
     </div>
   </div>
-  <noscript><div class="w"><p>Listing properti mulai Rp149.000 per platform, paket 4 platform Rp449.000. Kalender sinkron OTA di website Rp349.000. Aktifkan JavaScript untuk melihat kalender contoh.</p></div></noscript>
+  <div class="w pp-pl">
+    <div class="pp-pc ok"><h3>Bisa diintegrasi lewat iCal <small>Rp90.000 per platform</small></h3><ul><li>Airbnb</li><li>Booking.com</li><li>Agoda</li><li>Vrbo</li><li>Expedia</li><li>Tripadvisor Rentals</li><li>Google Calendar</li><li>Outlook</li><li>Apple iCloud</li></ul></div>
+    <div class="pp-pc no"><h3>Belum bisa lewat iCal <small>listing tetap kami buat</small></h3><ul><li>Traveloka</li><li>Tiket.com</li><li>RedDoorz</li><li>Pegipegi</li></ul><p>Kalender platform ini tidak ditarik otomatis. Untuk usaha dengan banyak pesanan, kami sarankan channel manager. Ketersediaan iCal bisa berbeda per jenis akun, jadi kami cek dulu sebelum kamu membayar.</p></div>
+  </div>
+  <noscript><div class="w"><p>Listing properti Rp229.000 per platform, paket 4 platform Rp749.000. Integrasi kalender iCal Rp90.000 per platform (hanya platform yang punya iCal). Aktifkan JavaScript untuk melihat kalender contoh.</p></div></noscript>
 </section>
 
 <section class="s hg open" id="harga" aria-labelledby="h-harga">
@@ -598,6 +623,7 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
 <section class="jr dark" id="cara" aria-label="Alasan memilih, cara pesan, dan ketentuan layanan">
   <div class="stage">
     <canvas aria-hidden="true"></canvas>
+    <div class="ldr" aria-hidden="true"><i></i>Memuat dunia 3D</div>
     <div class="veil"></div>
     <div class="copy" aria-live="polite">
       <div class="eyebrow" data-eb>Kenapa Menej Ets</div>
@@ -726,6 +752,7 @@ const STEPS2 = [
 
 function fallback(root, steps, h1){
   root.classList.add('nogl');
+  root.classList.add('ready');
   const copy = $('.copy', root); copy.removeAttribute('aria-live');
   copy.innerHTML = steps.map((s, i) => { const H = (h1 && i === 0) ? 'h1' : 'h2';
     return `<article><div class="eyebrow">${s.eb}</div><${H} class="hd">${s.h[0]}<em>${s.h[1]}</em></${H}><p class="lead">${s.p}</p><div class="glass">${s.card}</div></article>`; }).join('');
@@ -922,9 +949,13 @@ function createJourney(cfg){
   const root = $(cfg.root), steps = cfg.steps, N = steps.length;
   if(!root) return;
   const canvas = $('canvas', root), copy = $('.copy', root), rail = $('.rail', root);
-  let renderer;
+  /* perangkat hemat daya atau lambat: tampilkan versi statis, kecuali diminta dengan ?3d=1 */
+  const lite = !/[?&]3d=1/.test(location.search) && !!((navigator.connection && navigator.connection.saveData) || (navigator.deviceMemory && navigator.deviceMemory <= 2) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2));
+  if(lite) return fallback(root, steps, cfg.h1);
+  let renderer, dead = false;
   try{ renderer = new THREE.WebGLRenderer({canvas, antialias:!small, powerPreference:'high-performance'}); }catch(e){ return fallback(root, steps, cfg.h1); }
   renderer.setPixelRatio(Math.min(devicePixelRatio, small ? 1.25 : 2));
+  canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); dead = true; fallback(root, steps, cfg.h1); });
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = small ? THREE.PCFShadowMap : THREE.PCFSoftShadowMap;
   renderer.toneMapping = THREE.NoToneMapping;
@@ -1028,8 +1059,9 @@ function createJourney(cfg){
       showStep(idx);
       railEls.forEach((e,n) => { e.classList.toggle('on', n===idx); e.style.setProperty('--f', (n<idx?100:n===idx?Math.round((1-Math.abs(f-idx)*2)*100):0)+'%'); });
       renderer.render(scene, camera);
+      root.classList.add('ready');
     }
-    requestAnimationFrame(frame);
+    if(!dead) requestAnimationFrame(frame);
   }
   frame();
 }
@@ -1071,20 +1103,19 @@ const S=[
 ["Website","Landing Page Framer",499000,"w","harga awal, sekali bayar","1 halaman modern dengan animasi yang halus"],
 ["Website","Toko Online WooCommerce",699000,"w","harga awal, sekali bayar","Katalog, keranjang, checkout, maks. 5 produk awal"],
 ["Otomasi AI","Setup Otomasi Konten AI",499000,"o","sekali bayar","Alur kerja AI disiapkan di akun Claude Pro milikmu. Wajib memiliki Claude Pro aktif."],
-["Listing Properti","Listing 1 Platform OTA",149000,"o","per platform, sekali bayar","Listing 1 properti di 1 platform (Airbnb, Booking.com, Agoda, atau Traveloka): judul, deskripsi, fasilitas, urutan foto, harga, dan aturan menginap. Akun tetap milikmu."],
-["Listing Properti","Paket Listing 4 Platform",449000,"o","sekali bayar","1 properti di 4 platform sekaligus dengan teks yang konsisten. Hemat Rp147.000 dibanding 4 listing terpisah."],
+["Listing Properti","Listing 1 Platform OTA",229000,"o","per platform, sekali bayar","Listing 1 properti di 1 platform (Airbnb, Booking.com, Agoda, atau Traveloka): judul, deskripsi, fasilitas, urutan foto, harga, dan aturan menginap. Akun tetap milikmu."],
+["Listing Properti","Paket Listing 4 Platform",749000,"o","sekali bayar","1 properti di 4 platform sekaligus dengan teks yang konsisten. Hemat Rp167.000 dibanding 4 listing terpisah."],
 ["Listing Properti","Iklan Properti Jual atau Sewa",99000,"u","per iklan","1 iklan di portal properti (mis. Rumah123, 99.co, OLX): judul, deskripsi, dan foto disusun rapi."],
 ["Listing Properti","Judul dan Deskripsi Listing",49000,"u","per properti","Teks listing yang mudah ditemukan, 1 bahasa (Indonesia atau Inggris), 2× revisi."],
 ["Listing Properti","Video Tur Properti 30–60 detik",75000,"u","per video","1 video tur dari foto dan klip yang kamu kirim, dilengkapi teks dan musik."],
 ["Listing Properti","Kelola Listing dan Harga",249000,"m","per bulan, per properti","Pembaruan harga musiman, foto, dan balasan ulasan, plus cek kalender. Tidak termasuk komunikasi tamu dan operasional."],
-["Kalender OTA","Kalender Sinkron OTA di Website",349000,"o","sekali bayar","Kalender ketersediaan di websitemu yang menggabungkan tautan iCal dari hingga 3 sumber (Airbnb, Booking.com, Agoda, Google Calendar). Tanggal terisi otomatis tertutup. Butuh website."],
-["Kalender OTA","Tambah Sumber Kalender",49000,"u","per sumber","1 tautan iCal tambahan dari platform atau kalender yang menyediakannya."],
+["Kalender OTA","Integrasi Kalender iCal",90000,"u","per platform","Hubungkan 1 tautan iCal dari platform yang menyediakannya ke kalender di websitemu. Tanggal terisi otomatis tertutup. Hanya untuk platform yang punya iCal. Butuh website."],
 ["Kalender OTA","Pemantauan Sinkron",99000,"m","per bulan","Cek sinkron tiap hari, perbaiki tautan yang putus, dan jaga jadwal pembaruan."],
-["Kalender OTA","Paket Website Vila + Kalender",699000,"w","harga awal, sekali bayar","Landing Page 3D, kalender sinkron 3 sumber, dan tombol booking WhatsApp. Hemat Rp97.000 dibanding harga awal terpisah."],
+["Kalender OTA","Paket Website Vila + Kalender",669000,"w","harga awal, sekali bayar","Landing Page 3D, integrasi kalender iCal untuk 3 platform, dan tombol booking WhatsApp. Hemat Rp48.000 dibanding harga awal terpisah."],
 ["Paket Bulanan","Starter",229000,"m","per bulan","Untuk mulai tampil rutin: 8 postingan per bulan.",0],
 ["Paket Bulanan","Growth",629000,"m","per bulan","Akun terkelola, 16 postingan per bulan.",1],
 ["Paket Bulanan","Business Pro",1049000,"m","per bulan","Pengelolaan menyeluruh, 24 postingan per bulan.",2]];
-const NOTE={"Konten AI":"Dibuat dengan bantuan AI. Harga per item.","Kelola Instagram":"Hanya pengelolaan akun. Konten dipesan terpisah.","Iklan Digital":"Budget iklan dibayar langsung ke Meta atau Google. Tanpa jaminan hasil.","Website":"Harga awal. Domain dan hosting dibayar terpisah.","Otomasi AI":"Wajib akun Claude Pro aktif. Biaya pihak ketiga terpisah.","Listing Properti":"Akun OTA tetap milikmu. Komisi platform tidak termasuk. Tanpa jaminan okupansi.","Kalender OTA":"Sinkron lewat iCal tidak instan: tiap platform memperbarui sendiri, jadi bentrok tanggal tetap mungkin terjadi. Hosting terpisah.","Paket Bulanan":"Termasuk kalender konten dan revisi. Budget iklan, Google Ads, dan website tidak termasuk."};
+const NOTE={"Konten AI":"Dibuat dengan bantuan AI. Harga per item.","Kelola Instagram":"Hanya pengelolaan akun. Konten dipesan terpisah.","Iklan Digital":"Budget iklan dibayar langsung ke Meta atau Google. Tanpa jaminan hasil.","Website":"Harga awal. Domain dan hosting dibayar terpisah.","Otomasi AI":"Wajib akun Claude Pro aktif. Biaya pihak ketiga terpisah.","Listing Properti":"Akun OTA tetap milikmu. Komisi platform tidak termasuk. Tanpa jaminan okupansi.","Kalender OTA":"Hanya untuk platform yang menyediakan iCal (Airbnb, Booking.com, Agoda, Vrbo, Expedia, Google Calendar, dll). Sinkron tidak instan, jadi bentrok tanggal tetap mungkin terjadi. Hosting terpisah.","Paket Bulanan":"Termasuk kalender konten dan revisi. Budget iklan, Google Ads, dan website tidak termasuk."};
 const cats=Object.keys(NOTE),cart={},HI='Halo Menej Ets, saya ingin konsultasi layanan digital.';let tab=cats[0];
 
 const PAKET='Paket Bulanan';
@@ -1194,7 +1225,7 @@ if(!reduce&&matchMedia('(hover:hover)').matches)cards.forEach(c=>{
 <script>
 /* ---------- FAQ: peta 3D ---------- */
 (()=>{
-const FAQ=[["Bisa pesan satu layanan saja?", "Bisa. Semua layanan dijual satuan, jadi kamu tidak perlu mengambil paket bulanan."], ["Bagaimana cara memesan?", "Pilih layanan di menu, masukkan ke troli, lalu kirim nota lewat WhatsApp. Total terhitung otomatis. Kalau masih ragu, kamu boleh ngobrol dulu sebelum memesan."], ["Apakah konten dibuat oleh AI?", "AI membantu mempercepat produksi. Arahan kreatif, pemilihan hasil, dan keputusan strategis tetap kami pegang."], ["Apa bedanya Reels 15–30 dan 30–60 detik?", "Bedanya hanya di durasi. Reels 15–30 detik Rp35.000, Reels 30–60 detik Rp60.000 per video."], ["Apakah budget iklan sudah termasuk?", "Belum. Budget iklan dibayar langsung ke Meta atau Google. Biaya dari kami untuk penyiapan dan pengelolaan iklan."], ["Apakah website sudah termasuk domain dan hosting?", "Belum. Domain, hosting, dan plugin berbayar dihitung terpisah, kecuali kita sepakati lain."], ["Apa itu Setup Otomasi Konten AI?", "Kami menyiapkan alur kerja AI di akun Claude Pro milikmu untuk ide, naskah, dan caption. Biayanya Rp499.000 sekali bayar. Akun Claude Pro harus aktif dan langganannya kamu bayar sendiri."], ["Apakah memesan lewat nota berarti membayar?", "Belum. Nota hanya merangkum pesananmu ke pesan WhatsApp. Harga akhir kami konfirmasi lewat chat sebelum kamu setuju."], ["Apakah kalender OTA langsung sinkron?", "Belum langsung. Kalender digabung lewat tautan iCal, dan tiap platform memperbarui tautannya sendiri, kadang butuh beberapa jam. Karena itu bentrok tanggal tetap mungkin. Untuk usaha dengan banyak pesanan, kami sarankan channel manager."], ["Platform apa saja yang bisa dihubungkan?", "Yang menyediakan tautan iCal, seperti Airbnb, Booking.com, Agoda, dan Google Calendar. Untuk platform tanpa iCal, kami cek dulu apakah ada jalur lain sebelum kamu memesan."], ["Apakah ada jaminan hasil?", "Kami tidak menjamin penjualan atau hasil iklan. Yang kami pastikan, layanan dikerjakan sesuai menu dan paket yang disepakati."]];
+const FAQ=[["Bisa pesan satu layanan saja?", "Bisa. Semua layanan dijual satuan, jadi kamu tidak perlu mengambil paket bulanan."], ["Bagaimana cara memesan?", "Pilih layanan di menu, masukkan ke troli, lalu kirim nota lewat WhatsApp. Total terhitung otomatis. Kalau masih ragu, kamu boleh ngobrol dulu sebelum memesan."], ["Apakah konten dibuat oleh AI?", "AI membantu mempercepat produksi. Arahan kreatif, pemilihan hasil, dan keputusan strategis tetap kami pegang."], ["Apa bedanya Reels 15–30 dan 30–60 detik?", "Bedanya hanya di durasi. Reels 15–30 detik Rp35.000, Reels 30–60 detik Rp60.000 per video."], ["Apakah budget iklan sudah termasuk?", "Belum. Budget iklan dibayar langsung ke Meta atau Google. Biaya dari kami untuk penyiapan dan pengelolaan iklan."], ["Apakah website sudah termasuk domain dan hosting?", "Belum. Domain, hosting, dan plugin berbayar dihitung terpisah, kecuali kita sepakati lain."], ["Apa itu Setup Otomasi Konten AI?", "Kami menyiapkan alur kerja AI di akun Claude Pro milikmu untuk ide, naskah, dan caption. Biayanya Rp499.000 sekali bayar. Akun Claude Pro harus aktif dan langganannya kamu bayar sendiri."], ["Apakah memesan lewat nota berarti membayar?", "Belum. Nota hanya merangkum pesananmu ke pesan WhatsApp. Harga akhir kami konfirmasi lewat chat sebelum kamu setuju."], ["Apakah kalender OTA langsung sinkron?", "Belum langsung. Kalender digabung lewat tautan iCal, dan tiap platform memperbarui tautannya sendiri, kadang butuh beberapa jam. Karena itu bentrok tanggal tetap mungkin. Untuk usaha dengan banyak pesanan, kami sarankan channel manager."], ["Platform apa saja yang bisa dihubungkan?", "Yang menyediakan tautan iCal: Airbnb, Booking.com, Agoda, Vrbo, Expedia, Tripadvisor Rentals, Google Calendar, Outlook, dan Apple iCloud. Traveloka, Tiket.com, RedDoorz, dan Pegipegi belum, jadi kalendernya tidak bisa kami tarik lewat iCal. Ketersediaan iCal bisa berbeda per jenis akun, jadi kami cek dulu sebelum kamu membayar."], ["Apakah ada jaminan hasil?", "Kami tidak menjamin penjualan atau hasil iklan. Yang kami pastikan, layanan dikerjakan sesuai menu dan paket yang disepakati."]];
 const $=x=>document.querySelector(x),fm=$('#fm'),fmw=$('#fmw'),fmp=$('#fmp');
 if(!fm)return;
 const PT=[[220,690],[430,560],[650,720],[790,440],[990,620],[1180,770],[1130,370],[870,210],[560,270],[330,400],[220,220]];
@@ -1303,6 +1334,15 @@ if(!reduce&&matchMedia('(hover:hover)').matches&&innerWidth>860){box.addEventLis
 /* kartu harga: miring tipis mengikuti kursor */
 const L=$('#sple');
 if(L&&!reduce&&matchMedia('(hover:hover)').matches){L.addEventListener('pointermove',e=>{const c=e.target.closest('.pd');if(!c)return;const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(800px) rotateX(${(-y*5).toFixed(1)}deg) rotateY(${(x*6).toFixed(1)}deg) translateY(-3px)`});L.addEventListener('pointerout',e=>{const c=e.target.closest('.pd');if(c&&!c.contains(e.relatedTarget))c.style.transform=''})}
+})();
+</script>
+<script>
+/* nav aktif mengikuti bagian yang terlihat; loader 3D tidak boleh menggantung bila three.js gagal dimuat */
+(()=>{
+setTimeout(()=>document.querySelectorAll('.jr:not(.ready)').forEach(e=>e.classList.add('ready')),10000);
+const L=[...document.querySelectorAll('.nav nav a')],M=L.map(a=>document.querySelector(a.getAttribute('href')));
+if(!('IntersectionObserver' in window))return;
+M.forEach(m=>m&&new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)L.forEach((a,i)=>a.setAttribute('aria-current',M[i]===e.target?'true':'false'))}),{rootMargin:'-45% 0px -50% 0px'}).observe(m));
 })();
 </script>
 <script>

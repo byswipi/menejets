@@ -4,8 +4,8 @@
 // Hanya HTTPS dan hanya host OTA/kalender yang diizinkan, supaya endpoint ini tidak bisa dipakai membaca alamat lain (SSRF).
 
 const ALLOW = [
-  "airbnb.com", "airbnb.co.id", "booking.com", "admin.booking.com", "agoda.com", "ycs.agoda.com",
-  "calendar.google.com", "vrbo.com", "tiket.com", "traveloka.com",
+  "airbnb.com", "airbnb.co.id", "booking.com", "agoda.com", "vrbo.com", "expedia.com",
+  "tripadvisor.com", "calendar.google.com", "outlook.live.com", "outlook.office365.com", "icloud.com",
 ];
 const MAX_FEEDS = 6, MAX_BYTES = 1_000_000, TIMEOUT_MS = 8000;
 
