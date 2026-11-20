@@ -13,7 +13,9 @@ export function renderKarya() {
   const grid = $('#karya-grid');
   if (!grid) return;
   grid.innerHTML = KARYA.map((k, i) => `<button type="button" class="karya" data-demo="${i}">
-    <span class="karya__n">0${i + 1} /</span><h3>${esc(k.name)}</h3><span class="karya__kind">${esc(k.kind)}</span><p>${esc(k.line)}</p><span class="karya__go">Lihat pratinjau</span></button>`).join('');
+    <span class="karya__img"><img src="${esc(k.img)}" alt="${esc(k.alt)}" width="640" height="400" loading="lazy" decoding="async"></span>
+    <span class="karya__meta"><span class="karya__kind">0${i + 1} / ${esc(k.kind)}</span><span class="karya__name">${esc(k.name)}</span><span class="karya__go">Lihat pratinjau</span></span>
+    <p>${esc(k.line)}</p></button>`).join('');
 }
 
 function initDemoDialog() {

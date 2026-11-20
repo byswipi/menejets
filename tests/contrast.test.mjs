@@ -21,43 +21,48 @@ const ratio = (a, b) => {
 };
 const atLeast = (fg, bg, label, min = 4.5) => assert.ok(ratio(fg, bg) >= min, `${label}: ${fg} di atas ${bg} = ${ratio(fg, bg).toFixed(2)} (< ${min})`);
 
-test('token warna gaya brutal: putih, hitam, oranye', () => {
-  assert.equal(token('bg').toUpperCase(), '#FFFFFF');
-  assert.equal(token('ink').toUpperCase(), '#0A0A0A');
-  assert.equal(token('accent').toUpperCase(), '#FF4A00');
+test('token warna gaya Zero One: hitam dan putih, tanpa warna aksen', () => {
+  assert.equal(token('bg').toUpperCase(), '#000000');
+  assert.equal(token('ink').toUpperCase(), '#FFFFFF');
+  assert.equal(token('lt-bg').toUpperCase(), '#FFFFFF');
+  assert.equal(token('lt-ink').toUpperCase(), '#000000');
+  assert.ok(!/FF4A00/i.test(css), 'oranye lama masih ada');
 });
 
-test('teks tinta dan redup terbaca di atas latar terang dan permukaan', () => {
+test('teks putih dan redup terbaca di atas hitam dan permukaan gelap', () => {
   for (const bg of [token('bg'), token('surface')]) {
     atLeast(token('ink'), bg, 'ink');
     atLeast(token('muted'), bg, 'muted');
   }
 });
 
-test('teks pada blok gelap terbaca: putih, redup, dan oranye', () => {
-  for (const bg of [token('dk-bg'), token('dk-surface')]) {
-    atLeast(token('dk-ink'), bg, 'dk-ink');
-    atLeast(token('dk-muted'), bg, 'dk-muted');
-    atLeast(token('accent'), bg, 'oranye sebagai teks di blok gelap');
+test('teks hitam dan redup terbaca di atas bagian putih', () => {
+  for (const bg of [token('lt-bg'), token('lt-surface')]) {
+    atLeast(token('lt-ink'), bg, 'lt-ink');
+    atLeast(token('lt-muted'), bg, 'lt-muted');
   }
 });
 
-test('tombol utama: teks hitam di atas oranye (putih di atas oranye gagal kontras)', () => {
-  atLeast(token('ink'), token('accent'), 'tombol utama');
-  assert.ok(ratio('#FFFFFF', token('accent')) < 4.5, 'putih di atas oranye ternyata lolos, aturan tombol bisa dilonggarkan');
+test('tombol utama putih berteks hitam terbaca', () => {
+  atLeast(token('bg'), token('ink'), 'tombol utama');
 });
 
 test('putih di atas tiap warna platform kalender', () => {
   for (const s of CALENDAR_SOURCES) atLeast('#FFFFFF', s.c, `sel ${s.n}`);
 });
 
-test('gaya brutal: sudut tajam, tanpa garis tebal, huruf display dan mono dimuat', () => {
+test('huruf: Figtree untuk isi dan judul, DM Serif Display miring untuk kata kunci, DM Mono untuk label', () => {
+  assert.ok(/--font:\s*"Figtree"/.test(css), '--font Figtree');
+  assert.ok(/--serif:\s*"DM Serif Display"/.test(css), '--serif DM Serif Display');
+  assert.ok(/--mono:\s*"DM Mono"/.test(css), '--mono DM Mono');
+  assert.ok(/h1, h2[^{]*\{[^}]*font-family:\s*var\(--font\)/.test(css), 'h1 dan h2 harus Figtree');
+  assert.ok(/(^|\n)em[^{]*\{[^}]*font-family:\s*var\(--serif\)[^}]*font-style:\s*italic/.test(css), 'em harus serif miring');
+  for (const f of ['family=Figtree', 'family=DM+Serif+Display', 'family=DM+Mono']) assert.ok(html.includes(f), `${f} tidak dimuat`);
+  assert.ok(!/Anton|Space Mono|Fraunces/.test(css), 'huruf lama masih ada');
+});
+
+test('bentuk: sudut tajam dan tanpa garis tebal', () => {
   const r = css.match(/--r:\s*(\d+)px/);
   assert.ok(r && Number(r[1]) <= 4, 'sudut harus tajam (--r <= 4px)');
   assert.ok(!/border(-width)?:\s*[^;]*\b[2-9]px/.test(css.replace(/outline[^;]*;/g, '')), 'ada border >= 2px');
-  assert.ok(/--display:\s*"Anton"/.test(css), 'huruf display Anton tidak diatur');
-  assert.ok(/--mono:\s*"Space Mono"/.test(css), 'huruf mono Space Mono tidak diatur');
-  assert.ok(/h1[^{]*\{[^}]*font-family:\s*var\(--display\)/.test(css), 'h1 tidak memakai huruf display');
-  assert.ok(html.includes('family=Anton') && html.includes('family=Space+Mono'), 'Google Fonts Anton dan Space Mono tidak dimuat');
-  assert.ok(!/Fraunces/i.test(css));
 });

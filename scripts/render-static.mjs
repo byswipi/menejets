@@ -30,7 +30,7 @@ function packages(serviceId) {
 }
 
 const headHtml = (s, n) => `<div class="svc__head">
-      <div><span class="eyebrow"><i>0${n} /</i> ${esc(s.eyebrow)}</span><h2 id="h-${s.id}">${esc(s.title)}</h2><p class="svc__lead">${esc(s.lead)}</p></div>
+      <div><span class="eyebrow"><i>0${n} /</i> ${esc(s.eyebrow)}</span><h2 id="h-${s.id}">${esc(s.title).replace(esc(s.em), `<em>${esc(s.em)}</em>`)}</h2><p class="svc__lead">${esc(s.lead)}</p></div>
       <ul class="gets" aria-label="Yang kamu dapat">${s.gets.map((g) => `<li>${esc(g)}</li>`).join('')}</ul>
     </div>`;
 

@@ -99,3 +99,19 @@ test('tiap paket punya label ringkas untuk pesan WhatsApp', () => {
     'ai-setup': 'Setup Otomasi Konten AI',
   });
 });
+
+test('tiap layanan punya kata kunci miring (em) yang ada di judulnya', () => {
+  for (const s of SERVICES) {
+    assert.ok(s.em && s.title.includes(s.em), `${s.id}: em "${s.em}" tidak ada di judul`);
+    assert.ok(s.em.length <= s.title.length / 2, `${s.id}: em terlalu panjang`);
+  }
+});
+
+test('tiap karya punya gambar cuplikan yang ada di assets/karya dan teks alt', async () => {
+  const { existsSync } = await import('node:fs');
+  for (const k of KARYA) {
+    assert.ok(k.img && k.img.startsWith('assets/karya/'), `${k.name}: img`);
+    assert.ok(existsSync(new URL(`../${k.img}`, import.meta.url)), `${k.name}: berkas ${k.img} tidak ada`);
+    assert.ok(k.alt && k.alt.length > 10, `${k.name}: alt`);
+  }
+});

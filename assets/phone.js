@@ -42,7 +42,7 @@ function drawScreen(THREE) {
   round(0, 0, w, h, 56); g.fillStyle = '#FFFFFF'; g.fill(); g.save(); g.clip();
   g.fillStyle = '#0A0A0A'; g.font = '700 34px system-ui, sans-serif'; g.fillText('menejets', 34, 96);
   g.fillStyle = '#505050'; g.font = '500 22px system-ui, sans-serif'; g.fillText('24 posting terjadwal bulan ini', 34, 136);
-  const tiles = ['#FF4A00', '#0A0A0A', '#EDEDEA', '#FF4A00', '#0A0A0A', '#FFFFFF'];
+  const tiles = ['#1A1A1A', '#8A8A8A', '#F0F0F0', '#3A3A3A', '#1A1A1A', '#C8C8C8'];
   const tw = (w - 34 * 2 - 14) / 2, th = tw;
   tiles.forEach((col, i) => {
     const x = 34 + (i % 2) * (tw + 14), y = 176 + Math.floor(i / 2) * (th + 14);
@@ -89,7 +89,7 @@ export async function initPhone(stage, canvas) {
     const depth = 0.1;
     const body = new THREE.Mesh(
       new THREE.ExtrudeGeometry(roundedShape(THREE, 1.04, 2.14, 0.2), { depth, bevelEnabled: true, bevelThickness: 0.02, bevelSize: 0.02, bevelSegments: 4, curveSegments: 18 }),
-      new THREE.MeshStandardMaterial({ color: 0x0a0a0a, roughness: 0.45, metalness: 0.25 }),
+      new THREE.MeshStandardMaterial({ color: 0xe6e6e6, roughness: 0.35, metalness: 0.5 }),
     );
     body.position.z = -depth / 2;
     const screen = new THREE.Mesh(
