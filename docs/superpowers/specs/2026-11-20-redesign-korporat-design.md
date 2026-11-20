@@ -110,3 +110,14 @@ Pemilik meminta konsep harga yang tidak terlalu dipecah. Mengganti bagian "Menu 
   Otomasi AI: Setup Rp499.000.
 - **SEO:** title 50–60 karakter berkata kunci, meta 140–160 karakter, satu H1, H2 tiap layanan memuat kata kunci ("jasa kelola Instagram UMKM", "jasa listing Airbnb Booking.com", "jasa pembuatan website UMKM", "jasa iklan Meta dan Google", "otomasi konten AI"), canonical, JSON-LD FAQPage sama dengan FAQ yang tampil.
 - **Isi bagian layanan ditulis statis di HTML** (bukan dirender JS) agar terbaca mesin pencari; skrip `scripts/render-static.mjs` mengisi judul, butir, kartu paket, catatan, FAQ, platform, dan JSON-LD FAQ dari `data.js`; `tests/html.test.mjs` memastikan HTML selalu cocok dengan data.
+
+## Addendum 2026-11-21: gaya brutal (menggantikan palet dan bentuk di atas)
+
+Pemilik menyukai referensi agensi bergaya brutal (hitam, putih, oranye, huruf condensed raksasa). Isi, harga, struktur, SEO, nota, dan kalender tidak berubah; hanya tampilan.
+
+- **Palet:** putih `#FFFFFF`, hitam `#0A0A0A`, oranye `#FF4A00`; blok gelap memakai `.dark` (`--dk-*`). Teks di atas oranye selalu hitam (putih di atas oranye hanya 3,4:1). Oranye sebagai teks hanya di atas hitam atau untuk teks besar.
+- **Huruf:** Anton (judul, uppercase), Space Mono (label, tombol, nav), Instrument Sans (isi).
+- **Bentuk:** sudut 0, garis 1px, tanpa bayangan keras; layanan bergantian blok terang dan gelap; paket unggulan berlatar oranye.
+- **Hero:** judul raksasa dengan "UMKM." oranye; blok oranye di kanan berisi ponsel 3D hitam (pengganti foto, karena belum ada foto) dan segel bulat.
+- **Strip layanan** bernomor 01–05 dan **band** "Isi dan harga ditulis dari awal" menggantikan bar bukti.
+- Diuji: `tests/contrast.test.mjs` (token, kontras, huruf, sudut) dan seluruh uji lain tetap lulus.

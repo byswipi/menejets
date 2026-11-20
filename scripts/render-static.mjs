@@ -29,8 +29,8 @@ function packages(serviceId) {
     </div>` : ''}`;
 }
 
-const headHtml = (s) => `<div class="svc__head">
-      <div><span class="eyebrow">${esc(s.eyebrow)}</span><h2 id="h-${s.id}">${esc(s.title)}</h2><p class="svc__lead">${esc(s.lead)}</p></div>
+const headHtml = (s, n) => `<div class="svc__head">
+      <div><span class="eyebrow"><i>0${n} /</i> ${esc(s.eyebrow)}</span><h2 id="h-${s.id}">${esc(s.title)}</h2><p class="svc__lead">${esc(s.lead)}</p></div>
       <ul class="gets" aria-label="Yang kamu dapat">${s.gets.map((g) => `<li>${esc(g)}</li>`).join('')}</ul>
     </div>`;
 
@@ -58,8 +58,8 @@ function swap(html, name, content) {
 
 export function render(html) {
   let out = html;
-  for (const s of SERVICES) {
-    out = swap(out, `head:${s.id}`, headHtml(s));
+  for (const [idx, s] of SERVICES.entries()) {
+    out = swap(out, `head:${s.id}`, headHtml(s, idx + 1));
     out = swap(out, `pkgs:${s.id}`, packages(s.id));
     out = swap(out, `note:${s.id}`, noteHtml(s));
   }
