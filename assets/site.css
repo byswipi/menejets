@@ -310,3 +310,6 @@ p { max-width: 62ch; }
 .pd { min-width: 0; }
 .pd__top { flex-wrap: wrap; }
 .pd h4, .pd p, .pd__unit { overflow-wrap: anywhere; }
+
+.nav__brand { white-space: nowrap; }
+@media (max-width: 520px) { .nav .btn { min-height: 40px; padding: 8px 14px; font-size: 14px; } }

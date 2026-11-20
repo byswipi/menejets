@@ -2,6 +2,7 @@
 import { SERVICES, CATEGORY_NOTES, CATEGORY_TAGS, PACKAGES, FAQ, KARYA, PLATFORMS, CALENDAR_SOURCES } from './data.js';
 import { GREETING, formatRupiah, setQty, summarize, buildMessage, whatsappUrl } from './nota.js';
 import { parseIcs, mergeDays, buildSampleIcs, platformKey, describeErrors } from './ical.js';
+import { initPhone } from './phone.js';
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -269,3 +270,5 @@ export function initChrome() {
 initChrome();
 initPricing();
 initCalendar();
+const stage = $('#phone-stage');
+if (stage) initPhone(stage, $('#phone-canvas', stage));
