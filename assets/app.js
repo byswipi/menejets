@@ -12,8 +12,8 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 export function renderKarya() {
   const grid = $('#karya-grid');
   if (!grid) return;
-  grid.innerHTML = KARYA.map((k, i) => `<button type="button" class="karya card" data-demo="${i}">
-    <span class="eyebrow">${esc(k.kind)}</span><h3>${esc(k.name)}</h3><p>${esc(k.line)}</p><span class="karya__go">Lihat pratinjau</span></button>`).join('');
+  grid.innerHTML = KARYA.map((k, i) => `<button type="button" class="karya" data-demo="${i}">
+    <span class="karya__n">0${i + 1} /</span><h3>${esc(k.name)}</h3><span class="karya__kind">${esc(k.kind)}</span><p>${esc(k.line)}</p><span class="karya__go">Lihat pratinjau</span></button>`).join('');
 }
 
 function initDemoDialog() {

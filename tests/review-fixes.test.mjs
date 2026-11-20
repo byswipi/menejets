@@ -40,5 +40,5 @@ test('kartu paket bukan aria-live, #nota tetap aria-live polite', () => {
 // Review Important 3: huruf platform pada sel terisi harus tetap terlihat di ponsel
 test('huruf platform pada sel kalender tidak disembunyikan di layar kecil', () => {
   assert.ok(!/\.cd small\s*\{[^}]*display:\s*none/.test(css), '.cd small masih display:none');
-  assert.ok(/\.cd small\s*\{[^}]*font-size/.test(css), 'ukuran huruf .cd small tidak diatur');
+  assert.ok(/\.cd small\s*\{[^}]*font(-size)?:/.test(css), 'ukuran huruf .cd small tidak diatur');
 });

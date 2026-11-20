@@ -40,9 +40,9 @@ function drawScreen(THREE) {
   const g = c.getContext('2d');
   const round = (x, y, rw, rh, r) => { g.beginPath(); g.roundRect(x, y, rw, rh, r); };
   round(0, 0, w, h, 56); g.fillStyle = '#FFFFFF'; g.fill(); g.save(); g.clip();
-  g.fillStyle = '#0E1714'; g.font = '700 34px system-ui, sans-serif'; g.fillText('menejets', 34, 96);
-  g.fillStyle = '#4A5A53'; g.font = '500 22px system-ui, sans-serif'; g.fillText('24 posting terjadwal bulan ini', 34, 136);
-  const tiles = ['#9DB5A9', '#0E1714', '#E4EAE6', '#1F3B31', '#C9D6CE', '#9DB5A9'];
+  g.fillStyle = '#0A0A0A'; g.font = '700 34px system-ui, sans-serif'; g.fillText('menejets', 34, 96);
+  g.fillStyle = '#505050'; g.font = '500 22px system-ui, sans-serif'; g.fillText('24 posting terjadwal bulan ini', 34, 136);
+  const tiles = ['#FF4A00', '#0A0A0A', '#EDEDEA', '#FF4A00', '#0A0A0A', '#FFFFFF'];
   const tw = (w - 34 * 2 - 14) / 2, th = tw;
   tiles.forEach((col, i) => {
     const x = 34 + (i % 2) * (tw + 14), y = 176 + Math.floor(i / 2) * (th + 14);
@@ -89,7 +89,7 @@ export async function initPhone(stage, canvas) {
     const depth = 0.1;
     const body = new THREE.Mesh(
       new THREE.ExtrudeGeometry(roundedShape(THREE, 1.04, 2.14, 0.2), { depth, bevelEnabled: true, bevelThickness: 0.02, bevelSize: 0.02, bevelSegments: 4, curveSegments: 18 }),
-      new THREE.MeshStandardMaterial({ color: 0x0e1714, roughness: 0.45, metalness: 0.25 }),
+      new THREE.MeshStandardMaterial({ color: 0x0a0a0a, roughness: 0.45, metalness: 0.25 }),
     );
     body.position.z = -depth / 2;
     const screen = new THREE.Mesh(
