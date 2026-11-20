@@ -19,6 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&family=Figtree:wght@300..800&display=swap">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/shell.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Menej Ets", "url": "https://instagram.com/menejets", "email": "menejets@gmail.com", "telephone": "+628567876751", "description": "Pengelola digital untuk UMKM: kelola Instagram, iklan Meta dan Google, website, listing properti, dan otomasi AI.", "sameAs": ["https://instagram.com/menejets"]}</script>
 <!--ld-faq-->
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Bisa pesan satu layanan saja?","acceptedAnswer":{"@type":"Answer","text":"Bisa. Tiap layanan dijual sebagai paket sendiri, jadi kamu boleh mulai dari satu saja dan menambah nanti."}},{"@type":"Question","name":"Bagaimana cara memesan?","acceptedAnswer":{"@type":"Answer","text":"Pilih paket di tiap layanan, nota terisi otomatis, lalu kirim lewat WhatsApp. Kalau masih ragu, boleh ngobrol dulu sebelum memesan."}},{"@type":"Question","name":"Apa saja isi paket Kelola Instagram?","acceptedAnswer":{"@type":"Answer","text":"Reels dan carousel sesuai paket, lengkap dengan caption, hashtag, jadwal, dan unggah. Paket Mulai 4 Reels dan 4 Carousel, Tumbuh 8 dan 8, Pro 12 dan 12 per bulan."}},{"@type":"Question","name":"Apakah konten dibuat oleh AI?","acceptedAnswer":{"@type":"Answer","text":"AI membantu mempercepat produksi. Arahan kreatif, pemilihan hasil, dan keputusan strategis tetap kami pegang."}},{"@type":"Question","name":"Apakah budget iklan sudah termasuk?","acceptedAnswer":{"@type":"Answer","text":"Belum. Budget iklan dibayar langsung ke Meta atau Google. Biaya dari kami untuk penyiapan dan pengelolaan iklan."}},{"@type":"Question","name":"Apakah website sudah termasuk domain dan hosting?","acceptedAnswer":{"@type":"Answer","text":"Belum. Domain, hosting, dan plugin berbayar dihitung terpisah, kecuali kita sepakati lain."}},{"@type":"Question","name":"Apa bedanya paket Listing + Instagram dengan membeli terpisah?","acceptedAnswer":{"@type":"Answer","text":"Paket ini menggabungkan Listing 4 platform dan paket Instagram Mulai dalam satu harga, hemat Rp100.000 dibanding membeli terpisah."}},{"@type":"Question","name":"Platform apa saja yang bisa dihubungkan ke kalender?","acceptedAnswer":{"@type":"Answer","text":"Yang menyediakan tautan iCal: Airbnb, Booking.com, Agoda, Vrbo, Expedia, Tripadvisor Rentals, Google Calendar, Outlook, dan Apple iCloud. Traveloka, Tiket.com, RedDoorz, dan Pegipegi belum, jadi kalendernya tidak bisa kami tarik lewat iCal. Ketersediaan iCal bisa berbeda per jenis akun, jadi kami cek dulu sebelum kamu membayar."}},{"@type":"Question","name":"Apakah kalender OTA langsung sinkron?","acceptedAnswer":{"@type":"Answer","text":"Belum langsung. Kalender digabung lewat tautan iCal, dan tiap platform memperbarui tautannya sendiri, kadang butuh beberapa jam. Karena itu bentrok tanggal tetap mungkin. Untuk usaha dengan banyak pesanan, kami sarankan channel manager."}},{"@type":"Question","name":"Apa itu Setup Otomasi AI?","acceptedAnswer":{"@type":"Answer","text":"Kami menyiapkan alur kerja AI di akun Claude Pro milikmu untuk ide, naskah, dan caption. Biayanya Rp499.000 sekali bayar. Akun Claude Pro harus aktif dan langganannya kamu bayar sendiri."}},{"@type":"Question","name":"Apakah memesan lewat nota berarti membayar?","acceptedAnswer":{"@type":"Answer","text":"Belum. Nota hanya merangkum pesananmu ke pesan WhatsApp. Harga akhir kami konfirmasi lewat chat sebelum kamu setuju."}},{"@type":"Question","name":"Apakah ada jaminan hasil?","acceptedAnswer":{"@type":"Answer","text":"Kami tidak menjamin penjualan, hasil iklan, atau okupansi. Yang kami pastikan, layanan dikerjakan sesuai isi paket yang disepakati."}}]}</script>
@@ -37,6 +38,16 @@
   </div>
 </header>
 
+<nav class="rail" id="rail" aria-label="Navigasi bagian">
+  <a href="#hero" data-rail="hero" aria-label="Beranda" title="Beranda"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4v-5H9v5H5a1 1 0 0 1-1-1z"/></svg></a>
+  <a href="#instagram" data-rail="instagram" aria-label="Layanan" title="Layanan"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg></a>
+  <a href="#karya" data-rail="karya" aria-label="Karya" title="Karya"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="3"/><circle cx="9" cy="10.5" r="1.6"/><path d="m4 17 5-4.5 4 3 3-2.5 4.5 4"/></svg></a>
+  <a href="#pesan" data-rail="pesan" aria-label="Pesan" title="Pesan"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h12v16l-3-2-3 2-3-2-3 2z"/><path d="M9 9h6M9 13h4"/></svg></a>
+  <a href="#faq" data-rail="faq" aria-label="FAQ" title="FAQ"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9.7 9.6a2.4 2.4 0 1 1 3.4 2.2c-.7.4-1.1.9-1.1 1.7"/><circle cx="12" cy="16.6" r=".6" fill="currentColor"/></svg></a>
+  <a href="#kontak" data-rail="kontak" aria-label="Kontak" title="Kontak"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-7l-4 3.5V16H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"/></svg></a>
+</nav>
+<div class="frame" aria-hidden="true"></div>
+
 <main id="main">
   <section class="hero" id="hero" aria-labelledby="h-hero">
     <div class="hero__grid">
@@ -50,11 +61,16 @@
           <a class="link-arrow" href="#instagram">Lihat paket</a>
         </div>
       </div>
+      <div class="hero__ghost" aria-hidden="true" data-par="-.22"><span>menej</span><span>ets</span></div>
       <div class="phone-stage" id="phone-stage" aria-hidden="true">
         <div class="phone-loader" role="status"><span></span>Memuat tampilan</div>
         <canvas id="phone-canvas"></canvas>
         <div class="phone-static"><div class="phone-static__screen"><i></i><i></i><i></i><i></i></div></div>
       </div>
+    </div>
+    <div class="hero__cards">
+      <a class="gcard gcard--stat" href="#instagram" data-par=".08"><small>Layanan</small><b class="num">5</b><span>Paket dengan isi dan harga tertulis</span><i class="gcard__go" aria-hidden="true">↗</i></a>
+      <a class="gcard gcard--karya" href="#karya" data-par=".16"><img src="assets/karya/alva-hills.jpg" alt="" width="96" height="60" decoding="async"><span><small>Contoh karya</small><b>Alva Hills</b><span>Vila keluarga, Dau, Malang</span></span><i class="gcard__go" aria-hidden="true">↗</i></a>
     </div>
   </section>
 
@@ -384,5 +400,6 @@
 </a>
 
 <script type="module" src="assets/app.js"></script>
+<script type="module" src="assets/shell.js"></script>
 </body>
 </html>

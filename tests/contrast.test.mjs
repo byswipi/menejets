@@ -61,8 +61,10 @@ test('huruf: Figtree untuk isi dan judul, DM Serif Display miring untuk kata kun
   assert.ok(!/Anton|Space Mono|Fraunces/.test(css), 'huruf lama masih ada');
 });
 
-test('bentuk: sudut tajam dan tanpa garis tebal', () => {
-  const r = css.match(/--r:\s*(\d+)px/);
-  assert.ok(r && Number(r[1]) <= 4, 'sudut harus tajam (--r <= 4px)');
-  assert.ok(!/border(-width)?:\s*[^;]*\b[2-9]px/.test(css.replace(/outline[^;]*;/g, '')), 'ada border >= 2px');
+test('bentuk: jendela dashboard membulat, tanpa garis tebal', () => {
+  const shell = readFileSync(new URL('../assets/shell.css', import.meta.url), 'utf8');
+  const r = shell.match(/--r:\s*(\d+)px/);
+  assert.ok(r && Number(r[1]) >= 16, 'kartu harus membulat (--r >= 16px di shell.css)');
+  assert.ok(/\.frame\s*\{[^}]*border-radius/.test(shell), 'bingkai jendela tidak membulat');
+  assert.ok(!/border(-width)?:\s*[^;]*\b[2-9]px/.test((css + shell).replace(/outline[^;]*;/g, '')), 'ada border >= 2px');
 });
