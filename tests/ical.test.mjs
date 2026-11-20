@@ -69,3 +69,23 @@ test('buildSampleIcs menghasilkan iCal yang terbaca kembali oleh parseIcs', () =
   const text = buildSampleIcs(2026, 10, [[3, 6], [20, 23]]);
   assert.deepEqual(parseIcs(text), ['2026-11-03', '2026-11-04', '2026-11-05', '2026-11-20', '2026-11-21', '2026-11-22']);
 });
+
+import { platformKey, describeErrors } from '../assets/ical.js';
+
+test('platformKey memetakan host OTA ke huruf platform, selain itu huruf pertama host', () => {
+  assert.equal(platformKey('airbnb.com'), 'A');
+  assert.equal(platformKey('booking.com'), 'B');
+  assert.equal(platformKey('agoda.com'), 'G');
+  assert.equal(platformKey('calendar.google.com'), 'K');
+  assert.equal(platformKey('vrbo.com'), 'V');
+});
+
+test('describeErrors: kosong bila tidak ada galat, menyebut host yang gagal bila ada', () => {
+  assert.equal(describeErrors([]), '');
+  assert.equal(describeErrors(undefined), '');
+  assert.equal(
+    describeErrors([{ host: 'airbnb.com', message: 'HTTP 403' }, { host: 'booking.com', message: 'timeout' }]),
+    'Tautan airbnb.com dan booking.com belum bisa dibaca.',
+  );
+  assert.equal(describeErrors([{ host: 'agoda.com', message: 'x' }]), 'Tautan agoda.com belum bisa dibaca.');
+});

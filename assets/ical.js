@@ -53,3 +53,19 @@ export function buildSampleIcs(year, month, ranges) {
     .join('');
   return `BEGIN:VCALENDAR\r\nVERSION:2.0\r\n${events}END:VCALENDAR`;
 }
+
+const PLATFORM_KEYS = [['airbnb', 'A'], ['booking', 'B'], ['agoda', 'G'], ['google', 'K']];
+
+/** Huruf platform untuk host dari /api/ical; selain OTA yang dikenal dipakai huruf pertama host. */
+export function platformKey(host) {
+  const hit = PLATFORM_KEYS.find(([name]) => host.includes(name));
+  return hit ? hit[1] : host[0].toUpperCase();
+}
+
+/** Kalimat galat untuk umpan yang gagal dibaca; string kosong bila semuanya berhasil. */
+export function describeErrors(errors) {
+  const hosts = (errors || []).map((e) => e.host);
+  if (!hosts.length) return '';
+  const list = hosts.length > 1 ? `${hosts.slice(0, -1).join(', ')} dan ${hosts[hosts.length - 1]}` : hosts[0];
+  return `Tautan ${list} belum bisa dibaca.`;
+}
