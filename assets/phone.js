@@ -4,6 +4,7 @@
 
 const THREE_URL = 'https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js';
 const LOAD_TIMEOUT_MS = 8000;
+const FIRST_FRAME_TIMEOUT_MS = 6000;
 
 /** Apakah perangkat ini sebaiknya mendapat ponsel statis (CSS) alih-alih 3D. */
 export function shouldUseStatic(env) {
@@ -120,13 +121,15 @@ export async function initPhone(stage, canvas) {
       phone.rotation.y = -0.45 + Math.sin(t * 0.55) * 0.22 + ptr;
       phone.position.y = Math.sin(t * 0.8) * 0.04;
       renderer.render(scene, camera);
-      if (!stage.classList.contains('is-ready')) stage.classList.add('is-ready');
+      if (!stage.classList.contains('is-ready')) { stage.classList.remove('is-static'); stage.classList.add('is-ready'); }
       raf = requestAnimationFrame(frame);
     };
     const start = () => { if (!running && !dead) { running = true; clock.getDelta(); raf = requestAnimationFrame(frame); } };
     new IntersectionObserver((entries) => { visible = entries.some((e) => e.isIntersecting); if (visible) start(); }, { threshold: 0.05 }).observe(stage);
     document.addEventListener('visibilitychange', () => { if (!document.hidden) start(); });
     canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); dead = true; cancelAnimationFrame(raf); toStatic(stage); });
+    // Pengaman: bila browser menahan animasi (tab latar, daya hemat), jangan biarkan loader menggantung.
+    setTimeout(() => { if (!dead && !stage.classList.contains('is-ready')) stage.classList.add('is-static'); }, FIRST_FRAME_TIMEOUT_MS);
     start();
     return '3d';
   } catch {

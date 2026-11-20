@@ -313,3 +313,5 @@ p { max-width: 62ch; }
 
 .nav__brand { white-space: nowrap; }
 @media (max-width: 520px) { .nav .btn { min-height: 40px; padding: 8px 14px; font-size: 14px; } }
+
+.phone-stage.is-ready .phone-static { opacity: 0; visibility: hidden; }
