@@ -1,42 +1,41 @@
-// Logika nota dan pesan WhatsApp. Fungsi murni, dipindahkan dari skrip harga situs lama.
-import { SERVICES } from './data.js';
+// Logika nota dan pesan WhatsApp untuk konsep harga per paket. Fungsi murni.
+import { ITEMS } from './data.js';
 
 const WA = '628567876751';
-const PACKAGE_CATEGORY = 'Paket Bulanan';
-const PROPERTY_CATEGORIES = ['Listing Properti', 'Kalender OTA'];
-
 export const GREETING = 'Halo Menej Ets, saya ingin konsultasi layanan digital.';
+
+const ITEM = Object.fromEntries(ITEMS.map((i) => [i.id, i]));
 
 export const formatRupiah = (n) => 'Rp' + n.toLocaleString('id-ID');
 
-/** Mengembalikan troli baru. Paket Bulanan maksimal 1, satuan tidak pernah di bawah 0. */
-export function setQty(cart, index, delta) {
-  const before = cart[index] || 0;
-  const isPackage = SERVICES[index][0] === PACKAGE_CATEGORY;
-  const next = isPackage ? Math.min(1, Math.max(0, before + delta)) : Math.max(0, before + delta);
-  const out = { ...cart };
-  if (next) out[index] = next;
-  else delete out[index];
-  return out;
+/**
+ * Memilih atau melepas satu paket. Memilih paket meniadakan paket lain yang sekelompok
+ * (mis. Instagram Mulai dan Pro, atau Listing + Instagram dengan paket Instagram). Mengembalikan keranjang baru.
+ */
+export function toggleItem(cart, id) {
+  const item = ITEM[id];
+  if (!item) return cart;
+  const next = { ...cart };
+  if (next[id]) { delete next[id]; return next; }
+  for (const other of Object.keys(next)) {
+    if (ITEM[other].groups.some((g) => item.groups.includes(g))) delete next[other];
+  }
+  next[id] = 1;
+  return next;
 }
 
 export function summarize(cart) {
-  let one = 0, mo = 0, count = 0;
+  let one = 0, mo = 0;
   const flags = { web: false, ads: false, ai: false, prop: false };
   const lines = [];
-  for (const key of Object.keys(cart)) {
-    const [category, name, price, kind, unit] = SERVICES[key];
-    const qty = cart[key];
-    const sub = price * qty;
-    if (kind === 'm') mo += sub; else one += sub;
-    count += qty;
-    if (category === 'Website') flags.web = true;
-    if (category === 'Iklan Digital') flags.ads = true;
-    if (category === 'Otomasi AI') flags.ai = true;
-    if (PROPERTY_CATEGORIES.includes(category)) flags.prop = true;
-    lines.push(`- ${name} (${unit}): ${qty} × ${formatRupiah(price)} = ${formatRupiah(sub)}`);
+  const serviceFlag = { website: 'web', iklan: 'ads', otomasi: 'ai', properti: 'prop' };
+  for (const id of Object.keys(cart)) {
+    const item = ITEM[id];
+    if (item.kind === 'm') mo += item.price; else one += item.price;
+    if (serviceFlag[item.service]) flags[serviceFlag[item.service]] = true;
+    lines.push(`- ${item.label} (${item.unit}): ${formatRupiah(item.price)}`);
   }
-  return { one, mo, flags, count, lines };
+  return { one, mo, flags, count: Object.keys(cart).length, lines };
 }
 
 export function buildMessage(cart) {
@@ -53,7 +52,7 @@ export function buildMessage(cart) {
     s.one ? 'Estimasi sekali bayar: ' + formatRupiah(s.one) : '',
     s.mo ? 'Estimasi per bulan: ' + formatRupiah(s.mo) : '',
   ].filter(Boolean).join('\n');
-  return `Halo Menej Ets, saya ingin memesan layanan berikut:\n\n${s.lines.join('\n')}\n\n${totals}\n${notes}\n\nMohon informasi mengenai proses pemesanan. Terima kasih.`;
+  return `Halo Menej Ets, saya ingin memesan paket berikut:\n\n${s.lines.join('\n')}\n\n${totals}\n${notes}\n\nMohon informasi mengenai proses pemesanan. Terima kasih.`;
 }
 
 export const whatsappUrl = (message) => `https://wa.me/${WA}?text=` + encodeURIComponent(message);

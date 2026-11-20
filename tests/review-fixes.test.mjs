@@ -28,12 +28,13 @@ test('loader tersembunyi secara bawaan dan hanya tampil bila JS menandai is-load
   assert.ok(/classList\.remove\([^)]*'is-loading'/.test(phone), 'phone.js tidak melepas is-loading');
 });
 
-// Review Important 2: daftar harga tidak boleh menjadi live region
-test('#price-list bukan aria-live, #nota tetap aria-live polite', () => {
+// Review Important 2: kartu paket tidak boleh menjadi live region, hanya nota yang diumumkan
+test('kartu paket bukan aria-live, #nota tetap aria-live polite', () => {
   const tag = (id) => html.match(new RegExp(`<[^>]*id="${id}"[^>]*>`))?.[0] || '';
-  assert.ok(tag('price-list'), '#price-list tidak ditemukan');
-  assert.ok(!/aria-live/.test(tag('price-list')), '#price-list masih aria-live');
+  const live = [...html.matchAll(/<[^>]*aria-live[^>]*>/g)].map((m) => m[0]);
   assert.ok(/aria-live="polite"/.test(tag('nota')), '#nota harus tetap aria-live polite');
+  for (const tagText of live) assert.ok(!/class="pkg/.test(tagText), `live region pada kartu paket: ${tagText}`);
+  assert.ok(!/aria-live/.test(html.match(/<section[^>]*id="instagram"[^>]*>/)[0]));
 });
 
 // Review Important 3: huruf platform pada sel terisi harus tetap terlihat di ponsel
