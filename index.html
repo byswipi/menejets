@@ -388,6 +388,49 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
 #barchip{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));left:auto;z-index:60;width:56px;height:56px;min-height:0;padding:0;display:grid;place-items:center;border:0;border-radius:50%;background:var(--tinta);color:var(--gading);box-shadow:0 14px 30px -10px rgba(0,0,0,.5);transform:translateY(200%);transition:transform .6s cubic-bezier(.22,.8,.2,1)}#barchip.show{transform:none}
 #barchip svg{width:28px;height:28px}#barchip .bn{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--kunyit);color:var(--tinta);font:600 12px/22px var(--fs);text-align:center}#barchip .bn[hidden]{display:none}
 .glass{background:#FFFDF8;border:1px solid #E2D9C3;box-shadow:0 8px 20px -12px rgba(18,37,30,.25)}.jr.dark .glass{background:rgba(255,255,255,.05);border-color:#2F4B40;box-shadow:none}
+/* properti: papan kalender 3D (3D untuk menunjukkan tanggal terisi dan bentrok, bukan hiasan) */
+.pp{background:var(--gading);border-bottom:2px solid var(--tinta);overflow-x:clip}
+.pp-g{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,5vw,72px);align-items:center}
+.pp-t .sub{max-width:52ch}
+.pp-st{display:grid;gap:14px;margin:26px 0;counter-reset:s}
+.pp-st li{display:grid;grid-template-columns:36px 1fr;gap:14px;align-items:start;font-size:15px;line-height:22px;color:var(--muted)}
+.pp-st li::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--kunyit);border:2px solid var(--tinta);color:var(--tinta);font:600 17px/1 var(--fd)}
+.pp-st b{display:block;color:var(--tinta);font-weight:600}
+.pp-pr{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.pp-pr span{font:500 12px/1 var(--fm);padding:9px 12px;border:1.5px solid var(--tinta);border-radius:999px;background:var(--gading-200)}
+.pp-pr b{font-weight:600;color:var(--kunyit-tua)}
+.pp-cta{display:flex;gap:10px;flex-wrap:wrap}
+.cal-src{display:flex;flex-wrap:wrap;gap:8px}
+.cal-src button{display:flex;align-items:center;gap:8px;min-height:40px;padding:8px 14px;border:2px solid var(--tinta);border-radius:999px;background:var(--card,#FFFDF8);font:600 13px/1 var(--fs);cursor:pointer;transition:opacity .2s,transform .15s}
+.cal-src button:hover{transform:translateY(-2px)}
+.cal-src button i{width:12px;height:12px;border-radius:4px;background:var(--c)}
+.cal-src button[aria-pressed=false]{opacity:.45;text-decoration:line-through}
+.cal3{perspective:1100px;perspective-origin:50% 25%;padding:14px 0 40px}
+.cal3-tilt{--rx:46deg;--rz:-10deg;transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateZ(var(--rz));transition:transform .5s var(--ets)}
+.cal3-board{transform-style:preserve-3d;background:#FFFDF8;border:2px solid var(--tinta);border-radius:20px;padding:14px;box-shadow:10px 10px 0 var(--tinta),0 30px 40px -16px rgba(18,37,30,.4)}
+.cal-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.cal-h b{font:600 22px/1 var(--fd);text-transform:capitalize}.cal-h span{font:500 11px/1 var(--fm);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;transform-style:preserve-3d}
+.cal-w{font:500 11px/1 var(--fm);text-align:center;color:var(--muted);text-transform:uppercase;padding-bottom:2px}
+.cd{position:relative;aspect-ratio:1;min-width:0;padding:0;border:1.5px solid #E2D9C3;border-radius:8px;background:#F3ECDD;font:600 13px/1 var(--fs);color:var(--tinta);display:grid;place-items:center;cursor:pointer;transform-style:preserve-3d;transition:transform .7s var(--ets) calc(var(--i)*14ms),outline-color .2s}
+.cd.o{visibility:hidden;pointer-events:none}
+.cd.bk{background:var(--c);color:#fff;border-color:var(--tinta)}
+.cd.cf{background:repeating-linear-gradient(45deg,#B33D22 0 6px,#8E2C16 6px 12px);color:#fff;border-color:var(--tinta);--z:26px}
+.cd.bk::after{content:"";position:absolute;inset:2px;border-radius:8px;background:rgba(18,37,30,.3);filter:blur(5px);transform:translateZ(calc(var(--z,16px)*-1 + 1px));pointer-events:none}
+.cal3-board.in .cd.bk{transform:translateZ(var(--z,16px))}
+.cd small{position:absolute;right:4px;bottom:3px;font:600 9px/1 var(--fm);opacity:.9}
+.cd.sel{outline:3px solid var(--kunyit);outline-offset:2px}
+.cd:focus-visible{outline:3px solid var(--tinta);outline-offset:2px}
+.cal-info{display:grid;gap:10px;margin-top:4px}
+.cal-st{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cal-st div{background:#FFFDF8;border:1px solid #E2D9C3;border-radius:12px;padding:10px 12px;box-shadow:var(--sh-1)}
+.cal-st b{display:block;font:600 24px/1.1 var(--fd)}.cal-st small{font:500 11px/1.3 var(--fm);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.cal-st .w2 b{color:var(--bata)}
+.cal-dt{min-height:44px;font-size:14px;line-height:21px;color:var(--text)}
+.cal-n{font-size:12.5px;line-height:18px;color:var(--muted);margin-top:8px}
+.pd{transform-style:preserve-3d;will-change:transform}
+@media(max-width:860px){.pp-g{grid-template-columns:1fr}.cal3-tilt{--rx:34deg;--rz:-6deg}.cal3-board{padding:10px;box-shadow:6px 6px 0 var(--tinta),0 24px 30px -16px rgba(18,37,30,.4)}.cal-g{gap:4px}.cd{font-size:11.5px;border-radius:6px}.cd small{display:none}.cal-st b{font-size:20px}}
+@media(prefers-reduced-motion:reduce){.cal3-tilt{--rx:20deg;--rz:0deg}.cal3-board .cd.bk{transform:translateZ(var(--z,16px))}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:opacity .12s!important}html{scroll-behavior:auto}}
 </style>
 <noscript><style>.jr{height:auto!important}.jr .stage{display:none}</style></noscript>
@@ -397,7 +440,7 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
 
 <header class="nav">
   <a class="lg" href="#journey" aria-label="Menej Ets, kembali ke atas"><svg viewBox="0 0 240 240" aria-hidden="true"><rect width="240" height="240" rx="56" fill="#12251E"/><rect x="100" y="44" width="40" height="104" rx="20" fill="#F5EFE3"/><circle cx="120" cy="188" r="22" fill="#FFB81C"/></svg><span>menej <em>ets</em></span></a>
-  <nav aria-label="Navigasi utama"><a href="#karya">Karya</a><a href="#harga">Harga</a><a href="#faq">FAQ</a></nav>
+  <nav aria-label="Navigasi utama"><a href="#karya">Karya</a><a href="#properti">Properti</a><a href="#harga">Harga</a><a href="#faq">FAQ</a></nav>
   <a class="btn" href="https://wa.me/628567876751?text=Halo%20Menej%20Ets%2C%20saya%20ingin%20konsultasi%20layanan%20digital." target="_blank" rel="noopener">Ceritakan usahamu <i aria-hidden="true">→</i></a>
 </header>
 
@@ -420,7 +463,7 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
   <noscript>
     <div style="padding:120px 6vw 40px;max-width:44rem">
       <h2>Ets, biar kami yang <em>menej.</em></h2>
-      <p>Satu tim, seluruh alur. Konten AI mulai Rp8.000 per caption. Kelola Instagram mulai Rp99.000 per bulan. Iklan Digital (Meta dan Google Ads) mulai Rp99.000. Website mulai Rp149.000, Landing Page 3D (three.js) mulai Rp447.000. Setup Otomasi AI Rp499.000. Paket bulanan: Starter Rp229.000, Growth Rp629.000, Business Pro Rp1.049.000.</p>
+      <p>Satu tim, seluruh alur. Konten AI mulai Rp8.000 per caption. Kelola Instagram mulai Rp99.000 per bulan. Iklan Digital (Meta dan Google Ads) mulai Rp99.000. Website mulai Rp149.000, Landing Page 3D (three.js) mulai Rp447.000. Setup Otomasi AI Rp499.000. Listing properti mulai Rp149.000 per platform, kalender sinkron OTA Rp349.000. Paket bulanan: Starter Rp229.000, Growth Rp629.000, Business Pro Rp1.049.000.</p>
       <p><a href="https://wa.me/628567876751">Konsultasi gratis via WhatsApp</a></p>
     </div>
   </noscript>
@@ -504,6 +547,30 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
   </div>
 </section>
 
+<section class="s pp" id="properti" aria-labelledby="h-pp">
+  <div class="w pp-g">
+    <div class="pp-t">
+      <p class="k">Listing properti dan kalender OTA</p>
+      <h2 id="h-pp">Satu kalender untuk semua <em>platform.</em></h2>
+      <p class="sub">Punya vila, kost, atau rumah sewa? Kami rapikan listing di Airbnb, Booking.com, Agoda, dan Traveloka, lalu menarik kalendernya ke websitemu supaya tanggal yang sudah terisi otomatis tertutup.</p>
+      <ol class="pp-st">
+        <li><span><b>Listing dirapikan</b>Judul, deskripsi, foto, harga, dan aturan menginap disusun sama di tiap platform.</span></li>
+        <li><span><b>Kalender digabung</b>Tautan iCal dari tiap platform dibaca dan disatukan menjadi satu kalender.</span></li>
+        <li><span><b>Website ikut terbarui</b>Tamu melihat tanggal kosong yang benar, lalu memesan lewat WhatsApp.</span></li>
+      </ol>
+      <div class="pp-pr" aria-label="Ringkasan harga"><span>Listing <b>Rp149.000</b>/platform</span><span>4 platform <b>Rp449.000</b></span><span>Kalender sinkron <b>Rp349.000</b></span></div>
+      <div class="pp-cta"><a class="btn" href="#harga" data-tab="Listing Properti">Harga listing <i aria-hidden="true">→</i></a><a class="btn l" href="#harga" data-tab="Kalender OTA">Harga kalender</a></div>
+    </div>
+    <div class="pp-d">
+      <div class="cal-src" id="calsrc" role="group" aria-label="Sumber kalender"></div>
+      <div class="cal3" id="cal3"><div class="cal3-tilt" id="cal3t"><div class="cal3-board" id="cal3b"></div></div></div>
+      <div class="cal-info" id="calinfo" aria-live="polite"></div>
+      <p class="cal-n">Contoh data. Kalender dibaca dari 4 tautan iCal contoh, lalu digabung. Sinkron iCal tidak instan, tergantung jadwal tiap platform.</p>
+    </div>
+  </div>
+  <noscript><div class="w"><p>Listing properti mulai Rp149.000 per platform, paket 4 platform Rp449.000. Kalender sinkron OTA di website Rp349.000. Aktifkan JavaScript untuk melihat kalender contoh.</p></div></noscript>
+</section>
+
 <section class="s hg open" id="harga" aria-labelledby="h-harga">
   <div class="w">
     <div class="hg-head">
@@ -560,7 +627,7 @@ footer{padding:34px 0 28px}footer .fs{display:flex;align-items:center;justify-co
       <div class="fm-card" id="fmc" aria-live="polite">
         <div class="eyebrow" id="fme">Peta pertanyaan</div>
         <h3 id="fmt">Ketuk titik di peta</h3>
-        <p id="fma">Ada 9 titik berisi pertanyaan seputar harga dan layanan. Ketuk satu untuk membaca jawabannya.</p>
+        <p id="fma">Ada 11 titik berisi pertanyaan seputar harga dan layanan. Ketuk satu untuk membaca jawabannya.</p>
         <div class="fm-b"><button class="btn l" type="button" id="fmpv" aria-label="Pertanyaan sebelumnya">‹</button><button class="btn l" type="button" id="fmnx" aria-label="Pertanyaan berikutnya">›</button><button class="btn" type="button" id="fms">Mulai dari 1</button></div>
       </div>
     </div>
@@ -1004,10 +1071,20 @@ const S=[
 ["Website","Landing Page Framer",499000,"w","harga awal, sekali bayar","1 halaman modern dengan animasi yang halus"],
 ["Website","Toko Online WooCommerce",699000,"w","harga awal, sekali bayar","Katalog, keranjang, checkout, maks. 5 produk awal"],
 ["Otomasi AI","Setup Otomasi Konten AI",499000,"o","sekali bayar","Alur kerja AI disiapkan di akun Claude Pro milikmu. Wajib memiliki Claude Pro aktif."],
+["Listing Properti","Listing 1 Platform OTA",149000,"o","per platform, sekali bayar","Listing 1 properti di 1 platform (Airbnb, Booking.com, Agoda, atau Traveloka): judul, deskripsi, fasilitas, urutan foto, harga, dan aturan menginap. Akun tetap milikmu."],
+["Listing Properti","Paket Listing 4 Platform",449000,"o","sekali bayar","1 properti di 4 platform sekaligus dengan teks yang konsisten. Hemat Rp147.000 dibanding 4 listing terpisah."],
+["Listing Properti","Iklan Properti Jual atau Sewa",99000,"u","per iklan","1 iklan di portal properti (mis. Rumah123, 99.co, OLX): judul, deskripsi, dan foto disusun rapi."],
+["Listing Properti","Judul dan Deskripsi Listing",49000,"u","per properti","Teks listing yang mudah ditemukan, 1 bahasa (Indonesia atau Inggris), 2× revisi."],
+["Listing Properti","Video Tur Properti 30–60 detik",75000,"u","per video","1 video tur dari foto dan klip yang kamu kirim, dilengkapi teks dan musik."],
+["Listing Properti","Kelola Listing dan Harga",249000,"m","per bulan, per properti","Pembaruan harga musiman, foto, dan balasan ulasan, plus cek kalender. Tidak termasuk komunikasi tamu dan operasional."],
+["Kalender OTA","Kalender Sinkron OTA di Website",349000,"o","sekali bayar","Kalender ketersediaan di websitemu yang menggabungkan tautan iCal dari hingga 3 sumber (Airbnb, Booking.com, Agoda, Google Calendar). Tanggal terisi otomatis tertutup. Butuh website."],
+["Kalender OTA","Tambah Sumber Kalender",49000,"u","per sumber","1 tautan iCal tambahan dari platform atau kalender yang menyediakannya."],
+["Kalender OTA","Pemantauan Sinkron",99000,"m","per bulan","Cek sinkron tiap hari, perbaiki tautan yang putus, dan jaga jadwal pembaruan."],
+["Kalender OTA","Paket Website Vila + Kalender",699000,"w","harga awal, sekali bayar","Landing Page 3D, kalender sinkron 3 sumber, dan tombol booking WhatsApp. Hemat Rp97.000 dibanding harga awal terpisah."],
 ["Paket Bulanan","Starter",229000,"m","per bulan","Untuk mulai tampil rutin: 8 postingan per bulan.",0],
 ["Paket Bulanan","Growth",629000,"m","per bulan","Akun terkelola, 16 postingan per bulan.",1],
 ["Paket Bulanan","Business Pro",1049000,"m","per bulan","Pengelolaan menyeluruh, 24 postingan per bulan.",2]];
-const NOTE={"Konten AI":"Dibuat dengan bantuan AI. Harga per item.","Kelola Instagram":"Hanya pengelolaan akun. Konten dipesan terpisah.","Iklan Digital":"Budget iklan dibayar langsung ke Meta atau Google. Tanpa jaminan hasil.","Website":"Harga awal. Domain dan hosting dibayar terpisah.","Otomasi AI":"Wajib akun Claude Pro aktif. Biaya pihak ketiga terpisah.","Paket Bulanan":"Termasuk kalender konten dan revisi. Budget iklan, Google Ads, dan website tidak termasuk."};
+const NOTE={"Konten AI":"Dibuat dengan bantuan AI. Harga per item.","Kelola Instagram":"Hanya pengelolaan akun. Konten dipesan terpisah.","Iklan Digital":"Budget iklan dibayar langsung ke Meta atau Google. Tanpa jaminan hasil.","Website":"Harga awal. Domain dan hosting dibayar terpisah.","Otomasi AI":"Wajib akun Claude Pro aktif. Biaya pihak ketiga terpisah.","Listing Properti":"Akun OTA tetap milikmu. Komisi platform tidak termasuk. Tanpa jaminan okupansi.","Kalender OTA":"Sinkron lewat iCal tidak instan: tiap platform memperbarui sendiri, jadi bentrok tanggal tetap mungkin terjadi. Hosting terpisah.","Paket Bulanan":"Termasuk kalender konten dan revisi. Budget iklan, Google Ads, dan website tidak termasuk."};
 const cats=Object.keys(NOTE),cart={},HI='Halo Menej Ets, saya ingin konsultasi layanan digital.';let tab=cats[0];
 
 const PAKET='Paket Bulanan';
@@ -1015,7 +1092,7 @@ const PK=[
 {n:'Starter',pr:'Rp229.000',sv:'Hemat Rp35.000 dibanding membeli komponen yang setara secara satuan',p:'Untuk mulai tampil rutin: 8 postingan per bulan.',f:['4 Reels 15–30 detik dan 4 desain gambar','8 caption','Ide dan jadwal 1 bulan','1× revisi per bulan'],x:['Tidak termasuk unggah dan penjadwalan posting']},
 {n:'Growth',b:1,tag:'Paling seimbang',pr:'Rp629.000',sv:'Hemat Rp98.000 dibanding membeli komponen yang setara secara satuan',p:'Akun terkelola, 16 postingan per bulan.',f:['8 Reels 15–30 detik dan 8 desain gambar','16 caption','Kalender konten bulanan','Unggah dan penjadwalan posting','Riset hashtag dan penataan profil','Evaluasi konten 1× per bulan','2× revisi per bulan'],x:['Tidak termasuk balasan komentar, DM, dan iklan']},
 {n:'Business Pro',pr:'Rp1.049.000',svn:'Pengelolaan Instagram penuh tidak dijual satuan, sehingga penghematan tidak dihitung.',p:'Pengelolaan menyeluruh, 24 postingan per bulan.',f:['12 Reels 15–30 detik dan 12 desain gambar','24 caption','Strategi dan kalender konten','Pengelolaan Instagram penuh, termasuk komentar dan DM','Pengelolaan iklan Meta','Laporan performa bulanan','3× revisi per bulan'],x:['Tidak termasuk budget iklan, Google Ads, dan website']}];
-const TAG={'Konten AI':'Konten siap tayang untuk akun bisnismu','Kelola Instagram':'Akun terkelola rapi, jadwal konsisten','Iklan Digital':'Iklan Meta dan Google, kami yang kelola','Website':'Dari landing page sederhana hingga dunia 3D','Otomasi AI':'Alur kerja AI di akun Claude Pro-mu','Paket Bulanan':'Konten rutin dalam satu paket bulanan'};
+const TAG={'Konten AI':'Konten siap tayang untuk akun bisnismu','Kelola Instagram':'Akun terkelola rapi, jadwal konsisten','Iklan Digital':'Iklan Meta dan Google, kami yang kelola','Website':'Dari landing page sederhana hingga dunia 3D','Otomasi AI':'Alur kerja AI di akun Claude Pro-mu','Listing Properti':'Properti tampil rapi di Airbnb, Booking.com, dan lainnya','Kalender OTA':'Satu kalender untuk semua platform','Paket Bulanan':'Konten rutin dalam satu paket bulanan'};
 const ACC=[['#12251E','#F5EFE3'],['#1F3B31','#F5EFE3'],['#4F6358','#F5EFE3'],['#12251E','#F5EFE3'],['#1F3B31','#F5EFE3'],['#4F6358','#F5EFE3']];
 const rmo=()=>matchMedia('(prefers-reduced-motion:reduce)').matches,clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const CC=['#12251E','#F5EFE3','#4F6358','#E9E0CC','#1F3B31'];
@@ -1023,6 +1100,9 @@ let cur=0,mvT=0;
 const total=()=>Object.values(cart).reduce((a,b)=>a+b,0);
 /* rak: satu per kategori, berdiri di lorong 3D */
 const ILL=["<svg class=\"il\" viewBox=\"0 0 120 120\"><rect x=\"34\" y=\"6\" width=\"52\" height=\"104\" rx=\"11\" fill=\"#12251E\"/><rect x=\"40\" y=\"14\" width=\"40\" height=\"88\" rx=\"6\" fill=\"#F5EFE3\"/><circle cx=\"60\" cy=\"56\" r=\"15\" fill=\"#FFB81C\"/><path d=\"M55 48v16l14-8z\" fill=\"#12251E\"/><rect x=\"45\" y=\"86\" width=\"30\" height=\"4\" rx=\"2\" fill=\"#CFC4AB\"/><rect x=\"45\" y=\"86\" width=\"16\" height=\"4\" rx=\"2\" fill=\"#4F6358\"/><path d=\"M96 20l3 8 8 3-8 3-3 8-3-8-8-3 8-3z\" fill=\"#FFB81C\"/></svg>", "<svg class=\"il\" viewBox=\"0 0 120 120\"><rect x=\"12\" y=\"12\" width=\"96\" height=\"96\" rx=\"16\" fill=\"#F5EFE3\" stroke=\"#12251E\" stroke-width=\"3\"/><rect x=\"22\" y=\"22\" width=\"26\" height=\"26\" rx=\"5\" fill=\"#12251E\"/><rect x=\"52\" y=\"22\" width=\"26\" height=\"26\" rx=\"5\" fill=\"#4F6358\"/><rect x=\"82\" y=\"22\" width=\"26\" height=\"26\" rx=\"5\" fill=\"#CFC4AB\"/><rect x=\"22\" y=\"52\" width=\"26\" height=\"26\" rx=\"5\" fill=\"#4F6358\"/><rect x=\"52\" y=\"52\" width=\"26\" height=\"26\" rx=\"5\" fill=\"#FFB81C\"/><rect x=\"82\" y=\"52\" width=\"26\" height=\"26\" rx=\"5\" fill=\"#12251E\"/><rect x=\"22\" y=\"82\" width=\"26\" height=\"26\" rx=\"5\" fill=\"#CFC4AB\"/><rect x=\"52\" y=\"82\" width=\"26\" height=\"26\" rx=\"5\" fill=\"#12251E\"/><rect x=\"82\" y=\"82\" width=\"26\" height=\"26\" rx=\"5\" fill=\"#4F6358\"/></svg>", "<svg class=\"il\" viewBox=\"0 0 120 120\"><path d=\"M30 48L72 28v62L30 70z\" fill=\"#12251E\"/><rect x=\"16\" y=\"46\" width=\"18\" height=\"26\" rx=\"6\" fill=\"#4F6358\"/><rect x=\"34\" y=\"70\" width=\"14\" height=\"26\" rx=\"6\" fill=\"#1F3B31\"/><path d=\"M82 44q12 16 0 32M94 34q22 26 0 52\" fill=\"none\" stroke=\"#FFB81C\" stroke-width=\"6\" stroke-linecap=\"round\"/></svg>", "<svg class=\"il\" viewBox=\"0 0 120 120\"><rect x=\"8\" y=\"18\" width=\"104\" height=\"84\" rx=\"12\" fill=\"#F5EFE3\" stroke=\"#12251E\" stroke-width=\"3\"/><path d=\"M9.5 30V30a10.5 10.5 0 0 1 10.5-10.5h80A10.5 10.5 0 0 1 110.5 30v8h-101z\" fill=\"#12251E\"/><circle cx=\"22\" cy=\"29\" r=\"3.5\" fill=\"#F5EFE3\"/><circle cx=\"33\" cy=\"29\" r=\"3.5\" fill=\"#F5EFE3\"/><circle cx=\"44\" cy=\"29\" r=\"3.5\" fill=\"#F5EFE3\"/><rect x=\"20\" y=\"48\" width=\"48\" height=\"9\" rx=\"4.5\" fill=\"#12251E\"/><rect x=\"20\" y=\"62\" width=\"40\" height=\"6\" rx=\"3\" fill=\"#CFC4AB\"/><rect x=\"20\" y=\"73\" width=\"46\" height=\"6\" rx=\"3\" fill=\"#CFC4AB\"/><rect x=\"20\" y=\"86\" width=\"26\" height=\"10\" rx=\"5\" fill=\"#FFB81C\"/><rect x=\"78\" y=\"48\" width=\"24\" height=\"48\" rx=\"7\" fill=\"#4F6358\"/></svg>", "<svg class=\"il\" viewBox=\"0 0 120 120\"><path d=\"M60 34V20\" stroke=\"#12251E\" stroke-width=\"5\" stroke-linecap=\"round\"/><circle cx=\"60\" cy=\"15\" r=\"7\" fill=\"#FFB81C\"/><rect x=\"14\" y=\"50\" width=\"12\" height=\"22\" rx=\"5\" fill=\"#4F6358\"/><rect x=\"94\" y=\"50\" width=\"12\" height=\"22\" rx=\"5\" fill=\"#4F6358\"/><rect x=\"24\" y=\"34\" width=\"72\" height=\"58\" rx=\"18\" fill=\"#12251E\"/><circle cx=\"45\" cy=\"60\" r=\"10\" fill=\"#F5EFE3\"/><circle cx=\"75\" cy=\"60\" r=\"10\" fill=\"#F5EFE3\"/><circle cx=\"47\" cy=\"61\" r=\"4.5\" fill=\"#12251E\"/><circle cx=\"77\" cy=\"61\" r=\"4.5\" fill=\"#12251E\"/><rect x=\"46\" y=\"78\" width=\"28\" height=\"6\" rx=\"3\" fill=\"#4F6358\"/><rect x=\"40\" y=\"96\" width=\"40\" height=\"14\" rx=\"7\" fill=\"#1F3B31\"/></svg>", "<svg class=\"il\" viewBox=\"0 0 120 120\"><rect x=\"22\" y=\"48\" width=\"76\" height=\"60\" rx=\"8\" fill=\"#12251E\"/><rect x=\"14\" y=\"36\" width=\"92\" height=\"18\" rx=\"7\" fill=\"#4F6358\"/><rect x=\"54\" y=\"36\" width=\"12\" height=\"72\" fill=\"#FFB81C\"/><path d=\"M60 34C44 34 38 18 48 16s14 10 12 18M60 34c16 0 22-16 12-18s-14 10-12 18\" fill=\"none\" stroke=\"#FFB81C\" stroke-width=\"5\" stroke-linecap=\"round\"/></svg>"];
+ILL.splice(5,0,
+"<svg class=\"il\" viewBox=\"0 0 120 120\"><path d=\"M14 58L60 18l46 40z\" fill=\"#12251E\"/><rect x=\"26\" y=\"56\" width=\"68\" height=\"50\" rx=\"6\" fill=\"#F5EFE3\" stroke=\"#12251E\" stroke-width=\"3\"/><rect x=\"50\" y=\"72\" width=\"20\" height=\"34\" rx=\"4\" fill=\"#4F6358\"/><rect x=\"32\" y=\"66\" width=\"13\" height=\"13\" rx=\"3\" fill=\"#FFB81C\"/><rect x=\"75\" y=\"66\" width=\"13\" height=\"13\" rx=\"3\" fill=\"#FFB81C\"/><circle cx=\"96\" cy=\"26\" r=\"12\" fill=\"#FFB81C\" stroke=\"#12251E\" stroke-width=\"3\"/><circle cx=\"96\" cy=\"26\" r=\"4\" fill=\"#12251E\"/></svg>",
+"<svg class=\"il\" viewBox=\"0 0 120 120\"><rect x=\"12\" y=\"20\" width=\"96\" height=\"86\" rx=\"12\" fill=\"#F5EFE3\" stroke=\"#12251E\" stroke-width=\"3\"/><path d=\"M13.5 32a10.5 10.5 0 0 1 10.5-10.5h72A10.5 10.5 0 0 1 106.5 32v10h-93z\" fill=\"#12251E\"/><rect x=\"34\" y=\"10\" width=\"8\" height=\"18\" rx=\"4\" fill=\"#4F6358\"/><rect x=\"78\" y=\"10\" width=\"8\" height=\"18\" rx=\"4\" fill=\"#4F6358\"/><rect x=\"22\" y=\"52\" width=\"16\" height=\"14\" rx=\"3\" fill=\"#FFB81C\"/><rect x=\"42\" y=\"52\" width=\"16\" height=\"14\" rx=\"3\" fill=\"#4F6358\"/><rect x=\"62\" y=\"52\" width=\"16\" height=\"14\" rx=\"3\" fill=\"#4F6358\"/><rect x=\"82\" y=\"52\" width=\"16\" height=\"14\" rx=\"3\" fill=\"#CFC4AB\"/><rect x=\"22\" y=\"72\" width=\"16\" height=\"14\" rx=\"3\" fill=\"#CFC4AB\"/><rect x=\"42\" y=\"72\" width=\"36\" height=\"14\" rx=\"3\" fill=\"#12251E\"/><rect x=\"82\" y=\"72\" width=\"16\" height=\"14\" rx=\"3\" fill=\"#FFB81C\"/></svg>");
 $('#spw').insertAdjacentHTML('beforeend',cats.map((c,i)=>`<div class="st" data-c="${i}" style="--i:${i}">${ILL[i]}<b class="pl">${c}</b></div>`).join(''));
 $('#spt').innerHTML=cats.map((c,i)=>`<button type="button" data-c="${i}">${c}</button>`).join('');
 const pd=i=>{const s=S[i],q=cart[i],e=esc(s[1]),pk=s[0]==PAKET;
@@ -1050,9 +1130,9 @@ function fly(r){const col=CC[(Math.min(total(),9)-1)%5];if(rmo()){renderLoad(tru
 const c=$('#spc').getBoundingClientRect(),el=document.createElement('div');el.className='fly';el.style.cssText=`left:${r.x+r.width/2-14}px;top:${r.y+r.height/2-14}px;background:${col}`;document.body.appendChild(el);
 const tx=c.x+c.width*.5-(r.x+r.width/2),ty=c.y+c.height*.3-(r.y+r.height/2);
 el.animate([{transform:'translate(0,0) scale(1)'},{transform:`translate(${tx*.5}px,${ty*.5-80}px) scale(1.2)`,offset:.45},{transform:`translate(${tx}px,${ty}px) scale(.55)`}],{duration:720,easing:'cubic-bezier(.4,0,.6,1)'}).onfinish=()=>{el.remove();renderLoad(true)}}
-function calc(){let one=0,mo=0,web=0,ads=0,ai=0,n=0;const L=[];Object.keys(cart).forEach(i=>{const s=S[i],q=cart[i],sub=s[2]*q;s[3]=='m'?mo+=sub:one+=sub;n+=q;if(s[0]=='Website')web=1;if(s[0]=='Iklan Digital')ads=1;if(s[0]=='Otomasi AI')ai=1;L.push(`- ${s[1]} (${s[4]}): ${q} × ${R(s[2])} = ${R(sub)}`)});return{one,mo,web,ads,ai,n,L}}
+function calc(){let one=0,mo=0,web=0,ads=0,ai=0,pr=0,n=0;const L=[];Object.keys(cart).forEach(i=>{const s=S[i],q=cart[i],sub=s[2]*q;s[3]=='m'?mo+=sub:one+=sub;n+=q;if(s[0]=='Website')web=1;if(s[0]=='Iklan Digital')ads=1;if(s[0]=='Otomasi AI')ai=1;if(s[0]=='Listing Properti'||s[0]=='Kalender OTA')pr=1;L.push(`- ${s[1]} (${s[4]}): ${q} × ${R(s[2])} = ${R(sub)}`)});return{one,mo,web,ads,ai,pr,n,L}}
 function msg(){const c=calc();if(!c.n)return HI;
-const notes=[c.web&&'(Website: harga awal, lingkup dikonfirmasi terlebih dahulu. Domain dan hosting dibayar terpisah)',c.ads&&'(Budget iklan dibayarkan langsung ke Meta atau Google, tidak termasuk biaya pengelolaan)',c.ai&&'(Otomasi AI: wajib memiliki akun Claude Pro aktif, langganan dibayar sendiri)','(Biaya pihak ketiga tidak termasuk. Harga final dikonfirmasi melalui chat)'].filter(Boolean).join('\n');
+const notes=[c.web&&'(Website: harga awal, lingkup dikonfirmasi terlebih dahulu. Domain dan hosting dibayar terpisah)',c.ads&&'(Budget iklan dibayarkan langsung ke Meta atau Google, tidak termasuk biaya pengelolaan)',c.ai&&'(Otomasi AI: wajib memiliki akun Claude Pro aktif, langganan dibayar sendiri)',c.pr&&'(Properti: akun OTA milik kamu, komisi platform tidak termasuk. Sinkron kalender iCal tidak instan, bergantung jadwal tiap platform)','(Biaya pihak ketiga tidak termasuk. Harga final dikonfirmasi melalui chat)'].filter(Boolean).join('\n');
 return `Halo Menej Ets, saya ingin memesan layanan berikut:\n\n${c.L.join('\n')}\n\n${[c.one?'Estimasi sekali bayar: '+R(c.one):'',c.mo?'Estimasi per bulan: '+R(c.mo):''].filter(Boolean).join('\n')}\n${notes}\n\nMohon informasi mengenai proses pemesanan. Terima kasih.`}
 function renderNota(){const c=calc(),k=Object.keys(cart),url=wa(msg());
 const tot=[c.one?R(c.one):'',c.mo?R(c.mo)+'/bln':''].filter(Boolean).join(' + ');
@@ -1114,10 +1194,10 @@ if(!reduce&&matchMedia('(hover:hover)').matches)cards.forEach(c=>{
 <script>
 /* ---------- FAQ: peta 3D ---------- */
 (()=>{
-const FAQ=[["Bisa pesan satu layanan saja?", "Bisa. Semua layanan dijual satuan, jadi kamu tidak perlu mengambil paket bulanan."], ["Bagaimana cara memesan?", "Pilih layanan di menu, masukkan ke troli, lalu kirim nota lewat WhatsApp. Total terhitung otomatis. Kalau masih ragu, kamu boleh ngobrol dulu sebelum memesan."], ["Apakah konten dibuat oleh AI?", "AI membantu mempercepat produksi. Arahan kreatif, pemilihan hasil, dan keputusan strategis tetap kami pegang."], ["Apa bedanya Reels 15–30 dan 30–60 detik?", "Bedanya hanya di durasi. Reels 15–30 detik Rp35.000, Reels 30–60 detik Rp60.000 per video."], ["Apakah budget iklan sudah termasuk?", "Belum. Budget iklan dibayar langsung ke Meta atau Google. Biaya dari kami untuk penyiapan dan pengelolaan iklan."], ["Apakah website sudah termasuk domain dan hosting?", "Belum. Domain, hosting, dan plugin berbayar dihitung terpisah, kecuali kita sepakati lain."], ["Apa itu Setup Otomasi Konten AI?", "Kami menyiapkan alur kerja AI di akun Claude Pro milikmu untuk ide, naskah, dan caption. Biayanya Rp499.000 sekali bayar. Akun Claude Pro harus aktif dan langganannya kamu bayar sendiri."], ["Apakah memesan lewat nota berarti membayar?", "Belum. Nota hanya merangkum pesananmu ke pesan WhatsApp. Harga akhir kami konfirmasi lewat chat sebelum kamu setuju."], ["Apakah ada jaminan hasil?", "Kami tidak menjamin penjualan atau hasil iklan. Yang kami pastikan, layanan dikerjakan sesuai menu dan paket yang disepakati."]];
+const FAQ=[["Bisa pesan satu layanan saja?", "Bisa. Semua layanan dijual satuan, jadi kamu tidak perlu mengambil paket bulanan."], ["Bagaimana cara memesan?", "Pilih layanan di menu, masukkan ke troli, lalu kirim nota lewat WhatsApp. Total terhitung otomatis. Kalau masih ragu, kamu boleh ngobrol dulu sebelum memesan."], ["Apakah konten dibuat oleh AI?", "AI membantu mempercepat produksi. Arahan kreatif, pemilihan hasil, dan keputusan strategis tetap kami pegang."], ["Apa bedanya Reels 15–30 dan 30–60 detik?", "Bedanya hanya di durasi. Reels 15–30 detik Rp35.000, Reels 30–60 detik Rp60.000 per video."], ["Apakah budget iklan sudah termasuk?", "Belum. Budget iklan dibayar langsung ke Meta atau Google. Biaya dari kami untuk penyiapan dan pengelolaan iklan."], ["Apakah website sudah termasuk domain dan hosting?", "Belum. Domain, hosting, dan plugin berbayar dihitung terpisah, kecuali kita sepakati lain."], ["Apa itu Setup Otomasi Konten AI?", "Kami menyiapkan alur kerja AI di akun Claude Pro milikmu untuk ide, naskah, dan caption. Biayanya Rp499.000 sekali bayar. Akun Claude Pro harus aktif dan langganannya kamu bayar sendiri."], ["Apakah memesan lewat nota berarti membayar?", "Belum. Nota hanya merangkum pesananmu ke pesan WhatsApp. Harga akhir kami konfirmasi lewat chat sebelum kamu setuju."], ["Apakah kalender OTA langsung sinkron?", "Belum langsung. Kalender digabung lewat tautan iCal, dan tiap platform memperbarui tautannya sendiri, kadang butuh beberapa jam. Karena itu bentrok tanggal tetap mungkin. Untuk usaha dengan banyak pesanan, kami sarankan channel manager."], ["Platform apa saja yang bisa dihubungkan?", "Yang menyediakan tautan iCal, seperti Airbnb, Booking.com, Agoda, dan Google Calendar. Untuk platform tanpa iCal, kami cek dulu apakah ada jalur lain sebelum kamu memesan."], ["Apakah ada jaminan hasil?", "Kami tidak menjamin penjualan atau hasil iklan. Yang kami pastikan, layanan dikerjakan sesuai menu dan paket yang disepakati."]];
 const $=x=>document.querySelector(x),fm=$('#fm'),fmw=$('#fmw'),fmp=$('#fmp');
 if(!fm)return;
-const PT=[[220,690],[430,560],[650,720],[790,440],[990,620],[1180,770],[1130,370],[870,210],[560,270]];
+const PT=[[220,690],[430,560],[650,720],[790,440],[990,620],[1180,770],[1130,370],[870,210],[560,270],[330,400],[220,220]];
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 let seed=7;const rnd=()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
 /* peta dasar */
@@ -1159,7 +1239,7 @@ function cam(i){
 function show(i){
  card.classList.add('sw');card.classList.toggle('sel',i>=0);clearTimeout(tm);
  tm=setTimeout(()=>{
-  if(i<0){E.textContent='Peta pertanyaan';T.textContent='Ketuk titik di peta';A.textContent='Ada 9 titik berisi pertanyaan seputar harga dan layanan. Ketuk satu untuk membaca jawabannya.';S.textContent='Mulai dari 1'}
+  if(i<0){E.textContent='Peta pertanyaan';T.textContent='Ketuk titik di peta';A.textContent='Ada 11 titik berisi pertanyaan seputar harga dan layanan. Ketuk satu untuk membaca jawabannya.';S.textContent='Mulai dari 1'}
   else{E.textContent=`Pertanyaan ${i+1} dari ${FAQ.length}`;T.textContent=FAQ[i][0];A.textContent=FAQ[i][1];S.textContent='Kembali ke peta'}
   card.classList.remove('sw')},reduce?0:220)}
 function go(i){idx=i;fm.classList.toggle('has',i>=0);pins.forEach((p,k)=>p.classList.toggle('on',k===i));gs.forEach((g,k)=>g.classList.toggle('on',k===i));cam(i);show(i)}
@@ -1179,6 +1259,52 @@ if(!reduce&&'IntersectionObserver' in window){fmp.style.transition='none';fmp.st
 })();
 </script>
 
+<script>
+/* ---------- Properti: kalender OTA gabungan (iCal) ---------- */
+(()=>{
+const $=s=>document.querySelector(s),board=$('#cal3b');if(!board)return;
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const SRC=[{k:'A',n:'Airbnb',c:'#C93A55'},{k:'B',n:'Booking.com',c:'#1F5FA8'},{k:'G',n:'Agoda',c:'#6B3FB5'},{k:'K',n:'Google Calendar',c:'#1E7A4A'}];
+const now=new Date(),Y=now.getFullYear(),M=now.getMonth(),dim=new Date(Y,M+1,0).getDate();
+const p2=n=>String(n).padStart(2,'0'),ymd=d=>`${Y}${p2(M+1)}${p2(d)}`;
+/* tautan iCal contoh, dibuat dari bulan berjalan (DTEND eksklusif, seperti pada iCal asli) */
+const mk=r=>'BEGIN:VCALENDAR\r\nVERSION:2.0\r\n'+r.map((x,i)=>`BEGIN:VEVENT\r\nUID:c${i}@contoh\r\nDTSTART;VALUE=DATE:${ymd(x[0])}\r\nDTEND;VALUE=DATE:${ymd(x[1])}\r\nSUMMARY:Reserved\r\nEND:VEVENT\r\n`).join('')+'END:VCALENDAR';
+const FEED=[mk([[3,6],[12,15],[24,27]]),mk([[8,11],[14,18]]),mk([[20,23]]),mk([[28,30]])];
+/* pembaca iCal minimal: ambil DTSTART/DTEND tiap VEVENT, lalu daftar tanggal terisi di bulan ini */
+function parse(t){const out=new Set(),ev=t.split('BEGIN:VEVENT').slice(1);
+ ev.forEach(b=>{const g=k=>{const m=b.match(new RegExp(k+'[^:\\r\\n]*:(\\d{8})'));return m?m[1]:null},a=g('DTSTART'),z=g('DTEND');if(!a)return;
+  const d=s=>new Date(+s.slice(0,4),+s.slice(4,6)-1,+s.slice(6,8)),s0=d(a),e0=z?d(z):new Date(s0.getTime()+864e5);
+  for(let x=new Date(s0);x<e0;x.setDate(x.getDate()+1))if(x.getFullYear()==Y&&x.getMonth()==M)out.add(x.getDate())});return out}
+const DAYS=FEED.map(parse),on=SRC.map(()=>true);let sel=0;
+const src=$('#calsrc'),info=$('#calinfo');
+src.innerHTML=SRC.map((s,i)=>`<button type="button" data-i="${i}" aria-pressed="true" style="--c:${s.c}"><i></i>${s.n}</button>`).join('');
+const first=(new Date(Y,M,1).getDay()+6)%7,mon=now.toLocaleDateString('id-ID',{month:'long',year:'numeric'});
+function who(d){return SRC.filter((s,i)=>on[i]&&DAYS[i].has(d))}
+function draw(){
+ const WD=['Sen','Sel','Rab','Kam','Jum','Sab','Min'];let h=`<div class="cal-h"><b>${mon}</b><span>Gabungan ${on.filter(Boolean).length} sumber</span></div><div class="cal-g">`+WD.map(w=>`<span class="cal-w">${w}</span>`).join('');
+ for(let i=0;i<first;i++)h+='<span class="cd o"></span>';
+ let bk=0,cf=0;
+ for(let d=1;d<=dim;d++){const w=who(d),c=w.length>1,b=w.length>0;if(b)bk++;if(c)cf++;
+  const lab=b?(c?`${d}: bentrok, dipesan di ${w.map(s=>s.n).join(' dan ')}`:`${d}: terisi di ${w[0].n}`):`${d}: tersedia`;
+  h+=`<button type="button" class="cd${b?' bk':''}${c?' cf':''}${sel==d?' sel':''}" data-d="${d}" style="--i:${d+first};${b&&!c?`--c:${w[0].c};`:''}" aria-label="${lab}">${d}${b?`<small>${c?'!':w[0].k}</small>`:''}</button>`}
+ board.innerHTML=h+'</div>';
+ info.innerHTML=`<div class="cal-st"><div><b>${dim-bk}</b><small>Malam tersedia</small></div><div><b>${bk}</b><small>Malam terisi</small></div><div class="w2"><b>${cf}</b><small>Tanggal bentrok</small></div></div><p class="cal-dt" id="caldt">${detail(sel)}</p>`}
+function detail(d){if(!d)return 'Ketuk tanggal untuk melihat asal pesanannya.';const w=who(d);
+ return !w.length?`Tanggal ${d}: tersedia, bisa dipesan lewat WhatsApp.`:w.length>1?`Tanggal ${d}: <b>bentrok</b>. Terisi di ${w.map(s=>s.n).join(' dan ')}. Ini yang terjadi bila dua platform belum saling tahu, dan kalender gabungan membantu menutup tanggal sebelum tamu ketiga memesan.`:`Tanggal ${d}: terisi dari ${w[0].n}, otomatis tertutup di website.`}
+src.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const i=+b.dataset.i;on[i]=!on[i];b.setAttribute('aria-pressed',on[i]);draw();board.classList.add('in')});
+board.addEventListener('click',e=>{const c=e.target.closest('.cd[data-d]');if(!c)return;sel=+c.dataset.d;draw();board.classList.add('in');const f=board.querySelector(`.cd[data-d="${sel}"]`);f&&f.focus({preventScroll:true})});
+draw();
+/* masuk: balok tanggal terisi naik saat bagian ini terlihat */
+if(reduce||!('IntersectionObserver' in window))board.classList.add('in');
+else new IntersectionObserver((es,o)=>{if(es.some(x=>x.isIntersecting)){o.disconnect();requestAnimationFrame(()=>board.classList.add('in'))}},{threshold:.35}).observe($('#cal3'));
+/* miring mengikuti kursor, hanya di perangkat dengan hover */
+const box=$('#cal3'),tl=$('#cal3t');
+if(!reduce&&matchMedia('(hover:hover)').matches&&innerWidth>860){box.addEventListener('pointermove',e=>{const r=box.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;tl.style.setProperty('--rx',(46-y*10).toFixed(1)+'deg');tl.style.setProperty('--rz',(-10+x*12).toFixed(1)+'deg')});box.addEventListener('pointerleave',()=>{tl.style.setProperty('--rx','46deg');tl.style.setProperty('--rz','-10deg')})}
+/* kartu harga: miring tipis mengikuti kursor */
+const L=$('#sple');
+if(L&&!reduce&&matchMedia('(hover:hover)').matches){L.addEventListener('pointermove',e=>{const c=e.target.closest('.pd');if(!c)return;const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(800px) rotateX(${(-y*5).toFixed(1)}deg) rotateY(${(x*6).toFixed(1)}deg) translateY(-3px)`});L.addEventListener('pointerout',e=>{const c=e.target.closest('.pd');if(c&&!c.contains(e.relatedTarget))c.style.transform=''})}
+})();
+</script>
 <script>
 /* parallax kubus FAQ dan ponsel CTA */
 (()=>{
