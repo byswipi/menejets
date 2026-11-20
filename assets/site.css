@@ -118,12 +118,12 @@ p { max-width: 62ch; }
 .phone-stage { position: relative; aspect-ratio: 4 / 5; max-height: 560px; width: 100%; }
 .phone-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity .6s var(--ease); }
 .phone-stage.is-ready canvas { opacity: 1; }
-.phone-loader { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: var(--s3); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); transition: opacity .4s; }
+.phone-loader { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: var(--s3); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); transition: opacity .4s; opacity: 0; visibility: hidden; }
 .phone-loader span { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--line); border-top-color: var(--accent); animation: spin 1s linear infinite; }
-.phone-stage.is-ready .phone-loader, .phone-stage.is-static .phone-loader { opacity: 0; visibility: hidden; }
+.phone-stage.is-loading .phone-loader { opacity: 1; visibility: visible; }
+.phone-stage.is-loading .phone-static { opacity: 0; visibility: hidden; }
 @keyframes spin { to { transform: rotate(360deg); } }
-.phone-static { position: absolute; inset: 0; display: grid; place-items: center; opacity: 0; visibility: hidden; }
-.phone-stage.is-static .phone-static { opacity: 1; visibility: visible; }
+.phone-static { position: absolute; inset: 0; display: grid; place-items: center; }
 .phone-static__screen { width: 44%; aspect-ratio: 9 / 18.5; border-radius: 28px; background: var(--ink); padding: 10px; display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 6px; transform: rotateY(-22deg) rotateX(6deg); box-shadow: 28px 32px 48px -24px rgba(14, 23, 20, .4); }
 .phone-static__screen i { border-radius: 6px; background: var(--sage); }
 .phone-static__screen i:nth-child(2) { background: #E4EAE6; }
@@ -290,7 +290,7 @@ p { max-width: 62ch; }
   .nota { position: static; }
   .cal__grid { gap: 4px; }
   .cd { font-size: 11.5px; }
-  .cd small { display: none; }
+  .cd small { font-size: 8px; right: 3px; bottom: 2px; }
 }
 @media (max-width: 520px) {
   .svc-grid, .karya-grid, .how, .why { grid-template-columns: minmax(0, 1fr); }

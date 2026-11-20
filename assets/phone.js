@@ -25,7 +25,9 @@ const readEnv = () => ({
   reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches,
 });
 
-const toStatic = (stage) => { stage.classList.add('is-static'); stage.classList.remove('is-ready'); return 'static'; };
+/** Menandai stage memakai ponsel statis: melepas keadaan memuat dan siap, lalu menyalakan is-static. */
+export const showStatic = (stage) => { stage.classList.add('is-static'); stage.classList.remove('is-ready', 'is-loading'); return 'static'; };
+const toStatic = showStatic;
 
 const whenIdle = () => new Promise((resolve) => {
   const go = () => ('requestIdleCallback' in window ? requestIdleCallback(resolve, { timeout: 1500 }) : setTimeout(resolve, 300));
@@ -65,6 +67,7 @@ function roundedShape(THREE, w, h, r) {
 /** Menyalakan ponsel 3D pada `canvas` di dalam `stage`. Mengembalikan '3d' atau 'static'. */
 export async function initPhone(stage, canvas) {
   if (shouldUseStatic(readEnv())) return toStatic(stage);
+  stage.classList.add('is-loading');
   try {
     await whenIdle();
     const THREE = await Promise.race([
@@ -121,7 +124,7 @@ export async function initPhone(stage, canvas) {
       phone.rotation.y = -0.45 + Math.sin(t * 0.55) * 0.22 + ptr;
       phone.position.y = Math.sin(t * 0.8) * 0.04;
       renderer.render(scene, camera);
-      if (!stage.classList.contains('is-ready')) { stage.classList.remove('is-static'); stage.classList.add('is-ready'); }
+      if (!stage.classList.contains('is-ready')) { stage.classList.remove('is-static', 'is-loading'); stage.classList.add('is-ready'); }
       raf = requestAnimationFrame(frame);
     };
     const start = () => { if (!running && !dead) { running = true; clock.getDelta(); raf = requestAnimationFrame(frame); } };
@@ -129,7 +132,7 @@ export async function initPhone(stage, canvas) {
     document.addEventListener('visibilitychange', () => { if (!document.hidden) start(); });
     canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); dead = true; cancelAnimationFrame(raf); toStatic(stage); });
     // Pengaman: bila browser menahan animasi (tab latar, daya hemat), jangan biarkan loader menggantung.
-    setTimeout(() => { if (!dead && !stage.classList.contains('is-ready')) stage.classList.add('is-static'); }, FIRST_FRAME_TIMEOUT_MS);
+    setTimeout(() => { if (!dead && !stage.classList.contains('is-ready')) showStatic(stage); }, FIRST_FRAME_TIMEOUT_MS);
     start();
     return '3d';
   } catch {

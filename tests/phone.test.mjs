@@ -35,3 +35,22 @@ test('prefers-reduced-motion selalu statis, bahkan dengan ?3d=1', () => {
 test('?3d=0 memaksa versi statis', () => {
   assert.equal(shouldUseStatic({ ...base, search: '?a=1&3d=0', deviceMemory: 8, hardwareConcurrency: 8 }), true);
 });
+
+import { showStatic } from '../assets/phone.js';
+
+const fakeStage = (...initial) => {
+  const set = new Set(initial);
+  return { classList: { add: (...c) => c.forEach((x) => set.add(x)), remove: (...c) => c.forEach((x) => set.delete(x)), contains: (c) => set.has(c) }, set };
+};
+
+test('showStatic: dari keadaan memuat, loader dilepas dan ponsel statis ditandai', () => {
+  const s = fakeStage('phone-stage', 'is-loading');
+  assert.equal(showStatic(s), 'static');
+  assert.deepEqual([...s.set].sort(), ['is-static', 'phone-stage']);
+});
+
+test('showStatic: juga melepas is-ready (konteks WebGL hilang setelah tampil)', () => {
+  const s = fakeStage('is-ready');
+  showStatic(s);
+  assert.deepEqual([...s.set], ['is-static']);
+});
