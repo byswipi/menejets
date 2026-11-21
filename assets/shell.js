@@ -19,7 +19,6 @@ function cleanClone(root) {
   $$('[id]', root).forEach((e) => e.removeAttribute('id'));
   $$('canvas, iframe, dialog', root).forEach((e) => e.remove());
   $$('img', root).forEach((i) => { i.loading = 'eager'; });
-  $$('.phone-stage', root).forEach((s) => { s.classList.remove('is-ready', 'is-loading'); s.classList.add('is-static'); });
   $$('[data-par]', root).forEach((e) => { e.style.translate = ''; });
 }
 

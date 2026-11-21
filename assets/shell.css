@@ -75,8 +75,8 @@ html { background: var(--wrapbg); }
 
 /* ---------- hero: kata raksasa transparan, kartu kaca melayang ---------- */
 .hero__grid { position: relative; }
-.hero__text, .phone-stage { position: relative; z-index: 1; }
-.hero__ghost { position: absolute; z-index: 0; right: 0; top: 4%; width: 44%; display: grid; justify-items: center; pointer-events: none; font: 600 clamp(100px, 14.5vw, 230px)/.8 var(--font); letter-spacing: -.06em; text-align: center; color: transparent; background: linear-gradient(180deg, rgba(255, 255, 255, .92), rgba(255, 255, 255, .18) 88%); -webkit-background-clip: text; background-clip: text; will-change: translate; user-select: none; }
+.hero__text { position: relative; z-index: 1; }
+.hero__ghost { position: absolute; z-index: 0; right: 0; top: 0; bottom: 0; width: 46%; align-content: center; display: grid; justify-items: center; pointer-events: none; font: 600 clamp(100px, 12.4vw, 200px)/.8 var(--font); letter-spacing: -.06em; text-align: center; color: transparent; background: linear-gradient(180deg, rgba(255, 255, 255, .92), rgba(255, 255, 255, .18) 88%); -webkit-background-clip: text; background-clip: text; will-change: translate; user-select: none; }
 .hero__ghost span:last-child { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -.02em; }
 .hero { overflow: clip; }
 h1 { font-size: clamp(40px, 5.2vw, 84px); }
@@ -101,7 +101,7 @@ h1 { font-size: clamp(40px, 5.2vw, 84px); }
   .gcard--stat b { font-size: 42px; }
   .gcard--karya { grid-template-columns: minmax(0, 1fr); align-content: end; padding-right: 14px; }
   .gcard--karya img { width: 100%; height: 56px; }
-  .hero__ghost { width: 100%; top: 2%; }
+  .hero__ghost { width: 100%; top: 0; bottom: auto; height: 46%; align-content: start; padding-top: 70px; }
   .hero { padding-left: 0; }
 }
 
@@ -163,9 +163,6 @@ h1 { font-size: clamp(40px, 5.2vw, 84px); }
 .trace u { background: rgba(30, 22, 84, .5); }
 .trace u::after { border-color: var(--navy); }
 .trace b { background: var(--navy); }
-.phone-loader { color: var(--muted); }
-.phone-loader span { border-color: var(--muted); border-top-color: transparent; }
-.phone-static__screen { background: #fff; box-shadow: 0 40px 60px -30px rgba(30, 22, 84, .5); }
 .btn--primary { color: #fff; }
 .btn--primary:hover { color: var(--ink); }
 .footer { background: var(--navy); }

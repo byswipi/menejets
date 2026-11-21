@@ -109,21 +109,7 @@ p { max-width: 62ch; }
 .trace b { flex: none; width: 5px; height: 22px; background: #fff; }
 @keyframes draw { from { transform: scaleX(0); } }
 
-.phone-stage { position: relative; min-height: 420px; align-self: stretch; }
-.phone-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity .8s var(--ease); }
-.phone-stage.is-ready canvas { opacity: 1; }
-.phone-loader { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: var(--s3); font: 400 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: #A6A6A6; transition: opacity .4s; opacity: 0; visibility: hidden; }
-.phone-loader span { width: 26px; height: 26px; border: 1px solid #A6A6A6; border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite; }
-.phone-stage.is-loading .phone-loader { opacity: 1; visibility: visible; }
-.phone-stage.is-loading .phone-static { opacity: 0; visibility: hidden; }
 @keyframes spin { to { transform: rotate(360deg); } }
-.phone-static { position: absolute; inset: 0; display: grid; place-items: center; }
-.phone-stage.is-ready .phone-static { opacity: 0; visibility: hidden; }
-.phone-static__screen { width: 38%; max-width: 210px; aspect-ratio: 9 / 18.5; background: #E8E8E8; padding: 10px; display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 6px; transform: rotateY(-22deg) rotateX(6deg); box-shadow: 0 40px 60px -30px rgba(255, 255, 255, .18); }
-.phone-static__screen i { background: #1A1A1A; }
-.phone-static__screen i:nth-child(2) { background: #8A8A8A; }
-.phone-static__screen i:nth-child(3) { background: #FFFFFF; border: 1px solid #C8C8C8; }
-.phone-static__screen i:nth-child(4) { background: #3A3A3A; }
 
 /* ---------- strip layanan dan band ---------- */
 .strip { width: 100%; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-block: 1px solid var(--line); }
@@ -286,7 +272,6 @@ p { max-width: 62ch; }
   .hero__grid, .band__in, .svc__head, .cal-demo, .platforms { grid-template-columns: minmax(0, 1fr); }
   .hero__grid { min-height: 0; }
   .hero__text { order: 1; }
-  .phone-stage { min-height: 340px; order: 0; margin-top: var(--s5); }
   .svc__head { align-items: start; }
   .gets { border-left: 0; padding-left: 0; }
   .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }

@@ -1,9 +1,8 @@
-// Penyambung DOM situs Menej Ets. Logika murni ada di data.js, nota.js, ical.js, phone.js.
+// Penyambung DOM situs Menej Ets. Logika murni ada di data.js, nota.js, ical.js.
 // Bagian statis (kartu paket, FAQ, platform) ditulis ke index.html oleh scripts/render-static.mjs.
 import { ITEMS, KARYA, CALENDAR_SOURCES } from './data.js';
 import { GREETING, formatRupiah, toggleItem, summarize, buildMessage, whatsappUrl } from './nota.js';
 import { parseIcs, mergeDays, buildSampleIcs, platformKey, describeErrors } from './ical.js';
-import { initPhone } from './phone.js';
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -200,5 +199,3 @@ export function initChrome() {
 initChrome();
 initPicking();
 initCalendar();
-const stage = $('#phone-stage');
-if (stage) initPhone(stage, $('#phone-canvas', stage));
