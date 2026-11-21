@@ -84,7 +84,7 @@ test('FAQ: 12 pertanyaan, tanpa sisa konsep lama', () => {
 test('platform, karya, dan sumber kalender tetap', () => {
   assert.equal(PLATFORMS.ok.length, 9);
   assert.deepEqual(PLATFORMS.no, ['Traveloka', 'Tiket.com', 'RedDoorz', 'Pegipegi']);
-  assert.equal(KARYA.length, 5);
+  assert.equal(KARYA.length, 6);
   assert.deepEqual(CALENDAR_SOURCES.map((s) => s.k), ['A', 'B', 'G', 'K']);
 });
 
