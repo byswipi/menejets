@@ -76,8 +76,6 @@ html { background: var(--wrapbg); }
 /* ---------- hero: kata raksasa transparan, kartu kaca melayang ---------- */
 .hero__grid { position: relative; }
 .hero__text { position: relative; z-index: 1; }
-.hero__ghost { position: absolute; z-index: 0; right: 0; top: 0; bottom: 0; width: 46%; align-content: center; display: grid; justify-items: center; pointer-events: none; font: 600 clamp(100px, 12.4vw, 200px)/.8 var(--font); letter-spacing: -.06em; text-align: center; color: transparent; background: linear-gradient(180deg, rgba(255, 255, 255, .92), rgba(255, 255, 255, .18) 88%); -webkit-background-clip: text; background-clip: text; will-change: translate; user-select: none; }
-.hero__ghost span:last-child { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -.02em; }
 .hero { overflow: clip; }
 h1 { font-size: clamp(40px, 5.2vw, 84px); }
 
@@ -101,7 +99,6 @@ h1 { font-size: clamp(40px, 5.2vw, 84px); }
   .gcard--stat b { font-size: 42px; }
   .gcard--karya { grid-template-columns: minmax(0, 1fr); align-content: end; padding-right: 14px; }
   .gcard--karya img { width: 100%; height: 56px; }
-  .hero__ghost { width: 100%; top: 0; bottom: auto; height: 46%; align-content: start; padding-top: 70px; }
   .hero { padding-left: 0; }
 }
 
@@ -150,7 +147,6 @@ h1 { font-size: clamp(40px, 5.2vw, 84px); }
 
 @media (prefers-reduced-motion: reduce) {
   .pgx, .pgx-dim { transition: none !important; }
-  .hero__ghost, .gcard, .karya__img img { translate: none !important; }
 }
 
 /* ---------- langit senja di hero, teks biru tua ---------- */
@@ -165,8 +161,29 @@ h1 { font-size: clamp(40px, 5.2vw, 84px); }
 .trace b { background: var(--navy); }
 .btn--primary { color: #fff; }
 .btn--primary:hover { color: var(--ink); }
-.footer { background: var(--navy); }
-.footer__in { color: #CFCBEA; }
-.footer a:hover { color: #fff; }
 .skip { background: var(--navy); color: #fff; }
 .demo { background: var(--navy); }
+
+/* ---------- CTA dan footer: langit senja yang sama dengan hero ---------- */
+.cta { background: #F4F3FA; border-top: 0; padding-block: clamp(40px, 7vw, 96px); }
+.cta__card { position: relative; overflow: hidden; border-radius: clamp(28px, 4vw, 44px); padding: clamp(28px, 5vw, 64px); background:
+  radial-gradient(50% 60% at 14% 8%, rgba(255, 255, 255, .62), transparent 72%),
+  radial-gradient(40% 50% at 92% 30%, rgba(255, 255, 255, .38), transparent 72%),
+  linear-gradient(180deg, #A8B4E6 0%, #C7C5EB 40%, #E7D2E0 72%, #F2CDBD 100%);
+  box-shadow: 0 30px 60px -36px rgba(30, 22, 84, .55); }
+.cta__card .cta__in { position: relative; align-items: flex-end; }
+.cta h2 { font-size: clamp(42px, 7.2vw, 112px); }
+.cta p { color: var(--muted); max-width: 46ch; margin-top: 18px; }
+.cta .eyebrow { color: var(--navy); }
+.cta .btn.btn--primary { min-height: 56px; padding-inline: 28px; box-shadow: 0 16px 30px -18px rgba(30, 22, 84, .7); }
+
+.footer { position: relative; overflow: hidden; border-top: 0; color: var(--navy); padding: var(--s5) 0 0 var(--rail-space); background: linear-gradient(180deg, #F4F3FA 0%, #E7D2E0 38%, #C7C5EB 74%, #A8B4E6 100%); }
+.footer__in { color: var(--navy); font-size: 12px; }
+.footer nav { gap: 8px; flex-wrap: wrap; }
+.footer nav a { padding: 12px 18px; border-radius: 999px; color: var(--navy); background: rgba(255, 255, 255, .7); border: 1px solid rgba(255, 255, 255, .85); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); transition: background-color .3s var(--ease), color .3s var(--ease); }
+.footer nav a:hover { background: var(--navy); color: #fff; }
+.footer p { color: var(--muted); }
+.footer__word { display: flex; justify-content: center; align-items: baseline; gap: .12em; margin-top: clamp(20px, 4vw, 48px); padding-bottom: calc(var(--s2) + 92px); font: 600 clamp(64px, 19.5vw, 340px)/.82 var(--font); letter-spacing: -.06em; white-space: nowrap; color: transparent; background: linear-gradient(180deg, rgba(255, 255, 255, .95), rgba(255, 255, 255, .25) 90%); -webkit-background-clip: text; background-clip: text; user-select: none; }
+.footer__word span:last-child { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -.02em; }
+body { padding-bottom: 0; }
+@media (min-width: 1000px) { .footer__word { padding-bottom: calc(var(--s2) + 24px); } }
