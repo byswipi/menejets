@@ -106,7 +106,7 @@ export const KARYA = [
   { name: 'Rindang Residence', kind: 'Properti', line: 'Bogor. Pulang ke rumah yang asri, dengan booking survei.', url: 'https://menej-properti.vercel.app', img: 'assets/karya/rindang-residence.jpg', alt: 'Cuplikan situs Rindang Residence: perumahan dengan peta 3D rumah dan taman.' },
   { name: 'Lintas Nusa Trans', kind: 'Logistik', line: 'Barang aman, sampai tepat waktu.', url: 'https://menej-rent-truck.vercel.app', img: 'assets/karya/lintas-nusa-trans.jpg', alt: 'Cuplikan situs Lintas Nusa Trans: jasa trucking dengan jalan dan gudang 3D.' },
   { name: 'Rumble Audio Rental', kind: 'Sewa alat', line: 'Sound system yang bikin pesta hidup.', url: 'https://menej-rent-audio.vercel.app', img: 'assets/karya/rumble-audio-rental.jpg', alt: 'Cuplikan situs Rumble Audio Rental: sewa sound system dengan panggung dan lampu 3D.' },
-  { name: 'Bintang Florist Express', kind: 'Toko bunga', line: 'Surabaya dan Jakarta. Papan bunga yang tepat, tiba tepat waktu.', url: 'https://bintang-florist-express-home.vercel.app', img: 'assets/karya/bintang-florist-express.jpg', alt: 'Ilustrasi situs Bintang Florist Express: papan bunga dengan tombol pesan dan estimasi kirim 3 jam.' },
+  { name: 'Bintang Florist Express', kind: 'Toko bunga', line: 'Surabaya dan Jakarta. Papan bunga yang tepat, tiba tepat waktu.', url: 'https://bintang-florist-express-home.vercel.app', img: 'assets/karya/bintang-florist-express.jpg', alt: 'Tampilan awal situs Bintang Florist Express: judul Papan bunga yang tepat, tiba tepat waktu, dengan dunia 3D papan bunga, toko, dan truk pengantar.' },
 ];
 
 export const CALENDAR_SOURCES = [
