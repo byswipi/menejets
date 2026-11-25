@@ -26,7 +26,7 @@ const atLeast = (fg, bg, label, min = 4.5) => assert.ok(ratio(fg, bg) >= min, `$
 test('token warna palet krem dan arang gelap (logo MENEJ)', () => {
   assert.equal(token('bg').toUpperCase(), '#F3F1EB');
   assert.equal(token('ink').toUpperCase(), '#252522');
-  assert.equal(token('lt-bg').toUpperCase(), '#FFFFFF');
+  assert.equal(token('lt-bg').toUpperCase(), '#FAF9F5');
   assert.equal(token('lt-ink').toUpperCase(), '#252522');
   assert.ok(!/FF4A00/i.test(css), 'oranye lama masih ada');
 });
