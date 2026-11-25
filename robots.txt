@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://menejets.swipi.site/sitemap.xml
+Sitemap: https://menej.site/sitemap.xml

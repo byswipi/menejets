@@ -84,7 +84,6 @@ p { max-width: 62ch; }
 .nav { position: fixed; inset: 0 0 auto 0; z-index: 50; height: var(--nav-h); background: rgba(0, 0, 0, .72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255, 255, 255, .18); color: #fff; }
 .nav__in { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--s4); }
 .nav__brand { font: 600 22px/1 var(--font); letter-spacing: -.04em; white-space: nowrap; }
-.nav__brand::after { content: "."; font-family: var(--serif); font-style: italic; }
 .nav__links { display: flex; gap: var(--s1); }
 .nav__links a { padding: 10px 12px; font: 400 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: #A6A6A6; transition: color .3s var(--ease); }
 .nav__links a:hover, .nav__links a[aria-current="true"] { color: #fff; }

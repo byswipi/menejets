@@ -11,7 +11,7 @@ test('formatRupiah memakai titik ribuan dan awalan Rp', () => {
 
 test('troli kosong jatuh ke kalimat sapaan, bukan pesan pesanan kosong', () => {
   assert.equal(buildMessage({}), GREETING);
-  assert.equal(GREETING, 'Halo Menej Ets, saya ingin konsultasi layanan digital.');
+  assert.equal(GREETING, 'Halo MENEJ, saya ingin konsultasi layanan digital.');
 });
 
 test('toggleItem memilih lalu melepas paket, tanpa mengubah argumen', () => {
@@ -66,7 +66,7 @@ test('bendera iklan, otomasi, dan properti menyala dari layanannya', () => {
 
 test('buildMessage: sapaan, rincian, estimasi, penutup', () => {
   const m = buildMessage(pick('ig-tumbuh', 'ads-meta'));
-  assert.ok(m.startsWith('Halo Menej Ets, saya ingin memesan paket berikut:'));
+  assert.ok(m.startsWith('Halo MENEJ, saya ingin memesan paket berikut:'));
   assert.ok(m.includes('- Kelola Instagram Tumbuh (per bulan): Rp699.000'));
   assert.ok(m.includes('- Iklan Meta (per bulan): Rp349.000'));
   assert.ok(m.includes('Estimasi per bulan: Rp1.048.000'));
@@ -83,6 +83,6 @@ test('buildMessage: paket sekali bayar tanpa baris per bulan, catatan properti d
   assert.ok(m.includes('(Website: harga awal, lingkup dikonfirmasi terlebih dahulu. Domain dan hosting dibayar terpisah)'));
 });
 
-test('whatsappUrl meng-encode pesan ke nomor Menej Ets', () => {
+test('whatsappUrl meng-encode pesan ke nomor MENEJ', () => {
   assert.equal(whatsappUrl('a b'), 'https://wa.me/628567876751?text=a%20b');
 });

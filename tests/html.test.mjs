@@ -24,7 +24,7 @@ test('meta description 140–160 karakter, memuat kata kunci dan ajakan', () => 
 });
 
 test('canonical, Open Graph, dan og:image ada', () => {
-  assert.ok(html.includes('<link rel="canonical" href="https://menejets.swipi.site/">'));
+  assert.ok(html.includes('<link rel="canonical" href="https://menej.site/">'));
   for (const p of ['og:title', 'og:description', 'og:image', 'og:type']) assert.ok(html.includes(`property="${p}"`), p);
   const ogTitle = html.match(/property="og:title" content="([^"]*)"/)[1];
   assert.ok(ogTitle.length <= 70, ogTitle);

@@ -49,7 +49,7 @@ export function mergeDays(feeds, year, month, enabled = {}) {
 export function buildSampleIcs(year, month, ranges) {
   const f = (d) => iso(new Date(Date.UTC(year, month, d))).replaceAll('-', '');
   const events = ranges
-    .map(([a, b], i) => `BEGIN:VEVENT\r\nUID:contoh-${i}@menejets\r\nDTSTART;VALUE=DATE:${f(a)}\r\nDTEND;VALUE=DATE:${f(b)}\r\nSUMMARY:Reserved\r\nEND:VEVENT\r\n`)
+    .map(([a, b], i) => `BEGIN:VEVENT\r\nUID:contoh-${i}@menej\r\nDTSTART;VALUE=DATE:${f(a)}\r\nDTEND;VALUE=DATE:${f(b)}\r\nSUMMARY:Reserved\r\nEND:VEVENT\r\n`)
     .join('');
   return `BEGIN:VCALENDAR\r\nVERSION:2.0\r\n${events}END:VCALENDAR`;
 }

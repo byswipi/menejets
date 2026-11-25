@@ -2,7 +2,7 @@
 import { ITEMS } from './data.js';
 
 const WA = '628567876751';
-export const GREETING = 'Halo Menej Ets, saya ingin konsultasi layanan digital.';
+export const GREETING = 'Halo MENEJ, saya ingin konsultasi layanan digital.';
 
 const ITEM = Object.fromEntries(ITEMS.map((i) => [i.id, i]));
 
@@ -52,7 +52,7 @@ export function buildMessage(cart) {
     s.one ? 'Estimasi sekali bayar: ' + formatRupiah(s.one) : '',
     s.mo ? 'Estimasi per bulan: ' + formatRupiah(s.mo) : '',
   ].filter(Boolean).join('\n');
-  return `Halo Menej Ets, saya ingin memesan paket berikut:\n\n${s.lines.join('\n')}\n\n${totals}\n${notes}\n\nMohon informasi mengenai proses pemesanan. Terima kasih.`;
+  return `Halo MENEJ, saya ingin memesan paket berikut:\n\n${s.lines.join('\n')}\n\n${totals}\n${notes}\n\nMohon informasi mengenai proses pemesanan. Terima kasih.`;
 }
 
 export const whatsappUrl = (message) => `https://wa.me/${WA}?text=` + encodeURIComponent(message);

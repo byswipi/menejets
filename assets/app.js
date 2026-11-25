@@ -1,4 +1,4 @@
-// Penyambung DOM situs Menej Ets. Logika murni ada di data.js, nota.js, ical.js.
+// Penyambung DOM situs MENEJ. Logika murni ada di data.js, nota.js, ical.js.
 // Bagian statis (kartu paket, FAQ, platform) ditulis ke index.html oleh scripts/render-static.mjs.
 import { ITEMS, KARYA, CALENDAR_SOURCES } from './data.js';
 import { GREETING, formatRupiah, toggleItem, summarize, buildMessage, whatsappUrl } from './nota.js';
@@ -72,7 +72,7 @@ export function initPicking() {
 
   function renderNota() {
     const s = summarize(cart), url = whatsappUrl(buildMessage(cart));
-    notaEl.innerHTML = `<h3>Nota Pesanan</h3><p class="nota__sub">Menej Ets · estimasi, bukan tagihan</p>` + (s.count
+    notaEl.innerHTML = `<h3>Nota Pesanan</h3><p class="nota__sub">MENEJ · estimasi, bukan tagihan</p>` + (s.count
       ? Object.keys(cart).map((id) => { const i = byId[id]; return `<div class="nota__line"><div><b>${esc(i.label)}</b><small>${esc(i.unit)}</small></div><div class="nota__right"><b class="num">${formatRupiah(i.price)}</b><button type="button" class="nota__x" data-pick="${i.id}" aria-label="Hapus ${esc(i.label)}">Hapus</button></div></div>`; }).join('')
         + `<div class="nota__tot">${s.one ? `<div><span>Sekali bayar</span><span>${formatRupiah(s.one)}</span></div>` : ''}${s.mo ? `<div><span>Per bulan</span><span>${formatRupiah(s.mo)}</span></div>` : ''}</div>`
         + `<p class="nota__nb">Harga website merupakan harga awal. Budget iklan, domain, hosting, dan biaya pihak ketiga tidak termasuk. Harga akhir disepakati melalui chat.</p><a class="btn btn--primary" href="${url}" target="_blank" rel="noopener">Lanjut ke WhatsApp</a>`
@@ -80,7 +80,7 @@ export function initPicking() {
     chip.href = s.count ? url : whatsappUrl(GREETING);
     badge.textContent = s.count;
     badge.hidden = !s.count;
-    chip.setAttribute('aria-label', s.count ? `Chat WhatsApp Menej Ets, ${s.count} paket di nota` : 'Chat WhatsApp Menej Ets');
+    chip.setAttribute('aria-label', s.count ? `Chat WhatsApp MENEJ, ${s.count} paket di nota` : 'Chat WhatsApp MENEJ');
   }
 
   document.addEventListener('click', (e) => {
