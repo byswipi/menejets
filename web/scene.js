@@ -33,44 +33,35 @@ var g = new T.ExtrudeGeometry(shape, {depth: depth, bevelEnabled: false, curveSe
 g.rotateX(-Math.PI/2);
 var m = new T.Mesh(g, material); m.castShadow = m.receiveShadow = true; return m;
 }
-/* bentuk logo: x=(px-50)/8, z=(py-50)/8 */
-function rounded(R, rr){
-var s = new T.Shape();
-s.moveTo(-R+rr, -R); s.lineTo(R-rr, -R); s.absarc(R-rr, -R+rr, rr, -Math.PI/2, 0, false);
-s.lineTo(R, R-rr); s.absarc(R-rr, R-rr, rr, 0, Math.PI/2, false);
-s.lineTo(-R+rr, R); s.absarc(-R+rr, R-rr, rr, Math.PI/2, Math.PI, false);
-s.lineTo(-R, -R+rr); s.absarc(-R+rr, -R+rr, rr, Math.PI, 1.5*Math.PI, false);
+/* bentuk logo: x=(px-50)*0.124, z=(py-50)*0.124; tiga batang pil di atas lencana */
+function pill(hw, hh, r){
+var s = new T.Shape(); r = Math.min(r, hh, hw);
+s.moveTo(-hw+r, -hh); s.lineTo(hw-r, -hh); s.absarc(hw-r, -hh+r, r, -Math.PI/2, 0, false);
+s.lineTo(hw, hh-r); s.absarc(hw-r, hh-r, r, 0, Math.PI/2, false);
+s.lineTo(-hw+r, hh); s.absarc(-hw+r, hh-r, r, Math.PI/2, Math.PI, false);
+s.lineTo(-hw, -hh+r); s.absarc(-hw+r, -hh+r, r, Math.PI, 1.5*Math.PI, false);
 return s;
 }
-function notched(h){
-var s = new T.Shape(), a = 3.4, r = 2.9, c = a - 0.0;
-s.moveTo(-a, a); s.lineTo(c - r, a); s.absarc(c, a, r, Math.PI, 1.5*Math.PI, false); s.lineTo(a, -a); s.lineTo(-a, -a); s.lineTo(-a, a);
-return s;
-}
-/* kotak: lencana teal + halaman putih bertakik */
-var base = withEdges(flat(rounded(6.2, 2.8), 0.5, mat(TEAL)), new T.LineBasicMaterial({color: DARK, transparent: true, opacity: 0.5}));
+var softEdge = new T.LineBasicMaterial({color: DARK, transparent: true, opacity: 0.5});
+var base = withEdges(flat(pill(6.2, 6.2, 2.8), 0.5, mat(TEAL)), softEdge);
 var baseG = new T.Group(); baseG.add(base); scene.add(baseG);
-var page = withEdges(flat(notched(), 0.5, mat(PUTIH)));
-var pageG = new T.Group(); pageG.position.y = 0.5; pageG.add(page); scene.add(pageG);
-/* ikon kode </> dari batang 3D */
-var code = new T.Group(), codeParts = [], TOPY = 0.5;
-function seg(x1, z1, x2, z2, d){
-var len = Math.hypot(x2-x1, z2-z1) + 0.38, m = withEdges(new T.Mesh(new T.BoxGeometry(len, 0.5, 0.38), mat(TEAL)), new T.LineBasicMaterial({color: DARK, transparent: true, opacity: 0.45}));
-m.position.set((x1+x2)/2, TOPY + 0.25, (z1+z2)/2); m.rotation.y = -Math.atan2(z2-z1, x2-x1); m.userData = {d: d}; m.castShadow = true; code.add(m); codeParts.push(m);
-}
-seg(-1.0,-0.95,-2.0,0.05,0); seg(-2.0,0.05,-1.0,1.05,0.04);
-seg(0.45,-1.25,-0.45,1.35,0.1);
-seg(1.0,-0.95,2.0,0.05,0.16); seg(2.0,0.05,1.0,1.05,0.2);
-code.position.set(-0.3, 0, 0.55); pageG.add(code);
-/* bulet kuning terpisah, melayang di atas takik */
-var DX = 3.2, DZ = -3.2, REST = 1.35, HOVER = 4.6;
+var BH = 0.68, BR = BH;
+var bar1 = withEdges(flat(pill(3.18, BH, BR), 0.5, mat(PUTIH)));
+var bar1G = new T.Group(); bar1G.position.set(0, 0.5, -1.89); bar1G.add(bar1); scene.add(bar1G);
+var bar2 = withEdges(flat(pill(2.48, BH, BR), 0.5, mat(PUTIH)));
+var bar2G = new T.Group(); bar2G.position.set(0.7, 0.5, 0); bar2G.add(bar2); scene.add(bar2G);
+/* batang kuning terpisah, melayang di atas tempatnya lalu turun saat diklik */
+var DX = -1.19, DZ = 1.88, REST = 0.5, HOVER = 4.4;
 var dotMat = mat(KUNING, {roughness: 0.5});
-var dot = new T.Mesh(new T.CylinderGeometry(1.25, 1.25, 0.8, 48), dotMat); dot.castShadow = true;
-dot.add(new T.LineSegments(new T.EdgesGeometry(dot.geometry, 40), edgeMat));
+var dot = withEdges(flat(pill(1.98, BH, BR), 0.5, dotMat));
 var dotG = new T.Group(); dotG.position.set(DX, HOVER, DZ); dotG.add(dot); scene.add(dotG);
-var pgeo = new T.BufferGeometry(); pgeo.setAttribute("position", new T.Float32BufferAttribute([DX, 1.0, DZ, DX, HOVER - 0.4, DZ], 3));
-var pin = new T.Line(pgeo, new T.LineDashedMaterial({color: TEAL, dashSize: 0.22, gapSize: 0.18, transparent: true, opacity: 0.5})); pin.computeLineDistances(); scene.add(pin);
-function mkRing(){ var m = new T.MeshBasicMaterial({color: KUNING, transparent: true, opacity: 0, side: T.DoubleSide}); var r = new T.Mesh(new T.RingGeometry(1.25, 1.45, 48), m); r.rotation.x = -Math.PI/2; r.visible = false; scene.add(r); return r; }
+var pgeo = new T.BufferGeometry(); pgeo.setAttribute("position", new T.Float32BufferAttribute([0, 0, 0, 0, 1, 0], 3));
+var pin = new T.Line(pgeo, new T.LineDashedMaterial({color: TEAL, dashSize: 0.05, gapSize: 0.04, transparent: true, opacity: 0.5})); pin.computeLineDistances(); pin.position.set(DX, REST + 0.05, DZ); scene.add(pin);
+function mkRing(){
+var o = pill(1.98 + 0.2, BH + 0.2, BR + 0.2); o.holes.push(pill(1.98, BH, BR));
+var m = new T.MeshBasicMaterial({color: KUNING, transparent: true, opacity: 0, side: T.DoubleSide});
+var r = new T.Mesh(new T.ShapeGeometry(o, 24), m); r.rotation.x = -Math.PI/2; r.visible = false; scene.add(r); return r;
+}
 var ringA = mkRing(), ringB = mkRing();
 /* kursor */
 var cs = new T.Shape(); [[0,0],[0,1.5],[0.4,1.15],[0.75,1.9],[1.0,1.75],[0.65,1.05],[1.15,1.0]].forEach(function(p,i){ var x = p[0], y = -p[1]; i ? cs.lineTo(x, y) : cs.moveTo(x, y); });
@@ -93,10 +84,10 @@ var running = false, visible = true, onHome = true;
 function frame(now){
 var t = (now - t0) / 1000, p = reduce ? 1 : clamp(t / BUILD, 0, 1);
 var post = reduce ? 0 : Math.max(0, t - BUILD);
-var k0 = ss(0.03, 0.28, p), k1 = ss(0.22, 0.5, p);
+var k0 = ss(0.03, 0.28, p), k1 = ss(0.24, 0.46, p), k2 = ss(0.36, 0.58, p);
 base.scale.y = Math.max(0.001, k0); baseG.visible = k0 > 0.002;
-page.scale.y = Math.max(0.001, k1); pageG.visible = k1 > 0.002;
-codeParts.forEach(function(m){ var k = back(clamp((p - 0.5 - m.userData.d) / 0.18, 0, 1)); m.scale.setScalar(Math.max(0.001, k)); m.visible = k > 0.003; });
+bar1.scale.y = Math.max(0.001, k1); bar1G.visible = k1 > 0.002;
+bar2.scale.y = Math.max(0.001, k2); bar2G.visible = k2 > 0.002;
 var kd = back(clamp((p - 0.8) / 0.18, 0, 1));
 var c = reduce ? 0 : post % 6.0, bob = reduce ? 0 : Math.sin(post * 1.6) * 0.18;
 var y;
@@ -108,14 +99,14 @@ else y = HOVER + bob;
 var press = (p >= 1 && !reduce) ? ss(1.2, 1.35, c) * (1 - ss(1.35, 1.65, c)) : 0;
 dotG.position.y = y; dotG.rotation.y = reduce ? 0 : post * 0.6;
 dotG.scale.set(Math.max(0.001, kd), Math.max(0.001, kd) * (1 - press * 0.4), Math.max(0.001, kd)); dotG.visible = kd > 0.003;
-pin.visible = kd > 0.5 && y > REST + 0.4; pin.material.opacity = 0.5 * clamp((y - REST) / 2, 0, 1);
+pin.visible = kd > 0.5 && y > REST + 0.3; pin.scale.y = Math.max(0.001, y - REST - 0.15); pin.material.opacity = 0.5 * clamp((y - REST) / 2, 0, 1);
 var r1 = (p >= 1 && !reduce) ? clamp((c - 1.3) / 1.0, 0, 1) : 0, r2 = (p >= 1 && !reduce) ? clamp((c - 2.4) / 1.0, 0, 1) : 0;
-ringA.visible = r1 > 0 && r1 < 1; ringA.position.set(DX, HOVER - 0.4, DZ); ringA.scale.setScalar(1 + r1 * 1.5); ringA.material.opacity = (1 - r1) * 0.85;
-ringB.visible = r2 > 0 && r2 < 1; ringB.position.set(DX, 1.05, DZ); ringB.scale.setScalar(1 + r2 * 1.5); ringB.material.opacity = (1 - r2) * 0.85;
+ringA.visible = r1 > 0 && r1 < 1; ringA.position.set(DX, y - 0.05, DZ); ringA.scale.setScalar(1 + r1 * 0.9); ringA.material.opacity = (1 - r1) * 0.85;
+ringB.visible = r2 > 0 && r2 < 1; ringB.position.set(DX, 0.55, DZ); ringB.scale.setScalar(1 + r2 * 0.9); ringB.material.opacity = (1 - r2) * 0.85;
 if (p >= 1 && !reduce){
-var arrive = ss(0.0, 1.2, c) * (1 - ss(3.3, 4.6, c)), ty2 = y + 1.6 - press * 0.4;
-curG.position.set(lerp(-1.5, DX - 0.3, arrive), lerp(ty2 + 3.5, ty2, arrive), lerp(6.0, DZ + 0.2, arrive)); curG.visible = arrive > 0.01;
-} else if (reduce){ curG.position.set(DX - 0.3, HOVER + 1.6, DZ + 0.2); curG.visible = true; } else curG.visible = false;
+var arrive = ss(0.0, 1.2, c) * (1 - ss(3.3, 4.6, c)), ty2 = y + 0.5 - press * 0.3;
+curG.position.set(lerp(-1.5, DX + 0.9, arrive), lerp(ty2 + 3.5, ty2 + 0.2, arrive), lerp(6.5, DZ + 0.1, arrive)); curG.visible = arrive > 0.01;
+} else if (reduce){ curG.position.set(DX + 0.9, HOVER + 0.7, DZ + 0.1); curG.visible = true; } else curG.visible = false;
 mx = lerp(mx, tmx, 0.05); my = lerp(my, tmy, 0.05);
 if (!dragging){ dragV *= 0.94; drag += dragV; }
 var polar = lerp(0.05, 0.95, ss(0.0, 0.55, p)) + my * 0.06;
