@@ -70,3 +70,31 @@
 .hero h1{font-size:clamp(46px,5.4vw,82px)}
 @media(max-width:900px){.hero h1{font-size:clamp(42px,11vw,64px)}.toast.t2{bottom:19%}.rebuild{bottom:0;right:0}}
 @media(min-width:1061px){.c-report{grid-column:span 4}.c-report .serp{flex-direction:row;align-items:flex-start}.c-report .serp .r{flex:1}.c-report .serp .sample{position:absolute;right:20px;bottom:20px}}
+
+/* ===== revisi: marquee tools, kartu HP, grid ===== */
+.marq-group{gap:48px}
+.marq-group .tool{display:inline-flex;align-items:center;gap:12px;font:700 clamp(15px,1.5vw,19px)/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--kapur);white-space:nowrap}
+.marq-group .tool svg{width:26px;height:26px;flex:none;color:var(--jati-terang)}
+.c-mkt{flex-direction:row;align-items:stretch;gap:28px;padding-bottom:0}
+.mk-copy{flex:1;min-width:0;display:flex;flex-direction:column;gap:14px;justify-content:center;padding-bottom:28px}
+.mk-copy .mkt-stats{margin-top:12px}
+.c-mkt .ph2{width:196px;flex:none;aspect-ratio:9/17;margin:24px 0 -64px;align-self:flex-end}
+.ph2-s{gap:7px}
+.ph2-s .nv{display:flex;align-items:center;gap:6px;flex:none}
+.ph2-s .nv i{width:14px;height:14px;background:var(--jati-terang);border-radius:4px;margin-right:auto}
+.ph2-s .nv span{width:16px;height:4px;background:rgba(236,246,248,.35)}
+.ph2-s .hr{flex:none;background:var(--jati);padding:14px 10px;display:flex;flex-direction:column;gap:6px;border-radius:4px}
+.ph2-s .hr b{display:block;height:10px;width:82%;background:#fff}.ph2-s .hr b.s{width:55%}
+.ph2-s .hr u{display:block;margin-top:6px;width:54px;height:14px;background:var(--jati-terang);text-decoration:none}
+@keyframes phScroll{0%,14%{transform:translateY(0)}50%,66%{transform:translateY(-70px)}92%,100%{transform:translateY(0)}}
+.ph2-wa{bottom:62px}
+@media(min-width:1061px){
+.c-list{grid-column:span 4}.c-brand{grid-column:span 2}
+.c-mkt,.c-money{grid-column:span 3;grid-row:auto}
+.c-report{grid-column:span 4}.c-days{grid-column:span 2}}
+@media(max-width:1060px){.c-list,.c-mkt,.c-report{grid-column:1/-1;grid-row:auto}.c-money,.c-brand,.c-days{grid-column:auto;grid-row:auto}}
+@media(max-width:680px){.c-mkt{flex-direction:column;gap:18px}.mk-copy{padding-bottom:0}.c-mkt .ph2{align-self:center;margin:4px 0 -90px;width:min(210px,100%)}}
+@media(max-width:680px){.c-list,.c-mkt,.c-report,.c-money,.c-brand,.c-days{grid-column:auto}}
+.marq-group .tool svg{width:auto;height:26px;aspect-ratio:1}
+.marq-group .tool.wide svg{aspect-ratio:auto;width:56px}
+.flow text{font-size:8px;letter-spacing:.03em}.flow .big{font-size:15px;letter-spacing:0}
