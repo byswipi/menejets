@@ -8,7 +8,7 @@ var T = THREE, small = innerWidth < 900;
 var clamp = function(v,a,b){ return Math.min(b, Math.max(a, v)); };
 var ss = function(a,b,v){ var t = clamp((v-a)/(b-a),0,1); return t*t*(3-2*t); };
 var lerp = function(a,b,t){ return a + (b-a)*t; };
-var KAPUR = 0xFFF3E6, ARANG = 0x3A2218, PASIR = 0xEBD3BC, LUMUT = 0x5E6B5A;
+var KAPUR = 0xFFF3E6, ARANG = 0x3A2218, PASIR = 0xEBD3BC, JATI = 0xB4532A, EMAS = 0xF2B45C;
 var renderer = new T.WebGLRenderer({canvas: canvas, context: gl, antialias: true, alpha: true});
 renderer.setPixelRatio(Math.min(devicePixelRatio || 1, small ? 1.5 : 2));
 renderer.setClearColor(KAPUR, 0);
@@ -27,34 +27,42 @@ grid.position.y = 0.004; grid.material.transparent = true; grid.material.opacity
 var mat = function(c, o){ return new T.MeshStandardMaterial(Object.assign({color: c, roughness: 0.92}, o || {})); };
 var edgeMat = new T.LineBasicMaterial({color: ARANG, transparent: true, opacity: 0.85});
 function withEdges(m){ m.add(new T.LineSegments(new T.EdgesGeometry(m.geometry), edgeMat)); return m; }
-var pts = [[540,330],[540,557],[59,557],[59,59],[540,59],[540,299.5],[475,299.5],[475,485],[132.5,485],[132.5,121]].map(function(p){ return [(p[0]-300)/60, (p[1]-300)/60]; });
-var plan = new T.Group(), walls = new T.Group(), wallMat = mat(0xFFF9F2), planMat = new T.MeshBasicMaterial({color: ARANG});
-for (var i = 0; i < pts.length - 1; i++){
-var a = pts[i], b = pts[i+1], dx = b[0]-a[0], dz = b[1]-a[1], len = Math.hypot(dx, dz), outer = i < 5, th = outer ? 0.32 : 0.22, ang = Math.atan2(dz, dx);
-var line = new T.Mesh(new T.BoxGeometry(len + 0.3, 0.02, 0.3), planMat);
-line.position.set((a[0]+b[0])/2, 0.012, (a[1]+b[1])/2); line.rotation.y = -ang; plan.add(line);
-var g = new T.BoxGeometry(len + th, 1, th); g.translate(0, 0.5, 0);
-var w = withEdges(new T.Mesh(g, wallMat));
-w.position.set((a[0]+b[0])/2, 0, (a[1]+b[1])/2); w.rotation.y = -ang; w.castShadow = w.receiveShadow = true;
-w.userData = {h: outer ? 2.7 : 2.1, d: i * 0.09}; walls.add(w);
+/* logo Homes: lencana oranye, lengkung krem, bulatan kuning. x=(px-50)*0.124, z=(py-50)*0.124 */
+function flat(shape, depth, material){
+var g = new T.ExtrudeGeometry(shape, {depth: depth, bevelEnabled: false, curveSegments: 32});
+g.rotateX(-Math.PI/2);
+var m = new T.Mesh(g, material); m.castShadow = m.receiveShadow = true; return m;
 }
-scene.add(plan); scene.add(walls);
-var floor = new T.Mesh(new T.BoxGeometry(8, 0.12, 8), mat(0xF3E2D0)); floor.position.y = 0.06; floor.receiveShadow = true; scene.add(floor);
-var roofG = new T.BoxGeometry(10.2, 0.26, 9.6); roofG.translate(0.35, 0, 0);
-var roofMat = mat(0xFFF6EC, {transparent: true, opacity: 0});
-var roof = withEdges(new T.Mesh(roofG, roofMat)); roof.children[0].material = edgeMat.clone(); roof.castShadow = true; scene.add(roof);
-var extras = new T.Group();
-var deck = withEdges(new T.Mesh(new T.BoxGeometry(10.2, 0.14, 3.4), mat(0xD9A06A))); deck.position.set(0.35, 0.07, 5.9); deck.receiveShadow = true; extras.add(deck);
-var water = new T.Mesh(new T.BoxGeometry(6.2, 0.06, 1.9), mat(0x8FA39B, {roughness: 0.2, metalness: 0.1})); water.position.set(-0.4, 0.16, 6.1); extras.add(water);
-[[-4.6,-4.6],[5.3,-4.6],[5.3,4.6],[-4.6,4.6]].forEach(function(p){ var c = withEdges(new T.Mesh(new T.BoxGeometry(0.16, 2.7, 0.16), mat(ARANG))); c.position.set(p[0], 1.35, p[1]); c.castShadow = true; extras.add(c); });
-var leaf = mat(LUMUT, {flatShading: true}), leaf2 = mat(0x7A866F, {flatShading: true}), trees = [];
-[[-6.6,3.2,1.25],[-7.2,-1.2,0.9],[7.3,2.6,1.05],[6.9,-3.4,1.3],[-6.0,-5.6,0.8],[3.8,8.4,0.85]].forEach(function(p,k){
-var t = new T.Group();
-var trunk = new T.Mesh(new T.CylinderGeometry(0.06, 0.09, p[2]*1.4, 6), mat(0x8A4020)); trunk.position.y = p[2]*0.7; t.add(trunk);
-var crown = new T.Mesh(new T.IcosahedronGeometry(p[2], 0), k % 2 ? leaf : leaf2); crown.position.y = p[2]*2; crown.castShadow = !small; t.add(crown);
-t.position.set(p[0], 0, p[1]); extras.add(t); trees.push(crown);
-});
-scene.add(extras);
+function sq(R, rr){
+var s = new T.Shape();
+s.moveTo(-R+rr, -R); s.lineTo(R-rr, -R); s.absarc(R-rr, -R+rr, rr, -Math.PI/2, 0, false);
+s.lineTo(R, R-rr); s.absarc(R-rr, R-rr, rr, 0, Math.PI/2, false);
+s.lineTo(-R+rr, R); s.absarc(-R+rr, R-rr, rr, Math.PI/2, Math.PI, false);
+s.lineTo(-R, -R+rr); s.absarc(-R+rr, -R+rr, rr, Math.PI, 1.5*Math.PI, false);
+return s;
+}
+function arch(){
+var s = new T.Shape(), r = 2.38, b = -2.96;
+s.moveTo(-r, b); s.lineTo(r, b); s.lineTo(r, 0); s.absarc(0, 0, r, 0, Math.PI, false); s.lineTo(-r, b);
+return s;
+}
+var softEdge = new T.LineBasicMaterial({color: ARANG, transparent: true, opacity: 0.5});
+var base = withEdges(flat(sq(6.2, 2.8), 0.5, mat(JATI)));
+base.children[0].material = softEdge;
+var baseG = new T.Group(); baseG.add(base); scene.add(baseG);
+var gate = withEdges(flat(arch(), 0.5, mat(0xFFF3E6)));
+var gateG = new T.Group(); gateG.position.y = 0.5; gateG.add(gate); scene.add(gateG);
+/* bulatan kuning di atas lengkung: yang diklik */
+var DX = 0, DZ = 0.58, REST = 1.0, DR = 0.89;
+var dot = withEdges(new T.Mesh(new T.CylinderGeometry(DR, DR, 0.5, 48), mat(EMAS, {roughness: 0.5}))); dot.position.y = 0.25; dot.castShadow = true;
+var dotG = new T.Group(); dotG.position.set(DX, REST, DZ); dotG.add(dot); scene.add(dotG);
+var ring = new T.Mesh(new T.RingGeometry(DR, DR + 0.18, 48), new T.MeshBasicMaterial({color: EMAS, transparent: true, opacity: 0, side: T.DoubleSide}));
+ring.rotation.x = -Math.PI/2; ring.visible = false; scene.add(ring);
+/* kursor */
+var cs = new T.Shape(); [[0,0],[0,1.5],[0.4,1.15],[0.75,1.9],[1.0,1.75],[0.65,1.05],[1.15,1.0]].forEach(function(p,i){ var x = p[0], y = -p[1]; i ? cs.lineTo(x, y) : cs.moveTo(x, y); });
+var cur = new T.Mesh(new T.ExtrudeGeometry(cs, {depth: 0.07, bevelEnabled: false}), mat(ARANG));
+cur.geometry.rotateX(-Math.PI/2); cur.add(new T.LineSegments(new T.EdgesGeometry(cur.geometry), new T.LineBasicMaterial({color: 0xFFFFFF})));
+var curG = new T.Group(); curG.add(cur); scene.add(curG);
 function resize(){
 var W = stage.clientWidth, H = stage.clientHeight;
 renderer.setSize(W, H, false); camera.aspect = W / H; camera.updateProjectionMatrix();
@@ -67,29 +75,33 @@ if (dragging){ dragV = (e.clientX - lastX) * 0.006; drag += dragV; lastX = e.cli
 canvas.addEventListener("pointerup", function(){ dragging = false; });
 canvas.style.touchAction = "pan-y";
 addEventListener("pointermove", function(e){ if (e.pointerType !== "mouse") return; tmx = e.clientX / innerWidth - 0.5; tmy = e.clientY / innerHeight - 0.5; });
-var t0 = performance.now(), BUILD = 4.2;
+var t0 = performance.now(), BUILD = 3.8;
 document.getElementById("rebuild").addEventListener("click", function(){ t0 = performance.now(); });
 var running = false, visible = true, onHome = true;
 function frame(now){
 var t = (now - t0) / 1000, p = reduce ? 1 : clamp(t / BUILD, 0, 1);
-var rise = ss(0.05, 0.45, p);
-walls.children.forEach(function(w){ var k = ss(0.05 + w.userData.d * 0.35, 0.45 + w.userData.d * 0.35, p); w.scale.y = Math.max(0.001, k * w.userData.h); w.visible = k > 0.002; });
-floor.visible = rise > 0.01;
-var rf = ss(0.5, 0.75, p);
-roof.position.set(0, lerp(7.5, 2.83, rf), 0); roofMat.opacity = rf; roof.children[0].material.opacity = rf * 0.85; roof.visible = rf > 0.01;
-var ex = ss(0.7, 1.0, p);
-extras.children.forEach(function(o, i){ var k = clamp(ex * 1.8 - i * 0.07, 0, 1); var e = k < 1 ? 1 - Math.pow(1 - k, 3) * Math.cos(k * 6) * 0.3 : 1; o.scale.setScalar(Math.max(0.001, k === 0 ? 0 : e)); o.visible = k > 0.01; });
-trees.forEach(function(c, i){ c.rotation.y = Math.sin(t * 0.6 + i) * 0.08; });
-water.material.color.setHSL(0.42, 0.1, 0.58 + Math.sin(t * 1.5) * 0.02);
+var post = reduce ? 0 : Math.max(0, t - BUILD);
+var k0 = ss(0.03, 0.28, p), k1 = ss(0.24, 0.5, p), kd = ss(0.46, 0.7, p);
+base.scale.y = Math.max(0.001, k0); baseG.visible = k0 > 0.002;
+gate.scale.y = Math.max(0.001, k1); gateG.visible = k1 > 0.002;
+var c = reduce ? 0 : post % 4.5;
+var press = (p >= 1 && !reduce) ? ss(1.05, 1.2, c) * (1 - ss(1.2, 1.55, c)) : 0;
+dotG.scale.set(1, Math.max(0.001, kd) * (1 - press * 0.55), 1); dotG.visible = kd > 0.003;
+var r1 = (p >= 1 && !reduce) ? clamp((c - 1.1) / 1.0, 0, 1) : 0;
+ring.visible = r1 > 0 && r1 < 1; ring.position.set(DX, REST + 0.05, DZ); ring.scale.setScalar(1 + r1 * 1.1); ring.material.opacity = (1 - r1) * 0.85;
+if (p >= 1 && !reduce){
+var arrive = ss(0.0, 1.0, c) * (1 - ss(2.3, 3.4, c)), ty2 = REST + 0.7 - press * 0.4;
+curG.position.set(lerp(-1.5, DX + 0.5, arrive), lerp(ty2 + 3.5, ty2, arrive), lerp(6.5, DZ + 0.2, arrive)); curG.visible = arrive > 0.01;
+} else if (reduce){ curG.position.set(DX + 0.5, REST + 0.7, DZ + 0.2); curG.visible = true; } else curG.visible = false;
 mx = lerp(mx, tmx, 0.05); my = lerp(my, tmy, 0.05);
 if (!dragging){ dragV *= 0.94; drag += dragV; }
 var polar = lerp(0.05, 1.0, ss(0.0, 0.6, p)) + my * 0.06;
 var az = lerp(-0.6, 0.55, ss(0.0, 0.9, p)) + (reduce ? 0 : Math.max(0, t - BUILD) * 0.07) + mx * 0.15 + drag;
 var fit = Math.max(1, 1.05 / camera.aspect);
-var radius = lerp(36, 40, ss(0, 0.6, p)) * fit;
-var ty = lerp(0, 0.9, ss(0.1, 0.6, p));
+var radius = 35 * fit;
+var ty = lerp(0, 1.2, ss(0.1, 0.6, p));
 camera.position.set(Math.sin(polar) * Math.sin(az) * radius, ty + Math.cos(polar) * radius, Math.sin(polar) * Math.cos(az) * radius + 0.0001);
-camera.lookAt(0, ty, 0.9 * ss(0.6, 1, p));
+camera.lookAt(0, ty, 0);
 renderer.render(scene, camera);
 if (visible && onHome && !document.hidden && !(reduce && p >= 1)) requestAnimationFrame(frame); else running = false;
 }
