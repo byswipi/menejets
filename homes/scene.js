@@ -8,14 +8,14 @@ var T = THREE, small = innerWidth < 900;
 var clamp = function(v,a,b){ return Math.min(b, Math.max(a, v)); };
 var ss = function(a,b,v){ var t = clamp((v-a)/(b-a),0,1); return t*t*(3-2*t); };
 var lerp = function(a,b,t){ return a + (b-a)*t; };
-var KAPUR = 0xF3F1EB, ARANG = 0x252522, PASIR = 0xD9CFC1, LUMUT = 0x5E6B5A;
+var KAPUR = 0xFFF3E6, ARANG = 0x3A2218, PASIR = 0xEBD3BC, LUMUT = 0x5E6B5A;
 var renderer = new T.WebGLRenderer({canvas: canvas, context: gl, antialias: true, alpha: true});
 renderer.setPixelRatio(Math.min(devicePixelRatio || 1, small ? 1.5 : 2));
 renderer.setClearColor(KAPUR, 0);
 renderer.shadowMap.enabled = !small; renderer.shadowMap.type = T.PCFSoftShadowMap;
 var scene = new T.Scene();
 var camera = new T.PerspectiveCamera(30, 1, 0.1, 200);
-scene.add(new T.HemisphereLight(0xFFFFFF, 0xCFC7BA, 0.6));
+scene.add(new T.HemisphereLight(0xFFFFFF, 0xE6CDB6, 0.6));
 var sun = new T.DirectionalLight(0xFFF6EA, 0.8);
 sun.position.set(-9, 16, 7); sun.castShadow = !small; sun.shadow.mapSize.set(2048, 2048);
 var sc = sun.shadow.camera; sc.left = -12; sc.right = 12; sc.top = 12; sc.bottom = -12; sc.near = 1; sc.far = 50; sun.shadow.bias = -0.0005;
@@ -28,7 +28,7 @@ var mat = function(c, o){ return new T.MeshStandardMaterial(Object.assign({color
 var edgeMat = new T.LineBasicMaterial({color: ARANG, transparent: true, opacity: 0.85});
 function withEdges(m){ m.add(new T.LineSegments(new T.EdgesGeometry(m.geometry), edgeMat)); return m; }
 var pts = [[540,330],[540,557],[59,557],[59,59],[540,59],[540,299.5],[475,299.5],[475,485],[132.5,485],[132.5,121]].map(function(p){ return [(p[0]-300)/60, (p[1]-300)/60]; });
-var plan = new T.Group(), walls = new T.Group(), wallMat = mat(0xFBFAF7), planMat = new T.MeshBasicMaterial({color: ARANG});
+var plan = new T.Group(), walls = new T.Group(), wallMat = mat(0xFFF9F2), planMat = new T.MeshBasicMaterial({color: ARANG});
 for (var i = 0; i < pts.length - 1; i++){
 var a = pts[i], b = pts[i+1], dx = b[0]-a[0], dz = b[1]-a[1], len = Math.hypot(dx, dz), outer = i < 5, th = outer ? 0.32 : 0.22, ang = Math.atan2(dz, dx);
 var line = new T.Mesh(new T.BoxGeometry(len + 0.3, 0.02, 0.3), planMat);
@@ -39,18 +39,18 @@ w.position.set((a[0]+b[0])/2, 0, (a[1]+b[1])/2); w.rotation.y = -ang; w.castShad
 w.userData = {h: outer ? 2.7 : 2.1, d: i * 0.09}; walls.add(w);
 }
 scene.add(plan); scene.add(walls);
-var floor = new T.Mesh(new T.BoxGeometry(8, 0.12, 8), mat(0xE9E4DA)); floor.position.y = 0.06; floor.receiveShadow = true; scene.add(floor);
+var floor = new T.Mesh(new T.BoxGeometry(8, 0.12, 8), mat(0xF3E2D0)); floor.position.y = 0.06; floor.receiveShadow = true; scene.add(floor);
 var roofG = new T.BoxGeometry(10.2, 0.26, 9.6); roofG.translate(0.35, 0, 0);
-var roofMat = mat(0xF7F5F0, {transparent: true, opacity: 0});
+var roofMat = mat(0xFFF6EC, {transparent: true, opacity: 0});
 var roof = withEdges(new T.Mesh(roofG, roofMat)); roof.children[0].material = edgeMat.clone(); roof.castShadow = true; scene.add(roof);
 var extras = new T.Group();
-var deck = withEdges(new T.Mesh(new T.BoxGeometry(10.2, 0.14, 3.4), mat(0xB89A7C))); deck.position.set(0.35, 0.07, 5.9); deck.receiveShadow = true; extras.add(deck);
+var deck = withEdges(new T.Mesh(new T.BoxGeometry(10.2, 0.14, 3.4), mat(0xD9A06A))); deck.position.set(0.35, 0.07, 5.9); deck.receiveShadow = true; extras.add(deck);
 var water = new T.Mesh(new T.BoxGeometry(6.2, 0.06, 1.9), mat(0x8FA39B, {roughness: 0.2, metalness: 0.1})); water.position.set(-0.4, 0.16, 6.1); extras.add(water);
 [[-4.6,-4.6],[5.3,-4.6],[5.3,4.6],[-4.6,4.6]].forEach(function(p){ var c = withEdges(new T.Mesh(new T.BoxGeometry(0.16, 2.7, 0.16), mat(ARANG))); c.position.set(p[0], 1.35, p[1]); c.castShadow = true; extras.add(c); });
 var leaf = mat(LUMUT, {flatShading: true}), leaf2 = mat(0x7A866F, {flatShading: true}), trees = [];
 [[-6.6,3.2,1.25],[-7.2,-1.2,0.9],[7.3,2.6,1.05],[6.9,-3.4,1.3],[-6.0,-5.6,0.8],[3.8,8.4,0.85]].forEach(function(p,k){
 var t = new T.Group();
-var trunk = new T.Mesh(new T.CylinderGeometry(0.06, 0.09, p[2]*1.4, 6), mat(0x6B5644)); trunk.position.y = p[2]*0.7; t.add(trunk);
+var trunk = new T.Mesh(new T.CylinderGeometry(0.06, 0.09, p[2]*1.4, 6), mat(0x8A4020)); trunk.position.y = p[2]*0.7; t.add(trunk);
 var crown = new T.Mesh(new T.IcosahedronGeometry(p[2], 0), k % 2 ? leaf : leaf2); crown.position.y = p[2]*2; crown.castShadow = !small; t.add(crown);
 t.position.set(p[0], 0, p[1]); extras.add(t); trees.push(crown);
 });

@@ -154,14 +154,14 @@ css.textContent = ".marq{background:var(--kapur);border-top:1px solid var(--pasi
 +".marq-group .plogo img{display:block;height:calc(28px*var(--s));width:auto}"
 +".marq-group i{border-color:var(--jati)}"
 +".marq-group img[src$=\"threads-w.png\"]{filter:brightness(.15)}"
-+".plats .pl{display:inline-flex;align-items:center;padding:5px 8px;background:#FBFAF7;border:1px solid var(--pasir);transition:all .35s var(--ease)}"
++".plats .pl{display:inline-flex;align-items:center;padding:5px 8px;background:#FFF9F2;border:1px solid var(--pasir);transition:all .35s var(--ease)}"
 +".plats .pl img{display:block;height:calc(13px*var(--s));width:auto}"
-+".plats span.pl.hit{background:#FBFAF7;border-color:var(--arang);box-shadow:0 0 0 1px var(--arang);transform:translateY(-2px)}"
++".plats span.pl.hit{background:#FFF9F2;border-color:var(--arang);box-shadow:0 0 0 1px var(--arang);transform:translateY(-2px)}"
 +".ptabs span.ic{display:inline-flex;padding:6px 9px;opacity:.4}.ptabs span.ic.on{opacity:1}.ptabs span.ic img{display:block;height:15px;width:auto}"
 +".foot nav a.soc{display:inline-flex;gap:14px;align-items:center}.foot nav a.soc img{display:block;height:18px;width:auto}"
 +"@media(max-width:760px){.toast.t2{bottom:19%}.rebuild{bottom:0;right:0}}"
 +"@media(max-width:760px){.marq-group{gap:28px;padding:14px 14px}.marq-group .plogo{height:36px}.marq-group .plogo img{height:calc(22px*var(--s))}}";
-css.textContent += ".cal i{display:flex;align-items:center;justify-content:center}.cal i img{display:block;height:60%;max-height:22px;width:auto;max-width:80%;object-fit:contain;background:#FBFAF7;padding:3px 5px;box-sizing:border-box;animation:pop .35s var(--ease)}@keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}";
+css.textContent += ".cal i{display:flex;align-items:center;justify-content:center}.cal i img{display:block;height:60%;max-height:22px;width:auto;max-width:80%;object-fit:contain;background:#FFF9F2;padding:3px 5px;box-sizing:border-box;animation:pop .35s var(--ease)}@keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}";
 document.head.appendChild(css);
 function img(key, alt, dark){ var e = document.createElement("img"); e.src = "/homes/logos/" + (dark && DARK[key] ? DARK[key] : L[key][0]) + ".png"; e.alt = alt; e.decoding = "async"; return e; }
 document.querySelectorAll(".marq-group span").forEach(function(s){

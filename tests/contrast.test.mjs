@@ -23,15 +23,15 @@ const ratio = (a, b) => {
 };
 const atLeast = (fg, bg, label, min = 4.5) => assert.ok(ratio(fg, bg) >= min, `${label}: ${fg} di atas ${bg} = ${ratio(fg, bg).toFixed(2)} (< ${min})`);
 
-test('token warna palet krem dan arang gelap (logo MENEJ)', () => {
-  assert.equal(token('bg').toUpperCase(), '#F3F1EB');
-  assert.equal(token('ink').toUpperCase(), '#252522');
-  assert.equal(token('lt-bg').toUpperCase(), '#FAF9F5');
-  assert.equal(token('lt-ink').toUpperCase(), '#252522');
+test('token warna palet navy dan kuning (logo MENEJ)', () => {
+  assert.equal(token('bg').toUpperCase(), '#F4F5FB');
+  assert.equal(token('ink').toUpperCase(), '#1E2A5A');
+  assert.equal(token('lt-bg').toUpperCase(), '#FFFFFF');
+  assert.equal(token('lt-ink').toUpperCase(), '#1E2A5A');
   assert.ok(!/FF4A00/i.test(css), 'oranye lama masih ada');
 });
 
-test('teks arang dan redup terbaca di atas latar dan permukaan', () => {
+test('teks navy dan redup terbaca di atas latar dan permukaan', () => {
   for (const bg of [token('bg'), token('surface')]) {
     atLeast(token('ink'), bg, 'ink');
     atLeast(token('muted'), bg, 'muted');
@@ -45,7 +45,7 @@ test('teks hitam dan redup terbaca di atas bagian putih', () => {
   }
 });
 
-test('tombol utama arang berteks terang terbaca', () => {
+test('tombol utama navy berteks terang terbaca', () => {
   atLeast(token('bg'), token('ink'), 'tombol utama');
 });
 
