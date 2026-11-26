@@ -51,7 +51,7 @@ var bar1G = new T.Group(); bar1G.position.set(0, 0.5, -1.89); bar1G.add(bar1); s
 var bar2 = withEdges(flat(pill(2.48, BH, BR), 0.5, mat(PUTIH)));
 var bar2G = new T.Group(); bar2G.position.set(0.7, 0.5, 0); bar2G.add(bar2); scene.add(bar2G);
 /* batang kuning terpisah, melayang di atas tempatnya lalu turun saat diklik */
-var DX = -1.19, DZ = 1.88, REST = 0.5, HOVER = 4.4;
+var DX = -1.19, DZ = 1.88, REST = 0.5, HOVER = 0.5;
 var dotMat = mat(KUNING, {roughness: 0.5});
 var dot = withEdges(flat(pill(1.98, BH, BR), 0.5, dotMat));
 var dotG = new T.Group(); dotG.position.set(DX, HOVER, DZ); dotG.add(dot); scene.add(dotG);
@@ -84,29 +84,23 @@ var running = false, visible = true, onHome = true;
 function frame(now){
 var t = (now - t0) / 1000, p = reduce ? 1 : clamp(t / BUILD, 0, 1);
 var post = reduce ? 0 : Math.max(0, t - BUILD);
-var k0 = ss(0.03, 0.28, p), k1 = ss(0.24, 0.46, p), k2 = ss(0.36, 0.58, p);
+var k0 = ss(0.03, 0.25, p), k1 = ss(0.2, 0.4, p), k2 = ss(0.34, 0.54, p);
 base.scale.y = Math.max(0.001, k0); baseG.visible = k0 > 0.002;
 bar1.scale.y = Math.max(0.001, k1); bar1G.visible = k1 > 0.002;
 bar2.scale.y = Math.max(0.001, k2); bar2G.visible = k2 > 0.002;
-var kd = back(clamp((p - 0.8) / 0.18, 0, 1));
-var c = reduce ? 0 : post % 6.0, bob = reduce ? 0 : Math.sin(post * 1.6) * 0.18;
-var y;
-if (c < 1.8) y = HOVER + bob;
-else if (c < 2.5){ var f = (c - 1.8) / 0.7; y = lerp(HOVER, REST, f*f); }
-else if (c < 3.3) y = REST + Math.max(0, Math.sin((c - 2.5) * 8)) * 0.15 * (1 - (c-2.5)/0.8);
-else if (c < 4.6) y = lerp(REST, HOVER + bob, ss(3.3, 4.6, c));
-else y = HOVER + bob;
-var press = (p >= 1 && !reduce) ? ss(1.2, 1.35, c) * (1 - ss(1.35, 1.65, c)) : 0;
-dotG.position.y = y; dotG.rotation.y = reduce ? 0 : post * 0.6;
-dotG.scale.set(Math.max(0.001, kd), Math.max(0.001, kd) * (1 - press * 0.4), Math.max(0.001, kd)); dotG.visible = kd > 0.003;
-pin.visible = kd > 0.5 && y > REST + 0.3; pin.scale.y = Math.max(0.001, y - REST - 0.15); pin.material.opacity = 0.5 * clamp((y - REST) / 2, 0, 1);
-var r1 = (p >= 1 && !reduce) ? clamp((c - 1.3) / 1.0, 0, 1) : 0, r2 = (p >= 1 && !reduce) ? clamp((c - 2.4) / 1.0, 0, 1) : 0;
-ringA.visible = r1 > 0 && r1 < 1; ringA.position.set(DX, y - 0.05, DZ); ringA.scale.setScalar(1 + r1 * 0.9); ringA.material.opacity = (1 - r1) * 0.85;
-ringB.visible = r2 > 0 && r2 < 1; ringB.position.set(DX, 0.55, DZ); ringB.scale.setScalar(1 + r2 * 0.9); ringB.material.opacity = (1 - r2) * 0.85;
+var kd = ss(0.5, 0.68, p);
+var c = reduce ? 0 : post % 4.5;
+var press = (p >= 1 && !reduce) ? ss(1.05, 1.2, c) * (1 - ss(1.2, 1.55, c)) : 0;
+dotG.position.y = REST;
+dotG.scale.set(1, Math.max(0.001, kd) * (1 - press * 0.55), 1); dotG.visible = kd > 0.003;
+pin.visible = false;
+var r1 = (p >= 1 && !reduce) ? clamp((c - 1.1) / 1.0, 0, 1) : 0, r2 = 0;
+ringA.visible = r1 > 0 && r1 < 1; ringA.position.set(DX, 0.55, DZ); ringA.scale.setScalar(1 + r1 * 0.9); ringA.material.opacity = (1 - r1) * 0.85;
+ringB.visible = false;
 if (p >= 1 && !reduce){
-var arrive = ss(0.0, 1.2, c) * (1 - ss(3.3, 4.6, c)), ty2 = y + 0.5 - press * 0.3;
-curG.position.set(lerp(-1.5, DX + 0.9, arrive), lerp(ty2 + 3.5, ty2 + 0.2, arrive), lerp(6.5, DZ + 0.1, arrive)); curG.visible = arrive > 0.01;
-} else if (reduce){ curG.position.set(DX + 0.9, HOVER + 0.7, DZ + 0.1); curG.visible = true; } else curG.visible = false;
+var arrive = ss(0.0, 1.0, c) * (1 - ss(2.3, 3.4, c)), ty2 = REST + 0.6 - press * 0.45;
+curG.position.set(lerp(-1.5, DX + 0.9, arrive), lerp(ty2 + 3.5, ty2, arrive), lerp(6.5, DZ + 0.1, arrive)); curG.visible = arrive > 0.01;
+} else if (reduce){ curG.position.set(DX + 0.9, REST + 0.6, DZ + 0.1); curG.visible = true; } else curG.visible = false;
 mx = lerp(mx, tmx, 0.05); my = lerp(my, tmy, 0.05);
 if (!dragging){ dragV *= 0.94; drag += dragV; }
 var polar = lerp(0.05, 0.95, ss(0.0, 0.55, p)) + my * 0.06;
