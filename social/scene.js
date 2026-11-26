@@ -16,9 +16,9 @@ renderer.setClearColor(0xFFF0F5, 0);
 renderer.shadowMap.enabled = !small; renderer.shadowMap.type = T.PCFSoftShadowMap;
 var scene = new T.Scene();
 var camera = new T.PerspectiveCamera(30, 1, 0.1, 200);
-scene.add(new T.HemisphereLight(0xFFFFFF, 0xE8C8D6, 0.7));
-var sun = new T.DirectionalLight(0xFFFFFF, 0.75);
-sun.position.set(-8, 18, 9); sun.castShadow = !small; sun.shadow.mapSize.set(2048, 2048);
+scene.add(new T.HemisphereLight(0xFFFFFF, 0xE8C8D6, 0.62));
+var sun = new T.DirectionalLight(0xFFFFFF, 0.7);
+sun.position.set(-4, 22, 5); sun.castShadow = !small; sun.shadow.mapSize.set(2048, 2048);
 var sc = sun.shadow.camera; sc.left = -14; sc.right = 14; sc.top = 14; sc.bottom = -14; sc.near = 1; sc.far = 60; sun.shadow.bias = -0.0005;
 scene.add(sun);
 var shadowCatch = new T.Mesh(new T.CircleGeometry(14, 64), new T.ShadowMaterial({opacity: 0.12}));
@@ -28,9 +28,10 @@ grid.position.y = 0.004; grid.material.transparent = true; grid.material.opacity
 var mat = function(c, o){ return new T.MeshStandardMaterial(Object.assign({color: c, roughness: 0.85}, o || {})); };
 var edgeMat = new T.LineBasicMaterial({color: DARK, transparent: true, opacity: 0.75});
 function withEdges(m, em){ m.add(new T.LineSegments(new T.EdgesGeometry(m.geometry, 30), em || edgeMat)); return m; }
-function flat(shape, depth, material){
-var g = new T.ExtrudeGeometry(shape, {depth: depth, bevelEnabled: false, curveSegments: 24});
-g.rotateX(-Math.PI/2);
+function flat(shape, depth, material, bt){
+bt = bt || 0;
+var g = new T.ExtrudeGeometry(shape, {depth: depth, bevelEnabled: bt > 0, bevelThickness: bt, bevelSize: bt, bevelSegments: 4, curveSegments: 32});
+g.rotateX(-Math.PI/2); g.translate(0, bt, 0);
 var m = new T.Mesh(g, material); m.castShadow = m.receiveShadow = true; return m;
 }
 /* bentuk logo: x=(px-50)/8, z=(py-50)/8 */
@@ -43,30 +44,31 @@ s.lineTo(-R, -R+rr); s.absarc(-R+rr, -R+rr, rr, Math.PI, 1.5*Math.PI, false);
 return s;
 }
 function quarter(){
-var s = new T.Shape(), r = 5.2, cx = -3.9, cy = -3.9;
+var s = new T.Shape(), r = 6.2, cx = -4.4, cy = -4.4;
 s.moveTo(cx, cy); s.lineTo(cx, cy + r); s.absarc(cx, cy, r, Math.PI/2, 0, true); s.lineTo(cx, cy);
 return s;
 }
 /* kotak: lencana teal + halaman putih bertakik */
-var base = withEdges(flat(rounded(6.2, 2.8), 0.5, mat(TEAL)), new T.LineBasicMaterial({color: DARK, transparent: true, opacity: 0.5}));
+var base = flat(rounded(6.8, 3.0), 0.5, mat(TEAL, {roughness: 0.6}), 0.12);
 var baseG = new T.Group(); baseG.add(base); scene.add(baseG);
-var page = withEdges(flat(quarter(), 0.5, mat(PUTIH)));
-var pageG = new T.Group(); pageG.position.y = 0.5; pageG.add(page); scene.add(pageG);
+var page = flat(quarter(), 0.5, mat(PUTIH, {roughness: 0.7}), 0.1);
+var pageG = new T.Group(); pageG.position.y = 0.62; pageG.add(page); scene.add(pageG);
 /* ikon play (Reels) dari segitiga 3D */
 var code = new T.Group(), codeParts = [];
-var ts = new T.Shape(); ts.moveTo(-0.9, -1.1); ts.lineTo(-0.9, 1.1); ts.lineTo(1.1, 0); ts.lineTo(-0.9, -1.1);
-var tri = withEdges(new T.Mesh(new T.ExtrudeGeometry(ts, {depth: 0.5, bevelEnabled: false}), mat(TEAL)), new T.LineBasicMaterial({color: DARK, transparent: true, opacity: 0.45}));
-tri.geometry.rotateX(-Math.PI/2); tri.geometry.translate(0, 0.5, 0); tri.userData = {d: 0}; tri.castShadow = true; tri.rotation.y = 0; code.add(tri); codeParts.push(tri);
-code.position.set(-2.0, 0, 1.9); pageG.add(code);
+var ts = new T.Shape(); ts.moveTo(-0.8, -1.0); ts.lineTo(-0.8, 1.0); ts.lineTo(1.0, 0); ts.lineTo(-0.8, -1.0);
+var tri = new T.Mesh(new T.ExtrudeGeometry(ts, {depth: 0.35, bevelEnabled: true, bevelThickness: 0.1, bevelSize: 0.12, bevelSegments: 3}), mat(DARK, {roughness: 0.5}));
+tri.geometry.rotateX(-Math.PI/2); tri.geometry.translate(0, 0.8, 0); tri.userData = {d: 0}; tri.castShadow = true; code.add(tri); codeParts.push(tri);
+code.scale.setScalar(1.6);
+code.position.set(-1.6, 0, 1.6); pageG.add(code);
 /* bulet kuning terpisah, melayang di atas takik */
-var DX = 2.6, DZ = -2.6, REST = 0.95, HOVER = 4.6;
-var dotMat = mat(KUNING, {roughness: 0.5});
-var dot = new T.Mesh(new T.CylinderGeometry(1.5, 1.5, 0.8, 48), dotMat); dot.castShadow = true;
+var DX = 3.2, DZ = -3.2, REST = 1.2, HOVER = 4.6;
+var dotMat = mat(KUNING, {roughness: 0.4, emissive: 0xFFD166, emissiveIntensity: 0.35});
+var dot = new T.Mesh(new T.CylinderGeometry(1.7, 1.7, 0.9, 56), dotMat); dot.castShadow = true;
 dot.add(new T.LineSegments(new T.EdgesGeometry(dot.geometry, 40), edgeMat));
 var dotG = new T.Group(); dotG.position.set(DX, HOVER, DZ); dotG.add(dot); scene.add(dotG);
-var pgeo = new T.BufferGeometry(); pgeo.setAttribute("position", new T.Float32BufferAttribute([DX, 0.5, DZ, DX, HOVER - 0.4, DZ], 3));
+var pgeo = new T.BufferGeometry(); pgeo.setAttribute("position", new T.Float32BufferAttribute([DX, 0.75, DZ, DX, HOVER - 0.4, DZ], 3));
 var pin = new T.Line(pgeo, new T.LineDashedMaterial({color: TEAL, dashSize: 0.22, gapSize: 0.18, transparent: true, opacity: 0.5})); pin.computeLineDistances(); scene.add(pin);
-function mkRing(){ var m = new T.MeshBasicMaterial({color: KUNING, transparent: true, opacity: 0, side: T.DoubleSide}); var r = new T.Mesh(new T.RingGeometry(1.5, 1.7, 48), m); r.rotation.x = -Math.PI/2; r.visible = false; scene.add(r); return r; }
+function mkRing(){ var m = new T.MeshBasicMaterial({color: KUNING, transparent: true, opacity: 0, side: T.DoubleSide}); var r = new T.Mesh(new T.RingGeometry(1.7, 1.9, 48), m); r.rotation.x = -Math.PI/2; r.visible = false; scene.add(r); return r; }
 var ringA = mkRing(), ringB = mkRing();
 /* hati yang naik saat diklik */
 var hs = new T.Shape(); hs.moveTo(0, -0.5); hs.bezierCurveTo(-0.9, 0.1, -0.7, 0.9, 0, 0.55); hs.bezierCurveTo(0.7, 0.9, 0.9, 0.1, 0, -0.5);
@@ -110,7 +112,7 @@ dotG.scale.set(Math.max(0.001, kd), Math.max(0.001, kd) * (1 - press * 0.4), Mat
 pin.visible = kd > 0.5 && y > REST + 0.6; pin.material.opacity = 0.5 * clamp((y - REST) / 2, 0, 1);
 var r1 = (p >= 1 && !reduce) ? clamp((c - 1.3) / 1.0, 0, 1) : 0, r2 = (p >= 1 && !reduce) ? clamp((c - 2.4) / 1.0, 0, 1) : 0;
 ringA.visible = r1 > 0 && r1 < 1; ringA.position.set(DX, HOVER - 0.4, DZ); ringA.scale.setScalar(1 + r1 * 1.5); ringA.material.opacity = (1 - r1) * 0.85;
-ringB.visible = r2 > 0 && r2 < 1; ringB.position.set(DX, 0.56, DZ); ringB.scale.setScalar(1 + r2 * 1.5); ringB.material.opacity = (1 - r2) * 0.85;
+ringB.visible = r2 > 0 && r2 < 1; ringB.position.set(DX, 0.8, DZ); ringB.scale.setScalar(1 + r2 * 1.5); ringB.material.opacity = (1 - r2) * 0.85;
 if (p >= 1 && !reduce){
 var arrive = ss(0.0, 1.2, c) * (1 - ss(3.3, 4.6, c)), ty2 = y + 1.6 - press * 0.4;
 curG.position.set(lerp(-1.5, DX - 0.3, arrive), lerp(ty2 + 3.5, ty2, arrive), lerp(6.0, DZ + 0.2, arrive)); curG.visible = arrive > 0.01;
