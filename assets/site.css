@@ -298,3 +298,13 @@ p { max-width: 62ch; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* Tiga brand: kartu ke /homes, /web, /social */
+.brands__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s4); }
+.bcard { position: relative; display: flex; flex-direction: column; gap: var(--s3); padding: var(--s5); border: 1px solid var(--line); background: var(--surface); transition: border-color .25s var(--ease), transform .25s var(--ease); }
+.bcard:hover, .bcard:focus-visible { border-color: var(--line-strong); transform: translateY(-3px); }
+.bcard img { width: 56px; height: 56px; margin-bottom: var(--s3); }
+.bcard p { color: var(--muted); }
+.bcard__p { margin-top: auto; padding-top: var(--s4); font: 500 13px/1.4 var(--mono); letter-spacing: .02em; }
+.bcard__go { position: absolute; top: var(--s5); right: var(--s5); font-style: normal; font-size: 20px; }
+@media (max-width: 860px) { .brands__grid { grid-template-columns: 1fr; } }
